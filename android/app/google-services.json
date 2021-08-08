@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "329736690251",
+    "project_id": "kapampangan-learning",
+    "storage_bucket": "kapampangan-learning.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329736690251:android:af2b59434137f9dc608bce",
+        "android_client_info": {
+          "package_name": "com.example.mamyalung"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "329736690251-8jv8kpfglvtvgukao1qkeivds9t77mlh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5yeaObp2yR51FadSEkPwUJm6vRILYV70"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "329736690251-8jv8kpfglvtvgukao1qkeivds9t77mlh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
