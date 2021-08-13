@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 final ButtonStyle style = ElevatedButton.styleFrom(
   textStyle: const TextStyle(fontSize: 20));
 final Color primaryBlue = const Color.fromRGBO(29, 58, 160, 1.0);
@@ -10,5 +12,5 @@ final Color red = const Color.fromRGBO(224,85,100, 1.0);
 final Color black = const Color.fromRGBO(17,19,27, 1.0);
 final Color gray = const Color.fromRGBO(26,29,40, 1.0);
 final Color white = const Color.fromRGBO(240,229,211, 1.0);
-
+final Color whitey = const Color.fromRGBO(240,229,211, 1.0);
 
