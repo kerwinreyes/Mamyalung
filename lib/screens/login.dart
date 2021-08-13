@@ -52,6 +52,7 @@ class _LoginPageState extends State<LoginPage> {
         _focusPassword.unfocus();
       },
       child: Scaffold(
+        resizeToAvoidBottomInset: false, //fix for bottom overflow
         appBar: AppBar(
           title: Text('Firebase Authentication'),
         ),

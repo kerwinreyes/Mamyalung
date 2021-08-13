@@ -28,6 +28,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false, //fix for bottom overflow
       appBar: AppBar(
         title: Text('Profile'),
       ),

@@ -31,6 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
         _focusPassword.unfocus();
       },
       child: Scaffold(
+        resizeToAvoidBottomInset: false, //fix for bottom overflow
         appBar: AppBar(
           title: Text('Register'),
         ),
