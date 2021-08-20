@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mamyalung/materials.dart';
 
-Widget button(Color first, Color second, String font, double size, double height, double width, String text,
-  final GestureTapCallback onPressed){
+Widget button({required Color first, required Color second, 
+required double size, required double height, required double width, required String text,GestureTapCallback? onTap}){
   return ElevatedButton(
-          onPressed: onPressed,
+          onPressed: onTap,
           style: ElevatedButton.styleFrom(
+              elevation: 5,
               padding: EdgeInsets.zero,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20))),
@@ -24,11 +26,13 @@ Widget button(Color first, Color second, String font, double size, double height
             ),
           ));
 }
-Widget buttonwithIcon(Icon ic,Color first, Color second, String font, double size, double height, double width, String text,final GestureTapCallback onPressed){
+Widget buttonwithIcon({required Icon ic, required Color first, required Color second, 
+required double size, required double height, required double width, required String text,GestureTapCallback? onTap}){
   return ElevatedButton.icon(
-          onPressed: onPressed,
+          
+          onPressed: onTap,
           style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.zero,
+            elevation: 5,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20))),
           icon: ic,
@@ -36,6 +40,8 @@ Widget buttonwithIcon(Icon ic,Color first, Color second, String font, double siz
                   fit: BoxFit.fitWidth,
                   child: Ink(
             decoration: BoxDecoration(
+              
+
                 gradient: LinearGradient(colors: [first, second]),
                 borderRadius: BorderRadius.circular(20)),
             child: Container(
@@ -44,7 +50,9 @@ Widget buttonwithIcon(Icon ic,Color first, Color second, String font, double siz
               alignment: Alignment.center,
               child: Text(
                 text,
-                style: TextStyle(fontSize: size,),
+                style: GoogleFonts.lato(
+                      textStyle: TextStyle(color: gray, letterSpacing: .5),
+                    ),
               ),
             ),
           )));
