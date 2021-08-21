@@ -13,6 +13,7 @@ final Color black = const Color.fromRGBO(17,19,27, 1.0);
 final Color gray = const Color.fromRGBO(26,29,40, 1.0);
 final Color white = const Color.fromRGBO(240,229,211, 1.0);
 final Color whitey = const Color.fromRGBO(240,229,211, 1.0);
+<<<<<<< Updated upstream
 const kPrimaryColor = Color(0xFF366CF6);
 const kSecondaryColor = Color(0xFFF5F6FC);
 const kBgLightColor = Color(0xFFF2F4FC);
@@ -23,3 +24,7 @@ const kTitleTextColor = Color(0xFF30384D);
 const kTextColor = Color(0xFF4D5875);
 
 const kDefaultPadding = 20.0;
+=======
+final Color pink = const Color.fromRGBO(244,194,194,1.0);
+final Color powderblue = const Color.fromRGBO(203,277,255,1.0);
+>>>>>>> Stashed changes
