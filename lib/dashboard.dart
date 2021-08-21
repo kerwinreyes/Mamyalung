@@ -3,9 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mamyalung/materials.dart';
+import 'package:mamyalung/responsive.dart';
+import 'package:mamyalung/screens/admin/output.dart';
+import 'package:mamyalung/screens/admin/sidemenu.dart';
+import 'package:mamyalung/screens/admin/users.dart';
 import 'loginpage.dart';
 import 'package:mamyalung/services/usermanagement.dart';
-
+import 'package:mamyalung/responsive.dart';
 import 'allusers.dart';
 
 class DashBoardPage extends StatefulWidget {
@@ -25,9 +29,10 @@ class _DashBoardPageState extends State<DashBoardPage> {
   List userProfileList=[];
   @override
   void initState(){
-    fetchDatabaseList();
+    //fetchDatabaseList();
     super.initState();
   }
+  /*
   ggetUser() async {
     List a = [];
     await FirebaseFirestore.instance
@@ -52,10 +57,10 @@ class _DashBoardPageState extends State<DashBoardPage> {
              
     }
   }
-
+*/
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    /*return Scaffold(
       appBar: AppBar(),
       drawer: Drawer(
         child: ListView(
@@ -124,6 +129,34 @@ class _DashBoardPageState extends State<DashBoardPage> {
         ),
       ),
     );
+    */
+    //try dashboard responsive design
+    Size _size = MediaQuery.of(context).size;
+    return Scaffold(
+      body: Responsive(
+        desktop: Row(
+          children: [
+            Expanded(
+              flex: _size.width > 1340 ? 2 : 4,
+              child: AdminSideMenu(),
+            ),
+            Expanded(
+              flex: _size.width > 1340 ? 3 : 5,
+              child: ListOfUsers(),
+            ),
+          ],
+        ),
+        mobile: ListOfUsers(),
+        tablet:Row(
+          children: [
+            Expanded(
+              flex: 6,
+              child: ListOfUsers(),
+            ),
+          ],
+        ),
+        )
+    );
   }
 }
 
@@ -133,8 +166,10 @@ class UserInformation extends StatefulWidget {
 }
 
 class _UserInformationState extends State<UserInformation> {
-  final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance.collection('users').snapshots();
-
+  final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance
+                                                .collection('users')
+                                                .where('role',isEqualTo: 'teacher')
+                                                .snapshots();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -155,7 +190,68 @@ class _UserInformationState extends State<UserInformation> {
           itemCount: data.size,
           itemBuilder: (context, index){
             print(data.docs[index]['fname']);
-            return Text(data.docs[index]['fname']);
+            return ListTile(
+              title: Padding(
+                padding: EdgeInsets.all(5),
+                child: Text(data.docs[index]['fname']+' '+data.docs[index]['lname']),
+              ),
+              subtitle: Text(data.docs[index]['role']),
+              leading: Icon(Icons.verified_user),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: (){
+
+              },
+            );
+          },
+        );
+      },
+    ));
+  }
+}
+class UserStudInformation extends StatefulWidget {
+  const UserStudInformation({ Key? key }) : super(key: key);
+
+  @override
+  _UserStudInformationState createState() => _UserStudInformationState();
+}
+
+class _UserStudInformationState extends State<UserStudInformation> {
+  final Stream<QuerySnapshot> _studStream = FirebaseFirestore.instance
+                                                .collection('users')
+                                                .where('role',isEqualTo: 'student')
+                                                .snapshots();
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 250,
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: StreamBuilder<QuerySnapshot>(
+      stream: _studStream,
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return Text('Something went wrong');
+        }
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Text("Loading");
+        }
+        final data =snapshot.requireData;
+        return ListView.builder(
+          itemCount: data.size,
+          itemBuilder: (context, index){
+            print(data.docs[index]['fname']);
+            return ListTile(
+              title: Padding(
+                padding: EdgeInsets.all(5),
+                child: Text(data.docs[index]['fname']+' '+data.docs[index]['lname']),
+              ),
+              subtitle: Text(data.docs[index]['role']),
+              leading: Icon(Icons.verified_user),
+              trailing: Icon(Icons.arrow_forward),
+              onTap: (){
+
+              },
+            );
           },
         );
       },

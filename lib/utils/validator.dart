@@ -7,6 +7,9 @@ class Validator {
     if (name.isEmpty) {
       return 'Name can\'t be empty';
     }
+    if(name.length < 3){
+      return 'Name should be more than 2 characters';
+    }
 
     return null;
   }
@@ -29,6 +32,8 @@ class Validator {
   }
 
   static String? validatePassword({required String? password}) {
+    String  pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+    RegExp regExp = new RegExp(pattern);
     if (password == null) {
       return null;
     }
@@ -37,8 +42,11 @@ class Validator {
       return 'Password can\'t be empty';
     } else if (password.length < 6) {
       return 'Enter a password with length at least 6';
+    } else if(regExp.hasMatch(password)){
+      return 'Password must contain 1 Upper case, 1 lowercase, 1 numeric number, 1 special character';
     }
 
+        
     return null;
   }
 }

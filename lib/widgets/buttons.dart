@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mamyalung/materials.dart';
-
+import 'package:mamyalung/extension.dart';
 Widget button({required Color first, required Color second, 
 required double size, required double height, required double width, required String text,GestureTapCallback? onTap}){
   return ElevatedButton(
@@ -21,10 +21,12 @@ required double size, required double height, required double width, required St
               alignment: Alignment.center,
               child: Text(
                 text,
-                style: TextStyle(fontSize: size,),
+                style: GoogleFonts.lato(
+                      textStyle: TextStyle(color: Colors.white, fontSize: size, fontWeight: FontWeight.bold),
+                    ),
               ),
             ),
-          ));
+          )).addNeumorphism();
 }
 Widget buttonwithIcon({required Icon ic, required Color first, required Color second, 
 required double size, required double height, required double width, required String text,GestureTapCallback? onTap}){
