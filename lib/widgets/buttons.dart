@@ -92,3 +92,29 @@ Widget _createHeader() {
                     fontWeight: FontWeight.w500))),
       ]));
 }
+Widget _dropdown({required List<String> values, required String text, required }) {
+  return DropdownButton<String>(
+    value: text,
+    icon: const Icon(Icons.arrow_downward),
+    iconSize: 24,
+    elevation: 16,
+    style: const TextStyle(
+      color: Colors.deepPurple
+    ),
+    underline: Container(
+      height: 2,
+      color: Colors.deepPurpleAccent,
+    ),
+    onChanged: (String? newValue) {
+      text = newValue!;
+    },
+    items: values
+      .map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      })
+      .toList(),
+  );
+}

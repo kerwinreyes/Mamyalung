@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mamyalung/authService.dart';
 import 'package:mamyalung/materials.dart';
 import 'package:mamyalung/screens/admin/homepage.dart';
+import 'package:mamyalung/screens/admin/adduser.dart';
 import 'package:mamyalung/screens/admin/profile.dart';
 import 'package:mamyalung/screens/home.dart';
 import 'package:mamyalung/loginpage.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         Routes.adminprofile: (context) => AdminProfile(),
+        Routes.addUser: (context) => AddUser(),
       },
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(

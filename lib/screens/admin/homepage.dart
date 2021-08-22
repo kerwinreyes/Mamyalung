@@ -12,6 +12,7 @@ import 'package:mamyalung/widgets/usertable.dart';
 import 'package:mamyalung/extension.dart';
 
 class AdminHomePage extends StatefulWidget {
+  static const String routeName = '/admin/home';
   final User user;
   const AdminHomePage({ Key? key, required this.user }) : super(key: key);
 
@@ -119,7 +120,7 @@ Widget _createHeader() {
             button(first: lightBlue, second:primaryBlue, 
                         size:12.0, height:40.0, width:160.0, text:'Add Users',
                         onTap: () =>
-                    Navigator.pushReplacementNamed(context, Routes.adminprofile)),
+                    Navigator.pushReplacementNamed(context, Routes.addUser)),
 
             Expanded(
               flex: _size.width > 1340 ? 2 : 4,
