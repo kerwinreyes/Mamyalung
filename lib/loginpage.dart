@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
             //constraints: BoxConstraints.expand(),
              decoration: BoxDecoration(
               image: DecorationImage(
-                 image: AssetImage("assets/mamyalungnamepets.png"),
+                 image: AssetImage("assets/image/mamyalungnamepets.png"),
                  fit: BoxFit.cover),
                 ),
           ),
