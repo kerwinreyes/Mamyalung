@@ -1,10 +1,12 @@
 import 'dart:html';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mamyalung/dashboard.dart';
 import 'package:mamyalung/materials.dart';
+import 'package:mamyalung/screens/admin/homepage.dart';
 import 'package:mamyalung/screens/register.dart';
 import 'package:mamyalung/utils/fire_auth.dart';
 import 'package:mamyalung/utils/validator.dart';
@@ -36,8 +38,7 @@ class _LoginPageState extends State<LoginPage> {
     if (user != null) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => DashBoardPage(
-            user: user,
+          builder: (context) => AdminHomePage(user: user,
           ),
         ),
       );
@@ -553,32 +554,41 @@ class _LoginPageState extends State<LoginPage> {
                                                     _isProcessing = true;
                                                   });
 
-                                                  User? user = await FireAuth.signInUsingEmailPassword(
-                                                    email: _emailTextController.text,
-                                                    password:
-                                                        _passwordTextController.text,
-                                                  );
+                                            setState(() {
+                                              _isProcessing = false;
+                                            });
 
-                                                  setState(() {
-                                                    _isProcessing = false;
-                                                  });
-
-                                                  if (user != null) {
-                                                    Navigator.of(context)
-                                                        .pushReplacement(
+                                            if (user != null) {
+                                              FirebaseFirestore.instance
+                                              .collection('/users')
+                                              .where('uid', isEqualTo: user.uid)
+                                              .get()
+                                              .then((QuerySnapshot querySnapshot){
+                                                querySnapshot.docs.forEach((doc) {
+                                                  if(identical(doc['role'],'Admin')){
+                                                  Navigator.of(context)
+                                                  .pushReplacement(
                                                       MaterialPageRoute(
                                                         builder: (context) =>
-                                                            DashBoardPage(user: user),
+                                                            AdminHomePage(user: user,),
+                                                            //DashBoardPage(user: user),
                                                       ),
                                                     );
+                                                  }else if(identical(doc['role'],'teacher')){
+                                                    print('teacher');
                                                   }
-                                                }
-                                              },
-                                              style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0))),
-                                              child: Text(
-                                                'Sign In',
-                                                style: TextStyle(color: Colors.white, fontSize: 18.0),
-                                         ),
+                                                  else{
+                                                    print('Student');
+                                                  }
+                                                }); 
+                                              });
+                                               
+                                            }
+                                          }
+                                        },
+                                        child: Text(
+                                          'Sign In',
+                                          style: TextStyle(color: Colors.white),
                                         ),
                                         
                                       ),
