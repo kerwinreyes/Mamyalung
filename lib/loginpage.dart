@@ -208,7 +208,7 @@ class _LoginPageState extends State<LoginPage> {
                                                         .pushReplacement(
                                                       MaterialPageRoute(
                                                         builder: (context) =>
-                                                            DashBoardPage(user: user),
+                                                            AdminHomePage(user: user),
                                                       ),
                                                     );
                                                   }
@@ -380,7 +380,7 @@ class _LoginPageState extends State<LoginPage> {
                                                         .pushReplacement(
                                                       MaterialPageRoute(
                                                         builder: (context) =>
-                                                            DashBoardPage(user: user),
+                                                            AdminHomePage(user: user),
                                                       ),
                                                     );
                                                   }
@@ -553,7 +553,11 @@ class _LoginPageState extends State<LoginPage> {
                                                   setState(() {
                                                     _isProcessing = true;
                                                   });
-
+                                                 User? user = await FireAuth.signInUsingEmailPassword(
+                                                    email: _emailTextController.text,
+                                                    password:
+                                                        _passwordTextController.text,
+                                                  );
                                             setState(() {
                                               _isProcessing = false;
                                             });
@@ -591,8 +595,8 @@ class _LoginPageState extends State<LoginPage> {
                                           style: TextStyle(color: Colors.white),
                                         ),
                                         
-                                      ),
-                                      ),
+                                            ))),
+                                    
                                       SizedBox(width: 10),
                                       Expanded(
                                         child: SizedBox( height: 35.0,
