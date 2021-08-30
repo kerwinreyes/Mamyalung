@@ -10,6 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mamyalung/screens/profile.dart';
+import 'package:mamyalung/screens/students/homepage.dart';
 import 'package:mamyalung/services/usermanagement.dart';
 import 'package:mamyalung/utils/finalAuth.dart';
 import 'package:provider/provider.dart';
@@ -22,8 +23,11 @@ Future<void> main() async {
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
+
+    User? user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
+    final currentUser = FirebaseAuth.instance.currentUser;
     return MultiProvider(
       providers: [
         Provider<AuthenticationProvider>(
@@ -39,7 +43,10 @@ class MyApp extends StatelessWidget {
       routes: {
         Routes.adminprofile: (context) => AdminProfile(),
         Routes.addUser: (context) => AddUser(),
+        Routes.studentHomePage: (context) => StudentHomePage(),
+  
       },
+      
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
         brightness: Brightness.light,
@@ -76,7 +83,7 @@ class Authenticate extends StatelessWidget {
       var data = FirebaseFirestore.instance
         .collection('users').where('uid',isEqualTo: firebaseUser.uid)
         .get();
-      return AdminHomePage(user: firebaseUser,);
+      return StudentHomePage(uid: firebaseUser.uid,);
     }
     return LoginPage();
   }

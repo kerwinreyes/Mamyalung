@@ -13,7 +13,7 @@ import 'package:mamyalung/responsive.dart';
 import 'allusers.dart';
 
 class DashBoardPage extends StatefulWidget {
-  final User user;
+  final String user;
 
   const DashBoardPage({required this.user});
 

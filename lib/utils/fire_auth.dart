@@ -1,8 +1,12 @@
+import 'dart:js';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-final CollectionReference _mainCollection = _firestore.collection('notes');
+final CollectionReference _userCollection = _firestore.collection('user');
 class FireAuth {
    static String? userUid;
 
@@ -55,6 +59,7 @@ class FireAuth {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
+        
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided.');
       }
@@ -77,7 +82,7 @@ class FireAuth {
   required String description,
   }) async {
   DocumentReference documentReferencer =
-      _mainCollection.doc(userUid).collection('items').doc();
+      _userCollection.doc(userUid).collection('items').doc();
 
   Map<String, dynamic> data = <String, dynamic>{
     "title": title,
@@ -92,9 +97,16 @@ class FireAuth {
 //Reading Data 
 static Stream<QuerySnapshot> readItems() {
   CollectionReference notesItemCollection =
-      _mainCollection.doc(userUid).collection('items');
+      _userCollection.doc(userUid).collection('items');
 
   return notesItemCollection.snapshots();
+}
+//Reading User Data
+readuser() async {
+  var UserCollection =
+      _userCollection.where('role',isNotEqualTo: 'Admin').get();
+
+  return UserCollection;
 }
 //UpdateData
 static Future<void> updateItem({
@@ -103,7 +115,7 @@ static Future<void> updateItem({
   required String docId,
 }) async {
   DocumentReference documentReferencer =
-      _mainCollection.doc(userUid).collection('items').doc(docId);
+      _userCollection.doc(userUid).collection('items').doc(docId);
 
   Map<String, dynamic> data = <String, dynamic>{
     "title": title,
@@ -120,7 +132,7 @@ static Future<void> deleteItem({
   required String docId,
 }) async {
   DocumentReference documentReferencer =
-      _mainCollection.doc(userUid).collection('items').doc(docId);
+      _userCollection.doc(userUid).collection('items').doc(docId);
 
   await documentReferencer
       .delete()
