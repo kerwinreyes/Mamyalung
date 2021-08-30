@@ -47,6 +47,7 @@ class StudentsMobile extends StatefulWidget {
 }
 
 class _StudentsMobileState extends State<StudentsMobile> {
+  String imagePath= 'https://i.ibb.co/CskKVL4/ninja.png';
     int _currentIndex = 0;
   late PageController _pageController;
 
@@ -66,9 +67,20 @@ class _StudentsMobileState extends State<StudentsMobile> {
   Widget build(BuildContext context) {
     return Scaffold(
      appBar: AppBar(
-
+       leading: Container(
+         margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
+         decoration: BoxDecoration(
+           shape: BoxShape.circle,
+           color: Colors.white
+         ),
+         child: Image(image: NetworkImage(imagePath),height: 25.0,fit:BoxFit.cover,)),
+       title: Container(
+         child: Image(height: 50.0,image: NetworkImage('https://i.ibb.co/gghzqTq/mamyalung-logo.png'),fit: BoxFit.cover,),
+       ),
+       centerTitle: true,
        elevation: 5,
-       backgroundColor: primaryBlue,
+       shadowColor: primaryBlue,
+       backgroundColor: lightBlue,
        actions: [
           IconButton(
               icon: Icon(
