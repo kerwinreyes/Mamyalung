@@ -7,7 +7,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mamyalung/dashboard.dart';
 import 'package:mamyalung/materials.dart';
 import 'package:mamyalung/screens/admin/homepage.dart';
+import 'package:mamyalung/screens/login.dart';
 import 'package:mamyalung/screens/register.dart';
+import 'package:mamyalung/screens/students/homepage.dart';
 import 'package:mamyalung/utils/fire_auth.dart';
 import 'package:mamyalung/utils/validator.dart';
 import 'package:mamyalung/responsive.dart';
@@ -36,17 +38,78 @@ class _LoginPageState extends State<LoginPage> {
     User? user = FirebaseAuth.instance.currentUser;
 
     if (user != null) {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => AdminHomePage(user: user,
-          ),
-        ),
+    FirebaseFirestore.instance
+        .collection('/users')
+        .where('uid', isEqualTo: user.uid)
+        .get()
+        .then((QuerySnapshot querySnapshot){
+          querySnapshot.docs.forEach((doc) {
+            if(identical(doc['role'],'Admin')){
+            print('Admin');
+            }else if(identical(doc['role'],'teacher')){
+              print('teacher');
+            }
+            else{
+              Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => StudentHomePage(uid:user.uid)),
       );
+            }
+          }); 
+        });
     }
 
     return firebaseApp;
   }
-
+  void logIn() {
+    FirebaseAuth.instance
+        .signInWithEmailAndPassword(
+            email: _emailTextController.text, password: _passwordTextController.text)
+        .then((result) {
+      _isProcessing = false;
+      if (result != null) {
+        FirebaseFirestore.instance
+        .collection('/users')
+        .where('uid', isEqualTo: result.user!.uid)
+        .get()
+        .then((QuerySnapshot querySnapshot){
+          querySnapshot.docs.forEach((doc) {
+            if(identical(doc['role'],'Admin')){
+            print('Admin');
+            }else if(identical(doc['role'],'teacher')){
+              print('teacher');
+            }
+            else{
+              Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => StudentHomePage(uid: result.user!.uid)),
+      );
+            }
+          }); 
+        });
+          
+      }
+      
+    }).catchError((err) {
+      print(err.message);
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Error"),
+              content: Text(err.message),
+              actions: [
+                ElevatedButton(
+                  child: Text("Ok"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                )
+              ],
+            );
+          });
+    });
+  }
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -69,11 +132,19 @@ class _LoginPageState extends State<LoginPage> {
           //    width: screenSizeW, 
           //   fit: BoxFit.cover,),
          //   ),
+          // Container(
+          //   //constraints: BoxConstraints.expand(),
+          //    decoration: BoxDecoration(
+          //     image: DecorationImage(
+          //        //image: AssetImage("assets/image/mamyalungnamepets.png"),
+          //        fit: BoxFit.cover),
+          //       ),
+          // ),
           Container(
             //constraints: BoxConstraints.expand(),
              decoration: BoxDecoration(
               image: DecorationImage(
-                 image: AssetImage("assets/image/mamyalungnamepets.png"),
+                 image: AssetImage("https://i.ibb.co/FznXgXT/Login.png"),
                  fit: BoxFit.cover),
                 ),
           ),
@@ -193,25 +264,7 @@ class _LoginPageState extends State<LoginPage> {
                                                     _isProcessing = true;
                                                   });
 
-                                                  User? user = await FireAuth.signInUsingEmailPassword(
-                                                    email: _emailTextController.text,
-                                                    password:
-                                                        _passwordTextController.text,
-                                                  );
-
-                                                  setState(() {
-                                                    _isProcessing = false;
-                                                  });
-
-                                                  if (user != null) {
-                                                    Navigator.of(context)
-                                                        .pushReplacement(
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            AdminHomePage(user: user),
-                                                      ),
-                                                    );
-                                                  }
+                                                  logIn();
                                                 }
                                               },
                                               style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0))),
@@ -364,26 +417,8 @@ class _LoginPageState extends State<LoginPage> {
                                                   setState(() {
                                                     _isProcessing = true;
                                                   });
+                                                  logIn();
 
-                                                  User? user = await FireAuth.signInUsingEmailPassword(
-                                                    email: _emailTextController.text,
-                                                    password:
-                                                        _passwordTextController.text,
-                                                  );
-
-                                                  setState(() {
-                                                    _isProcessing = false;
-                                                  });
-
-                                                  if (user != null) {
-                                                    Navigator.of(context)
-                                                        .pushReplacement(
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            AdminHomePage(user: user),
-                                                      ),
-                                                    );
-                                                  }
                                                 }
                                               },
                                               style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0))),
@@ -553,41 +588,10 @@ class _LoginPageState extends State<LoginPage> {
                                                   setState(() {
                                                     _isProcessing = true;
                                                   });
-                                                 User? user = await FireAuth.signInUsingEmailPassword(
-                                                    email: _emailTextController.text,
-                                                    password:
-                                                        _passwordTextController.text,
-                                                  );
-                                            setState(() {
-                                              _isProcessing = false;
-                                            });
+                                                  logIn();
+                                                
 
-                                            if (user != null) {
-                                              FirebaseFirestore.instance
-                                              .collection('/users')
-                                              .where('uid', isEqualTo: user.uid)
-                                              .get()
-                                              .then((QuerySnapshot querySnapshot){
-                                                querySnapshot.docs.forEach((doc) {
-                                                  if(identical(doc['role'],'Admin')){
-                                                  Navigator.of(context)
-                                                  .pushReplacement(
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            AdminHomePage(user: user,),
-                                                            //DashBoardPage(user: user),
-                                                      ),
-                                                    );
-                                                  }else if(identical(doc['role'],'teacher')){
-                                                    print('teacher');
-                                                  }
-                                                  else{
-                                                    print('Student');
-                                                  }
-                                                }); 
-                                              });
-                                               
-                                            }
+                                            
                                           }
                                         },
                                         child: Text(
@@ -641,5 +645,7 @@ class _LoginPageState extends State<LoginPage> {
         ],
         ),
       );
+      
     }
+    
   }

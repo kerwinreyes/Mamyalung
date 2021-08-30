@@ -14,7 +14,7 @@ import 'package:mamyalung/extension.dart';
 class AdminHomePage extends StatefulWidget {
   static const String routeName = '/admin/home';
   final User user;
-  const AdminHomePage({ Key? key, required this.user }) : super(key: key);
+  const AdminHomePage({ Key? key,required this.user }) : super(key: key);
 
   @override
   _AdminHomePageState createState() => _AdminHomePageState();
@@ -95,8 +95,10 @@ Widget _createHeader() {
           _createHeader(),
           _createDrawerItem(icon: Icons.home,text: 'Home',
           onTap: () =>
-          Navigator.pushReplacementNamed(context, Routes.adminprofile),),
-          _createDrawerItem(icon: Icons.face, text: 'Profile',),
+          Navigator.pushReplacementNamed(context, Routes.adminHomePage),),
+          _createDrawerItem(icon: Icons.face, text: 'Profile',
+          onTap: () =>
+          Navigator.pushReplacementNamed(context, Routes.adminHomePage)),
           _createDrawerItem(icon: Icons.settings, text: 'Settings',),
           Divider(),
           ListTile(
@@ -127,8 +129,14 @@ Widget _createHeader() {
               child: TableViewUsers(),
             ),
         ],),),
-        mobile: 
+        mobile: Column(children: [
+            button(first: lightBlue, second:primaryBlue, 
+                        size:12.0, height:40.0, width:100.0, text:'Add Users',
+                        onTap: () =>
+                    Navigator.pushReplacementNamed(context, Routes.addUser)),
           ListTileUsers(),
+
+        ],),
         tablet:  Padding(
           
           padding: EdgeInsets.symmetric(horizontal: 0,vertical: 20.0),
@@ -317,7 +325,7 @@ class _TableViewUsersState extends State<TableViewUsers> {
           itemCount: data.size,
           itemBuilder: (context, index){
             print(data.docs[index]['fname']);
-            return Row(
+            return Row(   
               children: [
                 Container(
                   child: Text(data.docs[index]['fname']),

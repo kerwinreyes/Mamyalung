@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:mamyalung/screens/admin/homepage.dart';
+import 'package:mamyalung/utils/fire_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,6 +15,7 @@ import 'package:mamyalung/utils/validator.dart';
 import 'package:mamyalung/widgets/buttons.dart';
 import 'package:mamyalung/widgets/usertable.dart';
 import 'package:mamyalung/extension.dart';
+import 'package:mamyalung/screens/custom/custom.dart';
 class AddUser extends StatefulWidget {
   static const String routeName = '/admin/adduser';
   const AddUser({ Key? key }) : super(key: key);
@@ -21,7 +26,8 @@ class AddUser extends StatefulWidget {
 
 class _AddUserState extends State<AddUser> {
   
-  
+    User? user = FirebaseAuth.instance.currentUser;
+
   Widget _createDrawerItem(
     {required IconData icon, required String text, GestureTapCallback? onTap}) {
   return ListTile(
@@ -46,7 +52,7 @@ Widget _createHeader() {
         Positioned(
             bottom: 12.0,
             left: 16.0,
-            child: Text("Flutter Step-by-Step",
+            child: Text('Admin HomePage',
                 style: TextStyle(
                     color: primaryBlue,
                     fontSize: 20.0,
@@ -70,7 +76,7 @@ Widget _createHeader() {
               icon: Icon(Icons.label,size: 15.0,),
               onPressed: () => Scaffold.of(context).openDrawer(),
             ),),
-            Text('Mamyalung',style:TextStyle(color:Colors.black54))
+            Text('Create User',style:TextStyle(color:Colors.black54))
             ])
         ),
         elevation: 0,
@@ -86,8 +92,10 @@ Widget _createHeader() {
           _createHeader(),
           _createDrawerItem(icon: Icons.home,text: 'Home',
           onTap: () =>
+           Navigator.pushReplacementNamed(context, Routes.adminprofile)),
+          _createDrawerItem(icon: Icons.face, text: 'Profile',
+          onTap: () =>
           Navigator.pushReplacementNamed(context, Routes.adminprofile),),
-          _createDrawerItem(icon: Icons.face, text: 'Profile',),
           _createDrawerItem(icon: Icons.settings, text: 'Settings',),
           Divider(),
           ListTile(
@@ -98,7 +106,6 @@ Widget _createHeader() {
           ),
         )
       ),
-      
       body: Responsive(
         desktop: Center(child:Container(
           width: MediaQuery.of(context).size.width*.7,
@@ -129,6 +136,7 @@ class _AddState extends State<Add> {
   final _focusLname = FocusNode();
   final _focusEmail = FocusNode();
   final _focusToken = FocusNode();
+  bool _success= true;
   String dropdownvalue = 'Student';
   var items =  ['Student','Teacher'];
   CollectionReference users = FirebaseFirestore.instance.collection('users');
@@ -141,11 +149,19 @@ class _AddState extends State<Add> {
             'email':_email.text,
             'role':dropdownvalue.toLowerCase(),
             'uid':'',
+            'points': 0,
+            'grade_level': 0,
             'invite':0,
 
           })
-          .then((value) => print("User Added"))
-          .catchError((error) => print("Failed to add user: $error"));
+          .then((value){
+            setState(() {
+             
+
+            });
+            print('success');
+          })
+          .catchError((error) => print('failed'));
     }
   bool _isProcessing = false;
   
@@ -287,13 +303,21 @@ class _AddState extends State<Add> {
                                 setState(() {
                                   _isProcessing = true;
                                 });
+                              
                                 addUser();
-                                setState(() {
-                                  _isProcessing = false;
-                                });
+                              // showDialog(
+                              //   context:context,
+                              //   builder: (BuildContext context)=>
+                              //   PopupDialog(title: 'Sucess', description: 'Account Created Successfully', buttonText: 'Continue', path: 'assets/images/explorer.png'));
+                                
+                              //   setState(() {
+                              //     _isProcessing = false;
+                              //   });
+                                
                         }})
                               
       ]))
     ).addNeumorphism());
   }
+  
 }

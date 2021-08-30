@@ -19,7 +19,7 @@ class RoutePage extends StatelessWidget {
           if(identical(doc['role'],'Admin')){
            Navigator.of(context).push(
               new MaterialPageRoute(
-                builder: (BuildContext context)=> new DashBoardPage(user: user)));
+                builder: (BuildContext context)=> new DashBoardPage(user: user.uid)));
           }else if(identical(doc['role'],'teacher')){
             return ;
           }
