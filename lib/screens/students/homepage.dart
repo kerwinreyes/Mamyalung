@@ -34,13 +34,14 @@ class _StudentHomePageState extends State<StudentHomePage> {
         desktop: Container(),
         tablet: Container(),
         //For mobile 
-        mobile: StudentsMobile(),
+        mobile: StudentsMobile(uid: widget.uid),
     );
   }
 }
 
 class StudentsMobile extends StatefulWidget {
-  const StudentsMobile({ Key? key }) : super(key: key);
+  final String? uid;
+  const StudentsMobile({ Key? key, required this.uid  }) : super(key: key);
 
   @override
   _StudentsMobileState createState() => _StudentsMobileState();
@@ -108,7 +109,7 @@ class _StudentsMobileState extends State<StudentsMobile> {
         children: [
           StudentCard(),
           QuizCard(),
-          Achievement(),
+          Achievement(uid: widget.uid),
           LeaderBoard(),
         ],
       ),),
