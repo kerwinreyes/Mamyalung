@@ -12,8 +12,7 @@ class BadgeMsg extends StatefulWidget {
 class _BadgeMsgState extends State<BadgeMsg> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
+    return Stack(
         children: <Widget>[
           Container(
             color: Colors.blue,
@@ -58,7 +57,6 @@ class _BadgeMsgState extends State<BadgeMsg> {
           //   }
           // ) 
         ],
-      )
-    );
+      );
   }
 }

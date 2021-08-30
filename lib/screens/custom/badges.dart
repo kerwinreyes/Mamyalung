@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:mamyalung/materials.dart';
 import 'package:mamyalung/screens/custom/custom.dart';
 class Badges extends StatefulWidget {
-  final String id;
-  const Badges({ Key? key, required this.id }) : super(key: key);
+  final String? uid;
+  const Badges({ Key? key, required this.uid }) : super(key: key);
 
   @override
   _BadgesState createState() => _BadgesState();
@@ -14,10 +14,6 @@ class _BadgesState extends State<Badges> {
   @override
   
 Widget build(BuildContext context) {
-  final Stream<QuerySnapshot> _studStream = FirebaseFirestore.instance
-    .collection('users')
-    .where('uid',isEqualTo: "${widget.id}")
-    .snapshots();
   
   late bool first,second,third,fourth,fifth,sixth,seventh,eight,ninth = false;    
   int count = 0;                                       
@@ -66,11 +62,10 @@ Widget build(BuildContext context) {
           child: ListView(
           children: <Widget>[
             Container(
-              color: primaryBlue,
+              //color: primaryBlue,
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  border: Border.all(width: 5.0, color: Colors.white),
                   //borderRadius: BorderRadius.all(Radius.circular(10))
                 ),
                 child: Padding(
@@ -80,10 +75,10 @@ Widget build(BuildContext context) {
                       Expanded(
                         child:  BadgeTap(
                           lock: true,
-                          buttonText: "PAKYU KERWIN",
-                          description: "TANIDAMO KERWIN",
+                          buttonText: "Okay",
+                          description: "You are a little Explorer! Explore more! Keep it up!",
                           path: 'https://i.ibb.co/jZXzvBk/little-Explorer.png',
-                          title: "PAKYU",
+                          title: "Hey there!",
                         ),
                       ),
                       Expanded(
@@ -110,11 +105,11 @@ Widget build(BuildContext context) {
               ),
             ),
             Container(
-              color: primaryBlue,
+              //color: primaryBlue,
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  border: Border.all(width: 5.0, color: Colors.white),
+                  border: Border.all(color: Colors.white),
                   //borderRadius: BorderRadius.all(Radius.circular(10))
                 ),
                 child: Padding(
@@ -154,11 +149,11 @@ Widget build(BuildContext context) {
               ),
             ),
             Container(
-              color: primaryBlue,
+              //color: primaryBlue,
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   shape: BoxShape.rectangle,
-                  border: Border.all(width: 5.0, color: Colors.white),
+
                   //borderRadius: BorderRadius.all(Radius.circular(10))
                 ),
                 child: Padding(
