@@ -720,9 +720,9 @@
 
         {
         "questionID" : 31,
-        "question": "Alin sa mga kakatning naguumpisa sa 'a' ang hindi Kapampangan?",
+        "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'a' ang hindi Kapampangan?",
         "grade_level" : 2,
-        "topic" : "Kakatni",
+        "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
         "asbuk",
         "anam",
@@ -732,9 +732,9 @@
 
         {
         "questionID" : 32,
-        "question": "Alin sa mga kakatning naguumpisa sa 'e' ang hindi Kapampangan",
+        "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'e' ang hindi Kapampangan",
         "grade_level" : 2,
-        "topic" : "Kakatni",
+        "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
         "embudu",
         "ebun",
@@ -744,9 +744,9 @@
 
         {
         "questionID" : 33,
-        "question": "Alin sa mga kakatning naguumpisa sa 'i' ang hindi Kapampangan",
+        "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'i' ang hindi Kapampangan",
         "grade_level" : 2,
-        "topic" : "Kakatni",
+        "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
         "inuman",
         "itlog",
@@ -756,87 +756,87 @@
 
         {
         "questionID" : 34,
-        "question": "Ano ang Kapampangan ng 'Maligayang Bagong Taon'?",
+        "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'o' ang hindi Kapampangan??",
         "grade_level" : 2,
-        "topic" : "Alphabetong Kapampangan",
+        "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
-        "Masayang Bayung Banwa",
-        "Masayang aldo ning kebaytan",
-        "Masayang aldo kekayu ngan",
-        "Mayap a bengi pu"],
-        "answer": 0},
-
-        {
-        "questionID" : 25,
-        "question": "Ano ang iyong sasabihin kapag may nagawa kang kasalanan?",
-        "grade_level" : 2,
-        "topic" : "Alphabetong Kapampangan",
-        "multiple_choice": [
-        "Komusta kayu pu",
-        "Pasensya na pu",
-        "Pakiabut pu",
-        "Alang nanu man pu"],
-        "answer": 1},
-
-        {
-        "questionID" : 26,
-        "question": "Alin ang hindi nagpapakita ng paggalang?",
-        "grade_level" : 2,
-        "topic" : "Alphabetong Kapampangan",
-        "multiple_choice": [
-        "Komusta kayu pu",
-        "Salamat pu",
-        "Makilabas ku pu",
-        "Lumayas na ka"],
+        "okra",
+        "osu",
+        "ospital",
+        "open"],
         "answer": 3},
 
         {
-        "questionID" : 27,
-        "question": "Alin ang hindi nagpapakita ng paggalang?",
+        "questionID" : 35,
+        "question": "Alin sa mga sumusunod na kakatni na naguumpisa 'u' ang hindi Kapampangan?",
         "grade_level" : 2,
-        "topic" : "Alphabetong Kapampangan",
+        "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
-        "Po/Opu",
-        "Salamat",
-        "Alang nanu man pu",
-        "Pasensya na pu"],
-        "answer": 1},
-
-        {
-        "questionID" : 28,
-        "question": "Alin ang hindi nagpapakita ng paggalang?",
-        "grade_level" : 2,
-        "topic" : "Alphabetong Kapampangan",
-        "multiple_choice": [
-        "Pakiabut pu",
-        "Mayap a bengi pu",
-        "Pasensya",
-        "Makilabas ku pu"],
+        "ulunan",
+        "uran",
+        "usok",
+        "ulas"],
         "answer": 2},
 
         {
-        "questionID" : 29,
-        "question": "Ano sa Kapampangan ang Happy Birthday?",
+        "questionID" : 36,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'g' ang hindi Kapampangan?",
         "grade_level" : 2,
-        "topic" : "Alphabetong Kapampangan",
+        "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
-        "Mayap a bengi pu",
-        "Masayang bayung banwa pu",
-        "Makilabas ku pu",
-        "Masayang aldo ning kebaytan pu"],
+        "gamat",
+        "gabun",
+        "gamit",
+        "gule"],
+        "answer": 2},
+
+        {
+        "questionID" : 37,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'm' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "matsing",
+        "malagu",
+        "manuk",
+        "maganda"],
         "answer": 3},
 
         {
-        "questionID" : 30,
-        "question": "Ano sa Kapampangan ang Paki abot po?",
+        "questionID" : 38,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'p' ang hindi Kapampangan?",
         "grade_level" : 2,
-        "topic" : "Alphabetong Kapampangan",
+        "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
-        "Pakiabut pu",
-        "Salamat pu",
-        "Makilabas ku pu",
-        "Masayang aldo ning kebaytan pu"],
+        "paro",
+        "panulu",
+        "patawad",
+        "pesus"],
+        "answer": 2},
+
+        {
+        "questionID" : 39,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 's' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "salol",
+        "sampaga",
+        "salu",
+        "saronggola"],
         "answer": 3},
+
+        {
+        "questionID" : 40,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'w' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "walu",
+        "wall",
+        "wali",
+        "wanan"],
+        "answer": 1},
 
         {
         "questionID" : 21,
@@ -956,6 +956,126 @@
         "Salamat pu",
         "Makilabas ku pu",
         "Masayang aldo ning kebaytan pu"],
-        "answer": 3}
+        "answer": 3},
+
+        {
+        "questionID" : 31,
+        "question": "Alin sa mga sumusunod na kakatnig na 'a' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kakatni",
+        "multiple_choice": [
+        "ayup",
+        "apa",
+        "anam",
+        "apple"],
+        "answer": 3},
+        
+        {
+        "questionID" : 32,
+        "question": "Alin sa mga sumusunod na kakatnig na 'e' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kakatni",
+        "multiple_choice": [
+        "ebun",
+        "eran",
+        "egg",
+        "elepanti"],
+        "answer": 2},
+        
+        {
+        "questionID" : 33,
+        "question": "Alin sa mga sumusunod na kakatnig na 'i' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kakatni",
+        "multiple_choice": [
+        "itlog",
+        "ipan",
+        "ilug",
+        "ima"],
+        "answer": 0},
+
+        {
+        "questionID" : 34,
+        "question": "Alin sa mga sumusunod na kakatnig na 'o' ang hindi Kapampangan??",
+        "grade_level" : 2,
+        "topic" : "Kakatni",
+        "multiple_choice": [
+        "okra",
+        "osu",
+        "ospital",
+        "open"],
+        "answer": 3},
+
+        {
+        "questionID" : 35,
+        "question": "Alin sa mga sumusunod na kakatnig na 'u' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Alphabetong Kapampangan",
+        "multiple_choice": [
+        "Komusta kayu pu",
+        "Pasensya na pu",
+        "Pakiabut pu",
+        "Alang nanu man pu"],
+        "answer": 1},
+
+        {
+        "questionID" : 26,
+        "question": "Alin ang hindi nagpapakita ng paggalang?",
+        "grade_level" : 2,
+        "topic" : "Alphabetong Kapampangan",
+        "multiple_choice": [
+        "Komusta kayu pu",
+        "Salamat pu",
+        "Makilabas ku pu",
+        "Lumayas na ka"],
+        "answer": 3},
+
+        {
+        "questionID" : 27,
+        "question": "Alin ang hindi nagpapakita ng paggalang?",
+        "grade_level" : 2,
+        "topic" : "Alphabetong Kapampangan",
+        "multiple_choice": [
+        "Po/Opu",
+        "Salamat",
+        "Alang nanu man pu",
+        "Pasensya na pu"],
+        "answer": 1},
+
+        {
+        "questionID" : 28,
+        "question": "Alin ang hindi nagpapakita ng paggalang?",
+        "grade_level" : 2,
+        "topic" : "Alphabetong Kapampangan",
+        "multiple_choice": [
+        "Pakiabut pu",
+        "Mayap a bengi pu",
+        "Pasensya",
+        "Makilabas ku pu"],
+        "answer": 2},
+
+        {
+        "questionID" : 29,
+        "question": "Ano sa Kapampangan ang Happy Birthday?",
+        "grade_level" : 2,
+        "topic" : "Alphabetong Kapampangan",
+        "multiple_choice": [
+        "Mayap a bengi pu",
+        "Masayang bayung banwa pu",
+        "Makilabas ku pu",
+        "Masayang aldo ning kebaytan pu"],
+        "answer": 3},
+
+        {
+        "questionID" : 30,
+        "question": "Ano sa Kapampangan ang Paki abot po?",
+        "grade_level" : 2,
+        "topic" : "Alphabetong Kapampangan",
+        "multiple_choice": [
+        "Pakiabut pu",
+        "Salamat pu",
+        "Makilabas ku pu",
+        "Masayang aldo ning kebaytan pu"],
+        "answer": 3},
     ]
     }
