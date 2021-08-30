@@ -325,7 +325,7 @@ class _TableViewUsersState extends State<TableViewUsers> {
           itemCount: data.size,
           itemBuilder: (context, index){
             print(data.docs[index]['fname']);
-            return Row(
+            return Row(   
               children: [
                 Container(
                   child: Text(data.docs[index]['fname']),

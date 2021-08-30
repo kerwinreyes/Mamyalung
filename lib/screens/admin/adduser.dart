@@ -305,14 +305,14 @@ class _AddState extends State<Add> {
                                 });
                               
                                 addUser();
-                              showDialog(
-                                context:context,
-                                builder: (BuildContext context)=>
-                                 PopupDialog(title: 'Sucess', description: 'Account Created Successfully', buttonText: 'Continue', path: 'assets/images/explorer.png'));
+                              // showDialog(
+                              //   context:context,
+                              //   builder: (BuildContext context)=>
+                              //   PopupDialog(title: 'Sucess', description: 'Account Created Successfully', buttonText: 'Continue', path: 'assets/images/explorer.png'));
                                 
-                                setState(() {
-                                  _isProcessing = false;
-                                });
+                              //   setState(() {
+                              //     _isProcessing = false;
+                              //   });
                                 
                         }})
                               

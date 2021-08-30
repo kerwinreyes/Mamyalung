@@ -132,14 +132,14 @@ class _LoginPageState extends State<LoginPage> {
           //    width: screenSizeW, 
           //   fit: BoxFit.cover,),
          //   ),
-          Container(
-            //constraints: BoxConstraints.expand(),
-             decoration: BoxDecoration(
-              image: DecorationImage(
-                 image: AssetImage("assets/image/mamyalungnamepets.png"),
-                 fit: BoxFit.cover),
-                ),
-          ),
+          // Container(
+          //   //constraints: BoxConstraints.expand(),
+          //    decoration: BoxDecoration(
+          //     image: DecorationImage(
+          //        //image: AssetImage("assets/image/mamyalungnamepets.png"),
+          //        fit: BoxFit.cover),
+          //       ),
+          // ),
               
           Scaffold(
           backgroundColor: Colors.transparent,

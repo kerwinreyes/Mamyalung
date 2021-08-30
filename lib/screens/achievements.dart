@@ -16,9 +16,9 @@ class _AchievementState extends State<Achievement> {
     return Scaffold(
       appBar: AppBar(),
       body: Responsive(
-        desktop: Badges(),
-        mobile: Badges(),
-        tablet: Badges()
+        desktop: Badges(id: 'asdas'),
+        mobile: Badges(id: 'asda'),
+        tablet: Badges(id: 'asdasd')
       ),
     );
   }
