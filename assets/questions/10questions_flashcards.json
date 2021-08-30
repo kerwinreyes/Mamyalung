@@ -1,0 +1,81 @@
+[
+    {
+    "question": "Ano sa Kapampangan ang July?" ,
+    "choices": [
+        "Hunyu",
+        "Hulyu"],
+    "answer" : 1
+    },
+
+    {
+    "question": "Ano ang Kapampangan ng birthday?" ,
+    "choices": [
+        "Kebaytan",
+        "Banwa"],
+    "answer" : 0
+    },
+
+    {
+    "question": "Ano sa Kapampangan ang Tatay?" ,
+    "choices": [
+        "Tatang",
+        "Itay"],
+    "answer" : 0
+    },
+
+    {
+    "question": "Ano sa Kapampangan ang 'Tuluy po kayo'?" ,
+    "choices": [
+        "Malawus kayu pu",
+        "Mayap a bengi"],
+    "answer" : 1
+    },
+    {
+    "question": "Ano ang Kapampangan ng 'Maligayang Bagong Taon'?" ,
+    "choices": [
+        "Masayang aldo ning kebaytan",
+        "Masayang Bayung Banwa"],
+    "answer" : 1
+    },
+
+    {
+    "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'g' ang hindi Kapampangan?" ,
+    "choices": [
+        "gas",
+        "gamat"],
+    "answer" : 1
+    },
+    
+    {
+    "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'i' ang hindi Kapampangan?" ,
+    "choices": [
+        "itlog",
+        "ima"],
+    "answer" : 1
+    },
+    
+    {
+    "question": "Alin ang hindi nagpapakita ng paggalang?" ,
+    "choices": [
+        "Makilabas ku pu",
+        "Pasensya"],
+    "answer" : 1
+    },
+
+
+    {
+    "question": "Ano ang iyong sasabihin kapag may nagawa kang kasalanan?" ,
+    "choices": [
+        "Pasensya na pu",
+        "Mayap a bengi"],
+    "answer" : 0
+    },
+
+    {
+    "question": "Ano sa Kapampangan ang 'Tuluy po kayo'?" ,
+    "choices": [
+        "Malawus ko pu",
+        "Mako na ko pu"],
+    "answer" : 1
+    }
+]

@@ -37,6 +37,7 @@ dependencies:
   tuple: ^2.0.0
   google_fonts: ^2.1.0
   bottom_navy_bar: ^6.0.0
+  flip_card: ^0.4.4
 dev_dependencies:
   flutter_test:
     sdk: flutter
