@@ -110,14 +110,14 @@
 
         {
         "questionID" : 40,
-        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'w' ang hindi Kapampangan?",
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'd' ang hindi Kapampangan?",
         "grade_level" : 2,
         "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
-        "walu",
-        "wall",
-        "wali",
-        "wanan"],
+        "dikut",
+        "dagis",
+        "danum",
+        "dugo"],
         "answer": 1}
     ]
 }

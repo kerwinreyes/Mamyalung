@@ -359,6 +359,97 @@
 
         {
         "level": 1,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'd' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "dikut",
+        "daga"],
+        "answer": 1},
+
+            // CHORVA
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'w' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "wall",
+        "wali"],
+        "answer": 0},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'w' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "wall",
+        "wali"],
+        "answer": 0},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'w' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "wall",
+        "wali"],
+        "answer": 0},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'w' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "wall",
+        "wali"],
+        "answer": 0},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'w' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "wall",
+        "wali"],
+        "answer": 0},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'w' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "wall",
+        "wali"],
+        "answer": 0},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'w' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "wall",
+        "wali"],
+        "answer": 0},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'w' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "wall",
+        "wali"],
+        "answer": 0},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'w' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "wall",
+        "wali"],
+        "answer": 0},
+
+        {
+        "level": 1,
         "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'w' ang hindi Kapampangan?",
         "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
