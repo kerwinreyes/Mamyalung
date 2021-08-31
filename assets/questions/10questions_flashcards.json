@@ -24,7 +24,7 @@
     },
 
     {
-    "question": "Ano sa Kapampangan ang 'Tuluy po kayo'?" ,
+    "question": "Ano sa Kapampangan ang 'Tuloy po kayo'?" ,
     "choices": [
         "Malawus kayu pu",
         "Mayap a bengi"],
@@ -72,11 +72,13 @@
     },
 
     {
-    "question": "Ano sa Kapampangan ang 'Tuluy po kayo'?" ,
-    "choices": [
-        "Malawus ko pu",
-        "Mako na ko pu"],
-    "answer" : 1
-    }
+        "level": 1,
+        "question": "Ano ang ibig sabihin ng 'Mayap a ugtu pu' sa tagalog?",
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Magandang Gabi po",
+        "Magandang Tanghali po"],
+        "answer": 1}
+        
 ]
 }
