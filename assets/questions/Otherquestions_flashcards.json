@@ -1,0 +1,369 @@
+{
+    "questions": [
+        {
+        "level": 1,
+        "question": "Ano sa Kapampangan ang July?",
+        "topic" : "Pagpapakilala sa Sarili",
+        "choice": [
+        "Hunyu",
+        "Hulyu"],
+        "answer": 2},
+
+        {
+        "level": 1,
+        "question": "Kung ang Kapampangan ng Tatang ay tatay, ano naman sa Kapampangan ang nanay?",
+        "topic" : "Pagpapakilala sa Sarili",
+        "multiple_choice": [
+        "Ima",
+        "Apu"],
+        "answer": 0},
+
+      
+        {
+        "level": 1,
+        "question": "Ano sa Kapampangan ang paaralan?",
+        "topic" : "Pagpapakilala sa Sarili",
+        "multiple_choice": [
+        "Paaralan",
+        "Iskwela"],
+        "answer": 1},
+        
+        {
+        "level": 1,
+        "question": "Ano ang ibig sabihin ng lagyu sa ingles?",
+        "topic" : "Pagpapakilala sa Sarili",
+        "multiple_choice": [
+        "address",
+        "name"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod ang hindi Kapampangan na salita?",
+        "topic" : "Pagpapakilala sa Sarili",
+        "multiple_choice": [
+        "kebaytan",
+        "baitang"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod ang hindi Kapampangan na salita?",
+        "topic" : "Pagpapakilala sa Sarili",
+        "multiple_choice": [
+        "ima",
+        "usok"],
+        "answer": 1},
+        
+        {
+        "level": 1,
+        "question": "Ano ang Kapampangan ng birthday?",
+        "topic" : "Pagpapakilala sa Sarili",
+        "multiple_choice": [
+        "kebaytan",
+        "idad"],
+        "answer": 0},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga Buwan na ito ang hindi Kapampangan?",
+        "topic" : "Pagpapakilala sa Sarili",
+        "multiple_choice": [
+        "oktubri",
+        "may"],
+        "answer": 1},
+
+        {
+        "level": 1,        
+        "question": "Ano sa Kapampangan ang Tatay?",
+        "topic" : "Pagpapakilala sa Sarili",
+        "multiple_choice": [
+        "tatang",
+        "papa"],
+        "answer": 1},
+        
+        {
+        "level": 1,
+        "question": "Ano sa tagalog ang 'Makatuknang ku king'?",
+        "topic" : "Pagpapakilala sa Sarili",
+        "multiple_choice": [
+        "Nakatira ako sa",
+        "Ako ay kabilang sa"],
+        "answer": 0},
+
+        
+
+        {
+        "level": 1,
+        "question": "Ano ang ibig sabihin ng 'Mayap a ugtu pu' sa tagalog?",
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Magandang Gabi po",
+        "Magandang Tanghali po"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Ano sa Kapampangan ang 'Tuluy po kayo'?",
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Malawus kayu pu",
+        "Pasensya na pu"],
+        "answer": 0},
+
+        {
+        "level": 1,
+        "question": "Ano sa Kapampangan ang 'Magandang hapon po'?",
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Mayap a ugtu pu",
+        "Mayap a gatpanapun pu"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Ano ang Kapampangan ng 'Maligayang Bagong Taon'?",
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Masayang Bayung Banwa",
+        "Masayang aldo kekayu ngan"],
+        "answer": 0},
+
+        {
+        "level": 1,
+        "question": "Ano ang iyong sasabihin kapag may nagawa kang kasalanan?",
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Komusta kayu pu",
+        "Pasensya na pu"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Alin ang hindi nagpapakita ng paggalang?",
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Makilabas ku pu",
+        "Lumayas na ka"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Alin ang hindi nagpapakita ng paggalang?",
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Salamat",
+        "Alang nanu man pu"],
+        "answer": 0},
+
+        {
+        "level": 1,
+        "question": "Alin ang hindi nagpapakita ng paggalang?",
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Pasensya",
+        "Makilabas ku pu"],
+        "answer": 0},
+
+        {
+        "level": 1,
+        "question": "Ano sa Kapampangan ang Happy Birthday?",
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Masayang bayung banwa pu",
+        "Masayang aldo ning kebaytan pu"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Ano sa Kapampangan ang Paki abot po?",
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Pakiabut pu",
+        "Salamat pu"],
+        "answer": 0},
+        
+
+        {
+        "level": 1,
+        "question": "Ano ang ibig sabihin ng 'Mayap a ugtu pu' sa tagalog?",
+        "topic" : "Alphabetong Kapampangan",
+        "multiple_choice": [
+        "Magandang Gabi po",
+        "Magandang Tanghali po"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Ano sa Kapampangan ang 'Tuluy po kayo'?",
+        "topic" : "Alphabetong Kapampangan",
+        "multiple_choice": [
+        "Makilabas ku pu",
+        "Malawus kayu pu"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Ano sa Kapampangan ang 'Magandang hapon po'?",
+        "topic" : "Alphabetong Kapampangan",
+        "multiple_choice": [
+        "Alang nanu man pu",
+        "Mayap a gatpanapun pu"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Ano ang Kapampangan ng 'Masayang Araw ng'?",
+        "topic" : "Alphabetong Kapampangan",
+        "multiple_choice": [
+        "Masayang Bayung Banwa",
+        "Mayap a bengi pu"],
+        "answer": 0},
+
+        {
+        "level": 1,
+        "question": "Ano ang iyong sasabihin kapag may nagawa kang kasalanan?",
+        "grade_level" : 2,
+        "topic" : "Alphabetong Kapampangan",
+        "multiple_choice": [
+        "Pakiabut pu",
+        "Alang nanu man pu"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Alin ang hindi nagpapakita ng paggalang?",
+        "topic" : "Alphabetong Kapampangan",
+        "multiple_choice": [
+        "Makilabas ku pu",
+        "Lumayas na ka"],
+        "answer": 3},
+
+        {
+        "level": 1,
+        "question": "Alin ang hindi nagpapakita ng paggalang?",
+        "topic" : "Alphabetong Kapampangan",
+        "multiple_choice": [
+        "Alang nanu man pu",
+        "Pasensya na pu"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Alin ang hindi nagpapakita ng paggalang?",
+        "topic" : "Alphabetong Kapampangan",
+        "multiple_choice": [
+        "Pasensya",
+        "Makilabas ku pu"],
+        "answer": 2},
+
+        {
+        "level": 1,
+        "question": "Ano sa Kapampangan ang Happy Birthday?",
+        "topic" : "Alphabetong Kapampangan",
+        "multiple_choice": [
+        "Makilabas ku pu",
+        "Masayang aldo ning kebaytan pu"],
+        "answer": 3},
+
+        {
+         "level": 1,
+        "question": "Ano sa Kapampangan ang Paki abot po?",
+        "topic" : "Alphabetong Kapampangan",
+        "multiple_choice": [
+        "Makilabas ku pu",
+        "Masayang aldo ning kebaytan pu"],
+        "answer": 3},
+
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'a' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "asbuk",
+        "apple"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'e' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "egg",
+        "elepanti"],
+        "answer": 0},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'i' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "inuman",
+        "itlog"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'o' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "osu",
+        "open"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na kakatni na naguumpisa 'u' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "ulunan",
+        "usok"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'g' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "gamat",
+        "gamit"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'm' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "matsing",
+        "maganda"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'p' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "patawad",
+        "pesus"],
+        "answer": 0},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 's' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "salol",
+        "saronggola"],
+        "answer": 1},
+
+        {
+        "level": 1,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'w' ang hindi Kapampangan?",
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "wall",
+        "wali"],
+        "answer": 0}
+    ]
+    }
