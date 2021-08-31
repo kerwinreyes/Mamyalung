@@ -1,0 +1,123 @@
+[
+        {
+        "questionID" : 51,
+        "grade_level" : 3,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "mamasa",
+        "mamipi",
+        "manalbe",
+        "mayap"],
+        "answer": 3},
+
+        {
+        "questionID" : 52,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
+        "grade_level" : 3,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "lumakad",
+        "sukle",
+        "manayi",
+        "mamulayi"],
+        "answer": 1},
+
+      
+        {
+        "questionID" : 53,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
+        "grade_level" : 3,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "mandilig",
+        "lukluk",
+        "manimu",
+        "basu"],
+        "answer": 3},
+        
+        {
+        "questionID" : 54,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
+        "grade_level" : 2,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "mamiblas",
+        "manyipilyu",
+        "mangan",
+        "kakawe"],
+        "answer": 3
+        },
+
+        {
+        "questionID" : 55,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos ng mga hayop?",
+        "grade_level" : 3,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "maglutu",
+        "mamulayi",
+        "susulapo",
+        "kukusad"],
+        "answer": 0},
+
+        {
+        "questionID" : 56,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos ng mga hayop?",
+        "grade_level" : 3,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "mamanik",
+        "luluksu",
+        "manalbe",
+        "susulapo"],
+        "answer": 2},
+        
+        {
+        "questionID" : 57,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa paaralan?",
+        "grade_level" : 3,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "susulat",
+        "matudtud",
+        "tuturu",
+        "makiramdam"],
+        "answer": 1},
+
+        {
+        "questionID" : 58,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
+        "grade_level" : 3,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "matudtud",
+        "mandilig",
+        "manimu",
+        "susulapo"],
+        "answer": 3},
+
+        {
+        "questionID" : 59,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
+        "grade_level" : 3,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "maglutu",
+        "mamalis",
+        "manigaral",
+        "mamiblas"],
+        "answer": 2},
+        
+        {
+        "questionID" : 60,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa paaralan?",
+        "grade_level" : 3,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "mangadi",
+        "manigaral",
+        "manalbe",
+        "teterak"],
+        "answer": 2}
+    ]

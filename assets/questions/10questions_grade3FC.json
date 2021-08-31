@@ -1,0 +1,97 @@
+ [
+
+        {
+        "level" : 1,
+        "question": "Alin sa mga sumusunod na kasarian ang hindi Panlalaking Kasarian?",
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "ima",
+        "bapa"],
+        "answer": 0},
+
+        {
+        "level" : 1,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Munta ka keni, ___ ing kayabe kung mako.",
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku"],
+        "answer": 0},
+        
+        {
+        "level" : 1,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Minawus ya kaku i Ima, ___ kanu ing sali.",
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku"],
+        "answer": 1},
+        
+        {
+        "level" : 1,
+        "question": "Alin sa mga sumusunod na kasarian ang hindi Kapampangan?",
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "ima",
+        "paper"],
+        "answer": 3},
+
+        
+        {
+        "level" : 1,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos ng mga hayop?",
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "maglutu",
+        "mamulayi"],
+        "answer": 0},
+
+        {
+        "level" : 1,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "manimu",
+        "susulapo"],
+        "answer": 3},
+
+        {
+        "level" : 1,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa paaralan?",
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "mangadi",
+        "manigaral"],
+        "answer": 2},
+        
+        {
+        "level" : 1,
+        "question": "Alin sa mga sumusunod na kasarian ang hindi Kapampangan?",
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "bag",
+        "tiya"],
+        "answer": 1},
+        
+        {
+        "level" : 1,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Atin kaming dintang a bisita, ___ ing dara ku.",
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku"],
+        "answer": 2},
+
+        {
+        "level" : 1,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "lumakad",
+        "sukle"],
+        "answer": 1}
+
+
+
+    ]
+

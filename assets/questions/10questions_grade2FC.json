@@ -1,4 +1,4 @@
-{"flashcard" : [
+[
     {
     "question": "Ano sa Kapampangan ang July?" ,
     "choices": [
@@ -72,13 +72,12 @@
     },
 
     {
-        "level": 1,
-        "question": "Ano ang ibig sabihin ng 'Mayap a ugtu pu' sa tagalog?",
-        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
-        "multiple_choice": [
-        "Magandang Gabi po",
-        "Magandang Tanghali po"],
-        "answer": 1}
+    "level": 1,
+    "question": "Ano ang ibig sabihin ng 'Mayap a ugtu pu' sa tagalog?",
+    "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+    "multiple_choice": [
+    "Magandang Gabi po",
+    "Magandang Tanghali po"],
+    "answer": 1}
         
 ]
-}
