@@ -108,7 +108,7 @@ class _StudentsMobileState extends State<StudentsMobile> {
         },
         children: [
           StudentCard(),
-          QuizCard(),
+          QuizCard(uid: widget.uid),
           Achievement(uid: widget.uid),
           LeaderBoard(),
         ],

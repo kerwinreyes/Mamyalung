@@ -102,12 +102,11 @@
         "grade_level" : 2,
         "topic" : "Pagpapakilala sa Sarili",
         "multiple_choice": [
-        "tatang",
         "papa",
+        "tatang",
         "idad",
         "marsu"],
-        "answer": 1
-        },
+        "answer": 1},
         
         {
         "questionID" : 10,
