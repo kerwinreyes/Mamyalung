@@ -1,5 +1,4 @@
-{
-    "questions": [
+[
         {
         "questionID" : 1,
         "grade_level" : 2,
@@ -122,4 +121,4 @@
         "Ako ay"],
         "answer": 1}
     ]
-    }
+    

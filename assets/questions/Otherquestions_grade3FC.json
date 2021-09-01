@@ -1,0 +1,209 @@
+[
+        {
+        "level" : 1,
+        "question": "Alin sa mga sumusunod na salita ang hindi Kapampangan na kasarian?",
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "mestru",
+        "bagong taon"],
+        "answer": 2},
+
+        {
+        "level" : 1,
+        "question": "Alin sa mga sumusunod na kasarian ang hindi Kapampangan?",
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "ima",
+        "panadero",
+        "tatang",
+        "apu"],
+        "answer": 1},
+        
+        {
+        "level" : 1,
+        "question": "Alin sa mga sumusunod na kasarian ang hindi Kapampangan?",
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "pisan",
+        "kaklase"],
+        "answer": 1},
+
+        
+
+        
+        
+        {
+        "level" : 1,
+        "question": "Alin ang hindi kabilang sa mga kasarian ng Pangalan?",
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "panghayop",
+        "parewu"],
+        "answer": 2},
+
+        {
+        "level" : 1,
+        "question": "Alin sa mga sumusunod na Parehong Kasarian na ito ang hindi Kapampangan?",
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "guro",
+        "kaklasi"],
+        "answer": 0},
+
+        {
+        "level" : 1,
+        "question": "Alin sa mga sumusunod na kasarian ang kabilang sa Pambabaing Kasarian ",
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "atsi",
+        "Pampanga"],
+        "answer": 1},
+        
+        {
+        "level" : 1,
+        "question": "Alin sa mga sumusunod na kasarian ang kabilang sa Panglalaking kasarian?",
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "kaluguran",
+        "bapa"],
+        "answer": 1},
+
+        
+
+        {
+        "level" : 1,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Makatuknang ya i Darang Josie kening siping ming bale, ___ ing sasaup kekami.",
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "aku",
+        "iya"],
+        "answer": 1},
+
+        
+        {
+        "level" : 1,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: ___ ing utusan nang saling inuman kaya meko ku.",
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku"],
+        "answer": 1},
+        
+        
+
+        {
+        "level" : 1,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: ____ ing inawus na ning mestra kaya tinikdo ku.",
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku"],
+        "answer": 1},
+
+        {
+        "level" : 1,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Pantunan na ka ning mestra, ____ kanu ing sagut.",
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku"],
+        "answer": 0},
+        
+        {
+        "level" : 1,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Atin minaus kaku, ___ ing pisan ku.",
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 1},
+
+        {
+        "level" : 1,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Alayu pa i Jessie, ____ ing talwing datang",
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "aku",
+        "iya"],
+        "answer": 1},
+
+        {
+        "level" : 1,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Atin kinatuk, ___ ing tatang ku.",
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku"],
+        "answer": 1},
+        
+
+        {
+        "level" : 1,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "manalbe",
+        "mayap"],
+        "answer": 1},
+
+        
+
+      
+        {
+        "level" : 1,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "manimu",
+        "basu"],
+        "answer": 1},
+        
+        {
+        "level" : 1,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "mangan",
+        "kakawe"],
+        "answer": 1},
+
+
+        {
+        "level" : 1,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos ng mga hayop?",
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "manalbe",
+        "susulapo"],
+        "answer": 1},
+        
+        {
+        "level" : 1,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa paaralan?",
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "susulat",
+        "matudtud"],
+        "answer": 1},
+
+        
+
+        {
+        "level" : 1,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "manigaral",
+        "mamiblas"],
+        "answer": 0},
+        
+        {
+        "level" : 1,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa paaralan?",
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "manalbe",
+        "teterak"],
+        "answer": 0}
+]

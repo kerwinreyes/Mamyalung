@@ -1,0 +1,123 @@
+[
+        {
+        "questionID" : 31,
+        "grade_level" : 3,
+        "question": "Alin sa mga sumusunod na salita ang hindi Kapampangan na kasarian?",
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "mestru",
+        "bagong taon",
+        "guro",
+        "apu"],
+        "answer": 2},
+
+        {
+        "questionID" : 32,
+        "question": "Alin sa mga sumusunod na kasarian ang hindi Panlalaking Kasarian?",
+        "grade_level" : 3,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "ima",
+        "bapa",
+        "koya",
+        "ingkung"],
+        "answer": 0},
+
+      
+        {
+        "questionID" : 33,
+        "question": "Alin sa mga sumusunod na kasarian ang hindi Kapampangan?",
+        "grade_level" : 3,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "ima",
+        "panadero",
+        "tatang",
+        "apu"],
+        "answer": 1},
+        
+        {
+        "questionID" : 34,
+        "question": "Alin sa mga sumusunod na kasarian ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "talaturu",
+        "dentista",
+        "pisan",
+        "kaklase"],
+        "answer": 3},
+
+        {
+        "questionID" : 35,
+        "question": "Alin sa mga sumusunod na kasarian ang hindi Kapampangan?",
+        "grade_level" : 3,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "bag",
+        "tiya",
+        "tinape",
+        "pasku"],
+        "answer": 1},
+
+        {
+        "questionID" : 36,
+        "question": "Alin sa mga sumusunod na kasarian ang hindi Kapampangan?",
+        "grade_level" : 3,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "kaluguran",
+        "sundalu",
+        "ima",
+        "paper"],
+        "answer": 3},
+        
+        {
+        "questionID" : 37,
+        "question": "Alin ang hindi kabilang sa mga kasarian ng Pangalan?",
+        "grade_level" : 3,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "panlalaki",
+        "pambabai",
+        "panghayop",
+        "parewu"],
+        "answer": 2},
+
+        {
+        "questionID" : 38,
+        "question": "Alin sa mga sumusunod na Parehong Kasarian na ito ang hindi Kapampangan?",
+        "grade_level" : 3,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "guro",
+        "pulis",
+        "dentista",
+        "kaklasi"],
+        "answer": 0},
+
+        {
+        "questionID" : 39,
+        "question": "Alin sa mga sumusunod na kasarian ang kabilang sa Pambabaing Kasarian ",
+        "grade_level" : 3,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "tinape",
+        "atsi",
+        "Pampanga",
+        "ninung"],
+        "answer": 1
+        },
+        
+        {
+        "questionID" : 40,
+        "question": "Alin sa mga sumusunod na kasarian ang kabilang sa Panglalaking kasarian?",
+        "grade_level" : 3,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "mestra",
+        "lapis",
+        "kaluguran",
+        "bapa"],
+        "answer": 3}
+    ]

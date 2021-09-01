@@ -1,0 +1,122 @@
+[
+        {
+        "questionID" : 41,
+        "grade_level" : 3,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Munta ka keni, ___ ing kayabe kung mako.",
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 0},
+
+        {
+        "questionID" : 42,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Makatuknang ya i Darang Josie kening siping ming bale, ___ ing sasaup kekami.",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 2},
+
+      
+        {
+        "questionID" : 43,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: ___ ing utusan nang saling inuman kaya meko ku.",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 1},
+        
+        {
+        "questionID" : 44,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Atin kaming dintang a bisita, ___ ing dara ku.",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 2},
+
+        {
+        "questionID" : 45,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: ____ ing inawus na ning mestra kaya tinikdo ku.",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 1},
+
+        {
+        "questionID" : 46,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Pantunan na ka ning mestra, ____ kanu ing sagut.",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 0},
+        
+        {
+        "questionID" : 47,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Atin minaus kaku, ___ ing pisan ku.",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 2},
+
+        {
+        "questionID" : 48,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Alayu pa i Jessie, ____ ing talwing datang",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 2},
+
+        {
+        "questionID" : 49,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Atin kinatuk, ___ ing tatang ku.",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 2},
+        
+        {
+        "questionID" : 50,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Minawus ya kaku i Ima, ___ kanu ing sali.",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 1}
+    ]
