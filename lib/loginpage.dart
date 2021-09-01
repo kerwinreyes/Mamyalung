@@ -171,13 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 24.0),
-                            child: Text(
-                              'Login',
-                              style: Theme.of(context).textTheme.headline1,
-                            ),
-                          ),
+                          
                           Form(
                             key: _formKey,
                             child: Column(
@@ -314,7 +308,8 @@ class _LoginPageState extends State<LoginPage> {
 
                   //MOBILE
                   mobile: Container(
-                    padding: EdgeInsets.fromLTRB(screenSizeW*.25, screenSizeH*.25, screenSizeW*.25, screenSizeH*.15),
+                    width: 350,
+                    padding: EdgeInsets.only(top: screenSizeH*.38),
                     child: FutureBuilder(
 
                 future: _initializeFirebase(),
@@ -325,13 +320,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 24.0),
-                            child: Text(
-                              'Login',
-                              style: Theme.of(context).textTheme.headline1,
-                            ),
-                          ),
+                          
                           Form(
                             key: _formKey,
                             child: Column(
@@ -467,7 +456,8 @@ class _LoginPageState extends State<LoginPage> {
 
               //TABLET
                   tablet: Container( 
-                    padding: EdgeInsets.fromLTRB(screenSizeW*.25, screenSizeH*.25, screenSizeW*.25, screenSizeH*.25),
+                    width: 550,
+                    padding: EdgeInsets.only(top: screenSizeH*.38),
                     child: FutureBuilder(
   
                 future: _initializeFirebase(),
@@ -478,33 +468,13 @@ class _LoginPageState extends State<LoginPage> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 24.0),
-                            child: Text(
-                              'Login',
-                              style: Theme.of(context).textTheme.headline1,
-                            ),
-                          ),
+                         
                           Form(
                             key: _formKey,
                             child: Column(
                               children: <Widget>[
-                                TextFormField(
-                                  controller: _emailTextController,
-                                  focusNode: _focusEmail,
-                                  validator: (value) => Validator.validateEmail(
-                                    email: value,
-                                  ),
-                                  decoration: InputDecoration(
-                                    hintText: "Email",
-                                    errorBorder: UnderlineInputBorder(
-                                      borderRadius: BorderRadius.circular(6.0),
-                                      borderSide: BorderSide(
-                                        color: Colors.red,
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                
+                                  
                                 SizedBox(height: 8.0),
                                 TextFormField(
                                   controller: _passwordTextController,
@@ -594,9 +564,10 @@ class _LoginPageState extends State<LoginPage> {
                                             
                                           }
                                         },
+                                        style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0))),
                                         child: Text(
                                           'Sign In',
-                                          style: TextStyle(color: Colors.white),
+                                          style: TextStyle(color: Colors.white, fontSize: 18.0),
                                         ),
                                         
                                             ))),
