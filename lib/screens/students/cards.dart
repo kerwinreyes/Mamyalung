@@ -16,8 +16,11 @@ class _StudentCardState extends State<StudentCard> {
   late int day;
   bool _Start = false;
   List flashcards=[];
+  
   List others=[];
-  var _flashcards=[];
+  List<Flashcard> _flashcards=[
+    Flashcard(choices: ['Answer the following'], level: 0, question: 'Instrucstions', answer: 0)
+  ];
   Map<int, List> days = {
     1: [2,1], 2: [3,1], 3: [2,1],4: [4,1], 
     5: [2,1], 6: [3,1], 7: [2,1],8: [1], 
