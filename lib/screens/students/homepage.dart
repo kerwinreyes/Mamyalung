@@ -123,7 +123,7 @@ class _StudentsMobileState extends State<StudentsMobile> {
         },
         children: [
           QuizState(uid: widget.uid,),
-          QuizCard(),
+          QuizCard(uid: widget.uid),
           Achievement(uid: widget.uid),
           LeaderBoard(),
         ],

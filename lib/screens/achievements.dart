@@ -16,9 +16,9 @@ class _AchievementState extends State<Achievement> {
   @override
   Widget build(BuildContext context) {
     return Responsive(
-        desktop: Badges(uid: 'asdas'),
-        mobile: Badges(uid: 'asda'),
-        tablet: Badges(uid: 'asdasd')
+        desktop: Badges(uid: widget.uid),
+        mobile: Badges(uid: widget.uid),
+        tablet: Badges(uid: widget.uid)
     );
    
   }

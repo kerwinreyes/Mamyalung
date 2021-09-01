@@ -9,6 +9,9 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 
+
+
+
 class StudentCard extends StatefulWidget {
   final String? uid;
   const StudentCard({ Key? key, this.uid }) : super(key: key);
@@ -196,8 +199,7 @@ Future<void> updateUser() {
   @override
   Widget build(BuildContext context) {
     return  _doneforday == true ? Container(
-          child: button(
-            first: lightBlue, second: primaryBlue, size: 18, height: 50, width: 250, text: 'Continue to next day',
+            child: button(first: lightBlue, second: primaryBlue, size: 18, height: 50, width: 250, text: 'Continue to next day',
             onTap: (){
               setState(() {
                 _doneforday = !_doneforday;
@@ -211,16 +213,10 @@ Future<void> updateUser() {
         )
         :Column( 
       children:[
-        Container(
-        child:Text('Score: $score'),),
-        Container(
-        margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
-        height: 250,
+        Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
         width: 250,
-        color: Colors.white,
-        child: Neumorphic(
-          child: _flashcards.isEmpty? CircularProgressIndicator() :FlipCard(
-        front: FlashcardView(
+        child: Neumorphic(child: FlipCard(
+          front: FlashcardView(
           text: _flashcards[counter].question,
         ),
         back: FlashcardView(
@@ -231,10 +227,8 @@ Future<void> updateUser() {
         Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  
                 
                 ElevatedButton(onPressed:()=> checkWin(_flashcards[counter].choices[0], context),
-
                style: ElevatedButton.styleFrom(
               elevation: 5,
               padding: EdgeInsets.zero,
@@ -280,14 +274,12 @@ Future<void> updateUser() {
                     ),
               ),
             ),
-          )
-                ),
-                ],
-              ),
+          ))
 
-      ]
+                   
+       ])
       
-    );
+      ]);
   }
 void showNextCard() {
     setState(() {

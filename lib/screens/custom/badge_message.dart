@@ -3,7 +3,8 @@ import 'package:mamyalung/screens/custom/custom.dart';
 
 
 class BadgeMsg extends StatefulWidget {
-  const BadgeMsg({ Key? key }) : super(key: key);
+  final String? uid;
+  const BadgeMsg({ Key? key, required this.uid }) : super(key: key);
 
   @override
   _BadgeMsgState createState() => _BadgeMsgState();
@@ -54,8 +55,8 @@ class _BadgeMsgState extends State<BadgeMsg> {
           // GestureDetector(
           //   onTap:(){
           //     Navigator.pop(context);
-          //   }
-          // ) 
+          //  }
+          //) 
         ],
       );
   }
