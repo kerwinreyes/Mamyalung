@@ -2,184 +2,164 @@
 [
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Kung ang Kapampangan ng Tatang ay tatay, ano naman sa Kapampangan ang nanay?",
-        "topic" : "Pagpapakilala sa Sarili",
-        "multiple_choice": [
+        "choices": [
         "Ima",
         "Apu"],
         "answer": 0},
 
       
         {
-        "level": 1,
+        "level": 0,
         "question": "Ano sa Kapampangan ang paaralan?",
-        "topic" : "Pagpapakilala sa Sarili",
-        "multiple_choice": [
+        "choices": [
         "Paaralan",
         "Iskwela"],
         "answer": 1},
         
         {
-        "level": 1,
+        "level": 0,
         "question": "Ano ang ibig sabihin ng lagyu sa ingles?",
-        "topic" : "Pagpapakilala sa Sarili",
-        "multiple_choice": [
+        "choices": [
         "address",
         "name"],
         "answer": 1},
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Alin sa mga sumusunod ang hindi Kapampangan na salita?",
-        "topic" : "Pagpapakilala sa Sarili",
-        "multiple_choice": [
+        "choices": [
         "kebaytan",
         "baitang"],
         "answer": 1},
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Alin sa mga sumusunod ang hindi Kapampangan na salita?",
-        "topic" : "Pagpapakilala sa Sarili",
-        "multiple_choice": [
+        "choices": [
         "ima",
         "usok"],
         "answer": 1},
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Alin sa mga Buwan na ito ang hindi Kapampangan?",
-        "topic" : "Pagpapakilala sa Sarili",
-        "multiple_choice": [
+        "choices": [
         "oktubri",
         "may"],
         "answer": 1},
         
         {
-        "level": 1,
+        "level": 0,
         "question": "Ano sa tagalog ang 'Makatuknang ku king'?",
-        "topic" : "Pagpapakilala sa Sarili",
-        "multiple_choice": [
+        "choices": [
         "Nakatira ako sa",
         "Ako ay kabilang sa"],
         "answer": 0},
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Ano sa Kapampangan ang 'Magandang hapon po'?",
-        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
-        "multiple_choice": [
+        "choices": [
         "Mayap a ugtu pu",
         "Mayap a gatpanapun pu"],
         "answer": 1},
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Alin ang hindi nagpapakita ng paggalang?",
-        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
-        "multiple_choice": [
+        "choices": [
         "Makilabas ku pu",
         "Lumayas na ka"],
         "answer": 1},
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Alin ang hindi nagpapakita ng paggalang?",
-        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
-        "multiple_choice": [
+        "choices": [
         "Salamat",
         "Alang nanu man pu"],
         "answer": 0},
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Ano sa Kapampangan ang Happy Birthday?",
-        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
-        "multiple_choice": [
+        "choices": [
         "Masayang bayung banwa pu",
         "Masayang aldo ning kebaytan pu"],
         "answer": 1},
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Ano sa Kapampangan ang Paki abot po?",
-        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
-        "multiple_choice": [
+        "choices": [
         "Pakiabut pu",
         "Salamat pu"],
         "answer": 0},
 
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'a' ang hindi Kapampangan?",
-        "topic" : "Kakatni at Makikatni",
-        "multiple_choice": [
+        "choices": [
         "asbuk",
         "apple"],
         "answer": 1},
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'e' ang hindi Kapampangan?",
-        "topic" : "Kakatni at Makikatni",
-        "multiple_choice": [
+        "choices": [
         "egg",
         "elepanti"],
         "answer": 0},
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'o' ang hindi Kapampangan?",
-        "topic" : "Kakatni at Makikatni",
-        "multiple_choice": [
+        "choices": [
         "osu",
         "open"],
         "answer": 1},
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Alin sa mga sumusunod na kakatni na naguumpisa 'u' ang hindi Kapampangan?",
-        "topic" : "Kakatni at Makikatni",
-        "multiple_choice": [
+        "choices": [
         "ulunan",
         "usok"],
         "answer": 1},
 
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'm' ang hindi Kapampangan?",
-        "topic" : "Kakatni at Makikatni",
-        "multiple_choice": [
+        "choices": [
         "matsing",
         "maganda"],
         "answer": 1},
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'p' ang hindi Kapampangan?",
-        "topic" : "Kakatni at Makikatni",
-        "multiple_choice": [
+        "choices": [
         "patawad",
         "pesus"],
         "answer": 0},
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Alin sa mga sumusunod na makikatni na naguumpisa 's' ang hindi Kapampangan?",
-        "topic" : "Kakatni at Makikatni",
-        "multiple_choice": [
+        "choices": [
         "salol",
         "saronggola"],
         "answer": 1},
 
         {
-        "level": 1,
+        "level": 0,
         "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'd' ang hindi Kapampangan?",
-        "topic" : "Kakatni at Makikatni",
-        "multiple_choice": [
+        "choices": [
         "dikut",
         "daga"],
         "answer": 1}

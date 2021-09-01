@@ -182,12 +182,19 @@ packages:
       name: flip_card
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.4"
+    version: "0.5.0"
   flutter:
     dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_neumorphic:
+    dependency: "direct main"
+    description:
+      name: flutter_neumorphic
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -198,6 +205,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  glassmorphism_ui:
+    dependency: "direct main"
+    description:
+      name: glassmorphism_ui
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.0"
   google_fonts:
     dependency: "direct main"
     description:

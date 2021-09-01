@@ -15,13 +15,10 @@ class Achievement extends StatefulWidget {
 class _AchievementState extends State<Achievement> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor:lightBlue.withOpacity(0.5),
-      body: Responsive(
-        desktop: Badges(uid: widget.uid),
-        mobile: Badges(uid: widget.uid),
-        tablet: Badges(uid: widget.uid)
-      )
+    return Responsive(
+        desktop: Badges(uid: 'asdas'),
+        mobile: Badges(uid: 'asda'),
+        tablet: Badges(uid: 'asdasd')
     );
    
   }
