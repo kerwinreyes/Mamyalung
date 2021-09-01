@@ -86,7 +86,7 @@ Positioned(
   left: Consts.padding,
   right: Consts.padding,
   child: CircleAvatar(
-    backgroundColor: Colors.blue,
+    backgroundColor: Colors.white,
     radius: Consts.avatarRadius,
     child: Image(image: NetworkImage(path),
       fit: BoxFit.cover,)
@@ -112,14 +112,20 @@ Positioned(
 
 class BadgeTap extends StatelessWidget {
 
-  final String title, description, buttonText,path;
+  final String title, description, buttonText,path, trueMsg, falseMsg;
+  final int points,min,max;
   final bool lock;
   BadgeTap({
     required this.lock,
     required this.title,
     required this.description,
     required this.buttonText,
-    required this.path
+    required this.path,
+    required this.points,
+    required this.min,
+    required this.max,
+    required this.trueMsg,
+    required this.falseMsg,
   });
   @override
   Widget build(BuildContext context) {
@@ -130,9 +136,9 @@ class BadgeTap extends StatelessWidget {
           context: context,
           builder: (BuildContext context) => CustomDialog(
             title: title,
-            description: description,
+            description: points >= min && points <= max ? "$falseMsg" : "$trueMsg",
             buttonText: buttonText,
-            path: path
+            path: path,
           ),
         );
       },
@@ -146,9 +152,9 @@ class BadgeTap extends StatelessWidget {
           context: context,
           builder: (BuildContext context) => CustomDialog(
             title: title,
-            description: description,
+            description: points >= min && points <= max ? "$falseMsg" : "$trueMsg",
             buttonText: buttonText,
-            path: path
+            path: 'https://i.ibb.co/BtzTdHq/locked.png',
           ),
         );
       },

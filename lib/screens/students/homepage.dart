@@ -107,6 +107,7 @@ class _StudentsMobileState extends State<StudentsMobile> {
           setState(() => _currentIndex = index);
         },
         children: [
+          //
           StudentCard(),
           QuizCard(uid: widget.uid),
           Achievement(uid: widget.uid),

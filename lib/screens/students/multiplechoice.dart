@@ -1,42 +1,30 @@
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mamyalung/responsive.dart';
-import 'package:mamyalung/screens/custom/badge_message.dart';
 import '../../materials.dart';
 import 'package:mamyalung/widgets/buttons.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 import 'homepage.dart';
 
-class MultipleChoice extends StatefulWidget {
+class TopicOne extends StatefulWidget {
   final String? uid;
-  const MultipleChoice({ Key? key, required this.uid }) : super(key: key);
+  const TopicOne({ Key? key, required this.uid }) : super(key: key);
 
   @override
-  _MultipleChoiceState createState() => _MultipleChoiceState();
+  _TopicOneState createState() => _TopicOneState();
 }
+
+class _TopicOneState extends State<TopicOne> {
+
+  String topic = 'assets/questions/Pagpapakilala_sa_Sarili.json';
   
-class _MultipleChoiceState extends State<MultipleChoice> {
-
-
   int gradeLevel = 2;
+
+  
   @override
   Widget build(BuildContext context) {
-  //List<dynamic> getLevel;
-  //getLevel = readJson() as List;
-  //print(getLevel);
-    // setState(() {
-    // FirebaseFirestore.instance
-    // .collection('users')
-    // .where('uid', isEqualTo: widget.uid)
-    // .get()
-    // .then((QuerySnapshot querySnapshot) {  
-    //     querySnapshot.docs.forEach((doc) {
-    //       gradeLevel = doc.data()['grade_level'];
-    // });
-    // });
-    // });
-    
     return Scaffold(
       appBar: AppBar(title: Text("Topic")),
       backgroundColor:Color(0xFFF4F3E3),
@@ -44,83 +32,174 @@ class _MultipleChoiceState extends State<MultipleChoice> {
         child: Responsive(
           desktop: Container(),
           tablet: Container(),
-          mobile: MultipleBody(uid: widget.uid)
+          mobile: MultipleBody(uid: widget.uid, topic: topic)
         )
       )
     );
   }
 }
 
+class TopicTwo extends StatefulWidget {
+  final String? uid;
+  const TopicTwo({ Key? key, required this.uid }) : super(key: key);
+
+  @override
+  _TopicTwoState createState() => _TopicTwoState();
+}
+
+class _TopicTwoState extends State<TopicTwo> {
+
+  String topic = 'assets/questions/Magagalang_na_Salita.json';
+  
+  int gradeLevel = 2;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Topic")),
+      backgroundColor:Color(0xFFF4F3E3),
+      body: Container(
+        child: Responsive(
+          desktop: Container(),
+          tablet: Container(),
+          mobile: MultipleBody(uid: widget.uid, topic: topic)
+        )
+      )
+    );
+  }
+}
+
+class TopicThree extends StatefulWidget {
+  final String? uid;
+  const TopicThree({ Key? key, required this.uid }) : super(key: key);
+
+  @override
+  _TopicThreeState createState() => _TopicThreeState();
+}
+
+class _TopicThreeState extends State<TopicThree> {
+  String topic = 'assets/questions/Kakatni_Makikatni.json';
+  
+  int gradeLevel = 2;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Topic")),
+      backgroundColor:Color(0xFFF4F3E3),
+      body: Container(
+        child: Responsive(
+          desktop: Container(),
+          tablet: Container(),
+          mobile: MultipleBody(uid: widget.uid, topic: topic)
+        )
+      )
+    );
+  }
+}
   
 class MultipleBody extends StatefulWidget {
+  final String topic;
   final String? uid;
   
-  const MultipleBody({ Key? key, required this.uid }) : super(key: key);
+  const MultipleBody({ Key? key, required this.uid, required this.topic }) : super(key: key);
   
   @override
   _MultipleBodyState createState() => _MultipleBodyState();
 }
 
-
-
-
 class _MultipleBodyState extends State<MultipleBody> {
   int finalScore = 0;
   int index = 0;
+  int score = 0;
   String next = "Next";
   bool answer = false;
   bool isButtonPressed0 = false , isButtonPressed1 = false,isButtonPressed2 = false,isButtonPressed3 = false;
-  reset()
- {
-   setState(() {
-     index = 0;
-     finalScore =0;
-   });
- }
 
- check(int index, int length){
-   if(index + 1 == length){
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+  void read(){
+    FirebaseFirestore.instance
+    .collection('users')
+    .where('uid',isEqualTo: widget.uid)
+    .get()
+    .then((QuerySnapshot querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+      setState(() {
+        score = int.parse(doc['points']);
+      });
+    });
+  });
+  
+
+  }
+  Future<void> updateUser() {
+  return users
+    .doc('${widget.uid}')
+    .update({'points': '$finalScore'})
+    .then((value) => print("User Updated"))
+    .catchError((error) => print("Failed to update user: $error"));
+}
+
+falsify(){
+  setState(() {
+    isButtonPressed0 = false;  
+          isButtonPressed1 = false;
+          isButtonPressed2 = false;
+          isButtonPressed3 = false;
+          answer = false;
+    
+  });
+
+ }
+ check(index, length){
+ 
+  if(index + 1 == length){
        setState(() {
          next = "Submit";
        });
-      }
+    }
+
+ }
+ pressed(){
+      final snackbar = SnackBar(
+      duration: Duration(milliseconds : 500),
+      backgroundColor: Colors.orange,
+      content: Text("Please choose an answer!"),);
+    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+
  }
  correct(bool check){
+
    if(check){
+     finalScore += 10;
      final snackbar = SnackBar(
       duration: Duration(milliseconds : 500),
       backgroundColor: Colors.green,
       content: Text("Correct!"),);
-    ScaffoldMessenger.of(context).showSnackBar(snackbar);
-    
-    if(next == "Submit"){
+      ScaffoldMessenger.of(context).showSnackBar(snackbar);
 
-    }
-    else{
-      setState(() {
-      index+= 1;
-      finalScore += 10;
-      isButtonPressed0 = false;  
-      isButtonPressed1 = false;
-      isButtonPressed2 = false;
-      isButtonPressed3 = false;
-      answer = false;
-    });
-    }
-    
-    
-     
+
    }
+
    else{
      final snackbar = SnackBar(
       duration: Duration(milliseconds : 500),
       backgroundColor: Colors.red,
       content: Text("Wrong!"),);
     ScaffoldMessenger.of(context).showSnackBar(snackbar);
+
    }
+setState(() {
+      index += 1;
+    });
+   
  }
 
-
+  @override
+  @override
+  void initState() { 
+    super.initState();
+    read();
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -129,7 +208,7 @@ class _MultipleBodyState extends State<MultipleBody> {
             child: FutureBuilder(
                 future: DefaultAssetBundle
                     .of(context)
-                    .loadString('assets/questions/Pagpapakilala_sa_Sarili.json'),
+                    .loadString('${widget.topic}'),
                 builder: (context, snapshot) {
 
                   if(snapshot.hasError){
@@ -163,12 +242,6 @@ class _MultipleBodyState extends State<MultipleBody> {
                     Text("Score : $finalScore",style: TextStyle(color : Colors.brown , 
                     fontSize: 20,fontWeight: FontWeight.bold),),
                     
-                
-                    InkWell(
-                     child: Text("Reset Game",style: TextStyle(fontSize: 18,color: Colors.redAccent,fontWeight: FontWeight.bold),),
-                     onTap: reset,
-                   )
-
                  ],
                ),
               
@@ -189,7 +262,7 @@ class _MultipleBodyState extends State<MultipleBody> {
                          Padding(
                            padding: EdgeInsets.only(left: 20, right: 20),
                            child: 
-                            AutoSizeText(data[index]['question'],textAlign: TextAlign.center,style: TextStyle(fontSize: 30.0,height: 0),maxLines: 2,maxFontSize: 18,
+                            AutoSizeText(data[index]['question'],textAlign: TextAlign.center,style: TextStyle(fontSize: 30.0,height: 1.5),maxLines: 2,maxFontSize: 18,
                          
                          )),
                        ],
@@ -232,7 +305,6 @@ class _MultipleBodyState extends State<MultipleBody> {
                      text:"${data[index]['multiple_choice'][1]}",
                      onTap: (){
                        setState(() {
-
                         isButtonPressed0 = false;  
                         isButtonPressed1 = true;
                         isButtonPressed2 = false;
@@ -308,17 +380,30 @@ class _MultipleBodyState extends State<MultipleBody> {
                      width: 100, 
                      text:"$next",
                      onTap: (){
-                       if(next == "Submit" && index + 1 == data.length){
-                          finalScore += 10;
+                       print(score);
+                      if(isButtonPressed0 == false && isButtonPressed1 == false && isButtonPressed2 == false && isButtonPressed3 == false){
+                        pressed();
+                        return;
+                      }
+                      else if(next == "Submit"){
+                          
+
+                          index -= 1;
+                          correct(answer);
+                          finalScore += score;
+                          updateUser();
+                          print(index);
                           Navigator.pushReplacement(
                             context,
                             //MaterialPageRoute(builder: (context) => BadgeMsg(uid: widget.uid)),\
                             MaterialPageRoute(builder: (context) => StudentHomePage(uid: widget.uid)),
                         );
-                       }
-                          correct(answer);
-                          check(index, data.length);
-                       
+                        return;
+                      }
+                      correct(answer);
+                      check(index, data.length);
+                      falsify();
+                      
                     }
                   ),
                 ],
@@ -329,170 +414,6 @@ class _MultipleBodyState extends State<MultipleBody> {
                 } return CircularProgressIndicator();
                 }),
         ));
-          //         return ListView.builder(
-          //           // Build the ListView
-          //           itemCount: data == null ? 0 : data.length,
-          //           itemBuilder: (BuildContext context, int index) {
-          //             return Container(
-          //                 margin: const EdgeInsets.all(10.0),
-          //                 alignment: Alignment.topCenter,
-          //                 child: new Column(
-          //                   children: <Widget>[
-          //                     new Padding(padding: EdgeInsets.all(20.0)),
-
-          //                       new Container(
-          //                         alignment: Alignment.centerRight,
-          //                         child: new Row(
-          //                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //                           children: <Widget>[
-
-          //                             new Text("Question ${index + 1} of ${data.length}",
-          //                             style: new TextStyle(
-          //                                 fontSize: 22.0
-          //                             ),),
-
-          //                             new Text("Score: $finalScore",
-          //                               style: new TextStyle(
-          //                                   fontSize: 22.0
-          //                               ),)
-          //                           ],
-          //                         ),
-          //                       ),
-          //       //image
-          //       new Padding(padding: EdgeInsets.all(10.0)),
-          //       Container(
-          //         child:
-          //       new Image(image: NetworkImage(
-          //         "https://i.ibb.co/kVT8hHn/Artboard-1flashcards.png",
-          //       ))),
-
-          //       new Padding(padding: EdgeInsets.all(10.0)),
-
-          //       new Text(data[index]['question'],
-          //         style: new TextStyle(
-          //           fontSize: 20.0,
-          //         ),),
-
-          //       new Padding(padding: EdgeInsets.all(10.0)),
-
-          //       new Row(
-          //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //         children: <Widget>[
-
-          //           //button 1
-          //           new MaterialButton(
-          //             minWidth: 120.0,
-          //             color: Colors.blueGrey,
-          //             onPressed: (){
-          //               if(data[index]['multiple_choice'][0] == data[index]['multiple_choice'][data[index]['answer']]){
-          //                 debugPrint("Correct");
-          //                 finalScore++;
-          //               }else{
-          //                 debugPrint("Wrong");
-          //               }
-          //             },
-          //             child: new Text(data[index]['multiple_choice'][0],
-          //               style: new TextStyle(
-          //                   fontSize: 20.0,
-          //                   color: Colors.white
-          //               ),),
-          //           ),
-
-          //           //button 2
-          //           new MaterialButton(
-          //             minWidth: 120.0,
-          //             color: Colors.blueGrey,
-          //             onPressed: (){
-          //               if(data[index]['multiple_choice'][1] == data[index]['multiple_choice'][data[index]['answer']]){
-          //                 debugPrint("Correct");
-          //                 finalScore++;
-          //               }else{
-          //                 debugPrint("Wrong");
-          //               }
-          //             },
-          //             child: new Text(data[index]['multiple_choice'][1],
-          //               style: new TextStyle(
-          //                   fontSize: 20.0,
-          //                   color: Colors.white
-          //               ),),
-          //           ),
-
-          //         ],
-          //       ),
-
-          //       new Padding(padding: EdgeInsets.all(10.0)),
-
-          //       new Row(
-          //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //         children: <Widget>[
-
-          //           //button 3
-
-                    
-          //           new MaterialButton(
-          //             minWidth: 120.0,
-          //             color: Colors.blueGrey,
-          //             onPressed: (){
-          //               if(data[index]['multiple_choice'][2] == data[index]['multiple_choice'][data[index]['answer']]){
-          //                 debugPrint("Correct");
-          //                 finalScore++;
-          //               }else{
-          //                 debugPrint("Wrong");
-          //               }
-          //             },
-          //             child: new Text(data[index]['multiple_choice'][2],
-          //               style: new TextStyle(
-          //                   fontSize: 20.0,
-          //                   color: Colors.white
-          //               ),),
-          //           ),
-
-          //           //button 4
-          //           new MaterialButton(
-          //             minWidth: 120.0,
-          //             color: Colors.blueGrey,
-          //             onPressed: (){
-          //               if(data[index]['multiple_choice'][3] == data[index]['multiple_choice'][data[index]['answer']]){
-          //                 debugPrint("Correct");
-          //                 finalScore++;
-          //               }else{
-          //                 debugPrint("Wrong");
-          //               }
-          //             },
-          //             child: new Text(data[index]['multiple_choice'][3],
-          //               style: new TextStyle(
-          //                   fontSize: 20.0,
-          //                   color: Colors.white
-          //               ),),
-          //           ),
-
-          //         ],
-          //       ),
-
-          //       new Padding(padding: EdgeInsets.all(15.0)),
-
-          //       // new Container(
-          //       //   alignment: Alignment.bottomCenter,
-          //       //   child:  new MaterialButton(
-          //       //       minWidth: 240.0,
-          //       //       height: 30.0,
-          //       //       color: Colors.red,
-          //       //       onPressed: resetQuiz,
-          //       //       child: new Text("Quit",
-          //       //         style: new TextStyle(
-          //       //             fontSize: 18.0,
-          //       //             color: Colors.white
-          //       //         ),)
-          //       //   )
-          //       // ),
-          //     ],
-          //   ),
-          // );
-          //           },
-
-                    
-          //         );
-          //       }),
      
   }
 }

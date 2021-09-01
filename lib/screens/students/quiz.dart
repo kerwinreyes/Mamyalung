@@ -19,12 +19,12 @@ class _QuizCardState extends State<QuizCard> {
     return GridView.count(
       crossAxisCount: 2,
       children: [
-        //FlashCards
+        //Pagpapakilala
         GestureDetector(
         onTap: (){
         Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => MultipleChoice(uid:widget.uid)),);
+        MaterialPageRoute(builder: (context) => TopicOne(uid:widget.uid)),);
         },
         child: Container(
           margin: EdgeInsets.only(left:30,right: 30,top:10,bottom:20),
@@ -46,12 +46,12 @@ class _QuizCardState extends State<QuizCard> {
           ),
           child: Text('')
         ),),
-        //Games
+        //Magagalang na Salita
         GestureDetector(
         onTap: (){
            Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => MultipleChoice(uid: widget.uid),
+          builder: (context) => TopicTwo(uid: widget.uid),
         ),
       );
         },
@@ -75,10 +75,14 @@ class _QuizCardState extends State<QuizCard> {
           ),
           child: Text('')
         )),
-        //Achievements
+        //Kakatni
         GestureDetector(
         onTap: (){
-          print("Badges");
+          Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => TopicThree(uid: widget.uid),
+        ),
+      );
         },
         child: Container(
           margin: EdgeInsets.only(left:30,right: 30,top:10,bottom:20),

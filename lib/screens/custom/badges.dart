@@ -11,53 +11,40 @@ class Badges extends StatefulWidget {
 }
 
 class _BadgesState extends State<Badges> {
+  bool first = false,
+  second = false,
+  third = false,
+  fourth = false,
+  fifth = false,
+  sixth = false,
+  seventh = false,
+  eight = false,
+  ninth = false;    
+  int points = 0;       
+
+  void read(){
+    FirebaseFirestore.instance
+    .collection('users')
+    .where('uid',isEqualTo: widget.uid)
+    .get()
+    .then((QuerySnapshot querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+      setState(() {
+        points = int.parse(doc['points']);
+      });
+    });
+  });
+  }
+ 
+
   @override
-  
+  void initState() { 
+    super.initState();
+    read();
+  }
+   @override
 Widget build(BuildContext context) {
   
-  late bool first,second,third,fourth,fifth,sixth,seventh,eight,ninth = false;    
-  int count = 0;                                       
-  // setState(() {
-  // FirebaseFirestore.instance
-  // .collection('users')
-  // .where('uid',isEqualTo: "${widget.id}")
-  // .get()
-  // .then((QuerySnapshot querySnapshot) {
-  //     querySnapshot.docs.forEach((doc) {
-  //         count = doc['points'];
-  //         switch (count) {
-  //           case 0:
-  //             first = true;
-  //           break;
-  //           case 100:
-  //             second = true;
-  //           break;
-  //           case 200:
-  //             third = true;
-  //           break;
-  //           case 300:
-  //             fourth = true;
-  //           break;
-  //           case 400:
-  //             fifth = true;
-  //           break;
-  //           case 500:
-  //             sixth = true;
-  //           break;
-  //           case 600:
-  //             seventh = true;
-  //           break;
-  //           case 700:
-  //             eight = true;
-  //           break;
-  //           case 800:
-  //             ninth = true;
-  //           break;
-  //           default:
-  //         }
-  //     });
-  // });
-  // });
   return Container(
           child: ListView(
           children: <Widget>[
@@ -74,29 +61,44 @@ Widget build(BuildContext context) {
                     children: <Widget>[
                       Expanded(
                         child:  BadgeTap(
-                          lock: true,
+                          lock: points >= 100 ? true : false,
                           buttonText: "Okay",
-                          description: "You are a little Explorer! Explore more! Keep it up!",
+                          description: "",
                           path: 'https://i.ibb.co/jZXzvBk/little-Explorer.png',
                           title: "Hey there!",
+                          points: points,
+                          min: 100,
+                          max: 199,
+                          trueMsg: "You are a little Explorer! Explore more! Keep it up!",
+                          falseMsg: "Earn a minimum of 100 points to unlock!",
                         ),
                       ),
                       Expanded(
                         child:  BadgeTap(
-                          lock: false,
-                          buttonText: "PAKYU KERWIN",
-                          description: "TANIDAMO KERWIN",
-                          path: 'assets/images/explorer.png',
-                          title: "PAKYU",
+                          lock: points >= 200 ? true : false,
+                          buttonText: "Okay",
+                          description: "",
+                          path: 'https://i.ibb.co/WH9rj7K/shinningbright.png',
+                          title: "Sample Title",
+                          points: points,
+                          min: 200,
+                          max: 299,
+                          trueMsg: "Sample Message",
+                          falseMsg: "Earn a minimum of 200 points to unlock!",
                         ),
                       ),
                       Expanded(
                         child:  BadgeTap(
-                          lock: false,
-                          buttonText: "PAKYU KERWIN",
-                          description: "TANIDAMO KERWIN",
-                          path: 'assets/images/explorer.png',
-                          title: "PAKYU",
+                         lock: points >= 300 ? true : false,
+                          buttonText: "Okay",
+                          description: "",
+                          path: 'https://i.ibb.co/4mt3K9c/royalty.png',
+                          title: "Sample Title",
+                          points: points,
+                          min: 300,
+                          max: 399,
+                          trueMsg: "Sample Message",
+                          falseMsg: "Earn a minimum of 300 points to unlock!",
                         ),
                       )
                     ],
@@ -118,29 +120,44 @@ Widget build(BuildContext context) {
                     children: <Widget>[
                       Expanded(
                         child:  BadgeTap(
-                          lock: false,
-                          buttonText: "PAKYU KERWIN",
-                          description: "TANIDAMO KERWIN",
-                          path: 'assets/images/explorer.png',
-                          title: "PAKYU",
+                          lock: points >= 400 ? true : false,
+                          buttonText: "Okay",
+                          description: "",
+                          path: 'https://i.ibb.co/jZXzvBk/little-Explorer.png',
+                          title: "Sample Title",
+                          points: points,
+                          min: 400,
+                          max: 499,
+                          trueMsg: "Sample Message",
+                          falseMsg: "Earn a minimum of 400 points to unlock!",
                         ),
                       ),
                       Expanded(
                         child:  BadgeTap(
-                          lock: false,
-                          buttonText: "PAKYU KERWIN",
-                          description: "TANIDAMO KERWIN",
-                          path: 'assets/images/explorer.png',
-                          title: "PAKYU",
+                         lock: points >= 500 ? true : false,
+                          buttonText: "Okay",
+                          description: "",
+                          path: 'https://i.ibb.co/jZXzvBk/little-Explorer.png',
+                          title: "Sample Title",
+                          points: points,
+                          min: 500,
+                          max: 599,
+                          trueMsg: "Sample Message",
+                          falseMsg: "Earn a minimum of 500 points to unlock!",
                         ),
                       ),
                       Expanded(
                         child:  BadgeTap(
-                          lock: false,
-                          buttonText: "PAKYU KERWIN",
-                          description: "TANIDAMO KERWIN",
-                          path: 'assets/images/explorer.png',
-                          title: "PAKYU",
+                         lock: points >= 600 ? true : false,
+                          buttonText: "Okay",
+                          description: "",
+                          path: 'https://i.ibb.co/jZXzvBk/little-Explorer.png',
+                          title: "Sample Title",
+                          points: points,
+                          min: 600,
+                          max: 699,
+                          trueMsg: "Sample Message",
+                          falseMsg: "Earn a minimum of 600 points to unlock!",
                         ),
                       )
                     ],
@@ -162,29 +179,44 @@ Widget build(BuildContext context) {
                     children: <Widget>[
                       Expanded(
                         child:  BadgeTap(
-                          lock: false,
-                          buttonText: "PAKYU KERWIN",
-                          description: "TANIDAMO KERWIN",
-                          path: 'assets/images/explorer.png',
-                          title: "PAKYU",
+                          lock: points >= 700 ? true : false,
+                          buttonText: "Okay",
+                          description: "",
+                          path: 'https://i.ibb.co/jZXzvBk/little-Explorer.png',
+                          title: "Sample Title",
+                          points: points,
+                          min: 700,
+                          max: 799,
+                          trueMsg: "Sample Message",
+                          falseMsg: "Earn a minimum of 700 points to unlock!",
                         ),
                       ),
                       Expanded(
                         child:  BadgeTap(
-                          lock: false,
-                          buttonText: "PAKYU KERWIN",
-                          description: "TANIDAMO KERWIN",
-                          path: 'assets/images/explorer.png',
-                          title: "PAKYU",
+                          lock: points >= 800 ? true : false,
+                          buttonText: "Okay",
+                          description: "",
+                          path: 'https://i.ibb.co/jZXzvBk/little-Explorer.png',
+                          title: "Sample Title",
+                          points: points,
+                          min: 800,
+                          max: 899,
+                          trueMsg: "Sample Message",
+                          falseMsg: "Earn a minimum of 800 points to unlock!",
                         ),
                       ),
                       Expanded(
                         child:  BadgeTap(
-                          lock: false,
-                          buttonText: "PAKYU KERWIN",
-                          description: "TANIDAMO KERWIN",
-                          path: 'assets/images/explorer.png',
-                          title: "PAKYU",
+                          lock: points >= 900 ? true : false,
+                          buttonText: "Okay",
+                          description: "",
+                          path: 'https://i.ibb.co/jZXzvBk/little-Explorer.png',
+                          title: "Sample Title",
+                          points: points,
+                          min: 900,
+                          max: 999,
+                          trueMsg: "Sample Message",
+                          falseMsg: "Earn a minimum of 900 points to unlock!",
                         ),
                       )
                     ],
