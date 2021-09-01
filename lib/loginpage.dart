@@ -45,7 +45,10 @@ class _LoginPageState extends State<LoginPage> {
         .then((QuerySnapshot querySnapshot){
           querySnapshot.docs.forEach((doc) {
             if(identical(doc['role'],'Admin')){
-            print('Admin');
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => AdminHomePage(user:user.uid)),
+            );
             }else if(identical(doc['role'],'teacher')){
               print('teacher');
             }
@@ -75,15 +78,18 @@ class _LoginPageState extends State<LoginPage> {
         .then((QuerySnapshot querySnapshot){
           querySnapshot.docs.forEach((doc) {
             if(identical(doc['role'],'Admin')){
-            print('Admin');
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => AdminHomePage(user: result.user!.uid)),
+              );
             }else if(identical(doc['role'],'teacher')){
               print('teacher');
             }
             else{
               Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => StudentHomePage(uid: result.user!.uid)),
-      );
+                context,
+                MaterialPageRoute(builder: (context) => StudentHomePage(uid: result.user!.uid)),
+              );
             }
           }); 
         });
@@ -265,6 +271,9 @@ class _LoginPageState extends State<LoginPage> {
                                                   });
 
                                                   logIn();
+                                                  setState(() {
+                                                    _isProcessing = false;
+                                                  });
                                                 }
                                               },
                                               style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0))),
@@ -418,6 +427,9 @@ class _LoginPageState extends State<LoginPage> {
                                                     _isProcessing = true;
                                                   });
                                                   logIn();
+                                                  setState(() {
+                                                    _isProcessing = false;
+                                                  });
 
                                                 }
                                               },
@@ -589,9 +601,10 @@ class _LoginPageState extends State<LoginPage> {
                                                     _isProcessing = true;
                                                   });
                                                   logIn();
+                                                  setState(() {
+                                                    _isProcessing = false;
+                                                  });
                                                 
-
-                                            
                                           }
                                         },
                                         child: Text(

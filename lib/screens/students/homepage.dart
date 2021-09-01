@@ -9,7 +9,7 @@ import 'package:mamyalung/materials.dart';
 import 'package:mamyalung/model/users.dart';
 import 'package:mamyalung/responsive.dart';
 import 'package:mamyalung/screens/achievements.dart';
-import 'package:mamyalung/screens/login.dart';
+import 'package:mamyalung/loginpage.dart';
 import 'package:mamyalung/screens/students/cards.dart';
 import 'package:mamyalung/screens/students/leaderboard.dart';
 import 'package:mamyalung/screens/students/quiz.dart';
@@ -48,7 +48,8 @@ class StudentsMobile extends StatefulWidget {
 }
 
 class _StudentsMobileState extends State<StudentsMobile> {
-  String imagePath= 'https://i.ibb.co/CskKVL4/ninja.png';
+
+  String imagePath= '';
     int _currentIndex = 0;
   late PageController _pageController;
 
@@ -56,6 +57,17 @@ class _StudentsMobileState extends State<StudentsMobile> {
   void initState(){
     super.initState();
     _pageController = PageController();
+    FirebaseFirestore.instance
+    .collection('users')
+    .where('uid',isEqualTo:widget.uid)
+    .get()
+    .then((QuerySnapshot querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+            setState((){
+             imagePath = doc["image"];
+            });
+        });
+    });
   }
 
   @override
@@ -74,7 +86,10 @@ class _StudentsMobileState extends State<StudentsMobile> {
            shape: BoxShape.circle,
            color: Colors.white
          ),
-         child: Image(image: NetworkImage(imagePath),height: 25.0,fit:BoxFit.cover,)),
+         child: imagePath ==''? CircularProgressIndicator(
+    backgroundColor: Colors.cyanAccent,
+    valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
+  ):Image(image: NetworkImage(imagePath),height: 25.0,fit:BoxFit.cover,)),
        title: Container(
          child: Image(height: 50.0,image: NetworkImage('https://i.ibb.co/gghzqTq/mamyalung-logo.png'),fit: BoxFit.cover,),
        ),
@@ -107,7 +122,7 @@ class _StudentsMobileState extends State<StudentsMobile> {
           setState(() => _currentIndex = index);
         },
         children: [
-          StudentCard(uid: widget.uid,),
+          QuizState(uid: widget.uid,),
           QuizCard(),
           Achievement(uid: widget.uid),
           LeaderBoard(),

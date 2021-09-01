@@ -13,7 +13,7 @@ import 'package:mamyalung/extension.dart';
 
 class AdminHomePage extends StatefulWidget {
   static const String routeName = '/admin/home';
-  final User user;
+  final String user;
   const AdminHomePage({ Key? key,required this.user }) : super(key: key);
 
   @override

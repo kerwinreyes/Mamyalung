@@ -78,12 +78,30 @@ class Authenticate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
-
+  
     if (firebaseUser != null) {
-      var data = FirebaseFirestore.instance
-        .collection('users').where('uid',isEqualTo: firebaseUser.uid)
-        .get();
-      return StudentHomePage(uid: firebaseUser.uid,);
+    FirebaseFirestore.instance
+        .collection('/users')
+        .where('uid', isEqualTo: firebaseUser.uid)
+        .get()
+        .then((QuerySnapshot querySnapshot){
+          querySnapshot.docs.forEach((doc) {
+            if(identical(doc['role'],'Admin')){
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => AdminHomePage(user:firebaseUser.uid)),
+            );
+            }else if(identical(doc['role'],'teacher')){
+              print('teacher');
+            }
+            else{
+              Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => StudentHomePage(uid:firebaseUser.uid)),
+      );
+            }
+          }); 
+        });
     }
     return LoginPage();
   }
