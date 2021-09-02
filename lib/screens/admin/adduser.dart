@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
 import 'package:mamyalung/screens/admin/homepage.dart';
 import 'package:mamyalung/utils/fire_auth.dart';
 import 'package:flutter/gestures.dart';
@@ -128,6 +130,7 @@ class _AddState extends State<Add> {
   final _formKey = GlobalKey<FormState>();
   final _fname = TextEditingController();
   final _lname = TextEditingController();
+  final _pass = TextEditingController();
   final _role = TextEditingController();
   final _email = TextEditingController();
   final _token = TextEditingController();
@@ -135,23 +138,41 @@ class _AddState extends State<Add> {
   final _focusFname = FocusNode();
   final _focusLname = FocusNode();
   final _focusEmail = FocusNode();
+  final _focusPass = FocusNode();
   final _focusToken = FocusNode();
   bool _success= true;
   String dropdownvalue = 'Student';
+  int _gradeLevel = 2;
   var items =  ['Student','Teacher'];
-  CollectionReference users = FirebaseFirestore.instance.collection('users');
-  Future<void> addUser() {
-      // Call the user's CollectionReference to add a new user
-      return users
-          .add({
+  var grade_levels = ['Grade 1','Grade 2','Grade 3'];
+  var _flashcards=[];
+  Future<void> readJson() async {
+    final String response = await rootBundle.loadString('assets/questions/10questions_grade2FC.json');
+    final data = await json.decode(response);
+      return data;
+  }
+  CollectionReference _users = FirebaseFirestore.instance.collection('users');
+  Future<void> addUser() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user;
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _email.text,
+        password: _pass.text,
+      );
+      user = userCredential.user;
+      return _users.doc(user!.uid)
+            .set({
            'fname': _fname.text,
             'lname':_lname.text,
             'email':_email.text,
-            'role':dropdownvalue.toLowerCase(),
-            'uid':'',
+            'role':dropdownvalue,
+            'uid':user.uid,
             'points': 0,
             'grade_level': 0,
-            'invite':0,
+            'flashcards': readJson(),
+            'other_flashcards':_flashcards,
+            'day': 1,
 
           })
           .then((value){
@@ -162,9 +183,20 @@ class _AddState extends State<Add> {
             print('success');
           })
           .catchError((error) => print('failed'));
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
+      
+       
     }
   bool _isProcessing = false;
-  
+ 
   @override
   
   Widget build(BuildContext context) {
@@ -175,11 +207,12 @@ class _AddState extends State<Add> {
         _focusLname.unfocus();
         _focusEmail.unfocus();
         _focusToken.unfocus();
+        _focusPass.unfocus();
       },
       child:Container(
         padding: EdgeInsets.fromLTRB(30, 10, 30, 0),
         color: Colors.white70,
-        height: MediaQuery.of(context).size.height/1.5,
+        height: MediaQuery.of(context).size.height,
       child: Form(
         
     key: _formKey,
@@ -269,6 +302,38 @@ class _AddState extends State<Add> {
           ),
           
           SizedBox(height: 8.0),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+            decoration: BoxDecoration(
+              color: whitey.withOpacity(0.25),
+              borderRadius: new BorderRadius.circular(10.0),
+            ),
+            child:Container(
+              padding: EdgeInsets.only(left: 15),
+                width: MediaQuery.of(context).size.width,
+                child:DropdownButton(
+                
+                value: _gradeLevel,
+                  icon: Icon(Icons.keyboard_arrow_down),
+                  items:grade_levels.map((String items) {
+                       return DropdownMenuItem(
+                           value: grade_levels.indexOf(items),
+                           child: Text(items)
+                       );
+                  }
+                  ).toList(),
+                onChanged: (int? newValue) {
+                    setState(() {
+                      _gradeLevel = newValue!;
+                    });
+                  },
+              ),))
+            ],
+          ),
+          
+          SizedBox(height: 8.0),
           Container(
             decoration: BoxDecoration(
               color: whitey.withOpacity(0.25),
@@ -291,6 +356,28 @@ class _AddState extends State<Add> {
                       focusColor: Colors.black45,
                     )))),
           SizedBox(height: 8.0),
+          Container(
+            decoration: BoxDecoration(
+              color: whitey.withOpacity(0.25),
+              borderRadius: new BorderRadius.circular(10.0),
+            ),
+            child: Padding(
+                padding:
+                    EdgeInsets.only(left: 15, right: 15, top: 5),
+                child: TextFormField(
+                  controller: _pass,
+                  focusNode: _focusPass,
+                  validator: (value) => Validator.validatePassword(
+                    password: value,
+                  ),
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      labelText: 'Password',
+                      hoverColor: Colors.black54,
+                      focusColor: Colors.black45,
+                    )))),
+          SizedBox(height: 8.0),
         _isProcessing ? CircularProgressIndicator()
           :button(first: lightgreen, second:green, 
                         size:16.0, height:50.0, width:MediaQuery.of(context).size.width*.5, text:'Create User',
@@ -305,6 +392,9 @@ class _AddState extends State<Add> {
                                 });
                               
                                 addUser();
+                                setState(() {
+                                  _isProcessing = false;
+                                });
                               // showDialog(
                               //   context:context,
                               //   builder: (BuildContext context)=>

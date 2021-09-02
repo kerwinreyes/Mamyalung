@@ -215,6 +215,7 @@ Future<void> updateUser() {
       children:[
         Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
         width: 250,
+        height: 250,
         child: Neumorphic(child: FlipCard(
           front: FlashcardView(
           text: _flashcards[counter].question,
