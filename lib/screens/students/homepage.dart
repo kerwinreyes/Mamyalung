@@ -129,6 +129,10 @@ class _StudentsMobileState extends State<StudentsMobile> {
         ],
       ),),
     bottomNavigationBar: BottomNavyBar(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      showElevation: true,
+        itemCornerRadius: 24,
+        curve: Curves.easeIn,
       selectedIndex: _currentIndex,
       onItemSelected: (index){
         setState(()=> _currentIndex = index);
@@ -136,20 +140,28 @@ class _StudentsMobileState extends State<StudentsMobile> {
       },
       items: [
        BottomNavyBarItem(
-            title: Text('Home'),
-            icon: Icon(Icons.school_outlined)
+            title: Text('Home', textAlign: TextAlign.center),
+            icon: Icon(Icons.school_outlined),
+            activeColor: kGrayColor,
+            inactiveColor: Color.fromRGBO(74, 104, 116 , 1)
           ),
           BottomNavyBarItem(
-            title: Text('Games'),
-            icon: Icon(Icons.sports_esports_outlined)
+            title: Text('Games', textAlign: TextAlign.center),
+            icon: Icon(Icons.sports_esports_outlined),
+            activeColor: kGrayColor,
+            inactiveColor: Color.fromRGBO(74, 104, 116 , 1)
           ),
           BottomNavyBarItem(
-            title: Text('Badges'),
-            icon: Icon(Icons.emoji_events_outlined)
+            title: Text('Badges', textAlign: TextAlign.center),
+            icon: Icon(Icons.emoji_events_outlined),
+            activeColor: kGrayColor,
+            inactiveColor: Color.fromRGBO(74, 104, 116 , 1)
           ),
           BottomNavyBarItem(
-            title: Text('Leaderboard'),
-            icon: Icon(Icons.leaderboard_outlined)
+            title: Text('Leaderboard', textAlign: TextAlign.center),
+            icon: Icon(Icons.leaderboard_outlined),
+            activeColor: kGrayColor,
+            inactiveColor: Color.fromRGBO(74, 104, 116 , 1)
           ),
       ],
     ),

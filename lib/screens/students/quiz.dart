@@ -1,4 +1,6 @@
 
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:mamyalung/screens/students/multiplechoice.dart';
 
@@ -16,11 +18,19 @@ class QuizCard extends StatefulWidget {
 class _QuizCardState extends State<QuizCard> {
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
+    
+    return Container(color: powderblue.withOpacity(0.5),
+      child: GridView.count(
+      
       crossAxisCount: 2,
+      padding: EdgeInsets.only(top: 25),
       children: [
         //Pagpapakilala
+        
+        
+        //FlashCards
         GestureDetector(
+        
         onTap: (){
         Navigator.pushReplacement(
         context,
@@ -39,8 +49,8 @@ class _QuizCardState extends State<QuizCard> {
             borderRadius: BorderRadius.circular(20.0),
             boxShadow: [
               BoxShadow(
-                color: white.withOpacity(0.5),spreadRadius: 5,
-                blurRadius: 7,offset:Offset(0, 3)
+                color: black.withOpacity(0.5),spreadRadius: 5,
+                blurRadius: 7,offset:Offset(2, 5)
               )
             ]
           ),
@@ -68,8 +78,8 @@ class _QuizCardState extends State<QuizCard> {
             borderRadius: BorderRadius.circular(10.0),
             boxShadow: [
               BoxShadow(
-                color: white.withOpacity(0.5),spreadRadius: 5,
-                blurRadius: 7,offset:Offset(0, 3)
+                color: black.withOpacity(0.5),spreadRadius: 5,
+                blurRadius: 7,offset:Offset(2, 5)
               )
             ]
           ),
@@ -97,8 +107,8 @@ class _QuizCardState extends State<QuizCard> {
             borderRadius: BorderRadius.circular(10.0),
             boxShadow: [
               BoxShadow(
-                color: whitey.withOpacity(0.5),spreadRadius: 5,
-                blurRadius: 7,offset:Offset(0, 3)
+                color: black.withOpacity(0.5),spreadRadius: 5,
+                blurRadius: 7,offset:Offset(2, 5)
               )
             ]
           ),
@@ -121,15 +131,15 @@ class _QuizCardState extends State<QuizCard> {
             borderRadius: BorderRadius.circular(10.0),
             boxShadow: [
               BoxShadow(
-                color: whitey.withOpacity(0.5),spreadRadius: 5,
-                blurRadius: 7,offset:Offset(0, 3)
+                color: black.withOpacity(0.5),spreadRadius: 5,
+                blurRadius: 7,offset:Offset(2, 5)
               )
             ]
           ),
           child: Text(''))
         ),
       ],
-      
+      ),
     );
   }
 }
