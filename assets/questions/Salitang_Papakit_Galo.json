@@ -1,6 +1,6 @@
 [
         {
-        "questionID" : 51,
+        "questionID" : 71,
         "grade_level" : 3,
         "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
         "topic" : "Salitang Papakit Galo o Kimut",
@@ -12,7 +12,7 @@
         "answer": 3},
 
         {
-        "questionID" : 52,
+        "questionID" : 72,
         "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
         "grade_level" : 3,
         "topic" : "Salitang Papakit Galo o Kimut",
@@ -25,7 +25,7 @@
 
       
         {
-        "questionID" : 53,
+        "questionID" : 73,
         "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
         "grade_level" : 3,
         "topic" : "Salitang Papakit Galo o Kimut",
@@ -37,7 +37,7 @@
         "answer": 3},
         
         {
-        "questionID" : 54,
+        "questionID" : 74,
         "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
         "grade_level" : 2,
         "topic" : "Salitang Papakit Galo o Kimut",
@@ -50,7 +50,7 @@
         },
 
         {
-        "questionID" : 55,
+        "questionID" : 75,
         "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos ng mga hayop?",
         "grade_level" : 3,
         "topic" : "Salitang Papakit Galo o Kimut",
@@ -62,7 +62,7 @@
         "answer": 0},
 
         {
-        "questionID" : 56,
+        "questionID" : 76,
         "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos ng mga hayop?",
         "grade_level" : 3,
         "topic" : "Salitang Papakit Galo o Kimut",
@@ -74,7 +74,7 @@
         "answer": 2},
         
         {
-        "questionID" : 57,
+        "questionID" : 77,
         "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa paaralan?",
         "grade_level" : 3,
         "topic" : "Salitang Papakit Galo o Kimut",
@@ -86,7 +86,7 @@
         "answer": 1},
 
         {
-        "questionID" : 58,
+        "questionID" : 78,
         "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
         "grade_level" : 3,
         "topic" : "Salitang Papakit Galo o Kimut",
@@ -98,7 +98,7 @@
         "answer": 3},
 
         {
-        "questionID" : 59,
+        "questionID" : 79,
         "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
         "grade_level" : 3,
         "topic" : "Salitang Papakit Galo o Kimut",
@@ -110,7 +110,7 @@
         "answer": 2},
         
         {
-        "questionID" : 60,
+        "questionID" : 80,
         "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa paaralan?",
         "grade_level" : 3,
         "topic" : "Salitang Papakit Galo o Kimut",

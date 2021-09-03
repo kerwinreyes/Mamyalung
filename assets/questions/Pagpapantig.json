@@ -1,0 +1,122 @@
+
+    [
+        {
+        "questionID" : 31,
+        "question": "Alin sa mga sumusunod na salita ang hindi dalawa ang pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "asbuk",
+        "anam",
+        "apulu",
+        "relo"],
+        "answer": 2},
+
+        {
+        "questionID" : 32,
+        "question": "Alin sa mga sumusunod na salita ang hindi dalawa ang pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "embudu",
+        "uran",
+        "ebun",
+        "bitis"],
+        "answer": 0},
+
+        {
+        "questionID" : 33,
+        "question": "Alin sa mga sumusunod na salita ang hindi tatlo ang pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "inuman",
+        "ebun",
+        "mandilu",
+        "apunan"],
+        "answer": 1},
+
+        {
+        "questionID" : 34,
+        "question": "Alin sa mga sumusunod na salita ang hindi tatlo ang pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "okra",
+        "gabun",
+        "danum",
+        "malagu"],
+        "answer": 3},
+
+        {
+        "questionID" : 35,
+        "question": "Alin sa mga sumusunod na salita ang hindi tatlo ang pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "aginaldu",
+        "salol",
+        "pitaka",
+        "masanting"],
+        "answer": 1},
+
+        {
+        "questionID" : 36,
+        "question": "Alin sa mga sumusunod na salita ang hindi apat ang pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "gamat",
+        "maganaka",
+        "aksidenti",
+        "kaluguran"],
+        "answer": 1},
+
+        {
+        "questionID" : 37,
+        "question": "Alin sa mga sumusunod na salita ang may apat na pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "tuturu",
+        "mananaman",
+        "manuk",
+        "lukluk"],
+        "answer": 1},
+
+        {
+        "questionID" : 38,
+        "question": "Alin sa mga sumusunod na salita ang may dalawang pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "abak",
+        "apulu",
+        "masanting",
+        "mandilu"],
+        "answer": 0},
+
+        {
+        "questionID" : 39,
+        "question": "Alin sa mga sumusunod na salita ang may tatlong pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "salol",
+        "manimu",
+        "salu",
+        "kawe"],
+        "answer": 1},
+
+        {
+        "questionID" : 40,
+        "question": "Alin sa mga sumusunod na salita ang may apat na pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "mamalantsa",
+        "dagis",
+        "mangadi",
+        "sulapo"],
+        "answer": 0}
+    ]
