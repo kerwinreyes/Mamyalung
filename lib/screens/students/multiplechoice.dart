@@ -10,21 +10,34 @@ import 'homepage.dart';
 
 class TopicOne extends StatefulWidget {
   final String? uid;
-  const TopicOne({ Key? key, required this.uid }) : super(key: key);
+  final int gradeLevel;
+  const TopicOne({ Key? key, required this.uid, required this.gradeLevel }) : super(key: key);
 
   @override
   _TopicOneState createState() => _TopicOneState();
 }
 
+
 class _TopicOneState extends State<TopicOne> {
 
-  String topic = 'assets/questions/Pagpapakilala_sa_Sarili.json';
+  String topic = '';
+  int gradeLevel = 0;
   
-  int gradeLevel = 2;
 
+  @override
+  void initState() { 
+    super.initState();
+    gradeLevel = widget.gradeLevel;
+  }
   
   @override
   Widget build(BuildContext context) {
+    if(gradeLevel == 2){
+    topic = 'assets/questions/Pagpapakilala_sa_Sarili.json';
+    }
+    else{
+    topic = 'assets/questions/Pagpapakilala_sa_Sarili_G3.json';
+    }
     return Scaffold(
       appBar: AppBar(title: Text("Topic")),
       backgroundColor:Color(0xFFF4F3E3),
@@ -41,7 +54,8 @@ class _TopicOneState extends State<TopicOne> {
 
 class TopicTwo extends StatefulWidget {
   final String? uid;
-  const TopicTwo({ Key? key, required this.uid }) : super(key: key);
+  final int gradeLevel;
+  const TopicTwo({ Key? key, required this.uid, required this.gradeLevel }) : super(key: key);
 
   @override
   _TopicTwoState createState() => _TopicTwoState();
@@ -49,11 +63,22 @@ class TopicTwo extends StatefulWidget {
 
 class _TopicTwoState extends State<TopicTwo> {
 
-  String topic = 'assets/questions/Magagalang_na_Salita.json';
-  
-  int gradeLevel = 2;
+  String topic = '';
+  int gradeLevel = 0;
+
+  @override
+  void initState() { 
+    super.initState();
+    gradeLevel = widget.gradeLevel;
+  }
   @override
   Widget build(BuildContext context) {
+    if(gradeLevel == 2){
+    topic = 'assets/questions/Magagalang_na_Salita.json';
+    }
+    else{
+    topic = 'assets/questions/Kasarian_ning_palagyu.json';
+    }
     return Scaffold(
       appBar: AppBar(title: Text("Topic")),
       backgroundColor:Color(0xFFF4F3E3),
@@ -70,18 +95,72 @@ class _TopicTwoState extends State<TopicTwo> {
 
 class TopicThree extends StatefulWidget {
   final String? uid;
-  const TopicThree({ Key? key, required this.uid }) : super(key: key);
+  final int gradeLevel;
+  const TopicThree({ Key? key, required this.uid, required this.gradeLevel }) : super(key: key);
 
   @override
   _TopicThreeState createState() => _TopicThreeState();
 }
 
 class _TopicThreeState extends State<TopicThree> {
-  String topic = 'assets/questions/Kakatni_Makikatni.json';
+  String topic = '';
   
-  int gradeLevel = 2;
+  int gradeLevel = 0;
+  
+
+  @override
+  void initState() { 
+    super.initState();
+    gradeLevel = widget.gradeLevel;
+  }
   @override
   Widget build(BuildContext context) {
+    if(gradeLevel == 2){
+    topic = 'assets/questions/Kakatni_Makikatni.json';
+    }
+    else{
+    topic = 'assets/questions/Panghalip_AkuIyaIka.json';
+    }
+    return Scaffold(
+      appBar: AppBar(title: Text("Topic")),
+      backgroundColor:Color(0xFFF4F3E3),
+      body: Container(
+        child: Responsive(
+          desktop: Container(),
+          tablet: Container(),
+          mobile: MultipleBody(uid: widget.uid, topic: topic)
+        )
+      )
+    );
+  }
+}
+
+class TopicFour extends StatefulWidget {
+  final String? uid;
+  final int gradeLevel;
+  const TopicFour({ Key? key, required this.uid, required this.gradeLevel }) : super(key: key);
+
+  @override
+  _TopicFourState createState() => _TopicFourState();
+}
+
+class _TopicFourState extends State<TopicFour> {
+
+String topic = '';
+int gradeLevel = 0;
+  @override
+  void initState() { 
+    super.initState();
+    gradeLevel = widget.gradeLevel;
+  }
+  @override
+  Widget build(BuildContext context) {
+    if(gradeLevel == 2){
+    topic = 'assets/questions/Pagpapantig.json';
+    }
+    else{
+    topic = 'assets/questions/Salitang_Papakit_Galo.json';
+    }
     return Scaffold(
       appBar: AppBar(title: Text("Topic")),
       backgroundColor:Color(0xFFF4F3E3),
@@ -134,7 +213,7 @@ class _MultipleBodyState extends State<MultipleBody> {
   Future<void> updateUser() {
   return users
     .doc('${widget.uid}')
-    .update({'points': '$finalScore'})
+    .update({'points': '$score'})
     .then((value) => print("User Updated"))
     .catchError((error) => print("Failed to update user: $error"));
 }
@@ -390,7 +469,7 @@ setState(() {
 
                           index -= 1;
                           correct(answer);
-                          finalScore += score;
+                          score += finalScore;
                           updateUser();
                           print(index);
                           Navigator.pushReplacement(

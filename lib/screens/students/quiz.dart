@@ -1,6 +1,7 @@
 
 import 'dart:html';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mamyalung/screens/students/multiplechoice.dart';
 
@@ -16,6 +17,28 @@ class QuizCard extends StatefulWidget {
 }
 
 class _QuizCardState extends State<QuizCard> {
+
+  int gradeLevel = 0;
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+  void read(){
+    FirebaseFirestore.instance
+    .collection('users')
+    .where('uid',isEqualTo: widget.uid)
+    .get()
+    .then((QuerySnapshot querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+      setState(() {
+        gradeLevel = int.parse(doc['grade_level']);
+      });
+    });
+  });
+
+  }
+  @override
+  void initState() { 
+    super.initState();
+    read();
+  }
   @override
   Widget build(BuildContext context) {
     
@@ -34,7 +57,7 @@ class _QuizCardState extends State<QuizCard> {
         onTap: (){
         Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => TopicOne(uid:widget.uid)),);
+        MaterialPageRoute(builder: (context) => TopicOne(uid:widget.uid, gradeLevel: gradeLevel)),);
         },
         child: Container(
           margin: EdgeInsets.only(left:30,right: 30,top:10,bottom:20),
@@ -61,7 +84,7 @@ class _QuizCardState extends State<QuizCard> {
         onTap: (){
            Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => TopicTwo(uid: widget.uid),
+          builder: (context) => TopicTwo(uid: widget.uid,gradeLevel :gradeLevel),
         ),
       );
         },
@@ -90,7 +113,7 @@ class _QuizCardState extends State<QuizCard> {
         onTap: (){
           Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => TopicThree(uid: widget.uid),
+          builder: (context) => TopicThree(uid: widget.uid,gradeLevel :gradeLevel),
         ),
       );
         },
@@ -116,7 +139,11 @@ class _QuizCardState extends State<QuizCard> {
         )),
         GestureDetector(
         onTap: (){
-          print("Badges");
+          Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => TopicFour(uid: widget.uid,gradeLevel :gradeLevel),
+        ),
+      );
         },
         child:Container(
           margin: EdgeInsets.only(left:30,right: 30,top:10,bottom:20),
