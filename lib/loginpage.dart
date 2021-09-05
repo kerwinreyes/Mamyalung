@@ -148,16 +148,18 @@ class _LoginPageState extends State<LoginPage> {
           // ),
           Container(
             //constraints: BoxConstraints.expand(),
+            width: screenSizeW,
+            height: screenSizeH,
              decoration: BoxDecoration(
               image: DecorationImage(
-                 image: NetworkImage("https://i.ibb.co/0M3g5RQ/scenefinal.png"),
-                 fit: BoxFit.cover),
+                 image: screenSizeW <= 649 ? NetworkImage("https://i.ibb.co/pv1VtZV/Mobile-Login.png") : NetworkImage("https://i.ibb.co/0M3g5RQ/scenefinal.png"),
+                 fit: BoxFit.fill),
                 ),
           ),
               
           Scaffold(
+          resizeToAvoidBottomInset: true,
           backgroundColor: Colors.transparent,
-
           body: Center(
             child: Column(
               children: [ 
