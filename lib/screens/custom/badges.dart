@@ -65,7 +65,7 @@ Widget build(BuildContext context) {
                           buttonText: "Okay",
                           description: "",
                           path: 'https://i.ibb.co/jZXzvBk/little-Explorer.png',
-                          title: "Hey there!",
+                          title: "Little Explorer",
                           points: points,
                           min: 100,
                           max: 199,

@@ -136,7 +136,7 @@ class BadgeTap extends StatelessWidget {
           context: context,
           builder: (BuildContext context) => CustomDialog(
             title: title,
-            description: points >= min && points <= max ? "$falseMsg" : "$trueMsg",
+            description: points >= min && points <= max ? "$trueMsg" : "$falseMsg",
             buttonText: buttonText,
             path: path,
           ),
@@ -152,7 +152,7 @@ class BadgeTap extends StatelessWidget {
           context: context,
           builder: (BuildContext context) => CustomDialog(
             title: title,
-            description: points >= min && points <= max ? "$falseMsg" : "$trueMsg",
+            description: points >= min && points <= max ? "$trueMsg" : "$falseMsg",
             buttonText: buttonText,
             path: 'https://i.ibb.co/BtzTdHq/locked.png',
           ),
