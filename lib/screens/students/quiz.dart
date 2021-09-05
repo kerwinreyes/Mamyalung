@@ -19,6 +19,11 @@ class QuizCard extends StatefulWidget {
 class _QuizCardState extends State<QuizCard> {
 
   int gradeLevel = 0;
+  int isUnlocked1 = 0;
+  int isUnlocked2 = 0;
+  int isUnlocked3 = 0;
+  int isUnlocked4 = 0;
+
   CollectionReference users = FirebaseFirestore.instance.collection('users');
   void read(){
     FirebaseFirestore.instance
@@ -28,7 +33,11 @@ class _QuizCardState extends State<QuizCard> {
     .then((QuerySnapshot querySnapshot) {
         querySnapshot.docs.forEach((doc) {
       setState(() {
-        gradeLevel = int.parse(doc['grade_level']);
+        gradeLevel = doc['grade_level'];
+        isUnlocked1 = doc['isUnlocked1'];
+        isUnlocked2 = doc['isUnlocked2'];
+        isUnlocked3 = doc['isUnlocked3'];
+        isUnlocked4 = doc['isUnlocked4'];
       });
     });
   });
@@ -49,9 +58,7 @@ class _QuizCardState extends State<QuizCard> {
       padding: EdgeInsets.only(top: 25),
       children: [
         //Pagpapakilala
-        
-        
-        //FlashCards
+
         GestureDetector(
         
         onTap: (){
@@ -65,7 +72,7 @@ class _QuizCardState extends State<QuizCard> {
           height: 100.0,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage("https://i.ibb.co/kVT8hHn/Artboard-1flashcards.png"),
+              image: NetworkImage("https://i.ibb.co/yysdY1s/Pagpapakilala-g2.png"),
             fit: BoxFit.cover
             ),
             color: white,
@@ -82,11 +89,15 @@ class _QuizCardState extends State<QuizCard> {
         //Magagalang na Salita
         GestureDetector(
         onTap: (){
-           Navigator.of(context).pushReplacement(
+          if(isUnlocked2 == 1){
+             Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => TopicTwo(uid: widget.uid,gradeLevel :gradeLevel),
         ),
       );
+          }
+
+          
         },
         child: Container(
           margin: EdgeInsets.only(left:30,right: 30,top:10,bottom:20),
@@ -94,7 +105,8 @@ class _QuizCardState extends State<QuizCard> {
           height: 100.0,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage("https://i.ibb.co/NYYc3nQ/Artboard-1quiz.png"),
+              image: NetworkImage(gradeLevel == 2 && isUnlocked2 == 1 ? "https://i.ibb.co/GVDRRfZ/Pagtukoy1.png" :
+               gradeLevel == 3 && isUnlocked2 == 1 ? "https://i.ibb.co/SvpBVSk/kasarian.png" : "https://i.ibb.co/BtzTdHq/locked.png"),
               fit: BoxFit.cover
             ),
             color: white,
@@ -111,11 +123,17 @@ class _QuizCardState extends State<QuizCard> {
         //Kakatni
         GestureDetector(
         onTap: (){
-          Navigator.of(context).pushReplacement(
+          if(isUnlocked3 == 1){
+            Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => TopicThree(uid: widget.uid,gradeLevel :gradeLevel),
         ),
       );
+          }
+          else{
+             
+          }
+         
         },
         child: Container(
           margin: EdgeInsets.only(left:30,right: 30,top:10,bottom:20),
@@ -123,7 +141,8 @@ class _QuizCardState extends State<QuizCard> {
           height: 100.0,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage("https://i.ibb.co/4T5ZHRW/Artboard-1badges.png"),
+              image: NetworkImage(gradeLevel == 2 && isUnlocked3 == 1 ? "https://i.ibb.co/cQSCdbQ/kakatni.png" :
+               gradeLevel == 3 && isUnlocked3 == 1 ? "https://i.ibb.co/PzKZHd1/panghalip.png" : "https://i.ibb.co/BtzTdHq/locked.png"),
               fit: BoxFit.cover
             ),
             color: white,
@@ -139,11 +158,14 @@ class _QuizCardState extends State<QuizCard> {
         )),
         GestureDetector(
         onTap: (){
-          Navigator.of(context).pushReplacement(
+          if(isUnlocked4 == 1){
+            Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => TopicFour(uid: widget.uid,gradeLevel :gradeLevel),
         ),
       );
+          }
+          
         },
         child:Container(
           margin: EdgeInsets.only(left:30,right: 30,top:10,bottom:20),
@@ -151,7 +173,8 @@ class _QuizCardState extends State<QuizCard> {
           height: 100.0,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage("https://i.ibb.co/5MVZzPt/Artboard-1leaderboard.png"),
+              image: NetworkImage(gradeLevel == 2 && isUnlocked4 == 1 ? "https://i.ibb.co/2ddqmbw/pagpapantig.png" :
+               gradeLevel == 3 && isUnlocked4 == 1 ? "https://i.ibb.co/D9qd1Vt/papakitgalo.png" : "https://i.ibb.co/BtzTdHq/locked.png"),
               fit: BoxFit.cover
             ),
             color: white,

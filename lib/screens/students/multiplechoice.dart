@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mamyalung/responsive.dart';
+import 'package:mamyalung/screens/custom/badge_message.dart';
 import '../../materials.dart';
 import 'package:mamyalung/widgets/buttons.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-
 import 'homepage.dart';
 
 class TopicOne extends StatefulWidget {
@@ -22,8 +22,8 @@ class _TopicOneState extends State<TopicOne> {
 
   String topic = '';
   int gradeLevel = 0;
+  String isUnlocked = "isUnlocked2";
   
-
   @override
   void initState() { 
     super.initState();
@@ -39,13 +39,23 @@ class _TopicOneState extends State<TopicOne> {
     topic = 'assets/questions/Pagpapakilala_sa_Sarili_G3.json';
     }
     return Scaffold(
-      appBar: AppBar(title: Text("Topic")),
+      appBar: AppBar(title: Text("Topic"),
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back),
+        onPressed: (){
+          Navigator.pushReplacement(
+                            context,
+                            //MaterialPageRoute(builder: (context) => BadgeMsg(uid: widget.uid)),\
+                            MaterialPageRoute(builder: (context) => StudentHomePage(uid: widget.uid)),
+                        );
+        },
+      )),
       backgroundColor:Color(0xFFF4F3E3),
       body: Container(
         child: Responsive(
           desktop: Container(),
           tablet: Container(),
-          mobile: MultipleBody(uid: widget.uid, topic: topic)
+          mobile: MultipleBody(uid: widget.uid, topic: topic, unlock : isUnlocked)
         )
       )
     );
@@ -65,6 +75,7 @@ class _TopicTwoState extends State<TopicTwo> {
 
   String topic = '';
   int gradeLevel = 0;
+  String isUnlocked = "isUnlocked3";
 
   @override
   void initState() { 
@@ -86,7 +97,7 @@ class _TopicTwoState extends State<TopicTwo> {
         child: Responsive(
           desktop: Container(),
           tablet: Container(),
-          mobile: MultipleBody(uid: widget.uid, topic: topic)
+          mobile: MultipleBody(uid: widget.uid, topic: topic, unlock : isUnlocked)
         )
       )
     );
@@ -106,6 +117,7 @@ class _TopicThreeState extends State<TopicThree> {
   String topic = '';
   
   int gradeLevel = 0;
+  String isUnlocked = "isUnlocked4";
   
 
   @override
@@ -128,7 +140,7 @@ class _TopicThreeState extends State<TopicThree> {
         child: Responsive(
           desktop: Container(),
           tablet: Container(),
-          mobile: MultipleBody(uid: widget.uid, topic: topic)
+          mobile: MultipleBody(uid: widget.uid, topic: topic, unlock : isUnlocked)
         )
       )
     );
@@ -148,6 +160,7 @@ class _TopicFourState extends State<TopicFour> {
 
 String topic = '';
 int gradeLevel = 0;
+String isUnlocked = "isUnlocked4";
   @override
   void initState() { 
     super.initState();
@@ -168,7 +181,7 @@ int gradeLevel = 0;
         child: Responsive(
           desktop: Container(),
           tablet: Container(),
-          mobile: MultipleBody(uid: widget.uid, topic: topic)
+          mobile: MultipleBody(uid: widget.uid, topic: topic, unlock: isUnlocked)
         )
       )
     );
@@ -178,8 +191,9 @@ int gradeLevel = 0;
 class MultipleBody extends StatefulWidget {
   final String topic;
   final String? uid;
+  final String unlock;
   
-  const MultipleBody({ Key? key, required this.uid, required this.topic }) : super(key: key);
+  const MultipleBody({ Key? key, required this.uid, required this.topic, required this.unlock }) : super(key: key);
   
   @override
   _MultipleBodyState createState() => _MultipleBodyState();
@@ -189,6 +203,7 @@ class _MultipleBodyState extends State<MultipleBody> {
   int finalScore = 0;
   int index = 0;
   int score = 0;
+  int badgeCount = 0;
   String next = "Next";
   bool answer = false;
   bool isButtonPressed0 = false , isButtonPressed1 = false,isButtonPressed2 = false,isButtonPressed3 = false;
@@ -204,6 +219,7 @@ class _MultipleBodyState extends State<MultipleBody> {
         querySnapshot.docs.forEach((doc) {
       setState(() {
         score = int.parse(doc['points']);
+        badgeCount = doc['badge_count'];
       });
     });
   });
@@ -213,7 +229,7 @@ class _MultipleBodyState extends State<MultipleBody> {
   Future<void> updateUser() {
   return users
     .doc('${widget.uid}')
-    .update({'points': '$score'})
+    .update({'points': '$score', widget.unlock : 1})
     .then((value) => print("User Updated"))
     .catchError((error) => print("Failed to update user: $error"));
 }
@@ -273,7 +289,6 @@ setState(() {
    
  }
 
-  @override
   @override
   void initState() { 
     super.initState();
@@ -459,25 +474,35 @@ setState(() {
                      width: 100, 
                      text:"$next",
                      onTap: (){
-                       print(score);
                       if(isButtonPressed0 == false && isButtonPressed1 == false && isButtonPressed2 == false && isButtonPressed3 == false){
                         pressed();
                         return;
                       }
                       else if(next == "Submit"){
                           
-
                           index -= 1;
                           correct(answer);
                           score += finalScore;
                           updateUser();
-                          print(index);
                           Navigator.pushReplacement(
                             context,
-                            //MaterialPageRoute(builder: (context) => BadgeMsg(uid: widget.uid)),\
                             MaterialPageRoute(builder: (context) => StudentHomePage(uid: widget.uid)),
                         );
-                        return;
+                        if(badgeCount < 9){
+                          Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => 
+                          score >= 900 && badgeCount < 9 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/mBt51bF/littleexplorer.png'):
+                          score >= 800 && badgeCount < 8 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/mBt51bF/littleexplorer.png'):
+                          score >= 700 && badgeCount < 7 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/mBt51bF/littleexplorer.png'):
+                          score >= 600 && badgeCount < 6 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/mBt51bF/littleexplorer.png'):
+                          score >= 500 && badgeCount < 5 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/mBt51bF/littleexplorer.png'):
+                          score >= 400 && badgeCount < 4 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/mBt51bF/littleexplorer.png'):
+                          score >= 300 && badgeCount < 3 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/NxMDq9F/royalty.png'):
+                          score >= 200 && badgeCount < 2 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/8dt2T8m/shiningbright.png'):
+                          score >= 100 && badgeCount < 1 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/mBt51bF/littleexplorer.png'):
+                          StudentHomePage(uid: widget.uid)));
+                          return;
+                        }
                       }
                       correct(answer);
                       check(index, data.length);
