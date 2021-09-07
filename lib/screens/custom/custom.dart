@@ -113,7 +113,7 @@ Positioned(
 class BadgeTap extends StatelessWidget {
 
   final String title, description, buttonText,path, trueMsg, falseMsg;
-  final int points,min,max;
+  final int points,min;
   final bool lock;
   BadgeTap({
     required this.lock,
@@ -123,7 +123,6 @@ class BadgeTap extends StatelessWidget {
     required this.path,
     required this.points,
     required this.min,
-    required this.max,
     required this.trueMsg,
     required this.falseMsg,
   });
@@ -136,7 +135,7 @@ class BadgeTap extends StatelessWidget {
           context: context,
           builder: (BuildContext context) => CustomDialog(
             title: title,
-            description: points >= min && points <= max ? "$trueMsg" : "$falseMsg",
+            description: points >= min ? "$trueMsg" : "$falseMsg",
             buttonText: buttonText,
             path: path,
           ),
@@ -152,7 +151,7 @@ class BadgeTap extends StatelessWidget {
           context: context,
           builder: (BuildContext context) => CustomDialog(
             title: title,
-            description: points >= min && points <= max ? "$trueMsg" : "$falseMsg",
+            description: points >= min ? "$trueMsg" : "$falseMsg",
             buttonText: buttonText,
             path: 'https://i.ibb.co/BtzTdHq/locked.png',
           ),

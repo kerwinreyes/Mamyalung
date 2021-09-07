@@ -72,7 +72,9 @@ class _QuizCardState extends State<QuizCard> {
           height: 100.0,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage("https://i.ibb.co/yysdY1s/Pagpapakilala-g2.png"),
+              image: NetworkImage(gradeLevel == 2 && isUnlocked2 == 1 ? "https://i.ibb.co/yysdY1s/Pagpapakilala-g2.png" :
+               gradeLevel == 2 && isUnlocked2 == 0 ? "https://i.ibb.co/ftxGCFG/Pagtukoy-locked.png" : gradeLevel == 3 && isUnlocked2 == 1 ? "https://i.ibb.co/yysdY1s/Pagpapakilala-g2.png"
+                : gradeLevel == 3 && isUnlocked2 == 0 ? "https://i.ibb.co/2n6qW8X/kasarian-locked.png": "https://i.ibb.co/gghzqTq/mamyalung-logo.png"),
             fit: BoxFit.cover
             ),
             color: white,
@@ -106,7 +108,8 @@ class _QuizCardState extends State<QuizCard> {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: NetworkImage(gradeLevel == 2 && isUnlocked2 == 1 ? "https://i.ibb.co/GVDRRfZ/Pagtukoy1.png" :
-               gradeLevel == 3 && isUnlocked2 == 1 ? "https://i.ibb.co/SvpBVSk/kasarian.png" : "https://i.ibb.co/BtzTdHq/locked.png"),
+               gradeLevel == 2 && isUnlocked2 == 0 ? "https://i.ibb.co/ftxGCFG/Pagtukoy-locked.png" : gradeLevel == 3 && isUnlocked2 == 1 ? "https://i.ibb.co/SvpBVSk/kasarian.png"
+                : gradeLevel == 3 && isUnlocked2 == 0 ? "https://i.ibb.co/2n6qW8X/kasarian-locked.png": "https://i.ibb.co/gghzqTq/mamyalung-logo.png"),
               fit: BoxFit.cover
             ),
             color: white,
@@ -142,7 +145,8 @@ class _QuizCardState extends State<QuizCard> {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: NetworkImage(gradeLevel == 2 && isUnlocked3 == 1 ? "https://i.ibb.co/cQSCdbQ/kakatni.png" :
-               gradeLevel == 3 && isUnlocked3 == 1 ? "https://i.ibb.co/PzKZHd1/panghalip.png" : "https://i.ibb.co/BtzTdHq/locked.png"),
+               gradeLevel == 2 && isUnlocked3 == 0 ? "https://i.ibb.co/nwf99Dw/kakatni-locked.png" : gradeLevel == 3 && isUnlocked3 == 1 ? "https://i.ibb.co/PzKZHd1/panghalip.png"
+               : gradeLevel == 3 && isUnlocked3 == 0 ? "https://i.ibb.co/rxmg8jh/panghalip-locked.png": "https://i.ibb.co/gghzqTq/mamyalung-logo.png"),
               fit: BoxFit.cover
             ),
             color: white,
@@ -174,7 +178,8 @@ class _QuizCardState extends State<QuizCard> {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: NetworkImage(gradeLevel == 2 && isUnlocked4 == 1 ? "https://i.ibb.co/2ddqmbw/pagpapantig.png" :
-               gradeLevel == 3 && isUnlocked4 == 1 ? "https://i.ibb.co/D9qd1Vt/papakitgalo.png" : "https://i.ibb.co/BtzTdHq/locked.png"),
+               gradeLevel == 2 && isUnlocked4 == 0 ? "https://i.ibb.co/DRpDzhV/pagpapantig-locked.png" :gradeLevel == 3 && isUnlocked4 == 1 ? "https://i.ibb.co/D9qd1Vt/papakitgalo.png"
+                : gradeLevel == 3 && isUnlocked4 == 0 ? "https://i.ibb.co/02GVH7r/papakitgalo-locked.png": "https://i.ibb.co/gghzqTq/mamyalung-logo.png"),
               fit: BoxFit.cover
             ),
             color: white,
