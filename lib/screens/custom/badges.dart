@@ -45,8 +45,10 @@ class _BadgesState extends State<Badges> {
    @override
 Widget build(BuildContext context) {
   
-  return Container(
-          child: ListView(
+  return Scaffold(
+    backgroundColor: powderblue.withOpacity(0.5),
+      
+          body: ListView(
           children: <Widget>[
             Container(
               //color: primaryBlue,

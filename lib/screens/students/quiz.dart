@@ -55,7 +55,7 @@ class _QuizCardState extends State<QuizCard> {
       child: GridView.count(
       
       crossAxisCount: 2,
-      padding: EdgeInsets.only(top: 25),
+      padding: EdgeInsets.only(top: 30),
       children: [
         //Pagpapakilala
 
@@ -136,7 +136,7 @@ class _QuizCardState extends State<QuizCard> {
          
         },
         child: Container(
-          margin: EdgeInsets.only(left:30,right: 30,top:10,bottom:20),
+          margin: EdgeInsets.only(left:30,right: 30,top:20,bottom:20),
           width: double.infinity,
           height: 100.0,
           decoration: BoxDecoration(
@@ -168,7 +168,7 @@ class _QuizCardState extends State<QuizCard> {
           
         },
         child:Container(
-          margin: EdgeInsets.only(left:30,right: 30,top:10,bottom:20),
+          margin: EdgeInsets.only(left:30,right: 30,top:20,bottom:20),
           width: double.infinity,
           height: 100.0,
           decoration: BoxDecoration(

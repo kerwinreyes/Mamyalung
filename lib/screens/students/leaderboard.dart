@@ -80,7 +80,7 @@ Widget _buildRow(String name, var score) {
             Text(name),
             Spacer(),
             Container(
-              decoration: BoxDecoration(color: Colors.yellow[900], borderRadius: BorderRadius.circular(20)),
+              decoration: BoxDecoration(color: Colors.yellow[900], borderRadius: BorderRadius.circular(10)),
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
               child: Text('$score'),
             ),

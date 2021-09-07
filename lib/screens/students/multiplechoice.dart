@@ -40,6 +40,7 @@ class _TopicOneState extends State<TopicOne> {
     }
     return Scaffold(
       appBar: AppBar(title: Text("Topic"),
+      backgroundColor: lightBlue,
       leading: IconButton(
         icon: Icon(Icons.arrow_back),
         onPressed: (){
@@ -49,8 +50,9 @@ class _TopicOneState extends State<TopicOne> {
                             MaterialPageRoute(builder: (context) => StudentHomePage(uid: widget.uid)),
                         );
         },
-      )),
-      backgroundColor:Color(0xFFF4F3E3),
+      ),
+      ),
+      backgroundColor: powderblue.withOpacity(0.5),
       body: Container(
         child: Responsive(
           desktop: Container(),
@@ -91,8 +93,9 @@ class _TopicTwoState extends State<TopicTwo> {
     topic = 'assets/questions/Kasarian_ning_palagyu.json';
     }
     return Scaffold(
-      appBar: AppBar(title: Text("Topic")),
-      backgroundColor:Color(0xFFF4F3E3),
+      appBar: AppBar(title: Text("Topic"), 
+      backgroundColor: lightBlue,),
+      backgroundColor: powderblue.withOpacity(0.5),
       body: Container(
         child: Responsive(
           desktop: Container(),
@@ -134,8 +137,9 @@ class _TopicThreeState extends State<TopicThree> {
     topic = 'assets/questions/Panghalip_AkuIyaIka.json';
     }
     return Scaffold(
-      appBar: AppBar(title: Text("Topic")),
-      backgroundColor:Color(0xFFF4F3E3),
+      appBar: AppBar(title: Text("Topic"),
+      backgroundColor: lightBlue,),
+      backgroundColor: powderblue.withOpacity(0.5),
       body: Container(
         child: Responsive(
           desktop: Container(),
@@ -175,8 +179,9 @@ String isUnlocked = "isUnlocked4";
     topic = 'assets/questions/Salitang_Papakit_Galo.json';
     }
     return Scaffold(
-      appBar: AppBar(title: Text("Topic")),
-      backgroundColor:Color(0xFFF4F3E3),
+      appBar: AppBar(title: Text("Topic"),
+      backgroundColor: lightBlue,),
+      backgroundColor: powderblue.withOpacity(0.5),
       body: Container(
         child: Responsive(
           desktop: Container(),
@@ -366,15 +371,15 @@ setState(() {
 
               Padding(padding: EdgeInsets.only(top: 30)),
                       
-              Row(
+              Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                    
                 button(first: isButtonPressed0 ? green : lightBlue, 
                      second: isButtonPressed0 ? green : primaryBlue, 
                      size: 15, 
-                     height: 60, 
-                     width: 100, 
+                     height: 50, 
+                     width: MediaQuery.of(context).size.width/1.5, 
                      text:"${data[index]['multiple_choice'][0]}",
                      onTap: (){
                        
@@ -390,12 +395,12 @@ setState(() {
                        
                      }
                     ),
-                 
+                 SizedBox(height: 10),
                 button(first: isButtonPressed1 ? green : lightBlue, 
                      second: isButtonPressed1 ? green : primaryBlue, 
                      size: 15, 
-                     height: 60, 
-                     width: 100, 
+                     width: MediaQuery.of(context).size.width/1.5,
+                     height: 50, 
                      text:"${data[index]['multiple_choice'][1]}",
                      onTap: (){
                        setState(() {
@@ -414,17 +419,17 @@ setState(() {
               ),
               
               
-              Padding(padding: EdgeInsets.only(top: 30)),
+              
                       
-              Row(
+              Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                   
+                SizedBox(height: 10),
                  button(first: isButtonPressed2 ? green : lightBlue, 
                      second: isButtonPressed2 ? green : primaryBlue, 
                      size: 15, 
-                     height: 60, 
-                     width: 100, 
+                     width: MediaQuery.of(context).size.width/1.5,
+                     height: 50,
                      text:"${data[index]['multiple_choice'][2]}",
                      onTap: (){
                        setState(() {
@@ -440,12 +445,12 @@ setState(() {
                      }
                     ),
 
-
+                SizedBox(height: 10),
                button(first: isButtonPressed3 ? green : lightBlue, 
                      second: isButtonPressed3 ? green : primaryBlue, 
                      size: 15, 
-                     height: 60, 
-                     width: 100, 
+                     width: MediaQuery.of(context).size.width/1.5,
+                     height: 50, 
                      text:"${data[index]['multiple_choice'][3]}",
                      onTap: (){
                        setState(() {
@@ -462,16 +467,16 @@ setState(() {
                 ],
               ),
 
-              Padding(padding: EdgeInsets.only(top: 30,)),
+              Padding(padding: EdgeInsets.only(top: 50,)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                   
+                SizedBox(height: 10),
                 button(first: lightBlue, 
                      second: primaryBlue, 
                      size: 15, 
-                     height: 60, 
-                     width: 100, 
+                     width: MediaQuery.of(context).size.width/1.5,
+                     height: 50, 
                      text:"$next",
                      onTap: (){
                       if(isButtonPressed0 == false && isButtonPressed1 == false && isButtonPressed2 == false && isButtonPressed3 == false){
