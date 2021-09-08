@@ -6,7 +6,7 @@
         "multiple_choice": [
         "mestru",
         "bagong taon"],
-        "answer": 2},
+        "answer": 1},
 
         {
         "level" : 1,
@@ -14,9 +14,7 @@
         "topic" : "Kasarian ning Palagyu",
         "multiple_choice": [
         "ima",
-        "panadero",
-        "tatang",
-        "apu"],
+        "panadero"],
         "answer": 1},
         
         {
@@ -35,7 +33,7 @@
         "multiple_choice": [
         "panghayop",
         "parewu"],
-        "answer": 2},
+        "answer": 0},
 
         {
         "level" : 1,
@@ -53,7 +51,7 @@
         "multiple_choice": [
         "atsi",
         "Pampanga"],
-        "answer": 1},
+        "answer": 0},
         
         {
         "level" : 1,
@@ -108,8 +106,7 @@
         "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
         "multiple_choice": [
         "aku",
-        "iya",
-        "none of the above"],
+        "iya"],
         "answer": 1},
 
         {
@@ -126,9 +123,9 @@
         "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Atin kinatuk, ___ ing tatang ku.",
         "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
         "multiple_choice": [
-        "ika",
+        "iya",
         "aku"],
-        "answer": 1},
+        "answer": 0},
         
 
         {
@@ -169,7 +166,7 @@
         "multiple_choice": [
         "manalbe",
         "susulapo"],
-        "answer": 1},
+        "answer": 0},
         
         {
         "level" : 1,

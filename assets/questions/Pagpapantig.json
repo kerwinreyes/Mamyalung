@@ -38,7 +38,7 @@
 
         {
         "questionID" : 34,
-        "question": "Alin sa mga sumusunod na salita ang hindi tatlo ang pantig?",
+        "question": "Alin sa mga sumusunod na salita ang tatlo ang pantig?",
         "grade_level" : 2,
         "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
@@ -54,7 +54,7 @@
         "grade_level" : 2,
         "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
-        "aginaldu",
+        "malagu",
         "salol",
         "pitaka",
         "masanting"],
@@ -70,7 +70,7 @@
         "maganaka",
         "aksidenti",
         "kaluguran"],
-        "answer": 1},
+        "answer": 0},
 
         {
         "questionID" : 37,
