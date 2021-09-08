@@ -14,7 +14,10 @@ import 'package:mamyalung/utils/fire_auth.dart';
 import 'package:mamyalung/utils/validator.dart';
 import 'package:mamyalung/responsive.dart';
 
+import 'components/routes.dart';
+
 class LoginPage extends StatefulWidget {
+  static const String routeName = '/login';
   LoginPage({Key? key}) : super(key: key);
 
   @override
@@ -285,13 +288,7 @@ class _LoginPageState extends State<LoginPage> {
                                       Expanded(
                                         child: SizedBox( height: 35.0,
                                         child: ElevatedButton(
-                                          onPressed: (){
-                                            Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                builder:(context) =>
-                                                  RegisterPage() ),
-                                            );
-                                          },
+                                          onPressed: ()=> Navigator.pushReplacementNamed(context, Routes.registerPage),
                                           style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0))),
                                           child: Text(
                                             'Register',
@@ -437,13 +434,7 @@ class _LoginPageState extends State<LoginPage> {
                                       Expanded(
                                         child: SizedBox( height: 35.0,
                                         child: ElevatedButton(
-                                          onPressed: (){
-                                            Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                builder:(context) =>
-                                                  RegisterPage() ),
-                                            );
-                                          },
+                                          onPressed: ()=> Navigator.pushReplacementNamed(context, Routes.registerPage),
                                           style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0))),
                                           child: Text(
                                             'Register',
@@ -591,13 +582,7 @@ class _LoginPageState extends State<LoginPage> {
                                       Expanded(
                                         child: SizedBox( height: 35.0,
                                         child: ElevatedButton(
-                                          onPressed: (){
-                                            Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                builder:(context) =>
-                                                  RegisterPage() ),
-                                            );
-                                          },
+                                          onPressed: ()=> Navigator.pushReplacementNamed(context, Routes.registerPage),
                                           style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0))),
                                           child: Text(
                                             'Register',
