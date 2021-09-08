@@ -135,16 +135,16 @@ class _AddState extends State<Add> {
   final _email = TextEditingController();
   final _token = TextEditingController();
   
+  String dropdownvalue = 'Student';
+  int _gradeLevel = 2;
+  var items =  ['Student','Teacher'];
+  var grade_levels = ['Grade 1','Grade 2','Grade 3'];
   final _focusFname = FocusNode();
   final _focusLname = FocusNode();
   final _focusEmail = FocusNode();
   final _focusPass = FocusNode();
   final _focusToken = FocusNode();
   bool _success= true;
-  String dropdownvalue = 'Student';
-  int _gradeLevel = 2;
-  var items =  ['Student','Teacher'];
-  var grade_levels = ['Grade 1','Grade 2','Grade 3'];
   var _flashcards=[];
   Future<void> readJson() async {
     final String response = await rootBundle.loadString('assets/questions/10questions_grade2FC.json');

@@ -10,6 +10,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mamyalung/screens/profile.dart';
+import 'package:mamyalung/screens/register.dart';
 import 'package:mamyalung/screens/students/homepage.dart';
 import 'package:mamyalung/services/usermanagement.dart';
 import 'package:mamyalung/utils/finalAuth.dart';
@@ -44,6 +45,8 @@ class MyApp extends StatelessWidget {
         Routes.adminprofile: (context) => AdminProfile(),
         Routes.addUser: (context) => AddUser(),
         Routes.studentHomePage: (context) => StudentHomePage(),
+        Routes.registerPage: (context) => RegisterPage(),
+        Routes.loginPage:(context) => LoginPage(),
   
       },
       

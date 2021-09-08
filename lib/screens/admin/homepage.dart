@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
@@ -61,7 +63,62 @@ Widget _createHeader() {
       currentIndex = index;
     });
   }
-  
+  String genID(){
+    List<String> id = [];
+    FirebaseFirestore.instance
+  .collection('flashcards')
+  .get()
+  .then((QuerySnapshot querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+            id.add(doc['id']);
+        });
+    });
+    final len = 20;
+    final lowercase='abcdefghijklmnopqrstuvxyz';
+    final uppercase='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    final numbers='0123456789';
+    String chars='';
+    chars += '$uppercase$lowercase';
+    chars+='$numbers';
+    return List.generate(len, (index){
+      final indexRandom = Random.secure().nextInt(chars.length);
+      return chars[indexRandom];
+    }).join('');
+
+  }
+  CollectionReference flashcards = FirebaseFirestore.instance.collection('questions');
+
+
+  Future<void> getData() async {
+    // Get docs from collection reference
+    
+}
+    Future<void> _addflashcard(String a, List b, int c, int l, int v, String t) async {
+    List id=[];
+      // Call the user's CollectionReference to add a new user
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+    .collection('questions')
+    .get();
+
+    // Get data from docs and convert map to List
+    setState(() {
+    id = querySnapshot.docs.map((doc) => doc['questionID']).toList();
+      
+    });
+    
+    return flashcards
+    .doc('$l')
+    .set({
+      "question": a,
+        "multiple_choice": b,
+        "answer": c,
+        "questionID": l,
+        "grade_level":v,
+        "topic": t,
+    })
+    .then((value) => print("Questions Added"))
+    .catchError((error) => print("Failed to add user: $error"));
+    }
   @override
   Widget build(BuildContext context) {
     
@@ -134,7 +191,735 @@ Widget _createHeader() {
                         size:12.0, height:40.0, width:100.0, text:'Add Users',
                         onTap: () =>
                     Navigator.pushReplacementNamed(context, Routes.addUser)),
-          ListTileUsers(),
+          ElevatedButton(
+            onPressed: (){
+              List lists = [
+         {
+        "questionID" : 11,
+        "question": "Ano ang ibig sabihin ng 'Mayap a ugtu pu' sa tagalog?",
+        "grade_level" : 2,
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Magandang Umaga po",
+        "Magandang Hapon po",
+        "Magandang Gabi po",
+        "Magandang Tanghali po"],
+        "answer": 3},
+
+        {
+        "questionID" : 12,
+        "question": "Ano sa Kapampangan ang 'Tuluy po kayo'?",
+        "grade_level" : 2,
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Pakiabut po",
+        "Makilabas ku pu",
+        "Malawus kayu pu",
+        "Pasensya na pu"],
+        "answer": 2},
+
+        {
+        "questionID" : 13,
+        "question": "Ano sa Kapampangan ang 'Magandang hapon po'?",
+        "grade_level" : 2,
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Alang nanu man pu",
+        "Pasensya na pu",
+        "Malawus kayu pu",
+        "Mayap a gatpanapun pu"],
+        "answer": 3},
+
+        {
+        "questionID" : 14,
+        "question": "Ano ang Kapampangan ng 'Maligayang Bagong Taon'?",
+        "grade_level" : 2,
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Masayang Bayung Banwa",
+        "Masayang aldo ning kebaytan",
+        "Masayang aldo kekayu ngan",
+        "Mayap a bengi pu"],
+        "answer": 0},
+
+        {
+        "questionID" : 15,
+        "question": "Ano ang iyong sasabihin kapag may nagawa kang kasalanan?",
+        "grade_level" : 2,
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Komusta kayu pu",
+        "Pasensya na pu",
+        "Pakiabut pu",
+        "Alang nanu man pu"],
+        "answer": 1},
+
+        {
+        "questionID" : 16,
+        "question": "Alin ang hindi nagpapakita ng paggalang?",
+        "grade_level" : 2,
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Komusta kayu pu",
+        "Salamat pu",
+        "Makilabas ku pu",
+        "Lumayas na ka"],
+        "answer": 3},
+
+        {
+        "questionID" : 17,
+        "question": "Alin ang hindi nagpapakita ng paggalang?",
+        "grade_level" : 2,
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Po/Opu",
+        "Salamat",
+        "Alang nanu man pu",
+        "Pasensya na pu"],
+        "answer": 1},
+
+        {
+        "questionID" : 18,
+        "question": "Alin ang hindi nagpapakita ng paggalang?",
+        "grade_level" : 2,
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Pakiabut pu",
+        "Mayap a bengi pu",
+        "Pasensya",
+        "Makilabas ku pu"],
+        "answer": 2},
+
+        {
+        "questionID" : 19,
+        "question": "Ano sa Kapampangan ang Happy Birthday?",
+        "grade_level" : 2,
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Mayap a bengi pu",
+        "Masayang bayung banwa pu",
+        "Makilabas ku pu",
+        "Masayang aldo ning kebaytan pu"],
+        "answer": 3},
+
+        {
+        "questionID" : 20,
+        "question": "Ano sa Kapampangan ang Paki abot po?",
+        "grade_level" : 2,
+        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "multiple_choice": [
+        "Pakiabut pu",
+        "Salamat pu",
+        "Makilabas ku pu",
+        "Masayang aldo ning kebaytan pu"],
+        "answer": 0},
+     {
+        "questionID" : 21,
+        "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'a' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "asbuk",
+        "anam",
+        "apulu",
+        "apple"],
+        "answer": 3},
+
+        {
+        "questionID" : 22,
+        "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'e' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "embudu",
+        "ebun",
+        "egg",
+        "elepanti"],
+        "answer": 2},
+
+        {
+        "questionID" : 23,
+        "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'i' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "inuman",
+        "itlog",
+        "ipan",
+        "ima"],
+        "answer": 1},
+
+        {
+        "questionID" : 24,
+        "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'o' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "okra",
+        "osu",
+        "ospital",
+        "open"],
+        "answer": 3},
+
+        {
+        "questionID" : 25,
+        "question": "Alin sa mga sumusunod na kakatni na naguumpisa 'u' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "ulunan",
+        "uran",
+        "usok",
+        "ulas"],
+        "answer": 2},
+
+        {
+        "questionID" : 26,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'g' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "gamat",
+        "gabun",
+        "gamit",
+        "gule"],
+        "answer": 2},
+
+        {
+        "questionID" : 27,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'm' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "matsing",
+        "malagu",
+        "manuk",
+        "maganda"],
+        "answer": 3},
+
+        {
+        "questionID" : 28,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'p' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "paro",
+        "panulu",
+        "patawad",
+        "pesus"],
+        "answer": 2},
+
+        {
+        "questionID" : 29,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 's' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "salol",
+        "sampaga",
+        "salu",
+        "saronggola"],
+        "answer": 3},
+
+        {
+        "questionID" : 30,
+        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'd' ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "dikut",
+        "dagis",
+        "danum",
+        "dugo"],
+        "answer": 1},{
+        "questionID" : 31,
+        "question": "Alin sa mga sumusunod na salita ang hindi dalawa ang pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "asbuk",
+        "anam",
+        "apulu",
+        "relo"],
+        "answer": 2},
+
+        {
+        "questionID" : 32,
+        "question": "Alin sa mga sumusunod na salita ang hindi dalawa ang pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "embudu",
+        "uran",
+        "ebun",
+        "bitis"],
+        "answer": 0},
+
+        {
+        "questionID" : 33,
+        "question": "Alin sa mga sumusunod na salita ang hindi tatlo ang pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "inuman",
+        "ebun",
+        "mandilu",
+        "apunan"],
+        "answer": 1},
+
+        {
+        "questionID" : 34,
+        "question": "Alin sa mga sumusunod na salita ang hindi tatlo ang pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "okra",
+        "gabun",
+        "danum",
+        "malagu"],
+        "answer": 3},
+
+        {
+        "questionID" : 35,
+        "question": "Alin sa mga sumusunod na salita ang hindi tatlo ang pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "aginaldu",
+        "salol",
+        "pitaka",
+        "masanting"],
+        "answer": 1},
+
+        {
+        "questionID" : 36,
+        "question": "Alin sa mga sumusunod na salita ang hindi apat ang pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "gamat",
+        "maganaka",
+        "aksidenti",
+        "kaluguran"],
+        "answer": 1},
+
+        {
+        "questionID" : 37,
+        "question": "Alin sa mga sumusunod na salita ang may apat na pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "tuturu",
+        "mananaman",
+        "manuk",
+        "lukluk"],
+        "answer": 1},
+
+        {
+        "questionID" : 38,
+        "question": "Alin sa mga sumusunod na salita ang may dalawang pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "abak",
+        "apulu",
+        "masanting",
+        "mandilu"],
+        "answer": 0},
+
+        {
+        "questionID" : 39,
+        "question": "Alin sa mga sumusunod na salita ang may tatlong pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "salol",
+        "manimu",
+        "salu",
+        "kawe"],
+        "answer": 1},
+
+        {
+        "questionID" : 40,
+        "question": "Alin sa mga sumusunod na salita ang may apat na pantig?",
+        "grade_level" : 2,
+        "topic" : "Kakatni at Makikatni",
+        "multiple_choice": [
+        "mamalantsa",
+        "dagis",
+        "mangadi",
+        "sulapo"],
+        "answer": 0},
+          {
+        "questionID" : 51,
+        "grade_level" : 3,
+        "question": "Alin sa mga sumusunod na salita ang hindi Kapampangan na kasarian?",
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "mestru",
+        "bagong taon",
+        "guro",
+        "apu"],
+        "answer": 2},
+
+        {
+        "questionID" : 52,
+        "question": "Alin sa mga sumusunod na kasarian ang hindi Panlalaking Kasarian?",
+        "grade_level" : 3,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "ima",
+        "bapa",
+        "koya",
+        "ingkung"],
+        "answer": 0},
+
+      
+        {
+        "questionID" : 53,
+        "question": "Alin sa mga sumusunod na kasarian ang hindi Kapampangan?",
+        "grade_level" : 3,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "ima",
+        "panadero",
+        "tatang",
+        "apu"],
+        "answer": 1},
+        
+        {
+        "questionID" : 54,
+        "question": "Alin sa mga sumusunod na kasarian ang hindi Kapampangan?",
+        "grade_level" : 2,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "talaturu",
+        "dentista",
+        "pisan",
+        "kaklase"],
+        "answer": 3},
+
+        {
+        "questionID" : 55,
+        "question": "Alin sa mga sumusunod na kasarian ang hindi Kapampangan?",
+        "grade_level" : 3,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "bag",
+        "tiya",
+        "tinape",
+        "pasku"],
+        "answer": 1},
+
+        {
+        "questionID" : 56,
+        "question": "Alin sa mga sumusunod na kasarian ang hindi Kapampangan?",
+        "grade_level" : 3,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "kaluguran",
+        "sundalu",
+        "ima",
+        "paper"],
+        "answer": 3},
+        
+        {
+        "questionID" : 57,
+        "question": "Alin ang hindi kabilang sa mga kasarian ng Pangalan?",
+        "grade_level" : 3,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "panlalaki",
+        "pambabai",
+        "panghayop",
+        "parewu"],
+        "answer": 2},
+
+        {
+        "questionID" : 58,
+        "question": "Alin sa mga sumusunod na Parehong Kasarian na ito ang hindi Kapampangan?",
+        "grade_level" : 3,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "guro",
+        "pulis",
+        "dentista",
+        "kaklasi"],
+        "answer": 0},
+
+        {
+        "questionID" : 59,
+        "question": "Alin sa mga sumusunod na kasarian ang kabilang sa Pambabaing Kasarian ",
+        "grade_level" : 3,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "tinape",
+        "atsi",
+        "Pampanga",
+        "ninung"],
+        "answer": 1
+        },
+        
+        {
+        "questionID" : 60,
+        "question": "Alin sa mga sumusunod na kasarian ang kabilang sa Panglalaking kasarian?",
+        "grade_level" : 3,
+        "topic" : "Kasarian ning Palagyu",
+        "multiple_choice": [
+        "mestra",
+        "lapis",
+        "kaluguran",
+        "bapa"],
+        "answer": 3},
+          {
+        "questionID" : 61,
+        "grade_level" : 3,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Munta ka keni, ___ ing kayabe kung mako.",
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 0},
+
+        {
+        "questionID" : 62,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Makatuknang ya i Darang Josie kening siping ming bale, ___ ing sasaup kekami.",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 2},
+
+      
+        {
+        "questionID" : 63,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: ___ ing utusan nang saling inuman kaya meko ku.",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 1},
+        
+        {
+        "questionID" : 64,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Atin kaming dintang a bisita, ___ ing dara ku.",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 2},
+
+        {
+        "questionID" : 65,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: ____ ing inawus na ning mestra kaya tinikdo ku.",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 1},
+
+        {
+        "questionID" : 66,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Pantunan na ka ning mestra, ____ kanu ing sagut.",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 0},
+        
+        {
+        "questionID" : 67,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Atin minaus kaku, ___ ing pisan ku.",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 2},
+
+        {
+        "questionID" : 68,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Alayu pa i Jessie, ____ ing talwing datang",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 2},
+
+        {
+        "questionID" : 69,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Atin kinatuk, ___ ing tatang ku.",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 2},
+        
+        {
+        "questionID" : 70,
+        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Minawus ya kaku i Ima, ___ kanu ing sali.",
+        "grade_level" : 3,
+        "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
+        "multiple_choice": [
+        "ika",
+        "aku",
+        "iya",
+        "none of the above"],
+        "answer": 1},
+        {
+        "questionID" : 71,
+        "grade_level" : 3,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "mamasa",
+        "mamipi",
+        "manalbe",
+        "mayap"],
+        "answer": 3},
+
+        {
+        "questionID" : 72,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
+        "grade_level" : 3,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "lumakad",
+        "sukle",
+        "manayi",
+        "mamulayi"],
+        "answer": 1},
+
+      
+        {
+        "questionID" : 73,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
+        "grade_level" : 3,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "mandilig",
+        "lukluk",
+        "manimu",
+        "basu"],
+        "answer": 3},
+        
+        {
+        "questionID" : 74,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
+        "grade_level" : 2,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "mamiblas",
+        "manyipilyu",
+        "mangan",
+        "kakawe"],
+        "answer": 3
+        },
+
+        {
+        "questionID" : 75,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos ng mga hayop?",
+        "grade_level" : 3,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "maglutu",
+        "mamulayi",
+        "susulapo",
+        "kukusad"],
+        "answer": 0},
+
+        {
+        "questionID" : 76,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos ng mga hayop?",
+        "grade_level" : 3,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "mamanik",
+        "luluksu",
+        "manalbe",
+        "susulapo"],
+        "answer": 2},
+        
+        {
+        "questionID" : 77,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa paaralan?",
+        "grade_level" : 3,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "susulat",
+        "matudtud",
+        "tuturu",
+        "makiramdam"],
+        "answer": 1},
+
+        {
+        "questionID" : 78,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
+        "grade_level" : 3,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "matudtud",
+        "mandilig",
+        "manimu",
+        "susulapo"],
+        "answer": 3},
+
+        {
+        "questionID" : 79,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
+        "grade_level" : 3,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "maglutu",
+        "mamalis",
+        "manigaral",
+        "mamiblas"],
+        "answer": 2},
+        
+        {
+        "questionID" : 80,
+        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa paaralan?",
+        "grade_level" : 3,
+        "topic" : "Salitang Papakit Galo o Kimut",
+        "multiple_choice": [
+        "mangadi",
+        "manigaral",
+        "manalbe",
+        "teterak"],
+        "answer": 2}
+    ];
+    
+
+              for(int i=0; i<=lists.length; i++){
+                print(lists[i]);
+              _addflashcard(lists[i]['question'],lists[i]['multiple_choice'],lists[i]['answer'],lists[i]['questionID'],lists[i]['grade_level'],lists[i]['topic']);
+              }
+            }, child:Text('add')),
 
         ],),
         tablet:  Padding(
