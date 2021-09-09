@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:mamyalung/materials.dart';
 
 class LeaderBoard extends StatefulWidget {
   const LeaderBoard({ Key? key }) : super(key: key);
@@ -33,18 +34,18 @@ class _LeaderBoardState extends State<LeaderBoard> {
         return Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage('https://i.ibb.co/TTfqqbc/leaderboards.png'),
+              image: NetworkImage('https://i.ibb.co/WWmXCWV/leaderboards.png'),
               fit: BoxFit.fill
             )
           ),
         child: Column(
           children: [
-            Padding(padding: EdgeInsets.fromLTRB(60, MediaQuery.of(context).size.height * .17, 60, 0),
+            Padding(padding: EdgeInsets.fromLTRB(60, MediaQuery.of(context).size.height * .20, 60, 0),
               child: Row(
                 children: [
-                  Text("Student Name"),
+                  Text("Student Name", style: TextStyle(fontFamily: 'Playfull', fontSize: 25)),
                   Spacer(),
-                  Text("Points")
+                  Text("Points", style: TextStyle(fontFamily: 'Playfull', fontSize: 25))
                 ],
               )
             ),
@@ -78,12 +79,22 @@ Widget _buildRow(String name, var score) {
           children: <Widget>[
             CircleAvatar(backgroundImage: NetworkImage('https://i.ibb.co/gghzqTq/mamyalung-logo.png')),
             SizedBox(width: 12),
-            Text(name),
+            Text(name, style: TextStyle(fontFamily: 'SundayMorning', fontSize: 20)),
             Spacer(),
             Container(
-              decoration: BoxDecoration(color: Colors.yellow[900], borderRadius: BorderRadius.circular(10)),
+              decoration: BoxDecoration(
+               // boxShadow: [
+               //   BoxShadow(
+               //   color: gray,
+                //  blurRadius: 30,
+               //   spreadRadius: 10,
+                //  offset: Offset(2,5)
+                //  ),
+               // ],
+                color: Color(0xFF8793B2), 
+                borderRadius: BorderRadius.circular(10)),
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-              child: Text('$score'),
+              child: Text('$score', style: TextStyle(fontFamily: 'Moon', fontSize: 15)),
             ),
           ],
         ),

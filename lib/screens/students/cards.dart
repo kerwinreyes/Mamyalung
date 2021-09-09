@@ -275,7 +275,9 @@ Future<void> updateUser() {
   @override
   Widget build(BuildContext context) {
     return format.format(now) == lastgame? 
-        Column(children: [
+        Scaffold(
+          backgroundColor:  powderblue.withOpacity(0.5),
+          body: Column(children: [
           Container(
             child:Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
             width: 250,
@@ -300,7 +302,7 @@ Future<void> updateUser() {
                       label: Text('Next')),
                 ],
               )
-        ],)
+        ],),)
         : Column( 
       children:[
         Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
