@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:mamyalung/materials.dart';
 import 'package:mamyalung/screens/custom/custom.dart';
 import 'package:mamyalung/screens/students/homepage.dart';
 
@@ -7,7 +8,8 @@ import 'package:mamyalung/screens/students/homepage.dart';
 class BadgeMsg extends StatefulWidget {
   final String? uid;
   final String path;
-  const BadgeMsg({ Key? key, required this.uid, required this.path}) : super(key: key);
+  final String badgename;
+  const BadgeMsg({ Key? key, required this.uid, required this.path, required this.badgename}) : super(key: key);
 
   @override
   _BadgeMsgState createState() => _BadgeMsgState();
@@ -52,7 +54,7 @@ class _BadgeMsgState extends State<BadgeMsg> {
       Stack(
         children: <Widget>[
           Container(
-            color: Colors.blue,
+            color: powderblue.withOpacity(0.5),
           ),
           Center(
             child: Column(
@@ -65,12 +67,12 @@ class _BadgeMsgState extends State<BadgeMsg> {
                   )
                 ),
                 Expanded(
-                  child: Text("Congrats! \n You just unlocked New Badge",textAlign: TextAlign.center,),
+                  child: Text("Congrats! \n You just unlocked a New Badge",textAlign: TextAlign.center,),
                 ),
                 GestureDetector(
                   child: Container(
                   padding: EdgeInsets.all(8.0),
-                  color: Colors.green,
+                  color: whitey,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,

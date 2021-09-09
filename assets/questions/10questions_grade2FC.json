@@ -31,7 +31,7 @@
     "choices": [
         "Malawus kayu pu",
         "Mayap a bengi"],
-    "answer" : 1,
+    "answer" : 0,
     "level": 0
     },
     {
@@ -48,7 +48,7 @@
     "choices": [
         "gas",
         "gamat"],
-    "answer" : 1,
+    "answer" : 0,
     "level": 0
     },
     
@@ -57,7 +57,7 @@
     "choices": [
         "itlog",
         "ima"],
-    "answer" : 1,
+    "answer" : 0,
     "level": 0
     },
     

@@ -50,6 +50,7 @@ Widget build(BuildContext context) {
       
           body: ListView(
           children: <Widget>[
+            SizedBox(height: MediaQuery.of(context).size.height*.15,),
             Container(
               //color: primaryBlue,
               child: DecoratedBox(
@@ -61,6 +62,19 @@ Widget build(BuildContext context) {
                   padding: EdgeInsets.all(32.0),
                   child: Row(
                     children: <Widget>[
+                      Expanded(
+                        child:  BadgeTap(
+                          lock: points >= 50 ? true : false,
+                          buttonText: "Okay",
+                          description: "",
+                          path: 'https://i.ibb.co/njf8Ndj/steady.png',
+                          title: "Slow and Steady",
+                          points: points,
+                          min: 50,
+                          trueMsg: "Remember, slow progress counts!",
+                          falseMsg: "Earn a minimum of 50 points to unlock!",
+                        ),
+                      ),
                       Expanded(
                         child:  BadgeTap(
                           lock: points >= 100 ? true : false,
@@ -76,28 +90,15 @@ Widget build(BuildContext context) {
                       ),
                       Expanded(
                         child:  BadgeTap(
-                          lock: points >= 200 ? true : false,
+                         lock: points >= 200 ? true : false,
                           buttonText: "Okay",
                           description: "",
-                          path: 'https://i.ibb.co/WH9rj7K/shinningbright.png',
-                          title: "Sample Title",
+                          path: 'https://i.ibb.co/TK6PsmV/fastlearner.png',
+                          title: "Fast Learner",
                           points: points,
                           min: 200,
-                          trueMsg: "Sample Message",
+                          trueMsg: "Zooooom! Fast like a Ninja!",
                           falseMsg: "Earn a minimum of 200 points to unlock!",
-                        ),
-                      ),
-                      Expanded(
-                        child:  BadgeTap(
-                         lock: points >= 300 ? true : false,
-                          buttonText: "Okay",
-                          description: "",
-                          path: 'https://i.ibb.co/4mt3K9c/royalty.png',
-                          title: "Sample Title",
-                          points: points,
-                          min: 300,
-                          trueMsg: "Sample Message",
-                          falseMsg: "Earn a minimum of 300 points to unlock!",
                         ),
                       )
                     ],
@@ -119,15 +120,15 @@ Widget build(BuildContext context) {
                     children: <Widget>[
                       Expanded(
                         child:  BadgeTap(
-                          lock: points >= 400 ? true : false,
+                          lock: points >= 250 ? true : false,
                           buttonText: "Okay",
                           description: "",
-                          path: 'https://i.ibb.co/jZXzvBk/little-Explorer.png',
-                          title: "Sample Title",
+                          path: 'https://i.ibb.co/kSTB0CN/on-fire.png',
+                          title: "On Fire",
                           points: points,
-                          min: 400,
-                          trueMsg: "Sample Message",
-                          falseMsg: "Earn a minimum of 400 points to unlock!",
+                          min: 250,
+                          trueMsg: "Raaaawr! Bring up the heat!",
+                          falseMsg: "Earn a minimum of 250 points to unlock!",
                         ),
                       ),
                       Expanded(
@@ -135,25 +136,25 @@ Widget build(BuildContext context) {
                          lock: points >= 500 ? true : false,
                           buttonText: "Okay",
                           description: "",
-                          path: 'https://i.ibb.co/jZXzvBk/little-Explorer.png',
-                          title: "Sample Title",
+                          path: 'https://i.ibb.co/8dt2T8m/shiningbright.png',
+                          title: "Shinning Bright",
                           points: points,
                           min: 500,
-                          trueMsg: "Sample Message",
+                          trueMsg: "Shine Light, Shine Bright!",
                           falseMsg: "Earn a minimum of 500 points to unlock!",
                         ),
                       ),
                       Expanded(
                         child:  BadgeTap(
-                         lock: points >= 600 ? true : false,
+                         lock: points >= 1000 ? true : false,
                           buttonText: "Okay",
                           description: "",
-                          path: 'https://i.ibb.co/jZXzvBk/little-Explorer.png',
-                          title: "Sample Title",
+                          path: 'https://i.ibb.co/4mt3K9c/royalty.png',
+                          title: "Royalty",
                           points: points,
-                          min: 600,
-                          trueMsg: "Sample Message",
-                          falseMsg: "Earn a minimum of 600 points to unlock!",
+                          min: 1000,
+                          trueMsg: "Chin up and don't let your crown fall!",
+                          falseMsg: "Earn a minimum of 1000 points to unlock!",
                         ),
                       )
                     ],
@@ -161,62 +162,7 @@ Widget build(BuildContext context) {
                 )
               ),
             ),
-            Container(
-              //color: primaryBlue,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-
-                  //borderRadius: BorderRadius.all(Radius.circular(10))
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(32.0),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child:  BadgeTap(
-                          lock: points >= 700 ? true : false,
-                          buttonText: "Okay",
-                          description: "",
-                          path: 'https://i.ibb.co/jZXzvBk/little-Explorer.png',
-                          title: "Sample Title",
-                          points: points,
-                          min: 700,
-                          trueMsg: "Sample Message",
-                          falseMsg: "Earn a minimum of 700 points to unlock!",
-                        ),
-                      ),
-                      Expanded(
-                        child:  BadgeTap(
-                          lock: points >= 800 ? true : false,
-                          buttonText: "Okay",
-                          description: "",
-                          path: 'https://i.ibb.co/jZXzvBk/little-Explorer.png',
-                          title: "Sample Title",
-                          points: points,
-                          min: 800,
-                          trueMsg: "Sample Message",
-                          falseMsg: "Earn a minimum of 800 points to unlock!",
-                        ),
-                      ),
-                      Expanded(
-                        child:  BadgeTap(
-                          lock: points >= 900 ? true : false,
-                          buttonText: "Okay",
-                          description: "",
-                          path: 'https://i.ibb.co/jZXzvBk/little-Explorer.png',
-                          title: "Sample Title",
-                          points: points,
-                          min: 900,
-                          trueMsg: "Sample Message",
-                          falseMsg: "Earn a minimum of 900 points to unlock!",
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ),
-            ),
+            
           ],
         ),
       );

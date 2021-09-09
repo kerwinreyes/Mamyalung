@@ -496,15 +496,12 @@ setState(() {
                         if(badgeCount < 9){
                           Navigator.push(context,
                           MaterialPageRoute(builder: (context) => 
-                          score >= 900 && badgeCount < 9 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/mBt51bF/littleexplorer.png'):
-                          score >= 800 && badgeCount < 8 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/mBt51bF/littleexplorer.png'):
-                          score >= 700 && badgeCount < 7 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/mBt51bF/littleexplorer.png'):
-                          score >= 600 && badgeCount < 6 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/mBt51bF/littleexplorer.png'):
-                          score >= 500 && badgeCount < 5 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/mBt51bF/littleexplorer.png'):
-                          score >= 400 && badgeCount < 4 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/mBt51bF/littleexplorer.png'):
-                          score >= 300 && badgeCount < 3 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/NxMDq9F/royalty.png'):
-                          score >= 200 && badgeCount < 2 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/8dt2T8m/shiningbright.png'):
-                          score >= 100 && badgeCount < 1 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/mBt51bF/littleexplorer.png'):
+                          score >= 1000 && badgeCount < 6 ? BadgeMsg(uid: widget.uid, path: 'https://i.ibb.co/4mt3K9c/royalty.png', badgename: "Royalty"):
+                          score >= 500 && badgeCount < 5 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/8dt2T8m/shiningbright.png', badgename: "Shining Bright"):
+                          score >= 250 && badgeCount < 4 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/kSTB0CN/on-fire.png', badgename: "On Fire"):
+                          score >= 200 && badgeCount < 3 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/TK6PsmV/fastlearner.png', badgename: "Fast Learner"):
+                          score >= 100 && badgeCount < 2 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/jZXzvBk/little-Explorer.png', badgename: "Little Explorer"):
+                          score >= 50 && badgeCount < 1 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/njf8Ndj/steady.png', badgename: "Slow and Steady"):
                           StudentHomePage(uid: widget.uid)));
                           return;
                         }
