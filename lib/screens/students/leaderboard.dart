@@ -51,6 +51,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
             Container(
               //padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * .1),
               child: ListView(
+                physics: AlwaysScrollableScrollPhysics(),
                 shrinkWrap: true,
                 children: snapshot.data!.docs.map((DocumentSnapshot document) {
                 Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
