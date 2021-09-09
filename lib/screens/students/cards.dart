@@ -79,6 +79,7 @@ class _QuizStateState extends State<QuizState> {
   var now = new DateTime.now();
   var format = new DateFormat('dd');  
   List<int> qis=[];
+  int grade_level=0;
   String lastgame='';
   int day=1;
   bool _Start = false;
@@ -125,6 +126,7 @@ List finaflashcards=[];
     .get()
     .then((QuerySnapshot querySnapshot) {
         querySnapshot.docs.forEach((doc) {
+          grade_level=doc['grade_level'];
           day = doc['day'];
           lastgame=doc['lastplayed_flashcard'];
           for(int i =0; i<doc['flashcards'].length; i++){
@@ -162,6 +164,7 @@ List finaflashcards=[];
   });
   FirebaseFirestore.instance
     .collection('questions')
+    .where('grade_level',isEqualTo: grade_level)
     .get()
     .then((QuerySnapshot queryQuestion){
       queryQuestion.docs.forEach((ques){

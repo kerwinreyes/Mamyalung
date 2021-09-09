@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -16,275 +18,33 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final _registerFormKey = GlobalKey<FormState>();
+  List image =[
+    "https://i.ibb.co/FwpghZ7/cheetah.png",
+    "https://i.ibb.co/ZRs4ddz/cat.png",
+    "https://i.ibb.co/VSWqTd3/bird.png",
+    "https://i.ibb.co/xgcfSBR/bear.png",
+    "https://i.ibb.co/3TB9HXg/Asset-11char.png",
+    "https://i.ibb.co/ZxWpJ7k/Asset-10char.png",
+    "https://i.ibb.co/v49Xd6Q/turtle.png",
+    "https://i.ibb.co/6DQYsxR/ninja.png",
+    "https://i.ibb.co/qD6QHVp/dino.png",
+    "https://i.ibb.co/sgJQPVw/dog.png",
 
+  ];
   final _nameTextController = TextEditingController();
   final _lnameTextController = TextEditingController();
   final _emailTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
   final _confirmpasswordController = TextEditingController();
     String dropdownvalue = 'Student';
-  int _gradeLevel = 2;
+  int _gradeLevel=2;
   var items =  ['Student','Teacher'];
   var grade_levels = ['Grade 1','Grade 2','Grade 3'];
-
+  Random random = new Random();
   //Flashcards list
   List _flashcards = [
-    {
-    "question": "Ano sa Kapampangan ang July?" ,
-    "choices": [
-        "Hunyu",
-        "Hulyu"],
-    "answer" : 1,
-    "level": 1
-    },
-
-    {
-    "question": "Ano ang Kapampangan ng birthday?" ,
-    "choices": [
-        "Kebaytan",
-        "Banwa"],
-    "answer" : 0,
-    "level": 1
-    },
-
-    {
-    "question": "Ano sa Kapampangan ang Tatay?" ,
-    "choices": [
-        "Tatang",
-        "Itay"],
-    "answer" : 0,
-    "level": 1
-    },
-
-    {
-    "question": "Ano sa Kapampangan ang 'Tuloy po kayo'?" ,
-    "choices": [
-        "Malawus kayu pu",
-        "Mayap a bengi"],
-    "answer" : 1,
-    "level": 1
-    },
-    {
-    "question": "Ano ang Kapampangan ng 'Maligayang Bagong Taon'?" ,
-    "choices": [
-        "Masayang aldo ning kebaytan",
-        "Masayang Bayung Banwa"],
-    "answer" : 1,
-    "level": 1
-    },
-
-    {
-    "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'g' ang hindi Kapampangan?" ,
-    "choices": [
-        "gas",
-        "gamat"],
-    "answer" : 1,
-    "level": 1
-    },
-    
-    {
-    "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'i' ang hindi Kapampangan?" ,
-    "choices": [
-        "itlog",
-        "ima"],
-    "answer" : 1,
-    "level": 1
-    },
-    
-    {
-    "question": "Alin ang hindi nagpapakita ng paggalang?" ,
-    "choices": [
-        "Makilabas ku pu",
-        "Pasensya"],
-    "answer" : 1,
-    "level": 1
-    },
-
-
-    {
-    "question": "Ano ang iyong sasabihin kapag may nagawa kang kasalanan?" ,
-    "choices": [
-        "Pasensya na pu",
-        "Mayap a bengi"],
-    "answer" : 0,
-    "level": 1
-    },
-
-    {
-    "level": 1,
-    "question": "Ano ang ibig sabihin ng 'Mayap a ugtu pu' sa tagalog?",
-    "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
-    "multiple_choice": [
-    "Magandang Gabi po",
-    "Magandang Tanghali po"],
-    "answer": 1}
-        
 ];
-List _otherflashcard = [
-        {
-        "level": 1,
-        "question": "Kung ang Kapampangan ng Tatang ay tatay, ano naman sa Kapampangan ang nanay?",
-        "choices": [
-        "Ima",
-        "Apu"],
-        "answer": 0},
-
-      
-        {
-        "level": 1,
-        "question": "Ano sa Kapampangan ang paaralan?",
-        "choices": [
-        "Paaralan",
-        "Iskwela"],
-        "answer": 1},
-        
-        {
-        "level": 1,
-        "question": "Ano ang ibig sabihin ng lagyu sa ingles?",
-        "choices": [
-        "address",
-        "name"],
-        "answer": 1},
-
-        {
-        "level": 1,
-        "question": "Alin sa mga sumusunod ang hindi Kapampangan na salita?",
-        "choices": [
-        "kebaytan",
-        "baitang"],
-        "answer": 1},
-
-        {
-        "level": 1,
-        "question": "Alin sa mga sumusunod ang hindi Kapampangan na salita?",
-        "choices": [
-        "ima",
-        "usok"],
-        "answer": 1},
-
-        {
-        "level": 1,
-        "question": "Alin sa mga Buwan na ito ang hindi Kapampangan?",
-        "choices": [
-        "oktubri",
-        "may"],
-        "answer": 1},
-        
-        {
-        "level": 1,
-        "question": "Ano sa tagalog ang 'Makatuknang ku king'?",
-        "choices": [
-        "Nakatira ako sa",
-        "Ako ay kabilang sa"],
-        "answer": 0},
-
-        {
-        "level": 1,
-        "question": "Ano sa Kapampangan ang 'Magandang hapon po'?",
-        "choices": [
-        "Mayap a ugtu pu",
-        "Mayap a gatpanapun pu"],
-        "answer": 1},
-
-        {
-        "level": 1,
-        "question": "Alin ang hindi nagpapakita ng paggalang?",
-        "choices": [
-        "Makilabas ku pu",
-        "Lumayas na ka"],
-        "answer": 1},
-
-        {
-        "level": 1,
-        "question": "Alin ang hindi nagpapakita ng paggalang?",
-        "choices": [
-        "Salamat",
-        "Alang nanu man pu"],
-        "answer": 0},
-
-        {
-        "level": 1,
-        "question": "Ano sa Kapampangan ang Happy Birthday?",
-        "choices": [
-        "Masayang bayung banwa pu",
-        "Masayang aldo ning kebaytan pu"],
-        "answer": 1},
-
-        {
-        "level": 1,
-        "question": "Ano sa Kapampangan ang Paki abot po?",
-        "choices": [
-        "Pakiabut pu",
-        "Salamat pu"],
-        "answer": 0},
-
-
-        {
-        "level": 1,
-        "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'a' ang hindi Kapampangan?",
-        "choices": [
-        "asbuk",
-        "apple"],
-        "answer": 1},
-
-        {
-        "level": 1,
-        "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'e' ang hindi Kapampangan?",
-        "choices": [
-        "egg",
-        "elepanti"],
-        "answer": 0},
-
-        {
-        "level": 1,
-        "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'o' ang hindi Kapampangan?",
-        "choices": [
-        "osu",
-        "open"],
-        "answer": 1},
-
-        {
-        "level": 1,
-        "question": "Alin sa mga sumusunod na kakatni na naguumpisa 'u' ang hindi Kapampangan?",
-        "choices": [
-        "ulunan",
-        "usok"],
-        "answer": 1},
-
-
-        {
-        "level": 1,
-        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'm' ang hindi Kapampangan?",
-        "choices": [
-        "matsing",
-        "maganda"],
-        "answer": 1},
-
-        {
-        "level": 1,
-        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'p' ang hindi Kapampangan?",
-        "choices": [
-        "patawad",
-        "pesus"],
-        "answer": 0},
-
-        {
-        "level": 1,
-        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 's' ang hindi Kapampangan?",
-        "choices": [
-        "salol",
-        "saronggola"],
-        "answer": 1},
-
-        {
-        "level": 1,
-        "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'd' ang hindi Kapampangan?",
-        "choices": [
-        "dikut",
-        "daga"],
-        "answer": 1}
-    ];
-    
+    List _flashcards_3=[];
   final _focusName = FocusNode();
   final _focusLname = FocusNode();
   final _focusEmail = FocusNode();
@@ -295,6 +55,19 @@ List _otherflashcard = [
   bool _isProcessing = false;
   CollectionReference _users = FirebaseFirestore.instance.collection('users');
   Future<void> addUser() async {
+    List<int> qis=[];
+    FirebaseFirestore.instance
+    .collection('questions')
+    .where('grade_level',isEqualTo: _gradeLevel)
+    .get()
+    .then((QuerySnapshot queryQuestion){
+      queryQuestion.docs.forEach((ques){
+        if(!qis.contains(ques['questionID'])){
+         _flashcards.add({'questionID':ques['questionID'],'level':1});
+        qis.add(ques['questionID']);
+        }
+    });
+    });
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user;
     try {
@@ -312,10 +85,15 @@ List _otherflashcard = [
             'uid':user.uid,
             'points': 0,
             'grade_level': _gradeLevel,
-            'flashcards':_flashcards,
-            'other_flashcards': _otherflashcard,
+            'flashcards':_flashcards.sublist(0,6),
+            'isUnlocked1':1,
+            'isUnlocked2':0,
+            'isUnlocked3':0,
+            'isUnlocked4':0,
+            'badge_count':0,
             'day': 1,
-            'image':'',
+            'image':image[random.nextInt(image.length)],
+            'lastplayed_flashcard':'0',
 
           })
           .then((value){
@@ -336,6 +114,7 @@ List _otherflashcard = [
             );
           });
             print('success');
+            _flashcards=[];
           })
           // ignore: invalid_return_type_for_catch_error
           .catchError((error) => print('failed'));
@@ -563,7 +342,7 @@ List _otherflashcard = [
                                         icon: Icon(Icons.keyboard_arrow_down),
                                         items:grade_levels.map((String items) {
                                             return DropdownMenuItem(
-                                                value: grade_levels.indexOf(items),
+                                                value: grade_levels.indexOf(items)+1,
                                                 child: Text(items)
                                             );
                                         }

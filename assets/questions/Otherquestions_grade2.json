@@ -1,8 +1,7 @@
 
 [
-
         {
-        "level": 0,
+        "level": 1,
         "question": "Kung ang Kapampangan ng Tatang ay tatay, ano naman sa Kapampangan ang nanay?",
         "choices": [
         "Ima",
@@ -11,7 +10,7 @@
 
       
         {
-        "level": 0,
+        "level": 1,
         "question": "Ano sa Kapampangan ang paaralan?",
         "choices": [
         "Paaralan",
@@ -19,7 +18,7 @@
         "answer": 1},
         
         {
-        "level": 0,
+        "level": 1,
         "question": "Ano ang ibig sabihin ng lagyu sa ingles?",
         "choices": [
         "address",
@@ -27,7 +26,7 @@
         "answer": 1},
 
         {
-        "level": 0,
+        "level": 1,
         "question": "Alin sa mga sumusunod ang hindi Kapampangan na salita?",
         "choices": [
         "kebaytan",
@@ -35,7 +34,7 @@
         "answer": 1},
 
         {
-        "level": 0,
+        "level": 1,
         "question": "Alin sa mga sumusunod ang hindi Kapampangan na salita?",
         "choices": [
         "ima",
@@ -43,7 +42,7 @@
         "answer": 1},
 
         {
-        "level": 0,
+        "level": 1,
         "question": "Alin sa mga Buwan na ito ang hindi Kapampangan?",
         "choices": [
         "oktubri",
@@ -51,7 +50,7 @@
         "answer": 1},
         
         {
-        "level": 0,
+        "level": 1,
         "question": "Ano sa tagalog ang 'Makatuknang ku king'?",
         "choices": [
         "Nakatira ako sa",
@@ -59,7 +58,7 @@
         "answer": 0},
 
         {
-        "level": 0,
+        "level": 1,
         "question": "Ano sa Kapampangan ang 'Magandang hapon po'?",
         "choices": [
         "Mayap a ugtu pu",
@@ -67,7 +66,7 @@
         "answer": 1},
 
         {
-        "level": 0,
+        "level": 1,
         "question": "Alin ang hindi nagpapakita ng paggalang?",
         "choices": [
         "Makilabas ku pu",
@@ -75,7 +74,7 @@
         "answer": 1},
 
         {
-        "level": 0,
+        "level": 1,
         "question": "Alin ang hindi nagpapakita ng paggalang?",
         "choices": [
         "Salamat",
@@ -83,7 +82,7 @@
         "answer": 0},
 
         {
-        "level": 0,
+        "level": 1,
         "question": "Ano sa Kapampangan ang Happy Birthday?",
         "choices": [
         "Masayang bayung banwa pu",
@@ -91,7 +90,7 @@
         "answer": 1},
 
         {
-        "level": 0,
+        "level": 1,
         "question": "Ano sa Kapampangan ang Paki abot po?",
         "choices": [
         "Pakiabut pu",
@@ -100,7 +99,7 @@
 
 
         {
-        "level": 0,
+        "level": 1,
         "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'a' ang hindi Kapampangan?",
         "choices": [
         "asbuk",
@@ -108,7 +107,7 @@
         "answer": 1},
 
         {
-        "level": 0,
+        "level": 1,
         "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'e' ang hindi Kapampangan?",
         "choices": [
         "egg",
@@ -116,7 +115,7 @@
         "answer": 0},
 
         {
-        "level": 0,
+        "level": 1,
         "question": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'o' ang hindi Kapampangan?",
         "choices": [
         "osu",
@@ -124,7 +123,7 @@
         "answer": 1},
 
         {
-        "level": 0,
+        "level": 1,
         "question": "Alin sa mga sumusunod na kakatni na naguumpisa 'u' ang hindi Kapampangan?",
         "choices": [
         "ulunan",
@@ -133,7 +132,7 @@
 
 
         {
-        "level": 0,
+        "level": 1,
         "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'm' ang hindi Kapampangan?",
         "choices": [
         "matsing",
@@ -141,7 +140,7 @@
         "answer": 1},
 
         {
-        "level": 0,
+        "level": 1,
         "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'p' ang hindi Kapampangan?",
         "choices": [
         "patawad",
@@ -149,7 +148,7 @@
         "answer": 0},
 
         {
-        "level": 0,
+        "level": 1,
         "question": "Alin sa mga sumusunod na makikatni na naguumpisa 's' ang hindi Kapampangan?",
         "choices": [
         "salol",
@@ -157,7 +156,7 @@
         "answer": 1},
 
         {
-        "level": 0,
+        "level": 1,
         "question": "Alin sa mga sumusunod na makikatni na naguumpisa 'd' ang hindi Kapampangan?",
         "choices": [
         "dikut",

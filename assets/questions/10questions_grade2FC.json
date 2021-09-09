@@ -5,7 +5,7 @@
         "Hunyu",
         "Hulyu"],
     "answer" : 1,
-    "level": 0
+    "level": 1
     },
 
     {
@@ -14,7 +14,7 @@
         "Kebaytan",
         "Banwa"],
     "answer" : 0,
-    "level": 0
+    "level": 1
     },
 
     {
@@ -23,7 +23,7 @@
         "Tatang",
         "Itay"],
     "answer" : 0,
-    "level": 0
+    "level": 1
     },
 
     {
@@ -31,8 +31,13 @@
     "choices": [
         "Malawus kayu pu",
         "Mayap a bengi"],
+<<<<<<< Updated upstream
     "answer" : 0,
     "level": 0
+=======
+    "answer" : 1,
+    "level": 1
+>>>>>>> Stashed changes
     },
     {
     "question": "Ano ang Kapampangan ng 'Maligayang Bagong Taon'?" ,
@@ -40,7 +45,7 @@
         "Masayang aldo ning kebaytan",
         "Masayang Bayung Banwa"],
     "answer" : 1,
-    "level": 0
+    "level": 1
     },
 
     {
@@ -48,8 +53,13 @@
     "choices": [
         "gas",
         "gamat"],
+<<<<<<< Updated upstream
     "answer" : 0,
     "level": 0
+=======
+    "answer" : 1,
+    "level": 1
+>>>>>>> Stashed changes
     },
     
     {
@@ -57,8 +67,13 @@
     "choices": [
         "itlog",
         "ima"],
+<<<<<<< Updated upstream
     "answer" : 0,
     "level": 0
+=======
+    "answer" : 1,
+    "level": 1
+>>>>>>> Stashed changes
     },
     
     {
@@ -67,7 +82,7 @@
         "Makilabas ku pu",
         "Pasensya"],
     "answer" : 1,
-    "level": 0
+    "level": 1
     },
 
 
@@ -77,7 +92,7 @@
         "Pasensya na pu",
         "Mayap a bengi"],
     "answer" : 0,
-    "level": 0
+    "level": 1
     },
 
     {
