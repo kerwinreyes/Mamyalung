@@ -4,7 +4,7 @@ import 'package:mamyalung/materials.dart';
 import 'package:mamyalung/screens/admin/homepage.dart';
 import 'package:mamyalung/screens/admin/adduser.dart';
 import 'package:mamyalung/screens/admin/profile.dart';
-import 'package:mamyalung/screens/home.dart';
+import 'package:mamyalung/screens/teacher/homepage.dart';
 import 'package:mamyalung/loginpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

@@ -72,9 +72,9 @@ class _QuizCardState extends State<QuizCard> {
           height: 100.0,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(gradeLevel == 2 && isUnlocked2 == 1 ? "https://i.ibb.co/yysdY1s/Pagpapakilala-g2.png" :
-               gradeLevel == 2 && isUnlocked2 == 0 ? "https://i.ibb.co/ftxGCFG/Pagtukoy-locked.png" : gradeLevel == 3 && isUnlocked2 == 1 ? "https://i.ibb.co/yysdY1s/Pagpapakilala-g2.png"
-                : gradeLevel == 3 && isUnlocked2 == 0 ? "https://i.ibb.co/2n6qW8X/kasarian-locked.png": "https://i.ibb.co/gghzqTq/mamyalung-logo.png"),
+              image: NetworkImage(gradeLevel == 2 && isUnlocked1 == 1 ? "https://i.ibb.co/yysdY1s/Pagpapakilala-g2.png" :
+               gradeLevel == 2 && isUnlocked1 == 0 ? "https://i.ibb.co/ftxGCFG/Pagtukoy-locked.png" : gradeLevel == 3 && isUnlocked1== 1 ? "https://i.ibb.co/yysdY1s/Pagpapakilala-g2.png"
+                : gradeLevel == 3 && isUnlocked1 == 0 ? "https://i.ibb.co/2n6qW8X/kasarian-locked.png": "https://i.ibb.co/gghzqTq/mamyalung-logo.png"),
             fit: BoxFit.cover
             ),
             color: white,

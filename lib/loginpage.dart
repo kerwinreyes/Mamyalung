@@ -14,6 +14,7 @@ import 'package:mamyalung/utils/fire_auth.dart';
 import 'package:mamyalung/utils/validator.dart';
 import 'package:mamyalung/responsive.dart';
 
+import 'screens/teacher/homepage.dart';
 import 'components/routes.dart';
 
 class LoginPage extends StatefulWidget {
@@ -53,7 +54,11 @@ class _LoginPageState extends State<LoginPage> {
               MaterialPageRoute(builder: (context) => AdminHomePage(user:user.uid)),
             );
             }else if(identical(doc['role'],'teacher')){
-              print('teacher');
+              Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => TeacherDashboard(uid:user.uid)),
+            );
+
             }
             else{
               Navigator.pushReplacement(
@@ -86,7 +91,10 @@ class _LoginPageState extends State<LoginPage> {
                 MaterialPageRoute(builder: (context) => AdminHomePage(user: result.user!.uid)),
               );
             }else if(identical(doc['role'],'teacher')){
-              print('teacher');
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => TeacherHomePage(uid: result.user!.uid)),
+              );
             }
             else{
               Navigator.pushReplacement(
