@@ -93,6 +93,10 @@ flutter:
        fonts:
          - asset: fonts/KidsOnTheMoon.ttf
 
+     - family: Bubble
+       fonts:
+         - asset: fonts/BubbleShine.ttf
+
   
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
