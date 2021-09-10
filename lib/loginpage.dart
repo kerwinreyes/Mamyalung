@@ -163,7 +163,7 @@ class _LoginPageState extends State<LoginPage> {
             height: screenSizeH,
              decoration: BoxDecoration(
               image: DecorationImage(
-                 image: screenSizeW <= 649 ? NetworkImage("https://i.ibb.co/pv1VtZV/Mobile-Login.png") : NetworkImage("https://i.ibb.co/0M3g5RQ/scenefinal.png"),
+                 image: screenSizeW <= 649 ? NetworkImage("https://i.ibb.co/W22cm6d/mobilelogin.png") : NetworkImage("https://i.ibb.co/0M3g5RQ/scenefinal.png"),
                  fit: BoxFit.fill),
                 ),
           ),
@@ -324,8 +324,20 @@ class _LoginPageState extends State<LoginPage> {
 
                   //MOBILE
                   mobile: Container(
-                    width: 350,
-                    padding: EdgeInsets.only(top: screenSizeH*.38),
+                    
+                    //height: 250,
+                    width: 400,
+                    padding: EdgeInsets.only(top: screenSizeH*.28),
+                  //decoration: BoxDecoration(
+                  //    color: Colors.white,
+                  //    borderRadius: BorderRadius.circular(15),
+                   //   boxShadow: [
+                    //    BoxShadow(
+                   //       color: black.withOpacity(0.3),
+                    //     blurRadius: 15,
+                   //       spreadRadius: 5
+                     //  )
+                  //   ]),
                     child: FutureBuilder(
 
                 future: _initializeFirebase(),
@@ -342,6 +354,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: Column(
                               children: <Widget>[
                                 TextFormField(
+                                  style: TextStyle( fontSize:20),
                                   controller: _emailTextController,
                                   focusNode: _focusEmail,
                                   validator: (value) => Validator.validateEmail(
@@ -349,21 +362,21 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   decoration: InputDecoration(
                                     labelText: "Email",
-                                    labelStyle: TextStyle(color: black),
+                                    labelStyle: TextStyle(color: black, fontFamily:'Evil',fontSize:22),
                                     hintText: "Email Address",
                                     filled: true,
                                     
-                                    fillColor: whitey.withOpacity(0.25),
+                                    fillColor: Colors.white.withOpacity(0.8),
                                     border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(30),
+                                      borderSide: BorderSide.none
                                       ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: BorderSide(
-                                        color: whitey)
+                                      borderRadius: BorderRadius.circular(30),
+                                      borderSide: BorderSide.none
                                     ),
                                     errorBorder: UnderlineInputBorder(
-                                      borderRadius: BorderRadius.circular(6.0),
+                                      borderRadius: BorderRadius.circular(30.0),
                                       borderSide: BorderSide(
                                         color: Colors.red,
                                       ),
@@ -374,6 +387,7 @@ class _LoginPageState extends State<LoginPage> {
                                 
                                 SizedBox(height: 10.0),
                                 TextFormField(
+                                  style: TextStyle(fontFamily: 'Evil'),
                                   controller: _passwordTextController,
                                   focusNode: _focusPassword,
                                   obscureText: true,
@@ -383,19 +397,19 @@ class _LoginPageState extends State<LoginPage> {
                                   decoration: InputDecoration(
                                     hintText: "Password",
                                     labelText: "Password",
-                                    labelStyle: TextStyle(color: black),
+                                    labelStyle: TextStyle(color: black, fontFamily:'Evil',fontSize:22),
                                     filled: true,
-                                    fillColor: whitey.withOpacity(0.25),
+                                    fillColor: Colors.white.withOpacity(0.8),
                                     border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius: BorderRadius.circular(30),
+                                      borderSide: BorderSide.none
                                       ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: BorderSide(
-                                        color: white)
+                                      borderRadius: BorderRadius.circular(30),
+                                      borderSide: BorderSide.none
                                     ),
                                     errorBorder: UnderlineInputBorder(
-                                      borderRadius: BorderRadius.circular(6.0),
+                                      borderRadius: BorderRadius.circular(30.0),
                                       borderSide: BorderSide(
                                         color: Colors.red,
                                       ),
@@ -431,8 +445,8 @@ class _LoginPageState extends State<LoginPage> {
                                               },
                                               style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0))),
                                               child: Text(
-                                                'Sign In',
-                                                style: TextStyle(color: Colors.white, fontSize: 18.0),
+                                                'SIGN IN',
+                                                style: TextStyle(color: Colors.white, fontSize: 18.0,fontFamily: 'Evil'),
                                           ),
                                         ),
                                         
@@ -443,10 +457,10 @@ class _LoginPageState extends State<LoginPage> {
                                         child: SizedBox( height: 35.0,
                                         child: ElevatedButton(
                                           onPressed: ()=> Navigator.pushReplacementNamed(context, Routes.registerPage),
-                                          style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0))),
+                                          style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0)), shadowColor: gray),
                                           child: Text(
-                                            'Register',
-                                            style: TextStyle(color: Colors.white, fontSize: 18.0),
+                                            'REGISTER',
+                                            style: TextStyle(color: Colors.white, fontSize: 18.0,fontFamily: 'Evil'),
                                           ),
                                         ),
                                       ),
@@ -455,10 +469,11 @@ class _LoginPageState extends State<LoginPage> {
                                 )
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
-              );
+                    );
+              
             }
               return Center(
                 child: CircularProgressIndicator(),
@@ -466,6 +481,7 @@ class _LoginPageState extends State<LoginPage> {
             },
           ),
                   ),
+                  
 
               //TABLET
                   tablet: Container( 
