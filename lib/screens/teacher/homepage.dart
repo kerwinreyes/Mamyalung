@@ -21,12 +21,7 @@ class _TeacherHomePageState extends State<TeacherHomePage> {
   final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance.collection('questions').snapshots();
   @override
   Widget build(BuildContext context) {
-    return Responsive(
-        desktop: Container(),
-        tablet: Container(),
-        //For mobile 
-        mobile: TeacherDashboard(uid: widget.uid),
-    );
+    return TeacherDashboard(uid: widget.uid);
   }
 }
 

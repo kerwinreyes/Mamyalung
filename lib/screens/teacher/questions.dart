@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mamyalung/screens/custom/badges.dart';
 import 'package:mamyalung/responsive.dart';
+import 'package:mamyalung/utils/validator.dart';
 import '../../loginpage.dart';
 import '../../materials.dart';
 import 'dart:math';
@@ -20,12 +21,7 @@ class Questions extends StatefulWidget {
 class _QuestionsState extends State<Questions> {
   @override
   Widget build(BuildContext context) {
-    return Responsive(
-        desktop: Container(),
-        tablet: Container(),
-        //For mobile 
-        mobile: QuestionsDashboard(uid: widget.uid),
-    );
+    return QuestionsDashboard(uid: widget.uid);
   }
 }
 
@@ -68,8 +64,10 @@ String _answer1 = '';
 String _answer2 = '';
 String _answer3 = '';
 String _answer4 = '';
+bool _isProcessing=false;
 String _correctAnswer = '';
-int _ans = 0;
+List<String> answerlist =['Answer 1','Answer 2','Answer 3','Answer 4'];
+int _ans = 1;
 int? _value = 0;
 String? _topic = "Select a Topic";
 CollectionReference question = FirebaseFirestore.instance.collection('questions');
@@ -82,9 +80,60 @@ Future<void> deleteUser(id) {
     .catchError((error) => print("Failed to delete user: $error"));
     
 }
+Future<void> _createquestion() async{
+  CollectionReference quess = FirebaseFirestore.instance.collection('questions');
+  
+   return quess.doc('$quesID.reduce(max)+1')
+            .set({
+              'questionID':quesID.reduce(max)+1,
+              'answer':_ans,
+              'multiple_choice': [_ans1Controller.text,_ans2Controller.text,_ans3Controller.text,_ans4Controller.text,],
+              'question':_questionController.text,
+              'topic':_topic,
+              'grade_level':_value,
+          })
+          .then((value){
+            showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Message"),
+              content: Text('Question Creation Success'),
+              actions: [
+                ElevatedButton(
+                  child: Text("Ok"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                )
+              ],
+            );
+          });
+            print('success');
+          })
+          // ignore: invalid_return_type_for_catch_error
+          .catchError((error) => print('failed'));
+    
+}
+  int a =0;
+  List<int> quesID=[];
 
-
-
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    FirebaseFirestore.instance
+    .collection('questions')
+    .get()
+    .then((QuerySnapshot queryQuestion){
+      print(queryQuestion.docs.length);
+      for(int i=0; i<queryQuestion.docs.length; i++){
+        quesID.add(int.parse(queryQuestion.docs[i].id));
+        
+      }
+    });
+    print(quesID.reduce(max));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -210,6 +259,7 @@ addContent(BuildContext context) {
           return SingleChildScrollView(child:Stack(
             children: [
               Container(
+                width: MediaQuery.of(context).size.width,
                 padding: EdgeInsets.only(
                   top: Consts.avatarRadius + Consts.padding,
                   bottom: Consts.padding,
@@ -349,20 +399,22 @@ addContent(BuildContext context) {
                         children: [
                           TextFormField(
                             controller: _questionController,
+                            validator: (value) => Validator.validateQuestion(ques: value),
                             decoration: InputDecoration(
                               enabledBorder: UnderlineInputBorder(),
                               focusedBorder: UnderlineInputBorder(),
-                              hintText: "Input the Question to be added"
+                              hintText: "Enter Kapampangan Question here"
                             ),
                             onTap:(){},
                           ),
                           SizedBox(height: 20),
                           TextFormField(
                             controller: _ans1Controller,
+                            validator: (value) => Validator.validateAns(ans: value),
                             decoration: InputDecoration(
                               enabledBorder: UnderlineInputBorder(),
                               focusedBorder: UnderlineInputBorder(),
-                              hintText: "Input Answer 1"
+                              hintText: "Enter Answer 1"
                             ),
                             onTap:(){},
                           ),
@@ -372,7 +424,7 @@ addContent(BuildContext context) {
                             decoration: InputDecoration(
                               enabledBorder: UnderlineInputBorder(),
                               focusedBorder: UnderlineInputBorder(),
-                              hintText: "Input Answer 2"
+                              hintText: "Enter Answer 2"
                             ),
                             onTap:(){},
                           ),
@@ -382,7 +434,7 @@ addContent(BuildContext context) {
                             decoration: InputDecoration(
                               enabledBorder: UnderlineInputBorder(),
                               focusedBorder: UnderlineInputBorder(),
-                              hintText: "Input Answer 3"
+                              hintText: "Enter Answer 3"
                             ),
                             onTap:(){},
                           ),
@@ -392,20 +444,41 @@ addContent(BuildContext context) {
                             decoration: InputDecoration(
                               enabledBorder: UnderlineInputBorder(),
                               focusedBorder: UnderlineInputBorder(),
-                              hintText: "Input Answer 4"
+                              hintText: "Enter Answer 4"
                             ),
                             onTap:(){},
                           ),
                           SizedBox(height: 20),
-                          TextFormField(
-                            controller: _correctAnsController,
-                            decoration: InputDecoration(
-                              enabledBorder: UnderlineInputBorder(),
-                              focusedBorder: UnderlineInputBorder(),
-                              hintText: "Input Correct Answer"
-                            ),
-                            onTap:(){},
-                          ),
+                          Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                  Text('Select the right answer'),
+                                    Container(
+                                  decoration: BoxDecoration(
+                                    color: whitey.withOpacity(0.25),
+                                    borderRadius: new BorderRadius.circular(10.0),
+                                  ),
+                                  child:Container(
+                                    padding: EdgeInsets.only(left: 15),
+                                      width: MediaQuery.of(context).size.width,
+                                      child:DropdownButton(
+                                      value: _ans,
+                                        icon: Icon(Icons.keyboard_arrow_down),
+                                        items:answerlist.map((String items) {
+                                            return DropdownMenuItem(
+                                                value: answerlist.indexOf(items)+1,
+                                                child: Text(items)
+                                            );
+                                        }
+                                        ).toList(),
+                                      onChanged: (int? newValue) {
+                                          setState(() {
+                                            _ans = newValue!;
+                                          });
+                                        },
+                                    ),))
+                                  ],
+                                ),
                         ],
                     ),
                   ),
@@ -414,14 +487,29 @@ addContent(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       TextButton(
-                        child: Text("Back"),
-                        onPressed: (){
-                          Navigator.pop(context);
+                        child: Text("Create Question"),
+                        onPressed: ()  async {
+                          setState(() {
+                            _isProcessing = true;
+                          });
+
+                          if (_formKey.currentState!
+                              .validate()) {
+                             _createquestion();
+
+                            setState(() {
+                              _isProcessing = false;
+                            });
+
+                          }
+                          setState(() {
+                      _isProcessing = false;
+                    });
                         },
                       ),
                       Spacer(),
                       TextButton(
-                        child: Text("Add"),
+                        child: Text("Cancel"),
                         onPressed: (){
                           Navigator.pop(context);
                         },
@@ -611,6 +699,7 @@ editContent(BuildContext context) {
     );  
 }
 }
+
 
 class Consts {
   Consts._();

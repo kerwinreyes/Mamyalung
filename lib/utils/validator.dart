@@ -1,4 +1,23 @@
 class Validator {
+  static String? validateQuestion({required String? ques}){
+    if (ques == null) {
+      return null;
+    }
+
+    if (ques.isEmpty) {
+      return 'Question can\'t be empty';
+    } 
+  }
+  
+  static String? validateAns({required String? ans}){
+    if (ans == null) {
+      return null;
+    }
+
+    if (ans.isEmpty) {
+      return 'Answer can\'t be empty';
+    } 
+  }
   static String? validateName({required String? name}) {
     if (name == null) {
       return null;
