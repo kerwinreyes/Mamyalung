@@ -387,7 +387,7 @@ class _LoginPageState extends State<LoginPage> {
                                 
                                 SizedBox(height: 10.0),
                                 TextFormField(
-                                  style: TextStyle(fontFamily: 'Evil'),
+                                  //style: TextStyle(fontFamily: 'Evil'),
                                   controller: _passwordTextController,
                                   focusNode: _focusPassword,
                                   obscureText: true,
@@ -398,7 +398,8 @@ class _LoginPageState extends State<LoginPage> {
                                     hintText: "Password",
                                     labelText: "Password",
                                     labelStyle: TextStyle(color: black, fontFamily:'Evil',fontSize:22),
-                                    filled: true,
+                                   filled: true,
+                                    
                                     fillColor: Colors.white.withOpacity(0.8),
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(30),

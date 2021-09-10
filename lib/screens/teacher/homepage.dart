@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mamyalung/screens/custom/badges.dart';
 import 'package:mamyalung/responsive.dart';
+import 'package:mamyalung/screens/students/leaderboard.dart';
 import 'package:mamyalung/screens/teacher/questions.dart';
 import '../../loginpage.dart';
 import '../../materials.dart';
@@ -111,6 +112,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
           Questions(uid: widget.uid),
           Container(),
           Container(),
+          LeaderBoard(),
         ],
       ),),
     bottomNavigationBar: BottomNavyBar(
