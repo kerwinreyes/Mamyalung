@@ -216,6 +216,7 @@ Future<void> _createquestion() async{
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
     return Scaffold(
+      extendBodyBehindAppBar: true,
       body: StreamBuilder<QuerySnapshot>(
       stream: _usersStream,
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -227,13 +228,15 @@ Future<void> _createquestion() async{
           return CircularProgressIndicator();
         }
         
-        return Container(
-            color: green,
+        return Stack(children: [
+          Image(image: NetworkImage('https://i.ibb.co/YBzRfyT/background.png'),height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width,fit: BoxFit.fill,),
+          Container(
+            //color: green,
             child: ListView(
               children: <Widget>[
             Column(
             children: [
-              Padding(padding: EdgeInsets.fromLTRB(60, MediaQuery.of(context).size.height * .10, 60, 0),
+              Padding(padding: EdgeInsets.fromLTRB(60, 10, 60, 0),
                 child: Row(
                   children: [
                     Text(""),
@@ -243,7 +246,7 @@ Future<void> _createquestion() async{
                 )
               ),
               Container(
-                color: green,
+                //color: green,
                 child: ListView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
@@ -251,16 +254,17 @@ Future<void> _createquestion() async{
                   itemBuilder: (context, index){
                     DocumentSnapshot doc = snapshot.data!.docs[index];
                     return Padding(
-                      padding: EdgeInsets.fromLTRB(10,20,10,0),
+                      padding: EdgeInsets.fromLTRB(10,7,10,0),
                       child: Card(
-                        
+                        color: Colors.white.withOpacity(0.7),
                         child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           ListTile(
+                            contentPadding: EdgeInsets.all(10),
                             leading: Icon(Icons.topic_outlined),
-                            title: Text("Topic: ${snapshot.data!.docs[index]['topic']}"),
-                            subtitle: Text("Question: ${snapshot.data!.docs[index]['question']}"),
+                            title: Text("Topic: ${snapshot.data!.docs[index]['topic']}",style: TextStyle(fontFamily: 'Sans'),),
+                            subtitle: Text("Question: ${snapshot.data!.docs[index]['question']}", style: TextStyle(fontFamily: 'Evil', fontSize:20, color: black),),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -327,6 +331,8 @@ Future<void> _createquestion() async{
           ]
           
           ),
+          ),
+        ],
         );
       }
     ),

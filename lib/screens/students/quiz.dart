@@ -51,11 +51,13 @@ class _QuizCardState extends State<QuizCard> {
   @override
   Widget build(BuildContext context) {
     
-    return Container(color: powderblue.withOpacity(0.5),
-      child: GridView.count(
+    return Stack(
+      children: [
+        Image(image: NetworkImage('https://i.ibb.co/YBzRfyT/background.png'),height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width,fit: BoxFit.fill,),
+      GridView.count(
       
       crossAxisCount: 2,
-      padding: EdgeInsets.only(top: 30),
+      padding: EdgeInsets.only(top:MediaQuery.of(context).size.height * .15),
       children: [
         //Pagpapakilala
 
@@ -195,6 +197,7 @@ class _QuizCardState extends State<QuizCard> {
         ),
       ],
       ),
+      ],
     );
   }
 }

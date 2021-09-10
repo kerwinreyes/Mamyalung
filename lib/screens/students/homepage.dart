@@ -79,7 +79,10 @@ class _StudentsMobileState extends State<StudentsMobile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      //backgroundColor:  powderblue.withOpacity(0.5),
      appBar: AppBar(
+       
        leading: Container(
          margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
          decoration: BoxDecoration(
@@ -94,14 +97,14 @@ class _StudentsMobileState extends State<StudentsMobile> {
          child: Image(height: 50.0,image: NetworkImage('https://i.ibb.co/gghzqTq/mamyalung-logo.png'),fit: BoxFit.cover,),
        ),
        centerTitle: true,
-       elevation: 5,
+       elevation: 0,
        shadowColor: primaryBlue,
-       backgroundColor: lightBlue,
+       backgroundColor: Colors.white.withOpacity(0.2),
        actions: [
           IconButton(
               icon: Icon(
                 Icons.exit_to_app,
-                color: Colors.white,
+                color: Colors.black,
               ),
               onPressed: () {
                 FirebaseAuth auth = FirebaseAuth.instance;
