@@ -42,71 +42,77 @@ class _LoginPageState extends State<LoginPage> {
     User? user = FirebaseAuth.instance.currentUser;
 
     if (user != null) {
-    FirebaseFirestore.instance
-        .collection('/users')
-        .where('uid', isEqualTo: user.uid)
-        .get()
-        .then((QuerySnapshot querySnapshot){
-          querySnapshot.docs.forEach((doc) {
-            if(identical(doc['role'],'Admin')){
+      FirebaseFirestore.instance
+          .collection('/users')
+          .where('uid', isEqualTo: user.uid)
+          .get()
+          .then((QuerySnapshot querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+          if (identical(doc['role'], 'Admin')) {
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => AdminHomePage(user:user.uid)),
+              MaterialPageRoute(
+                  builder: (context) => AdminHomePage(user: user.uid)),
             );
-            }else if(identical(doc['role'],'teacher')){
-              Navigator.pushReplacement(
+          } else if (identical(doc['role'], 'teacher')) {
+            Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => TeacherDashboard(uid:user.uid)),
+              MaterialPageRoute(
+                  builder: (context) => TeacherDashboard(uid: user.uid)),
             );
-
-            }
-            else{
-              Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => StudentHomePage(uid:user.uid)),
-      );
-            }
-          }); 
+          } else {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => StudentHomePage(uid: user.uid)),
+            );
+          }
         });
+      });
     }
 
     return firebaseApp;
   }
+
   void logIn() {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(
-            email: _emailTextController.text, password: _passwordTextController.text)
+            email: _emailTextController.text,
+            password: _passwordTextController.text)
         .then((result) {
       _isProcessing = false;
       if (result != null) {
         FirebaseFirestore.instance
-        .collection('/users')
-        .where('uid', isEqualTo: result.user!.uid)
-        .get()
-        .then((QuerySnapshot querySnapshot){
+            .collection('/users')
+            .where('uid', isEqualTo: result.user!.uid)
+            .get()
+            .then((QuerySnapshot querySnapshot) {
           querySnapshot.docs.forEach((doc) {
-            if(identical(doc['role'],'Admin')){
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => AdminHomePage(user: result.user!.uid)),
-              );
-            }else if(identical(doc['role'],'teacher')){
+            if (identical(doc['role'], 'Admin')) {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => TeacherHomePage(uid: result.user!.uid)),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        AdminHomePage(user: result.user!.uid)),
               );
-            }
-            else{
+            } else if (identical(doc['role'], 'teacher')) {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => StudentHomePage(uid: result.user!.uid)),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        TeacherHomePage(uid: result.user!.uid)),
+              );
+            } else {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        StudentHomePage(uid: result.user!.uid)),
               );
             }
-          }); 
+          });
         });
-          
       }
-      
     }).catchError((err) {
       print(err.message);
       showDialog(
@@ -127,28 +133,26 @@ class _LoginPageState extends State<LoginPage> {
           });
     });
   }
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     var screenSizeW = screenSize.width;
     var screenSizeH = screenSize.height;
-    
 
     return GestureDetector(
       onTap: () {
         _focusEmail.unfocus();
         _focusPassword.unfocus();
       },
-      
-      
       child: Stack(
         children: [
           //FittedBox(
           // child: Image.asset('assets/scenefinal.png',
           //   height: screenSizeH,
-          //    width: screenSizeW, 
+          //    width: screenSizeW,
           //   fit: BoxFit.cover,),
-         //   ),
+          //   ),
           // Container(
           //   //constraints: BoxConstraints.expand(),
           //    decoration: BoxDecoration(
@@ -161,487 +165,583 @@ class _LoginPageState extends State<LoginPage> {
             //constraints: BoxConstraints.expand(),
             width: screenSizeW,
             height: screenSizeH,
-             decoration: BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                 image: screenSizeW <= 649 ? NetworkImage("https://i.ibb.co/W22cm6d/mobilelogin.png") : NetworkImage("https://i.ibb.co/0M3g5RQ/scenefinal.png"),
-                 fit: BoxFit.fill),
-                ),
+                  image: screenSizeW <= 649
+                      ? NetworkImage("https://i.ibb.co/W22cm6d/mobilelogin.png")
+                      : NetworkImage(
+                          "https://i.ibb.co/4Mn4Mh5/mamyalungnamepets.png"),
+                  fit: BoxFit.fill),
+            ),
           ),
-              
+
           Scaffold(
-          resizeToAvoidBottomInset: true,
-          backgroundColor: Colors.transparent,
-          body: Center(
-            child: Column(
-              children: [ 
-                Responsive(
-                  desktop: Container(
-                    width: 550.0, 
-                    padding: EdgeInsets.only(top: screenSizeH*.38),
-                    //padding: EdgeInsets.fromLTRB(screenSizeW*.25, screenSizeH*.25, screenSizeW*.25, screenSizeH*.25),
+            resizeToAvoidBottomInset: true,
+            backgroundColor: Colors.transparent,
+            body: Center(
+              child: Column(
+                children: [
+                  Responsive(
+                    desktop: Container(
+                      width: 550.0,
+                      padding: EdgeInsets.only(top: screenSizeH * .38),
+                      //padding: EdgeInsets.fromLTRB(screenSizeW*.25, screenSizeH*.25, screenSizeW*.25, screenSizeH*.25),
 
-                    child: FutureBuilder(
-
-                future: _initializeFirebase(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done) {
-                    return Container(
-                      //padding: const EdgeInsets.only(left:50.0, right: 50.0, top: 25.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          
-                          Form(
-                            key: _formKey,
-                            child: Column(
-                              children: <Widget>[
-                                TextFormField(
-                                  controller: _emailTextController,
-                                  focusNode: _focusEmail,
-                                  validator: (value) => Validator.validateEmail(
-                                    email: value,
-                                  ),
-                                  decoration: InputDecoration(
-                                    labelText: "Email",
-                                    labelStyle: TextStyle(color: black),
-                                    hintText: "Type your Email Address",
-                                    filled: true,
-                                    
-                                    fillColor: whitey.withOpacity(0.25),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: BorderSide(
-                                        color: whitey)
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderRadius: BorderRadius.circular(6.0),
-                                      borderSide: BorderSide(
-                                        color: Colors.red,
-                                      ),
-                                    ),
-                                    prefixIcon: Icon(Icons.email)
-                                  ),
-                                ),
-                                
-                                SizedBox(height: 10.0),
-                                TextFormField(
-                                  controller: _passwordTextController,
-                                  focusNode: _focusPassword,
-                                  obscureText: true,
-                                  validator: (value) => Validator.validatePassword(
-                                    password: value,
-                                  ),
-                                  decoration: InputDecoration(
-                                    hintText: "Type your Password",
-                                    labelText: "Password",
-                                    labelStyle: TextStyle(color: black),
-                                    filled: true,
-                                    fillColor: whitey.withOpacity(0.25),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: BorderSide(
-                                        color: white)
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderRadius: BorderRadius.circular(6.0),
-                                      borderSide: BorderSide(
-                                        color: Colors.red,
-                                      ),
-                                    ),
-                                    prefixIcon: Icon(Icons.lock)
-                                  ),
-                                ),
-                                SizedBox(height: 15.0),
-                                _isProcessing
-                                    ? CircularProgressIndicator()
-                                    : Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
-                                            child: SizedBox(height: 35.0 ,
-                                            child: ElevatedButton(
-                                              onPressed: () async {
-                                                _focusEmail.unfocus();
-                                                _focusPassword.unfocus();
-
-                                                if (_formKey.currentState!
-                                                    .validate()) {
-                                                  setState(() {
-                                                    _isProcessing = true;
-                                                  });
-
-                                                  logIn();
-                                                  setState(() {
-                                                    _isProcessing = false;
-                                                  });
-                                                }
-                                              },
-                                              style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0))),
-                                              child: Text(
-                                                'Sign In',
-                                                style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      child: FutureBuilder(
+                        future: _initializeFirebase(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            return Container(
+                              //padding: const EdgeInsets.only(left:50.0, right: 50.0, top: 25.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Form(
+                                    key: _formKey,
+                                    child: Column(
+                                      children: <Widget>[
+                                        TextFormField(
+                                          controller: _emailTextController,
+                                          focusNode: _focusEmail,
+                                          validator: (value) =>
+                                              Validator.validateEmail(
+                                            email: value,
                                           ),
+                                          decoration: InputDecoration(
+                                              labelText: "Email",
+                                              labelStyle: TextStyle(
+                                                  color: black,
+                                                  fontFamily: 'Evil',
+                                                  fontSize: 22),
+                                              hintText:
+                                                  "Type your Email Address",
+                                              filled: true,
+                                              fillColor:
+                                                  Colors.white.withOpacity(0.8),
+                                              border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(30),
+                                                  borderSide: BorderSide.none),
+                                              focusedBorder: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(30),
+                                                  borderSide: BorderSide.none),
+                                              errorBorder: UnderlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(30.0),
+                                                borderSide: BorderSide(
+                                                  color: Colors.red,
+                                                ),
+                                              ),
+                                              prefixIcon: Icon(Icons.email)),
                                         ),
-                                        
-                                      ),
-                                      ),
-                                      SizedBox(width: 10),
-                                      Expanded(
-                                        child: SizedBox( height: 35.0,
-                                        child: ElevatedButton(
-                                          onPressed: ()=> Navigator.pushReplacementNamed(context, Routes.registerPage),
-                                          style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0))),
-                                          child: Text(
-                                            'Register',
-                                            style: TextStyle(color: Colors.white, fontSize: 18.0),
+                                        SizedBox(height: 10.0),
+                                        TextFormField(
+                                          controller: _passwordTextController,
+                                          focusNode: _focusPassword,
+                                          obscureText: true,
+                                          validator: (value) =>
+                                              Validator.validatePassword(
+                                            password: value,
                                           ),
+                                          decoration: InputDecoration(
+                                              hintText: "Type your Password",
+                                              labelText: "Password",
+                                              labelStyle: TextStyle(
+                                                  color: black,
+                                                  fontFamily: 'Evil',
+                                                  fontSize: 22),
+                                              filled: true,
+                                              fillColor:
+                                                  Colors.white.withOpacity(0.8),
+                                              border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(30),
+                                                  borderSide: BorderSide.none),
+                                              focusedBorder: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(30),
+                                                  borderSide: BorderSide.none),
+                                              errorBorder: UnderlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(30.0),
+                                                borderSide: BorderSide(
+                                                  color: Colors.red,
+                                                ),
+                                              ),
+                                              prefixIcon: Icon(Icons.lock)),
                                         ),
-                                      ),
-                                      ),
-                                        ],
-                                )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              );
-            }
+                                        SizedBox(height: 15.0),
+                                        _isProcessing
+                                            ? CircularProgressIndicator()
+                                            : Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Expanded(
+                                                    child: SizedBox(
+                                                      height: 35.0,
+                                                      child: ElevatedButton(
+                                                        onPressed: () async {
+                                                          _focusEmail.unfocus();
+                                                          _focusPassword
+                                                              .unfocus();
 
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            },
-          ),
-                  ),
+                                                          if (_formKey
+                                                              .currentState!
+                                                              .validate()) {
+                                                            setState(() {
+                                                              _isProcessing =
+                                                                  true;
+                                                            });
 
-                  //MOBILE
-                  mobile: Container(
-                    
-                    //height: 250,
-                    width: 400,
-                    padding: EdgeInsets.only(top: screenSizeH*.28),
-                  //decoration: BoxDecoration(
-                  //    color: Colors.white,
-                  //    borderRadius: BorderRadius.circular(15),
-                   //   boxShadow: [
-                    //    BoxShadow(
-                   //       color: black.withOpacity(0.3),
-                    //     blurRadius: 15,
-                   //       spreadRadius: 5
-                     //  )
-                  //   ]),
-                    child: FutureBuilder(
-
-                future: _initializeFirebase(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done) {
-                    return Container(
-                      //padding: const EdgeInsets.only(left:50.0, right: 50.0, top: 25.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          
-                          Form(
-                            key: _formKey,
-                            child: Column(
-                              children: <Widget>[
-                                TextFormField(
-                                  style: TextStyle( fontSize:20),
-                                  controller: _emailTextController,
-                                  focusNode: _focusEmail,
-                                  validator: (value) => Validator.validateEmail(
-                                    email: value,
-                                  ),
-                                  decoration: InputDecoration(
-                                    labelText: "Email",
-                                    labelStyle: TextStyle(color: black, fontFamily:'Evil',fontSize:22),
-                                    hintText: "Email Address",
-                                    filled: true,
-                                    
-                                    fillColor: Colors.white.withOpacity(0.8),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(30),
-                                      borderSide: BorderSide.none
-                                      ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(30),
-                                      borderSide: BorderSide.none
+                                                            logIn();
+                                                            setState(() {
+                                                              _isProcessing =
+                                                                  false;
+                                                            });
+                                                          }
+                                                        },
+                                                        style: ElevatedButton.styleFrom(
+                                                            shape: new RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    new BorderRadius
+                                                                            .circular(
+                                                                        15.0))),
+                                                        child: Text(
+                                                          'Sign In',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 18.0),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(width: 10),
+                                                  Expanded(
+                                                    child: SizedBox(
+                                                      height: 35.0,
+                                                      child: ElevatedButton(
+                                                        onPressed: () => Navigator
+                                                            .pushReplacementNamed(
+                                                                context,
+                                                                Routes
+                                                                    .registerPage),
+                                                        style: ElevatedButton.styleFrom(
+                                                            shape: new RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    new BorderRadius
+                                                                            .circular(
+                                                                        15.0))),
+                                                        child: Text(
+                                                          'Register',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 18.0),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                      ],
                                     ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                      borderSide: BorderSide(
-                                        color: Colors.red,
-                                      ),
-                                    ),
-                                    prefixIcon: Icon(Icons.email)
-                                  ),
-                                ),
-                                
-                                SizedBox(height: 10.0),
-                                TextFormField(
-                                  //style: TextStyle(fontFamily: 'Evil'),
-                                  controller: _passwordTextController,
-                                  focusNode: _focusPassword,
-                                  obscureText: true,
-                                  validator: (value) => Validator.validatePassword(
-                                    password: value,
-                                  ),
-                                  decoration: InputDecoration(
-                                    hintText: "Password",
-                                    labelText: "Password",
-                                    labelStyle: TextStyle(color: black, fontFamily:'Evil',fontSize:22),
-                                   filled: true,
-                                    
-                                    fillColor: Colors.white.withOpacity(0.8),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(30),
-                                      borderSide: BorderSide.none
-                                      ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(30),
-                                      borderSide: BorderSide.none
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderRadius: BorderRadius.circular(30.0),
-                                      borderSide: BorderSide(
-                                        color: Colors.red,
-                                      ),
-                                    ),
-                                    prefixIcon: Icon(Icons.lock)
-                                  ),
-                                ),
-                                SizedBox(height: 15.0),
-                                _isProcessing
-                                    ? CircularProgressIndicator()
-                                    : Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
-                                            child: SizedBox(height: 35.0 ,
-                                            child: ElevatedButton(
-                                              onPressed: () async {
-                                                _focusEmail.unfocus();
-                                                _focusPassword.unfocus();
+                                  )
+                                ],
+                              ),
+                            );
+                          }
 
-                                                if (_formKey.currentState!
-                                                    .validate()) {
-                                                  setState(() {
-                                                    _isProcessing = true;
-                                                  });
-                                                  logIn();
-                                                  setState(() {
-                                                    _isProcessing = false;
-                                                  });
-
-                                                }
-                                              },
-                                              style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0))),
-                                              child: Text(
-                                                'SIGN IN',
-                                                style: TextStyle(color: Colors.white, fontSize: 18.0,fontFamily: 'Evil'),
-                                          ),
-                                        ),
-                                        
-                                      ),
-                                      ),
-                                      SizedBox(width: 10),
-                                      Expanded(
-                                        child: SizedBox( height: 35.0,
-                                        child: ElevatedButton(
-                                          onPressed: ()=> Navigator.pushReplacementNamed(context, Routes.registerPage),
-                                          style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0)), shadowColor: gray),
-                                          child: Text(
-                                            'REGISTER',
-                                            style: TextStyle(color: Colors.white, fontSize: 18.0,fontFamily: 'Evil'),
-                                          ),
-                                        ),
-                                      ),
-                                      ),
-                                        ],
-                                )
-                        ],
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        },
                       ),
                     ),
-                  ],
-                ),
-                    );
-              
-            }
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            },
-          ),
-                  ),
-                  
 
-              //TABLET
-                  tablet: Container( 
-                    width: 550,
-                    padding: EdgeInsets.only(top: screenSizeH*.38),
-                    child: FutureBuilder(
-  
-                future: _initializeFirebase(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done) {
-                    return Container(
-                      //padding: const EdgeInsets.only(left: 24.0, right: 24.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                         
-                          Form(
-                            key: _formKey,
-                            child: Column(
-                              children: <Widget>[
-                                
-                                  
-                                SizedBox(height: 8.0),
-                                TextFormField(
-                                  controller: _passwordTextController,
-                                  focusNode: _focusPassword,
-                                  obscureText: true,
-                                  validator: (value) => Validator.validatePassword(
-                                    password: value,
-                                  ),
-                                  decoration: InputDecoration(
-                                    labelText: "Email",
-                                    labelStyle: TextStyle(color: black),
-                                    hintText: "Email Address",
-                                    filled: true,
-                                    
-                                    fillColor: whitey.withOpacity(0.25),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: BorderSide(
-                                        color: whitey)
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderRadius: BorderRadius.circular(6.0),
-                                      borderSide: BorderSide(
-                                        color: Colors.red,
-                                      ),
-                                    ),
-                                    prefixIcon: Icon(Icons.email)
-                                  ),
-                                ),
-                                
-                                SizedBox(height: 10.0),
-                                TextFormField(
-                                  controller: _passwordTextController,
-                                  focusNode: _focusPassword,
-                                  obscureText: true,
-                                  validator: (value) => Validator.validatePassword(
-                                    password: value,
-                                  ),
-                                  decoration: InputDecoration(
-                                    hintText: "Password",
-                                    labelText: "Password",
-                                    labelStyle: TextStyle(color: black),
-                                    filled: true,
-                                    fillColor: whitey.withOpacity(0.25),
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: BorderSide(
-                                        color: white)
-                                    ),
-                                    errorBorder: UnderlineInputBorder(
-                                      borderRadius: BorderRadius.circular(6.0),
-                                      borderSide: BorderSide(
-                                        color: Colors.red,
-                                      ),
-                                    ),
-                                    prefixIcon: Icon(Icons.lock)
-                                  ),
-                                ),
-                                SizedBox(height: 15.0),
-                                _isProcessing
-                                    ? CircularProgressIndicator()
-                                    : Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Expanded(
-                                            child: SizedBox(height: 35.0 ,
-                                            child: ElevatedButton(
-                                              onPressed: () async {
-                                                _focusEmail.unfocus();
-                                                _focusPassword.unfocus();
-
-                                                if (_formKey.currentState!
-                                                    .validate()) {
-                                                  setState(() {
-                                                    _isProcessing = true;
-                                                  });
-                                                  logIn();
-                                                  setState(() {
-                                                    _isProcessing = false;
-                                                  });
-                                                
-                                          }
-                                        },
-                                        style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0))),
-                                        child: Text(
-                                          'Sign In',
-                                          style: TextStyle(color: Colors.white, fontSize: 18.0),
-                                        ),
-                                        
-                                            ))),
-                                    
-                                      SizedBox(width: 10),
-                                      Expanded(
-                                        child: SizedBox( height: 35.0,
-                                        child: ElevatedButton(
-                                          onPressed: ()=> Navigator.pushReplacementNamed(context, Routes.registerPage),
-                                          style: ElevatedButton.styleFrom(shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15.0))),
-                                          child: Text(
-                                            'Register',
-                                            style: TextStyle(color: Colors.white, fontSize: 18.0),
+                    //MOBILE
+                    mobile: Container(
+                      //height: 250,
+                      width: 400,
+                      padding: EdgeInsets.only(top: screenSizeH * .28),
+                      //decoration: BoxDecoration(
+                      //    color: Colors.white,
+                      //    borderRadius: BorderRadius.circular(15),
+                      //   boxShadow: [
+                      //    BoxShadow(
+                      //       color: black.withOpacity(0.3),
+                      //     blurRadius: 15,
+                      //       spreadRadius: 5
+                      //  )
+                      //   ]),
+                      child: FutureBuilder(
+                        future: _initializeFirebase(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            return Container(
+                              //padding: const EdgeInsets.only(left:50.0, right: 50.0, top: 25.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Form(
+                                    key: _formKey,
+                                    child: Column(
+                                      children: <Widget>[
+                                        TextFormField(
+                                          style: TextStyle(fontSize: 20),
+                                          controller: _emailTextController,
+                                          focusNode: _focusEmail,
+                                          validator: (value) =>
+                                              Validator.validateEmail(
+                                            email: value,
                                           ),
+                                          decoration: InputDecoration(
+                                              labelText: "Email",
+                                              labelStyle: TextStyle(
+                                                  color: black,
+                                                  fontFamily: 'Evil',
+                                                  fontSize: 22),
+                                              hintText: "Email Address",
+                                              filled: true,
+                                              fillColor:
+                                                  Colors.white.withOpacity(0.8),
+                                              border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(30),
+                                                  borderSide: BorderSide.none),
+                                              focusedBorder: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(30),
+                                                  borderSide: BorderSide.none),
+                                              errorBorder: UnderlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(30.0),
+                                                borderSide: BorderSide(
+                                                  color: Colors.red,
+                                                ),
+                                              ),
+                                              prefixIcon: Icon(Icons.email)),
                                         ),
-                                      ),
-                                      ),
-                                        ],
-                                )
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              );
-            }
+                                        SizedBox(height: 10.0),
+                                        TextFormField(
+                                          //style: TextStyle(fontFamily: 'Evil'),
+                                          controller: _passwordTextController,
+                                          focusNode: _focusPassword,
+                                          obscureText: true,
+                                          validator: (value) =>
+                                              Validator.validatePassword(
+                                            password: value,
+                                          ),
+                                          decoration: InputDecoration(
+                                              hintText: "Password",
+                                              labelText: "Password",
+                                              labelStyle: TextStyle(
+                                                  color: black,
+                                                  fontFamily: 'Evil',
+                                                  fontSize: 22),
+                                              filled: true,
+                                              fillColor:
+                                                  Colors.white.withOpacity(0.8),
+                                              border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(30),
+                                                  borderSide: BorderSide.none),
+                                              focusedBorder: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(30),
+                                                  borderSide: BorderSide.none),
+                                              errorBorder: UnderlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(30.0),
+                                                borderSide: BorderSide(
+                                                  color: Colors.red,
+                                                ),
+                                              ),
+                                              prefixIcon: Icon(Icons.lock)),
+                                        ),
+                                        SizedBox(height: 15.0),
+                                        _isProcessing
+                                            ? CircularProgressIndicator()
+                                            : Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Expanded(
+                                                    child: SizedBox(
+                                                      height: 35.0,
+                                                      child: ElevatedButton(
+                                                        onPressed: () async {
+                                                          _focusEmail.unfocus();
+                                                          _focusPassword
+                                                              .unfocus();
 
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            },
-          ),
+                                                          if (_formKey
+                                                              .currentState!
+                                                              .validate()) {
+                                                            setState(() {
+                                                              _isProcessing =
+                                                                  true;
+                                                            });
+                                                            logIn();
+                                                            setState(() {
+                                                              _isProcessing =
+                                                                  false;
+                                                            });
+                                                          }
+                                                        },
+                                                        style: ElevatedButton.styleFrom(
+                                                            shape: new RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    new BorderRadius
+                                                                            .circular(
+                                                                        15.0))),
+                                                        child: Text(
+                                                          'SIGN IN',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 18.0,
+                                                              fontFamily:
+                                                                  'Evil'),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(width: 10),
+                                                  Expanded(
+                                                    child: SizedBox(
+                                                      height: 35.0,
+                                                      child: ElevatedButton(
+                                                        onPressed: () => Navigator
+                                                            .pushReplacementNamed(
+                                                                context,
+                                                                Routes
+                                                                    .registerPage),
+                                                        style: ElevatedButton.styleFrom(
+                                                            shape: new RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    new BorderRadius
+                                                                            .circular(
+                                                                        15.0)),
+                                                            shadowColor: gray),
+                                                        child: Text(
+                                                          'REGISTER',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 18.0,
+                                                              fontFamily:
+                                                                  'Evil'),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        },
+                      ),
+                    ),
+
+                    //TABLET
+                    tablet: Container(
+                      width: 550,
+                      padding: EdgeInsets.only(top: screenSizeH * .38),
+                      child: FutureBuilder(
+                        future: _initializeFirebase(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            return Container(
+                              //padding: const EdgeInsets.only(left: 24.0, right: 24.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Form(
+                                    key: _formKey,
+                                    child: Column(
+                                      children: <Widget>[
+                                        SizedBox(height: 8.0),
+                                        TextFormField(
+                                          controller: _passwordTextController,
+                                          focusNode: _focusPassword,
+                                          obscureText: true,
+                                          validator: (value) =>
+                                              Validator.validatePassword(
+                                            password: value,
+                                          ),
+                                          decoration: InputDecoration(
+                                              labelText: "Email",
+                                              labelStyle:
+                                                  TextStyle(color: black),
+                                              hintText: "Email Address",
+                                              filled: true,
+                                              fillColor:
+                                                  whitey.withOpacity(0.25),
+                                              border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  borderSide: BorderSide(
+                                                      color: whitey)),
+                                              errorBorder: UnderlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(6.0),
+                                                borderSide: BorderSide(
+                                                  color: Colors.red,
+                                                ),
+                                              ),
+                                              prefixIcon: Icon(Icons.email)),
+                                        ),
+                                        SizedBox(height: 10.0),
+                                        TextFormField(
+                                          controller: _passwordTextController,
+                                          focusNode: _focusPassword,
+                                          obscureText: true,
+                                          validator: (value) =>
+                                              Validator.validatePassword(
+                                            password: value,
+                                          ),
+                                          decoration: InputDecoration(
+                                              hintText: "Password",
+                                              labelText: "Password",
+                                              labelStyle:
+                                                  TextStyle(color: black),
+                                              filled: true,
+                                              fillColor:
+                                                  whitey.withOpacity(0.25),
+                                              border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                              ),
+                                              focusedBorder: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  borderSide:
+                                                      BorderSide(color: white)),
+                                              errorBorder: UnderlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(6.0),
+                                                borderSide: BorderSide(
+                                                  color: Colors.red,
+                                                ),
+                                              ),
+                                              prefixIcon: Icon(Icons.lock)),
+                                        ),
+                                        SizedBox(height: 15.0),
+                                        _isProcessing
+                                            ? CircularProgressIndicator()
+                                            : Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Expanded(
+                                                      child: SizedBox(
+                                                          height: 35.0,
+                                                          child: ElevatedButton(
+                                                            onPressed:
+                                                                () async {
+                                                              _focusEmail
+                                                                  .unfocus();
+                                                              _focusPassword
+                                                                  .unfocus();
+
+                                                              if (_formKey
+                                                                  .currentState!
+                                                                  .validate()) {
+                                                                setState(() {
+                                                                  _isProcessing =
+                                                                      true;
+                                                                });
+                                                                logIn();
+                                                                setState(() {
+                                                                  _isProcessing =
+                                                                      false;
+                                                                });
+                                                              }
+                                                            },
+                                                            style: ElevatedButton.styleFrom(
+                                                                shape: new RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        new BorderRadius.circular(
+                                                                            15.0))),
+                                                            child: Text(
+                                                              'Sign In',
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize:
+                                                                      18.0),
+                                                            ),
+                                                          ))),
+                                                  SizedBox(width: 10),
+                                                  Expanded(
+                                                    child: SizedBox(
+                                                      height: 35.0,
+                                                      child: ElevatedButton(
+                                                        onPressed: () => Navigator
+                                                            .pushReplacementNamed(
+                                                                context,
+                                                                Routes
+                                                                    .registerPage),
+                                                        style: ElevatedButton.styleFrom(
+                                                            shape: new RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    new BorderRadius
+                                                                            .circular(
+                                                                        15.0))),
+                                                        child: Text(
+                                                          'Register',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 18.0),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          }
+
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        },
+                      ),
+                    ),
                   ),
-                ),
-                
+                ],
+              ),
+            ),
+          ),
         ],
-        ),
-        ),
-        ),
-        ],
-        ),
-      );
-      
-    }
-    
+      ),
+    );
   }
+}
