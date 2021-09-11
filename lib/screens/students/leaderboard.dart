@@ -18,6 +18,10 @@ class _LeaderBoardState extends State<LeaderBoard> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    var screenSizeW = screenSize.width;
+    var screenSizeH = screenSize.height;
+    
     return StreamBuilder<QuerySnapshot>(
       stream: _usersStream,
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -31,14 +35,16 @@ class _LeaderBoardState extends State<LeaderBoard> {
           return CircularProgressIndicator();
         }
 
-        return Container(
+        return  Stack(
+      children: [
+        Container(
+          width: screenSizeW,
+          height: screenSizeH,
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage('https://i.ibb.co/WWmXCWV/leaderboards.png'),
-              fit: BoxFit.fill
-            )
-          ),
-        child: Column(
+        image: DecorationImage(
+          image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/WWmXCWV/leaderboards.png') : NetworkImage("https://i.ibb.co/RPPY7mM/leaderboardsweb.png"), fit: BoxFit.fill),
+          ),),
+        Column(
           children: [
             Padding(padding: EdgeInsets.fromLTRB(60, MediaQuery.of(context).size.height * .20, 60, 0),
               child: Row(
@@ -62,6 +68,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
             )
           ],
         )
+      ],
       );
       },
     );

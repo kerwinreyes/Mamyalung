@@ -209,12 +209,21 @@ TextEditingController _searchkey = new TextEditingController();
 String searchTxt='';
   @override
   Widget build(BuildContext context) {
+     var screenSize = MediaQuery.of(context).size;
+    var screenSizeW = screenSize.width;
+    var screenSizeH = screenSize.height;
     final _formKey = GlobalKey<FormState>();
     return Scaffold(
       extendBodyBehindAppBar: true,
       body:
       Stack(children: [
-          Image(image: NetworkImage('https://i.ibb.co/YBzRfyT/background.png'),height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width,fit: BoxFit.fill,),
+          Container(
+          width: screenSizeW,
+          height: screenSizeH,
+          decoration: BoxDecoration(
+        image: DecorationImage(
+          image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/YBzRfyT/background.png') : NetworkImage("https://i.ibb.co/Zfs8zLR/mobilebg.png"), fit: BoxFit.fill),
+          ),),
            
               SizedBox(height:100),
           StreamBuilder<QuerySnapshot>(
