@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,8 +10,9 @@ import 'package:mamyalung/responsive.dart';
 import 'package:mamyalung/utils/validator.dart';
 import '../../loginpage.dart';
 import '../../materials.dart';
+import 'package:mamyalung/model/question.dart';
 import 'dart:math';
-
+import 'package:http/http.dart';
 
 class Questions extends StatefulWidget {
   final String? uid;
@@ -36,21 +40,14 @@ class QuestionsDashboard extends StatefulWidget {
 class _QuestionsDashboardState extends State<QuestionsDashboard> {
   
   int gradeLevel = 0;
-  String _filter='';
-  final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance.collection('questions')
-  // .orderBy("grade_level", descending: false)
-  // .orderBy("questionID", descending: false)
-  .snapshots();
+  //Filter Starts
+  TextEditingController _controller = new TextEditingController();
+  List searchlist=[];
+  String _searchString = '';
+  List _allResults = [];
+  List _resultsList = [];
 
-  // final Stream<QuerySnapshot> _grade2Stream = FirebaseFirestore.instance.collection('questions')
-  // .where("grade_level", isEqualTo: 2)
-  // .orderBy("questionID", descending: false)
-  // .snapshots();
-
-  // final Stream<QuerySnapshot> _grade3Stream = FirebaseFirestore.instance.collection('questions')
-  // .where("grade_level", isEqualTo: 3)
-  // .orderBy("questionID", descending: false)
-  // .snapshots();
+  //End Search Filter 
 final _formKey = GlobalKey<FormState>();
 
 TextEditingController _questionController = new TextEditingController();
@@ -78,12 +75,8 @@ int _ans = 1;
 int? _value = 0;
 String? _topic = "Select a Topic";
 CollectionReference question = FirebaseFirestore.instance.collection('questions');
-_onSearchChanged(){
-
-}
 
   int a =0;
-  List _allResults=[];
 Future<void> deleteUser(id) {
   
   return question
@@ -212,31 +205,44 @@ Future<void> _createquestion() async{
           // ignore: invalid_return_type_for_catch_error
           .catchError((error) => print('failed'));
 }
+TextEditingController _searchkey = new TextEditingController();
+String searchTxt='';
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
     return Scaffold(
       extendBodyBehindAppBar: true,
-      body: StreamBuilder<QuerySnapshot>(
-      stream: _usersStream,
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (snapshot.hasError) {
-          return Text('Something went wrong');
-        }
-
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator();
-        }
-        
-        return Stack(children: [
+      body:
+      Stack(children: [
           Image(image: NetworkImage('https://i.ibb.co/YBzRfyT/background.png'),height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width,fit: BoxFit.fill,),
+           
+              SizedBox(height:100),
+          StreamBuilder<QuerySnapshot>(
+          stream: (_searchString == null || _searchString.trim()== '')
+          ? FirebaseFirestore.instance.collection('questions').snapshots()
+          :FirebaseFirestore.instance.collection('questions')
+          .where('question', isGreaterThanOrEqualTo: _searchString)
+          .where('question', isLessThan: _searchString + 'z')
+          .snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Text('Something went wrong');
+            }
+
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator();
+            }
+            if (snapshot.connectionState == ConnectionState.none) {
+              return CircularProgressIndicator();
+            }
+            return 
           Container(
             //color: green,
             child: ListView(
               children: <Widget>[
             Column(
             children: [
-              Padding(padding: EdgeInsets.fromLTRB(60, 10, 60, 0),
+              Padding(padding: EdgeInsets.fromLTRB(80, 10, 60, 0),
                 child: Row(
                   children: [
                     Text(""),
@@ -331,11 +337,40 @@ Future<void> _createquestion() async{
           ]
           
           ),
-          ),
-        ],
-        );
+          );
       }
     ),
+         Column(
+            children:[
+              SizedBox(height:20),
+          
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Container(
+                  child: TextField(
+                    onChanged: (val){
+                      setState(() {
+                        _searchString = val;
+                      });
+                    },
+                    controller: _controller,
+                    decoration: InputDecoration(
+                      suffixIcon: IconButton(
+                        icon: Icon(Icons.clear),
+                        onPressed: ()=>_controller.clear(),
+                      ),
+                      hintText: 'Search Question here',
+                      hintStyle: TextStyle(
+                        color: Colors.blueGrey
+                      )
+                    )
+                  )
+                ),
+              )]
+          ),
+          
+        ],
+        ),
     floatingActionButton: 
       FloatingActionButton( onPressed: (){
         setState(() {
