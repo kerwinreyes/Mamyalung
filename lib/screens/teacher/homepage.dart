@@ -6,6 +6,7 @@ import 'package:mamyalung/screens/custom/badges.dart';
 import 'package:mamyalung/responsive.dart';
 import 'package:mamyalung/screens/students/leaderboard.dart';
 import 'package:mamyalung/screens/teacher/questions.dart';
+import 'package:mamyalung/screens/teacher/topics.dart';
 import '../../loginpage.dart';
 import '../../materials.dart';
 
@@ -111,7 +112,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
         },
         children: [
           Questions(uid: widget.uid),
-          Container(),
+          Topic(),
           Container(),
           LeaderBoard(),
         ],
@@ -134,8 +135,8 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
             inactiveColor: Color.fromRGBO(74, 104, 116 , 1)
           ),
           BottomNavyBarItem(
-            title: Text('Games', textAlign: TextAlign.center),
-            icon: Icon(Icons.sports_esports_outlined),
+            title: Text('Topics', textAlign: TextAlign.center),
+            icon: Icon(Icons.category),
             activeColor: kGrayColor,
             inactiveColor: Color.fromRGBO(74, 104, 116 , 1)
           ),
