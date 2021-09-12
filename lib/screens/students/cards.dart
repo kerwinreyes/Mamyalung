@@ -268,7 +268,7 @@ Future<void> _readUser() async{
   }
   @override
   Widget build(BuildContext context) {
-    return  Stack(children: [
+    return  Center(child: Stack(children: [
           Image(image: NetworkImage('https://i.ibb.co/YBzRfyT/background.png'),
           height: MediaQuery.of(context).size.height, 
           width: MediaQuery.of(context).size.width,fit: 
@@ -276,7 +276,7 @@ Future<void> _readUser() async{
           format.format(now) == lastgame? 
         Column(children: [
           Container(
-            child:Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
+            child:Container(margin: EdgeInsets.only(left: 50, right:50, top: 100, bottom: 20),
             width: 250,
             height: 250,
             child: Container(child: FlipCard(
@@ -292,15 +292,15 @@ Future<void> _readUser() async{
                   OutlinedButton.icon(
                       onPressed: showPreviousCard,
                       icon: Icon(Icons.chevron_left),
-                      label: Text('Prev')),
+                      label: Text('Prev', style: TextStyle(fontFamily: 'Evil', fontSize: 20),)),
                   OutlinedButton.icon(
                       onPressed: showNextCard,
                       icon: Icon(Icons.chevron_right),
-                      label: Text('Next')),
+                      label: Text('Next', style: TextStyle(fontFamily: 'Evil', fontSize: 20),)),
                 ],
               )
         ],)
-        : Column( 
+        : Center(child: Column( 
       children:[
         Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
         width: 250,
@@ -367,7 +367,7 @@ Future<void> _readUser() async{
                    
        ])
       
-      ])]);
+      ]))]));
   }
     void showNextCard() {
     setState(() {
