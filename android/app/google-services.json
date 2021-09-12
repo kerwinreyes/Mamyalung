@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "708678413722",
-    "project_id": "mamyalung-e9789",
-    "storage_bucket": "mamyalung-e9789.appspot.com"
+    "project_number": "329736690251",
+    "project_id": "kapampangan-learning",
+    "storage_bucket": "kapampangan-learning.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:708678413722:android:183e6de29c176d11285e23",
+        "mobilesdk_app_id": "1:329736690251:android:af2b59434137f9dc608bce",
         "android_client_info": {
           "package_name": "com.example.mamyalung"
         }
       },
       "oauth_client": [
         {
-          "client_id": "708678413722-591qcmflkg14vdkudabukkbhh2pt9lah.apps.googleusercontent.com",
+          "client_id": "329736690251-8jv8kpfglvtvgukao1qkeivds9t77mlh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAcOJDNP4xQStburd3W2qoPnr5Nlqz9bhM"
+          "current_key": "AIzaSyA5yeaObp2yR51FadSEkPwUJm6vRILYV70"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "708678413722-591qcmflkg14vdkudabukkbhh2pt9lah.apps.googleusercontent.com",
+              "client_id": "329736690251-8jv8kpfglvtvgukao1qkeivds9t77mlh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
