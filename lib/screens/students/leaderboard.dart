@@ -47,7 +47,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
         SingleChildScrollView(
           child: Column(
           children: [
-            Padding(padding: MediaQuery.of(context).size.width <= 649 ? EdgeInsets.fromLTRB(60,130,60,0): EdgeInsets.fromLTRB(500,190,500,0) ,
+            Padding(padding: EdgeInsets.fromLTRB(60, MediaQuery.of(context).size.height * .20, 60, 0),
               child: Row(
                 children: [
                   Text("Student Name", style: TextStyle(fontFamily: 'Playfull', fontSize: 25)),
