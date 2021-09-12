@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mamyalung/widgets/buttons.dart';
 import '../../materials.dart';
@@ -85,7 +84,7 @@ class _QuizStateState extends State<QuizState> {
   bool _Start = false;
   List flashcards=[];
   List _todayResults=[];
-  List _todayFlashcards= [{'question':'Click the card to see the answer','answer':'Click the next or prev button'},
+  List _todayFlashcards= [
   {'question':'Click the card to see the answer','answer':'Click the next or prev button'}];
   List _tryflashcards=[
     {'questionID':0,
@@ -94,23 +93,11 @@ class _QuizStateState extends State<QuizState> {
                   'choice':['Okay','Cancel'],
                   'answer':0
                   },
-                   {'questionID':0,
-                  'question': 'Answer the following questions',
-                  'level': 1,
-                  'choice':['Okay','Cancel'],
-                  'answer':0}
                   ];
   bool _doneforday= false;
   var score=0;
   List others=[];
-  List<Flashcard> _flashcards=[
-    Flashcard(
-                questionID: 0,
-                multiple_choice:['Hello','Hi'], 
-                level:0, 
-                question:'Flashcards', 
-                answer: 0),
-  ];
+  
   Map<int, List> days = {
     1: [1,2], 2: [1,3], 3: [1,2],4: [1,4], 
     5: [1,2], 6: [1,3], 7: [1,2],8: [1], 
@@ -118,9 +105,9 @@ class _QuizStateState extends State<QuizState> {
     13: [1,2,4], 14: [1,3], 15: [1,2],16: [1],  
     };
 List finaflashcards=[];
-  read(){
+Future<void>  read() async{
     print(widget.uid);
-    FirebaseFirestore.instance
+    await FirebaseFirestore.instance
     .collection('users')
     .where('uid',isEqualTo: widget.uid)
     .get()
@@ -162,7 +149,7 @@ List finaflashcards=[];
     start_flashcard = !start_flashcard;
                     
   });
-  FirebaseFirestore.instance
+  await FirebaseFirestore.instance
     .collection('questions')
     .where('grade_level',isEqualTo: grade_level)
     .get()
@@ -208,7 +195,7 @@ Future<void> updateUser() {
     .then((value) => print("User Updated"))
     .catchError((error) => print("Failed to update user: $error"));
 }
- var counter=1;
+ var counter=0;
   //Check if the student got the correct answer
   checkWin(String userChoice , BuildContext context )
   { 
@@ -223,7 +210,7 @@ Future<void> updateUser() {
        'level': _tryflashcards[counter]['level']+=1,
      }); 
     final snackbar = SnackBar(
-      duration: Duration(milliseconds : 500),
+      duration: Duration(milliseconds : 500), 
       backgroundColor: Colors.green,
       content: Text("Correct!"),);
     
@@ -253,7 +240,7 @@ Future<void> updateUser() {
      
    }
    else{
-         counter=1;
+         counter=0;
      
       updateUser();
        setState(() {
@@ -265,24 +252,34 @@ Future<void> updateUser() {
    }
   });
 } 
-  int _currentIndex = 1;
+Future<void> _readUser() async{
+  var data = await FirebaseFirestore.instance
+    .collection('users')
+    .where('uid',isEqualTo: widget.uid)
+    .get();
+}
+  int _currentIndex = 0;
   bool start_flashcard=true;
   @override
   void initState() {
-    read();
     super.initState();
+    read();
+    _readUser();
   }
   @override
   Widget build(BuildContext context) {
-    return format.format(now) == lastgame? 
-        Scaffold(
-          backgroundColor:  powderblue.withOpacity(0.5),
-          body: Column(children: [
+    return  Stack(children: [
+          Image(image: NetworkImage('https://i.ibb.co/YBzRfyT/background.png'),
+          height: MediaQuery.of(context).size.height, 
+          width: MediaQuery.of(context).size.width,fit: 
+          BoxFit.fill,),
+          format.format(now) == lastgame? 
+        Column(children: [
           Container(
             child:Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
             width: 250,
             height: 250,
-            child: Neumorphic(child: FlipCard(
+            child: Container(child: FlipCard(
               front: FlashcardView(
               text: _todayFlashcards[_currentIndex]['question'],
             ),
@@ -302,13 +299,13 @@ Future<void> updateUser() {
                       label: Text('Next')),
                 ],
               )
-        ],),)
+        ],)
         : Column( 
       children:[
         Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
         width: 250,
         height: 250,
-        child: Neumorphic(child: Container(
+        child: Container(child: Container(
           child: FlashcardView(
           text: _tryflashcards[counter]['question'],
         ),
@@ -370,7 +367,7 @@ Future<void> updateUser() {
                    
        ])
       
-      ]);
+      ])]);
   }
     void showNextCard() {
     setState(() {

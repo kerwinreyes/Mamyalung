@@ -30,12 +30,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Responsive(
-        desktop: Container(),
-        tablet: Container(),
-        //For mobile 
-        mobile: StudentsMobile(uid: widget.uid),
-    );
+    return StudentsMobile(uid: widget.uid);
   }
 }
 
@@ -79,10 +74,7 @@ class _StudentsMobileState extends State<StudentsMobile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      //backgroundColor:  powderblue.withOpacity(0.5),
      appBar: AppBar(
-       
        leading: Container(
          margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
          decoration: BoxDecoration(
@@ -97,14 +89,14 @@ class _StudentsMobileState extends State<StudentsMobile> {
          child: Image(height: 50.0,image: NetworkImage('https://i.ibb.co/gghzqTq/mamyalung-logo.png'),fit: BoxFit.cover,),
        ),
        centerTitle: true,
-       elevation: 0,
+       elevation: 5,
        shadowColor: primaryBlue,
-       backgroundColor: Colors.white.withOpacity(0.2),
+       backgroundColor: lightBlue,
        actions: [
           IconButton(
               icon: Icon(
                 Icons.exit_to_app,
-                color: Colors.black,
+                color: Colors.white,
               ),
               onPressed: () {
                 FirebaseAuth auth = FirebaseAuth.instance;
