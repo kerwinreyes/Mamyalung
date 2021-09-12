@@ -44,7 +44,8 @@ class _LeaderBoardState extends State<LeaderBoard> {
         image: DecorationImage(
           image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/WWmXCWV/leaderboards.png') : NetworkImage("https://i.ibb.co/RPPY7mM/leaderboardsweb.png"), fit: BoxFit.fill),
           ),),
-        Column(
+        SingleChildScrollView(
+          child: Column(
           children: [
             Padding(padding: EdgeInsets.fromLTRB(60, MediaQuery.of(context).size.height * .20, 60, 0),
               child: Row(
@@ -62,19 +63,19 @@ class _LeaderBoardState extends State<LeaderBoard> {
                 shrinkWrap: true,
                 children: snapshot.data!.docs.map((DocumentSnapshot document) {
                 Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
-                  return _buildRow("${data['fname']} ${data['lname']}" , data['points']);
+                  return _buildRow("${data['fname']} ${data['lname']}" , data['points'],'${data['image']}');
                 }).toList(),
               )
             )
           ],
-        )
+        ))
       ],
       );
       },
     );
   }
 }
-Widget _buildRow(String name, var score) {
+Widget _buildRow(String name, var score, String image) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 60.0),
     child: Column(
@@ -84,7 +85,7 @@ Widget _buildRow(String name, var score) {
         SizedBox(height: 12),
         Row(
           children: <Widget>[
-            CircleAvatar(backgroundImage: NetworkImage('https://i.ibb.co/gghzqTq/mamyalung-logo.png')),
+            CircleAvatar(backgroundImage: NetworkImage(image)),
             SizedBox(width: 12),
             Text(name, style: TextStyle(fontFamily: 'SundayMorning', fontSize: 20)),
             Spacer(),

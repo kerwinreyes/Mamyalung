@@ -54,11 +54,7 @@ class _TopicOneState extends State<TopicOne> {
       ),
       backgroundColor: powderblue.withOpacity(0.5),
       body: Container(
-        child: Responsive(
-          desktop: Container(),
-          tablet: Container(),
-          mobile: MultipleBody(uid: widget.uid, topic: topic, unlock : isUnlocked)
-        )
+        child: MultipleBody(uid: widget.uid, topic: topic, unlock : isUnlocked)
       )
     );
   }
