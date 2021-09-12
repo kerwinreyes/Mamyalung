@@ -175,9 +175,11 @@ String isUnlocked = "isUnlocked4";
     topic = 'assets/questions/Salitang_Papakit_Galo.json';
     }
     return Scaffold(
-      appBar: AppBar(title: Text("Topic"),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        title: Text("Topic"),
       backgroundColor: lightBlue,),
-      backgroundColor: powderblue.withOpacity(0.5),
+      backgroundColor: Colors.white.withOpacity(0.2),
       body: Container(
         child: Responsive(
           desktop: Container(),
