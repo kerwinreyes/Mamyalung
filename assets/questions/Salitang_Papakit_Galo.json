@@ -2,7 +2,8 @@
         {
         "questionID" : 71,
         "grade_level" : 3,
-        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
+        "question": "Sanu karing susunud a Kapampangan a salita ing ali papakit kilus?",
+        "translation": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
         "topic" : "Salitang Papakit Galo o Kimut",
         "multiple_choice": [
         "mamasa",
@@ -13,7 +14,8 @@
 
         {
         "questionID" : 72,
-        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
+        "question": "Sanu karing susunud a Kapampangan a salita ing ali papakit kilus?",
+        "translation": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
         "grade_level" : 3,
         "topic" : "Salitang Papakit Galo o Kimut",
         "multiple_choice": [
@@ -26,7 +28,8 @@
       
         {
         "questionID" : 73,
-        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
+        "question": "Sanu karing susunud a Kapampangan a salita ing ali papakit kilus?",
+        "translation": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos?",
         "grade_level" : 3,
         "topic" : "Salitang Papakit Galo o Kimut",
         "multiple_choice": [
@@ -38,7 +41,8 @@
         
         {
         "questionID" : 74,
-        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
+        "question": "Sanu karing susunud a Kapampangan a salita ing ali papakit kilus king bale?",
+        "translation": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
         "grade_level" : 2,
         "topic" : "Salitang Papakit Galo o Kimut",
         "multiple_choice": [
@@ -51,7 +55,8 @@
 
         {
         "questionID" : 75,
-        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos ng mga hayop?",
+        "question": "Sanu karing susunud a Kapampangan a salita ing ali papakit kilus da ring Animal?",
+        "translation": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos ng mga Hayop?",
         "grade_level" : 3,
         "topic" : "Salitang Papakit Galo o Kimut",
         "multiple_choice": [
@@ -63,7 +68,8 @@
 
         {
         "questionID" : 76,
-        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos ng mga hayop?",
+        "question": "Sanu karing susunud a Kapampangan a salita ing ali papakit kilus da ring Animal?",
+        "translation": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos ng mga Hayop?",
         "grade_level" : 3,
         "topic" : "Salitang Papakit Galo o Kimut",
         "multiple_choice": [
@@ -75,7 +81,8 @@
         
         {
         "questionID" : 77,
-        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa paaralan?",
+        "question": "Sanu karing susunud a Kapampangan a salita ing ali papakit kilus king iskwela?",
+        "translation": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa paaralan?",
         "grade_level" : 3,
         "topic" : "Salitang Papakit Galo o Kimut",
         "multiple_choice": [
@@ -87,7 +94,8 @@
 
         {
         "questionID" : 78,
-        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
+        "question": "Sanu karing susunud a Kapampangan a salita ing ali papakit kilus king bale?",
+        "translation": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
         "grade_level" : 3,
         "topic" : "Salitang Papakit Galo o Kimut",
         "multiple_choice": [
@@ -99,7 +107,8 @@
 
         {
         "questionID" : 79,
-        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
+        "question": "Sanu karing susunud a Kapampangan a salita ing ali papakit kilus king bale?",
+        "translation": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa bahay?",
         "grade_level" : 3,
         "topic" : "Salitang Papakit Galo o Kimut",
         "multiple_choice": [
@@ -111,7 +120,8 @@
         
         {
         "questionID" : 80,
-        "question": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa paaralan?",
+        "question": "Sanu karing susunud a Kapampangan a salita ing ali papakit kilus king iskwela?",
+        "translation": "Alin sa mga susunod na Kapampangan na salita ang hindi nagpapakita ng kilos sa paaralan?",
         "grade_level" : 3,
         "topic" : "Salitang Papakit Galo o Kimut",
         "multiple_choice": [

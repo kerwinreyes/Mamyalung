@@ -2,9 +2,10 @@
     [
         {
         "questionID" : 11,
-        "question": "Ano ang ibig sabihin ng 'Mayap a ugtu pu' sa tagalog?",
+        "question": "Nanu ing buri ng sabiyan ning 'Mayap a ugtu pu' king tagalog?",
+        "translation": "Ano ang ibig sabihin ng 'Mayap a ugtu pu' sa tagalog?",
         "grade_level" : 2,
-        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "topic" : "Pagtukoy ng Magagalang na Pananalita at Pagbati",
         "multiple_choice": [
         "Magandang Umaga po",
         "Magandang Hapon po",
@@ -14,9 +15,10 @@
 
         {
         "questionID" : 12,
-        "question": "Ano sa Kapampangan ang 'Tuluy po kayo'?",
+        "question": "Nanu ya king kapampangan ing 'Tuloy po kayo'?",
+        "translation": "Ano sa Kapampangan ang 'Tuloy po kayo'?",
         "grade_level" : 2,
-        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "topic" : "Pagtukoy ng Magagalang na Pananalita at Pagbati",
         "multiple_choice": [
         "Pakiabut po",
         "Makilabas ku pu",
@@ -26,9 +28,10 @@
 
         {
         "questionID" : 13,
-        "question": "Ano sa Kapampangan ang 'Magandang hapon po'?",
+        "question": "Nanu ya king kapampangan ing 'Magandang hapon po'?",
+        "translation": "Ano sa Kapampangan ang 'Magandang hapon po'?",
         "grade_level" : 2,
-        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "topic" : "Pagtukoy ng Magagalang na Pananalita at Pagbati",
         "multiple_choice": [
         "Alang nanu man pu",
         "Pasensya na pu",
@@ -38,9 +41,10 @@
 
         {
         "questionID" : 14,
-        "question": "Ano ang Kapampangan ng 'Maligayang Bagong Taon'?",
+        "question": "Nanu ya king kapampangan ing 'Maligayang Bagong Taon'?",
+        "translation": "Ano sa Kapampangan ang 'Maligayang Bagong Taon'?",
         "grade_level" : 2,
-        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "topic" : "Pagtukoy ng Magagalang na Pananalita at Pagbati",
         "multiple_choice": [
         "Masayang Bayung Banwa",
         "Masayang aldo ning kebaytan",
@@ -50,9 +54,10 @@
 
         {
         "questionID" : 15,
-        "question": "Ano ang iyong sasabihin kapag may nagawa kang kasalanan?",
+        "question": "Nanung sabiyan mu patse atin kang agawang kasalanan?",
+        "translation": "Ano ang iyong sasabihin kapag may nagawa kang kasalanan?",
         "grade_level" : 2,
-        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "topic" : "Pagtukoy ng Magagalang na Pananalita at Pagbati",
         "multiple_choice": [
         "Komusta kayu pu",
         "Pasensya na pu",
@@ -62,9 +67,10 @@
 
         {
         "questionID" : 16,
-        "question": "Alin ang hindi nagpapakita ng paggalang?",
+        "question": "Sanu ing ali papakit paggalang?",
+        "translation": "Alin ang hindi nagpapakita ng paggalang?",
         "grade_level" : 2,
-        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "topic" : "Pagtukoy ng Magagalang na Pananalita at Pagbati",
         "multiple_choice": [
         "Komusta kayu pu",
         "Salamat pu",
@@ -74,9 +80,10 @@
 
         {
         "questionID" : 17,
-        "question": "Alin ang hindi nagpapakita ng paggalang?",
+        "question": "Sanu ing ali papakit paggalang?",
+        "translation": "Alin ang hindi nagpapakita ng paggalang?",
         "grade_level" : 2,
-        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "topic" : "Pagtukoy ng Magagalang na Pananalita at Pagbati",
         "multiple_choice": [
         "Po/Opu",
         "Salamat",
@@ -86,9 +93,10 @@
 
         {
         "questionID" : 18,
-        "question": "Alin ang hindi nagpapakita ng paggalang?",
+        "question": "Sanu ing ali papakit paggalang?",
+        "translation": "Alin ang hindi nagpapakita ng paggalang?",
         "grade_level" : 2,
-        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "topic" : "Pagtukoy ng Magagalang na Pananalita at Pagbati",
         "multiple_choice": [
         "Pakiabut pu",
         "Mayap a bengi pu",
@@ -98,9 +106,10 @@
 
         {
         "questionID" : 19,
-        "question": "Ano sa Kapampangan ang Happy Birthday?",
+        "question": "Nanu ya king Kapampangan ing 'Maligayang Kaarawan'?",
+        "translation": "Ano sa Kapampangan ang 'Maligayang Kaarawan'?",
         "grade_level" : 2,
-        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "topic" : "Pagtukoy ng Magagalang na Pananalita at Pagbati",
         "multiple_choice": [
         "Mayap a bengi pu",
         "Masayang bayung banwa pu",
@@ -110,9 +119,10 @@
 
         {
         "questionID" : 20,
-        "question": "Ano sa Kapampangan ang Paki abot po?",
+        "question": "Nanu ya king Kapampangan ing 'Paki abot po'?",
+        "translation": "Ano sa Kapampangan ang 'Paki abot po'?",
         "grade_level" : 2,
-        "topic" : "Pagtukoy ng magagalang Magagalang na Pananalita at Pagbati",
+        "topic" : "Pagtukoy ng Magagalang na Pananalita at Pagbati",
         "multiple_choice": [
         "Pakiabut pu",
         "Salamat pu",

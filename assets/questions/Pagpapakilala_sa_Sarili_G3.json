@@ -2,121 +2,131 @@
     {
     "questionID" : 61,
     "grade_level" : 3,
-    "question": "Piliin ang nararapat na salita: Anam nakung ____",
+    "question": "Sanu ing ustung salita: Anam nakung ____",
+    "translation": "Alin ang nararapat na salita: Anam nakung ____",
     "topic" : "Pagpapakilala sa Sarili",
     "multiple_choice": [
     "banwa",
     "mestra",
     "idad",
-    "none of the above"],
+    "Ala king minunang atlu"],
     "answer": 0},
 
     {
     "questionID" : 62,
-    "question": "Piliin ang nararapat na salita: _____ ku king Holy Angel University",
+    "question": "Sanu ing ustung salita: _____ ku king Holy Angel University",
+    "translation": "Alin ang nararapat na salita: _____ ku king Holy Angel University",
     "grade_level" : 3,
     "topic" : "Pagpapakilala sa Sarili",
     "multiple_choice": [
     "matudtud",
     "magaral",
     "mamulayi",
-    "none of the above"],
+    "Ala king minunang atlu"],
     "answer": 1},
 
   
     {
     "questionID" : 63,
-    "question": "Piliin ang nararapat na salita: ____ ku king Angeles City/San Fernando City",
+    "question": "Sanu ing ustung salita: ____ ku king Angeles City/San Fernando City",
+    "translation": "Alin ang nararapat na salita: ____ ku king Angeles City/San Fernando City",
     "grade_level" : 3,
     "topic" : "Pagpapakilala sa Sarili",
     "multiple_choice": [
     "makatuknang",
     "mamulayi",
     "mandilu",
-    "none of the above"],
+    "Ala king minunang atlu"],
     "answer": 0},
     
     {
     "questionID" : 64,
-    "question": "Piliin ang nararapat na salita: Kayabe ku keng bale i ima ku ampo i ____ ku",
+    "question": "Sanu ing ustung salita: Kayabe ku king bale i ima ku ampo i ____ ku",
+    "translation": "Alin ang nararapat na salita: Kayabe ku king bale i ima ku ampo i ____ ku",
     "grade_level" : 3,
     "topic" : "Pagpapakilala sa Sarili",
     "multiple_choice": [
-    "asu",
+    "adwa",
     "okra",
     "tatang",
-    "none of the above"],
+    "Ala king minunang atlu"],
     "answer": 2},
 
     {
     "questionID" : 65,
-    "question": "Alin sa mga sumusunod ang hindi Kapampangan na numero?",
+    "question": "Sanu karing susunud ing ali Kapampangan a numeru?",
+    "translation": "Alin sa mga sumusunod ang hindi Kapampangan na numero?",
     "grade_level" : 3,
     "topic" : "Pagpapakilala sa Sarili",
     "multiple_choice": [
     "anam",
     "adwa",
     "isa",
-    "none of the above"],
+    "atlu"],
     "answer": 2},
 
     {
     "questionID" : 66,
-    "question": "Alin sa mga sumusunod ang Kapampangan na buwan?",
+    "question": "Sanu karing susunud ing Kapampangan a bulan?",
+    "translation": "Alin sa mga sumusunod ang Kapampangan na buwan?",
     "grade_level" : 3,
     "topic" : "Pagpapakilala sa Sarili",
     "multiple_choice": [
-    "marso",
+    "marsu",
     "april",
     "september",
-    "none of the above"],
+    "Ala king minunang atlu"],
     "answer": 0},
     
     {
     "questionID" : 67,
-    "question": "Ano sa tagalog ang 'Apulu nakung banwa'",
+    "question": "Nanu ya king tagalog ing 'Apulu nakung banwa'?",
+    "translation": "Ano sa tagalog ang 'Apulu nakung banwa'?",
     "grade_level" : 3,
     "topic" : "Pagpapakilala sa Sarili",
     "multiple_choice": [
     "ako ay anim na taon na",
     "ako ay sampong taon na",
     "ako ay labing isang taon na",
-    "none of the above"],
+    "Ala king minunang atlu"],
     "answer": 1},
 
     {
     "questionID" : 68,
-    "question": "Ano sa tagalog ang 'Atyu na ku king katlung gradu'",
+    "question": "Nanu ya king tagalog ing 'Atyu na ku king katlung gradu'?",
+    "translation": "Ano sa tagalog ang 'Atyu na ku king katlung gradu'?",
     "grade_level" : 3,
     "topic" : "Pagpapakilala sa Sarili",
     "multiple_choice": [
     "ako ay nasa unang baitang ",
     "ako ay nasa ikalawang baitang",
     "ako ay nasa ikatlong baitang",
-    "none of the above"],
+    "Ala king minunang atlu"],
     "answer": 2},
 
     {
     "questionID" : 69,
-    "question": "Ano sa tagalog ang 'Ing ima ku i'",
+    "question": "Nanu ya king tagalog ing 'Ing ima ku i'?",
+    "translation": "Ano sa tagalog ang 'Ing ima ku i'?",
     "grade_level" : 3,
     "topic" : "Pagpapakilala sa Sarili",
     "multiple_choice": [
     "Ang tita ko ay si",
     "Ang lola ko ay si",
     "ang nanay ako ay si",
-    "none of the above"],
+    "Ala king minunang atlu"],
     "answer": 2},
     
     {
     "questionID" : 70,
-    "question": "Ano sa tagalog ang 'Ing tatang ku i'",
+    "question": "Nanu ya king tagalog ing 'Ing tatang ku i'?",
+    "translation": "Ano sa tagalog ang 'Ing tatang ku i'?",
     "grade_level" : 3,
     "topic" : "Pagpapakilala sa Sarili",
     "multiple_choice": [
     "ang kuya ko ay si",
     "ang tatay ko ay si",
     "ang kapatid ko ay si",
-    "none of the above"],
+    "Ala king minunang atlu"],
     "answer": 1}
 ]
