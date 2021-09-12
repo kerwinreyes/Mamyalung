@@ -113,7 +113,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
         },
         children: [
           Questions(uid: widget.uid),
-          AddLesson(),
+          Topic(),
           Container(),
           LeaderBoard(),
         ],

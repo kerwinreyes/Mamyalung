@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -80,96 +81,67 @@ class _TopicState extends State<Topic> {
   }           
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Scaffold(body:SingleChildScrollView(
       child: Column(children: [
         Container(
           child: Text('Topics',
           style: TextStyle(color: Colors.white, fontSize: 18.0,fontFamily: 'Evil'),
           )
           ),
-        Padding(
-            padding: EdgeInsets.symmetric(vertical: 5.0),
-            child:TextField(
-            
-            controller: _searchController,
-            decoration: InputDecoration(
-              
-              focusColor: lightBlue,
-              prefixIcon: Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
-              
-              ),
-              hintText: 'Enter a search term'
-            ),
-          )),
       Container(
       height: MediaQuery.of(context).size.height*.70,
       padding: const EdgeInsets.symmetric(vertical: 20),
-      child:ListView.builder(
-          itemCount: _resultsList.length,
-        itemBuilder: (BuildContext context, int index)=>
-         viewTopic(context, _resultsList[index])
-        ))
-      ],)
-    );
+      child:
+          GridView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              primary: false,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: MediaQuery.of(context).size.width < 480 ? 2 :6,
+              ),
+            itemBuilder: (BuildContext context, int index)=>
+                  viewTopic(context, _resultsList[index]),
+            itemCount: _resultsList.length,
+          ))
+      ],)),
+    floatingActionButton: 
+      FloatingActionButton( onPressed: (){
+        
+      },
+      child: Icon(Icons.add),
+      backgroundColor: Colors.blue,
+     
+    ));
   }
 }
-
 Widget viewTopic(BuildContext context, DocumentSnapshot document) {
+  List randomColor=[lightBlue, primaryBlue, green, lightgreen, orange, red];
   final topic = Topics.fromSnapshot(document);
+  editTopic(){
 
+  }
+  publish(){
+
+  }
   return new Container(
-    child: InkWell(
-      focusColor: white,
-      hoverColor: Colors.grey,
-        child: Container(
-      padding: EdgeInsets.symmetric(horizontal:2, vertical:20),
-      width: MediaQuery.of(context).size.width,
-      child:Row(
-        
-        children: [
-        Container(
-          width: MediaQuery.of(context).size.width/9,
-          child:Text('')
-        ),
-        Container(
-          width: MediaQuery.of(context).size.width/5,
-          child:Text(topic.topic_name,
-          style: GoogleFonts.lato(
-                      textStyle: TextStyle(color: gray,fontSize: 16, ),
-                    ),)
-        ),
-        Container(
-          width: MediaQuery.of(context).size.width/5,
-          child: Text(topic.grade_level.toString(),
-          style: GoogleFonts.lato(
-                      textStyle: TextStyle(color: gray,fontSize: 16, ),
-                    ),)
-        ),
-        Container(
-          width: MediaQuery.of(context).size.width/7,
-          child: Text(topic.publish.toString(),
-          style: GoogleFonts.lato(
-                      textStyle: TextStyle(color: gray,fontSize: 16, ),
-                    ),)
-        ),
-        
-        Container(
-          width: MediaQuery.of(context).size.width/7,
-          child: Text('Action',
-          style: GoogleFonts.lato(
-                      textStyle: TextStyle(color: gray,fontSize: 16, ),
-                    ),)
-        ),
-      ],),),
-        onTap: () {
-          /*Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => DetailTripView(trip: trip)),
-          );*/
-        },
-      )
-  );
+    child: Container(
+                        margin: EdgeInsets.only(left:20,right: 20,top:10,bottom:20),
+                        width: double.infinity,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          
+                          color: white,
+                          borderRadius: BorderRadius.circular(20.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: black.withOpacity(0.5),spreadRadius: 3,
+                              blurRadius: 7,offset:Offset(2, 5)
+                            )
+                          ]
+                        ),
+                        child: Padding(padding: EdgeInsets.only(top: 10),
+                        child: AutoSizeText(topic.topic_name,style:TextStyle(fontFamily: 'Poppins',fontSize: 20), textAlign: TextAlign.center,))
+   
+  ));
+
 }
