@@ -268,15 +268,27 @@ Future<void> _readUser() async{
   }
   @override
   Widget build(BuildContext context) {
-    return  Stack(children: [
-          Image(image: NetworkImage('https://i.ibb.co/YBzRfyT/background.png'),
-          height: MediaQuery.of(context).size.height, 
-          width: MediaQuery.of(context).size.width,fit: 
-          BoxFit.fill,),
+        var screenSize = MediaQuery.of(context).size;
+    var screenSizeW = screenSize.width;
+    var screenSizeH = screenSize.height;
+    return  Center(child: Stack(children: [
+          Container(
+            //constraints: BoxConstraints.expand(),
+            width: screenSizeW,
+            height: screenSizeH,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: screenSizeW <= 649
+                      ? NetworkImage("https://i.ibb.co/YBzRfyT/background.png")
+                      : NetworkImage(
+                          "https://i.ibb.co/rMgVF9T/background.png"),
+                  fit: BoxFit.fill),
+            ),
+          ),
           format.format(now) == lastgame? 
         Column(children: [
           Container(
-            child:Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
+            child:Container(margin: EdgeInsets.only(left: 50, right:50, top: 120, bottom: 20),
             width: 250,
             height: 250,
             child: Container(child: FlipCard(
@@ -291,16 +303,20 @@ Future<void> _readUser() async{
                 children: [
                   OutlinedButton.icon(
                       onPressed: showPreviousCard,
+                      style:  ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.white.withOpacity(0.8)),),
                       icon: Icon(Icons.chevron_left),
-                      label: Text('Prev')),
+                      label: Text('Prev', style: TextStyle(fontFamily: 'Evil', fontSize: 25),)),
                   OutlinedButton.icon(
                       onPressed: showNextCard,
+                      style:  ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.white.withOpacity(0.8)),),
                       icon: Icon(Icons.chevron_right),
-                      label: Text('Next')),
+                      label: Text('Next', style: TextStyle(fontFamily: 'Evil', fontSize: 25),)),
                 ],
               )
         ],)
-        : Column( 
+        : Center(child: Column( 
       children:[
         Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
         width: 250,
@@ -367,7 +383,7 @@ Future<void> _readUser() async{
                    
        ])
       
-      ])]);
+      ]))]));
   }
     void showNextCard() {
     setState(() {
