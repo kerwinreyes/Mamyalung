@@ -89,6 +89,7 @@ class _QuizStateState extends State<QuizState> {
   List _tryflashcards=[
     {'questionID':0,
                   'question': 'Answer the following questions',
+                  'translatation': 'Sagutin',
                   'level': 1,
                   'choice':['Okay','Cancel'],
                   'answer':0
@@ -126,11 +127,12 @@ Future<void>  read() async{
                   qis.add(doc['flashcards'][i]['questionID']);
 
                   if(days[doc['day']]!.contains(doc['flashcards'][i]['level'])){
-                                    _tryflashcards.add({
+                  _tryflashcards.add({
                   'questionID':ques['questionID'],
                   'question': ques['question'],
                   'level': doc['flashcards'][i]['level'],
                   'choice':ques['multiple_choice'],
+                  'translation':ques['translation'],
                   'answer':ques['answer']
                 });
                 _todayFlashcards.add({
@@ -323,7 +325,7 @@ Future<void> _readUser() async{
         height: 250,
         child: Container(child: Container(
           child: FlashcardView(
-          text: _tryflashcards[counter]['question'],
+          text: _tryflashcards[counter]['question'] + _tryflashcards[counter]['translation'],
         ),
         ),
         ),),

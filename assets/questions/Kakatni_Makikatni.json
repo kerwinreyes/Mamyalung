@@ -3,7 +3,7 @@
         {
         "questionID" : 21,
         "question": "Sanu karing susunud a kakatni a magumpisa king 'a' ing ali kapampangan?",
-        "translate": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'a' ang hindi Kapampangan?",
+        "translation": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'a' ang hindi Kapampangan?",
         "grade_level" : 2,
         "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
@@ -16,7 +16,7 @@
         {
         "questionID" : 22,
         "question": "Sanu karing susunud a kakatni a magumpisa king 'e' ing ali kapampangan?",
-        "translate": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'e' ang hindi Kapampangan?",
+        "translation": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'e' ang hindi Kapampangan?",
         "grade_level" : 2,
         "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
@@ -29,7 +29,7 @@
         {
         "questionID" : 23,
         "question": "Sanu karing susunud a kakatni a magumpisa king 'i' ing ali kapampangan?",
-        "translate": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'i' ang hindi Kapampangan?",
+        "translation": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'i' ang hindi Kapampangan?",
         "grade_level" : 2,
         "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
@@ -42,7 +42,7 @@
         {
         "questionID" : 24,
         "question": "Sanu karing susunud a kakatni a magumpisa king 'o' ing ali kapampangan?",
-        "translate": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'o' ang hindi Kapampangan?",
+        "translation": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'o' ang hindi Kapampangan?",
         "grade_level" : 2,
         "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
@@ -55,7 +55,7 @@
         {
         "questionID" : 25,
         "question": "Sanu karing susunud a kakatni a magumpisa king 'u' ing ali kapampangan?",
-        "translate": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'u' ang hindi Kapampangan?",
+        "translation": "Alin sa mga sumusunod na kakatni na naguumpisa sa 'u' ang hindi Kapampangan?",
         "grade_level" : 2,
         "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
@@ -68,7 +68,7 @@
         {
         "questionID" : 26,
         "question": "Sanu karing susunud a makikatni a magumpisa king 'g' ing ali kapampangan?",
-        "translate": "Alin sa mga sumusunod na makikatni na naguumpisa 'g' ang hindi Kapampangan?",
+        "translation": "Alin sa mga sumusunod na makikatni na naguumpisa 'g' ang hindi Kapampangan?",
         "grade_level" : 2,
         "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
@@ -81,7 +81,7 @@
         {
         "questionID" : 27,
         "question": "Sanu karing susunud a makikatni a magumpisa king 'm' ing ali kapampangan?",
-        "translate": "Alin sa mga sumusunod na makikatni na naguumpisa 'm' ang hindi Kapampangan?",
+        "translation": "Alin sa mga sumusunod na makikatni na naguumpisa 'm' ang hindi Kapampangan?",
         "grade_level" : 2,
         "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
@@ -94,7 +94,7 @@
         {
         "questionID" : 28,
         "question": "Sanu karing susunud a makikatni a magumpisa king 'p' ing ali kapampangan?",
-        "translate": "Alin sa mga sumusunod na makikatni na naguumpisa 'p' ang hindi Kapampangan?",
+        "translation": "Alin sa mga sumusunod na makikatni na naguumpisa 'p' ang hindi Kapampangan?",
         "grade_level" : 2,
         "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
@@ -107,7 +107,7 @@
         {
         "questionID" : 29,
         "question": "Sanu karing susunud a makikatni a magumpisa king 's' ing ali kapampangan?",
-        "translate": "Alin sa mga sumusunod na makikatni na naguumpisa 's' ang hindi Kapampangan?",
+        "translation": "Alin sa mga sumusunod na makikatni na naguumpisa 's' ang hindi Kapampangan?",
         "grade_level" : 2,
         "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
@@ -120,7 +120,7 @@
         {
         "questionID" : 30,
         "question": "Sanu karing susunud a makikatni a magumpisa king 'd' ing ali kapampangan?",
-        "translate": "Alin sa mga sumusunod na makikatni na naguumpisa 'd' ang hindi Kapampangan?",
+        "translation": "Alin sa mga sumusunod na makikatni na naguumpisa 'd' ang hindi Kapampangan?",
         "grade_level" : 2,
         "topic" : "Kakatni at Makikatni",
         "multiple_choice": [
