@@ -114,7 +114,6 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
         children: [
           Questions(uid: widget.uid),
           Topic(),
-          Container(),
           LeaderBoard(),
         ],
       ),),
@@ -138,12 +137,6 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
           BottomNavyBarItem(
             title: Text('Topics', textAlign: TextAlign.center),
             icon: Icon(Icons.category),
-            activeColor: kGrayColor,
-            inactiveColor: Color.fromRGBO(74, 104, 116 , 1)
-          ),
-          BottomNavyBarItem(
-            title: Text('Badges', textAlign: TextAlign.center),
-            icon: Icon(Icons.emoji_events_outlined),
             activeColor: kGrayColor,
             inactiveColor: Color.fromRGBO(74, 104, 116 , 1)
           ),
