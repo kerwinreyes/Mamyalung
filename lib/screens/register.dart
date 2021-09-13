@@ -41,7 +41,7 @@ class _RegisterPageState extends State<RegisterPage> {
   var grade_levels = ['Grade 1', 'Grade 2', 'Grade 3'];
   Random random = new Random();
   //Flashcards list
-  List _flashcards = [];
+  List _flashcards = [{'questionID':0,'level':1}];
   List _flashcards_3 = [];
   final _focusName = FocusNode();
   final _focusLname = FocusNode();
@@ -84,10 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
         'points': 0,
         'grade_level': _gradeLevel,
         'flashcards': _flashcards.sublist(0, 6),
-        'isUnlocked1': 1,
-        'isUnlocked2': 0,
-        'isUnlocked3': 0,
-        'isUnlocked4': 0,
+        
         'badge_count': 0,
         'day': 1,
         'image': image[random.nextInt(image.length)],

@@ -89,7 +89,7 @@ class _QuizStateState extends State<QuizState> {
   List _tryflashcards=[
     {'questionID':0,
                   'question': 'Answer the following questions',
-                  'translatation': 'Sagutin',
+                  'translation': 'Sagutin',
                   'level': 1,
                   'choice':['Okay','Cancel'],
                   'answer':0
@@ -106,6 +106,7 @@ class _QuizStateState extends State<QuizState> {
     13: [1,2,4], 14: [1,3], 15: [1,2],16: [1],  
     };
 List finaflashcards=[];
+List allflashcards=[];
 Future<void>  read() async{
     print(widget.uid);
     await FirebaseFirestore.instance
@@ -126,6 +127,11 @@ Future<void>  read() async{
                 querySnapshot.docs.forEach((ques) {
                   qis.add(doc['flashcards'][i]['questionID']);
 
+                allflashcards.add({
+                  'level': doc['flashcards'][i]['level'],
+                  'questionID': doc['flashcards'][i]['questionID'],
+                  
+                });
                   if(days[doc['day']]!.contains(doc['flashcards'][i]['level'])){
                   _tryflashcards.add({
                   'questionID':ques['questionID'],
@@ -164,8 +170,11 @@ Future<void>  read() async{
   //Update Flashcards
     CollectionReference users = FirebaseFirestore.instance.collection('users');
   List<int> _others=[];
-
 Future<void> updateUser() {
+  setState(() {
+  lastgame = format.format(now);
+    
+  });
   if(day==16){
     setState((){
     day = 1;
@@ -175,12 +184,43 @@ Future<void> updateUser() {
     day+=1;
   }
   int cc=0;
-  
+
+
+  List finalresults = [];
+  bool inCards = false;
     print(_others);
     print(qis);
+    print(allflashcards);
+    for(var cards in allflashcards){
+      
+          setState(() {
+            inCards= false;
+          });
+      for(var today in _todayResults){
+        if(cards['questionID']==today['questionID']){
+          if(cards['level']!=today['level']){
+          finalresults.add({
+            'questionID': cards['questionID'],
+            'level':today['level'],
+          });
+          setState(() {
+            inCards= true;
+          });
+          break;
+          }
+        }
+        
+      }
+      if(inCards==false){
+      finalresults.add({
+            'questionID': cards['questionID'],
+            'level':cards['level'],
+          });
+      }
+    }
     for(int i=0; i<_others.length; i++){
       if(!qis.contains(_others[i])){
-          _todayResults.add({
+          finalresults.add({
             'questionID': _others[i],
             'level':1,
           });
@@ -193,7 +233,7 @@ Future<void> updateUser() {
   cc=0;
   return users
     .doc(widget.uid)
-    .update({'flashcards': _todayResults,'day':day,'lastplayed_flashcard': format.format(now)})
+    .update({'flashcards': finalresults,'day':day,'lastplayed_flashcard': format.format(now)})
     .then((value) => print("User Updated"))
     .catchError((error) => print("Failed to update user: $error"));
 }
@@ -201,7 +241,10 @@ Future<void> updateUser() {
   //Check if the student got the correct answer
   checkWin(String userChoice , BuildContext context )
   { 
+  if(counter==0){
 
+  }
+  else{
   if(userChoice==_tryflashcards[counter]['choice'][_tryflashcards[counter]['answer']])
   { 
     print("correct");
@@ -233,7 +276,7 @@ Future<void> updateUser() {
       );
     ScaffoldMessenger.of(context).showSnackBar(snackbar);
      
- }
+ }}
     setState(() {
  
    if(counter<_tryflashcards.length-1)
@@ -325,7 +368,7 @@ Future<void> _readUser() async{
         height: 250,
         child: Container(child: Container(
           child: FlashcardView(
-          text: _tryflashcards[counter]['question'] + _tryflashcards[counter]['translation'],
+          text: _tryflashcards[counter]['question'] + '\n' + _tryflashcards[counter]['translation'],
         ),
         ),
         ),),
