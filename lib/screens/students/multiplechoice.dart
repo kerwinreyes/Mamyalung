@@ -150,7 +150,9 @@ void get(){
             },
         ),
       ),
-      body: Container(
+      body: SingleChildScrollView(
+        child:
+      Container(
       child: data.isEmpty ? CircularProgressIndicator() : Center(
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -189,7 +191,7 @@ void get(){
                     borderRadius: BorderRadius.circular(12.0),
                     border: Border.all(color: Color(0xFFF7C229))
                   ),
-                  height: 90.0,
+                  height: 165.0,
                   width: 400,
                      child: Column(
                        mainAxisAlignment: MainAxisAlignment.center,
@@ -197,16 +199,16 @@ void get(){
                          Padding(
                            padding: EdgeInsets.only(left: 20, right: 20),
                            child: 
-                            AutoSizeText(data[index]['question'],textAlign: TextAlign.center,style: TextStyle(fontSize: 30.0,height: 1.5),maxLines: 2,maxFontSize: 18,
+                            AutoSizeText("${data[index]['question']}\n (${data[index]['translation']})",textAlign: TextAlign.center,style: TextStyle(fontSize: 30.0,height: 1.5),maxLines: 5,maxFontSize: 18,
                          
                          )),
                        ],
                      ),             
                      
                ),
-
+              
               Padding(padding: EdgeInsets.only(top: 30)),
-                      
+                    
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
@@ -303,7 +305,7 @@ void get(){
                 ],
               ),
 
-              Padding(padding: EdgeInsets.only(top: 50,)),
+              Padding(padding: EdgeInsets.only(top: 20,)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -362,6 +364,6 @@ void get(){
              ],
           ),
       ))
-    );
+    ));
   }
 }
