@@ -41,7 +41,7 @@ List _listImage=[
    .set({
      'code':topicCode.text,
      'topic_name':topicName.text,
-     'grade_level': grLevel == 0? 2 : 3,
+     'grade_level': grLevel==0 ? 2 : 3,
      'image': _listImage[random.nextInt(_listImage.length)],
      'publish':topicpublish
    }).then((value){
@@ -378,7 +378,7 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
  final _formKey1 = GlobalKey<FormState>();
   TextEditingController code = TextEditingController();
   TextEditingController name = TextEditingController();
-  int level =0;
+  int level =topic.grade_level==3? 1 : 0;
   int publish = topic.publish;
   
     code.text= topic.code;
@@ -528,7 +528,7 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
                             await FirebaseFirestore.instance.collection('topics').doc(code.text)
                           .update({
                             'topic_name':name.text,
-                            'grade_level':level==0 ? 2 : 1,
+                            'grade_level':level==0 ? 2 : 3,
                             'publish': publish,
                           }).then((value){
                        
@@ -537,7 +537,7 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
           builder: (BuildContext context) {
             return AlertDialog(
               title: Text("Message"),
-              content: Text('Question Updated'),
+              content: Text('Topic Updated'),
               actions: [
                 ElevatedButton(
                   child: Text("Ok"),
@@ -662,9 +662,7 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
 
 }
 
-updateTopicPub(String code, int pub) async{
-    
-  }
+
 
 class Consts {
   Consts._();

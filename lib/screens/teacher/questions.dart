@@ -211,11 +211,13 @@ String searchTxt='';
   late Future resultsLoaded;
   List _allQuestions = [];
   List _resultsListQues = [];
-
+  var topicList=[''];
+  String tCode ='';
   @override
   void initState() {
     super.initState();
     _searchQuesController.addListener(_onSearchChanged);
+    getTopicList();
   }
 
   @override
@@ -234,16 +236,18 @@ String searchTxt='';
   _onSearchChanged() {
     searchResultsList();
   }
-   getQuestion() async{
-    /* await  FirebaseFirestore.instance
-      .collection('users')
+  Future<void> getTopicList() async{
+  await FirebaseFirestore.instance
+      .collection('topics')
       .get()
       .then((QuerySnapshot querySnapshot){
          querySnapshot.docs.forEach((DocumentSnapshot doc) {
-            _allResult.add(doc.data());
+            topicList.add(doc['topic_name']+ ' | Grade ' + doc['grade_level'].toString() );
           
         }); 
-      });*/
+      });
+  }
+   getQuestion() async{
        var data = await FirebaseFirestore.instance
         .collection('questions')
         .get();
@@ -386,110 +390,38 @@ addContent(BuildContext context) {
                       fontSize: 16.0,
                     ),
                   ),
-                    Container(
-                      padding: EdgeInsets.all(20.0),
-                      child: DropdownButton(
-                        value: _value,
-                        items: [
-                          DropdownMenuItem(
-                            child: Text("Select Grade Level"),
-                            value: 0
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Grade-2"),
-                            value: 2
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Grade-3"),
-                            value: 3
-                          ),
-                        ],
-                        onChanged: (int? value){
-                          setState(() {
-                            _value = value;
-                            _value == 2 || _value == 3 ? _topic = "Select a Topic" :
-                            _topic = "Select a Topic";
-                          });
-                        },
-                      )
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(20.0),
-                      child: _value == 2? DropdownButton<String>(
-                        value: _topic,
-                        items: [
-                          DropdownMenuItem(
-                            child: Text("Select a Topic"),
-                            value: "Select a Topic"
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Topic A1"),
-                            value: "Topic A1"
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Topic B1"),
-                            value: "Topic B1"
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Topic C1"),
-                            value: "Topic C1"
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Topic D1"),
-                            value: "Topic D1"
-                          ),
-                        ],
-                        onChanged: (value){
-                          setState(() {
-                            _topic = value;
-                          });
-                        },
-                      ): 
-                      _value == 3 ? DropdownButton<String>(
-                        value: _topic,
-                        items: [
-                          DropdownMenuItem(
-                            child: Text("Select a Topic"),
-                            value: "Select a Topic"
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Topic A2"),
-                            value: "Topic A2"
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Topic B2"),
-                            value: "Topic B2"
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Topic C2"),
-                            value: "Topic C2"
-                          ),
-                          DropdownMenuItem(
-                            child: Text("Topic D2"),
-                            value: "Topic D2"
-                          ),
-                        ],
-                        onChanged: (value){
-                          setState(() {
-                            _topic = value;
-                          });
-                        },
-                      ):
-                      DropdownButton<String>(
-                        value: _topic,
-                        items: [
-                          DropdownMenuItem(
-                            child: Text("Select Grade Level First"),
-                            value: "Select a Topic"
-                          ),
-                        ],
-                        onChanged: (value){
-                          setState(() {
-                            _topic = value;
-                          });
-                        },
-                      )
-                    ),
+                    //
+                    Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Select a topic'),
+                                    Container(
+                                  decoration: BoxDecoration(
+                                    color: whitey.withOpacity(0.25),
+                                    borderRadius: new BorderRadius.circular(10.0),
+                                  ),
+                                  child:Container(
+                                    padding: EdgeInsets.only(left: 15),
+                                      width: MediaQuery.of(context).size.width,
+                                      child:DropdownButton(
+                                      value: tCode,
+                                        icon: Icon(Icons.keyboard_arrow_down),
+                                        items:topicList.map((String items) {
+                                            return DropdownMenuItem(
+                                                value:items,
+                                                child: Text(items)
+                                            );
+                                        }
+                                        ).toList(),
+                                      onChanged: (String? newValue) {
+                                          setState(() {
+                                            tCode = newValue!;
+                                          });
+                                        },
+                                    ),))
+                                  ],
+                                ),
+                    //
                     Form(
                       key: _formKey,
                       child: Column(
