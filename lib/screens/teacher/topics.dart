@@ -383,8 +383,210 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
   
     code.text= topic.code;
     name.text = topic.topic_name;
-        
-  
+    String nameTopic = topic.topic_name;
+  updateTopic(BuildContext context){
+          return AlertDialog(
+        contentPadding: EdgeInsets.only(bottom: 16, top: 16),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(Consts.padding),
+        ),      
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        content: StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState){
+            return SingleChildScrollView(child:Stack(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+
+                  padding: EdgeInsets.only(
+                    top: Consts.avatarRadius + Consts.padding,
+                    bottom: Consts.padding,
+                    left: Consts.padding,
+                    right: Consts.padding
+                  ),
+                  margin: EdgeInsets.only(top: Consts.avatarRadius),
+                  decoration: new BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(Consts.padding),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 10.0,
+                        offset: const Offset(0.0,10.0)
+                      )
+                    ]
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text(
+                      "Edit Topic:" + code.text,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16.0,
+                      ),
+                    ),
+                      Form(
+                        key: _formKey1,
+                        child: Column(
+                          children: [
+                            
+                            SizedBox(height: 20),
+                            TextFormField(
+                              controller: name,
+                              decoration: InputDecoration(
+                                enabledBorder: UnderlineInputBorder(),
+                                focusedBorder: UnderlineInputBorder(),
+                                hintText: "Enter Topic Name"
+                              ),
+                              onTap:(){},
+                            ),
+                            SizedBox(height: 20),
+                            Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                    Text('Grade Level'),
+                                      Container(
+                                    decoration: BoxDecoration(
+                                      color: whitey.withOpacity(0.25),
+                                      borderRadius: new BorderRadius.circular(10.0),
+                                    ),
+                                    child:Container(
+                                      padding: EdgeInsets.only(left: 15),
+                                        width: MediaQuery.of(context).size.width,
+                                        child:DropdownButton(
+                                        value: level,
+                                          icon: Icon(Icons.keyboard_arrow_down),
+                                          items:['Grade Level 2', 'Grade Level 3'].map((String items) {
+                                              return DropdownMenuItem(
+                                                  value: ['Grade Level 2', 'Grade Level 3'].indexOf(items),
+                                                  child: Text(items)
+                                              );
+                                          }
+                                          ).toList(),
+                                        onChanged: (int? newValue) {
+                                            setState(() {
+                                              level = newValue!;
+                                            });
+                                          },
+                                      ),))
+                                    ],
+                                  ),
+                            SizedBox(height: 20),
+                            Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                    decoration: BoxDecoration(
+                                      color: whitey.withOpacity(0.25),
+                                      borderRadius: new BorderRadius.circular(10.0),
+                                    ),
+                                    child:Container(
+                                      padding: EdgeInsets.only(left: 15),
+                                        width: MediaQuery.of(context).size.width,
+                                        child:DropdownButton(
+                                        value: publish,
+                                          icon: Icon(Icons.keyboard_arrow_down),
+                                          items:['Unpublish', 'Publish'].map((String items) {
+                                              return DropdownMenuItem(
+                                                  value: ['Unpublish', 'Publish'].indexOf(items),
+                                                  child: Text(items)
+                                              );
+                                          }
+                                          ).toList(),
+                                        onChanged: (int? newValue) {
+                                            setState(() {
+                                              publish = newValue!;
+                                            });
+                                          },
+                                      ),))
+                                    ],
+                                  ),
+                            SizedBox(height: 20),
+                          ],
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        TextButton(
+                          child: Text("Update Topic"),
+                          onPressed: () async{
+
+                            List _listImage=[
+                            'https://i.ibb.co/XY3pv1p/tile-image4.png'
+                            ];
+                              Random random = new Random();
+                            await FirebaseFirestore.instance.collection('tiles_images').get()
+                                  .then((QuerySnapshot querySnapshot) {
+                                    querySnapshot.docs.forEach((doc) {
+                                        _listImage.add(doc['image']);
+                                    });});
+                            await FirebaseFirestore.instance.collection('topics').doc(code.text)
+                          .update({
+                            'topic_name':name.text,
+                            'grade_level':level==0 ? 2 : 1,
+                            'publish': publish,
+                          }).then((value){
+                       
+            showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Message"),
+              content: Text('Question Updated'),
+              actions: [
+                ElevatedButton(
+                  child: Text("Ok"),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                )
+              ],
+            );
+          });
+                print("Topic Updated");
+                setState(() {
+                nameTopic = name.text;
+                });
+                })
+            .catchError((error) => print('failed'));
+                            
+                          },
+                        ),
+                        Spacer(),
+                        TextButton(
+                          child: Text("Cancel"),
+                          onPressed: (){
+                            
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20)
+                    ],
+                  )
+                ),
+                Positioned(
+                  left: Consts.padding,
+                  right: Consts.padding,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: Consts.avatarRadius,
+                    child: Image(image: NetworkImage("https://i.ibb.co/gghzqTq/mamyalung-logo.png"),
+                      fit: BoxFit.fill,)
+                  )
+                )
+              ],
+            ));
+          },
+        ),
+      ); 
+  }
   return new Container(
     //Pabs Paedit Design
     child: Container(
@@ -406,7 +608,7 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
                         child: Padding(padding: EdgeInsets.only(top: 10),
                         child: Container(child:Column(
                           children:[
-                            AutoSizeText(name.text,style:TextStyle(fontSize: 20), textAlign: TextAlign.center,),
+                            AutoSizeText(nameTopic,style:TextStyle(fontSize: 20), textAlign: TextAlign.center,),
                             SizedBox(height:150),
                             Center(child: Row(children:[
                               
@@ -414,209 +616,11 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
                               child:Text('Edit',style:TextStyle(fontSize: 12), textAlign: TextAlign.center,),
                               onPressed:() async{
                                 //Edit Content
-                                showDialog(
-                                context: context,
-                                  builder: (BuildContext context) {
-                                 return AlertDialog(
-                                contentPadding: EdgeInsets.only(bottom: 16, top: 16),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(Consts.padding),
-                                ),      
-                                elevation: 0.0,
-                                backgroundColor: Colors.transparent,
-                                content: StatefulBuilder(
-                                  builder: (BuildContext context, StateSetter setState){
-                                    return SingleChildScrollView(child:Stack(
-                                      children: [
-                                        Container(
-                                          width: MediaQuery.of(context).size.width,
-
-                                          padding: EdgeInsets.only(
-                                            top: Consts.avatarRadius + Consts.padding,
-                                            bottom: Consts.padding,
-                                            left: Consts.padding,
-                                            right: Consts.padding
-                                          ),
-                                          margin: EdgeInsets.only(top: Consts.avatarRadius),
-                                          decoration: new BoxDecoration(
-                                            color: Colors.white,
-                                            shape: BoxShape.rectangle,
-                                            borderRadius: BorderRadius.circular(Consts.padding),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: Colors.black26,
-                                                blurRadius: 10.0,
-                                                offset: const Offset(0.0,10.0)
-                                              )
-                                            ]
-                                          ),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: <Widget>[
-                                              Text(
-                                              "Edit Topic:" + code.text,
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                fontSize: 16.0,
-                                              ),
-                                            ),
-                                              Form(
-                                                key: _formKey1,
-                                                child: Column(
-                                                  children: [
-                                                    
-                                                    SizedBox(height: 20),
-                                                    TextFormField(
-                                                      controller: name,
-                                                      decoration: InputDecoration(
-                                                        enabledBorder: UnderlineInputBorder(),
-                                                        focusedBorder: UnderlineInputBorder(),
-                                                        hintText: "Enter Topic Name"
-                                                      ),
-                                                      onTap:(){},
-                                                    ),
-                                                    SizedBox(height: 20),
-                                                    Column(
-                                                            mainAxisAlignment: MainAxisAlignment.center,
-                                                            children: [
-                                                            Text('Grade Level'),
-                                                              Container(
-                                                            decoration: BoxDecoration(
-                                                              color: whitey.withOpacity(0.25),
-                                                              borderRadius: new BorderRadius.circular(10.0),
-                                                            ),
-                                                            child:Container(
-                                                              padding: EdgeInsets.only(left: 15),
-                                                                width: MediaQuery.of(context).size.width,
-                                                                child:DropdownButton(
-                                                                value: level,
-                                                                  icon: Icon(Icons.keyboard_arrow_down),
-                                                                  items:['Grade Level 2', 'Grade Level 3'].map((String items) {
-                                                                      return DropdownMenuItem(
-                                                                          value: ['Grade Level 2', 'Grade Level 3'].indexOf(items),
-                                                                          child: Text(items)
-                                                                      );
-                                                                  }
-                                                                  ).toList(),
-                                                                onChanged: (int? newValue) {
-                                                                    setState(() {
-                                                                      level = newValue!;
-                                                                    });
-                                                                  },
-                                                              ),))
-                                                            ],
-                                                          ),
-                                                    SizedBox(height: 20),
-                                                    Column(
-                                                            mainAxisAlignment: MainAxisAlignment.center,
-                                                            children: [
-                                                              Container(
-                                                            decoration: BoxDecoration(
-                                                              color: whitey.withOpacity(0.25),
-                                                              borderRadius: new BorderRadius.circular(10.0),
-                                                            ),
-                                                            child:Container(
-                                                              padding: EdgeInsets.only(left: 15),
-                                                                width: MediaQuery.of(context).size.width,
-                                                                child:DropdownButton(
-                                                                value: publish,
-                                                                  icon: Icon(Icons.keyboard_arrow_down),
-                                                                  items:['Unpublish', 'Publish'].map((String items) {
-                                                                      return DropdownMenuItem(
-                                                                          value: ['Unpublish', 'Publish'].indexOf(items),
-                                                                          child: Text(items)
-                                                                      );
-                                                                  }
-                                                                  ).toList(),
-                                                                onChanged: (int? newValue) {
-                                                                    setState(() {
-                                                                      publish = newValue!;
-                                                                    });
-                                                                  },
-                                                              ),))
-                                                            ],
-                                                          ),
-                                                    SizedBox(height: 20),
-                                                  ],
-                                              ),
-                                            ),
-                                            SizedBox(height: 20),
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                              children: <Widget>[
-                                                TextButton(
-                                                  child: Text("Update Question"),
-                                                  onPressed: () async{
-                                                    List _listImage=[
-                                                    'https://i.ibb.co/XY3pv1p/tile-image4.png'
-                                                    ];
-                                                      Random random = new Random();
-                                                    await FirebaseFirestore.instance.collection('tiles_images').get()
-                                                          .then((QuerySnapshot querySnapshot) {
-                                                            querySnapshot.docs.forEach((doc) {
-                                                                _listImage.add(doc['image']);
-                                                            });});
-                                                    await FirebaseFirestore.instance.collection('topics').doc(code.text)
-                                                  .update({
-                                                    'topic_name':name.text,
-                                                    'grade_level':level==0 ? 2 : 1,
-                                                    'publish': publish,
-                                                  }).then((value){
-                                              showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) {
-                                              return AlertDialog(
-                                                title: Text("Message"),
-                                                content: Text('Publish Change'),
-                                                actions: [
-                                                  ElevatedButton(
-                                                    child: Text("Ok"),
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                  )
-                                                ],
-                                              );
-                                            });
-                                              print('success');
-                                            })
-                                            // ignore: invalid_return_type_for_catch_error
-                                            .catchError((error) => print('failed'));                                             
-                                                    
-                                                    Navigator.pop(context);
-                                                    
-                                                  },
-                                                ),
-                                                Spacer(),
-                                                TextButton(
-                                                  child: Text("Cancel"),
-                                                  onPressed: (){
-                                                    
-                                                    Navigator.pop(context);
-                                                  },
-                                                ),
-                                              ],
-                                            ),
-                                            SizedBox(height: 20)
-                                            ],
-                                          )
-                                        ),
-                                        Positioned(
-                                          left: Consts.padding,
-                                          right: Consts.padding,
-                                          child: CircleAvatar(
-                                            backgroundColor: Colors.white,
-                                            radius: Consts.avatarRadius,
-                                            child: Image(image: NetworkImage("https://i.ibb.co/gghzqTq/mamyalung-logo.png"),
-                                              fit: BoxFit.fill,)
-                                          )
-                                        )
-                                      ],
-                                    ));
-                                  },
-                                ),
-                              );  });
+                                showDialog(context: context,
+                                    builder: (BuildContext context) => updateTopic(context));
+                              
                               }
+
                             ),
                             SizedBox(width: 20,),
                             ElevatedButton(
