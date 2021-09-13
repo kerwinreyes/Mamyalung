@@ -2,7 +2,8 @@
         {
         "questionID" : 51,
         "grade_level" : 3,
-        "question": "Alin sa mga sumusunod na salita ang hindi Kapampangan na kasarian?",
+        "question": "Sanu karing susunud a Palagyu ing ali salitang Kapampangan?",
+        "translation": "Alin sa mga sumusunod na Pangngalan ang hindi salitang Kapampangan?",
         "topic" : "Kasarian ning Palagyu",
         "multiple_choice": [
         "mestru",
@@ -13,7 +14,8 @@
 
         {
         "questionID" : 52,
-        "question": "Alin sa mga sumusunod na kasarian ang hindi Panlalaking Kasarian?",
+        "question": "Sanu karing susunud a salitang Kapampangan ing ali papakit Panlalaking Kasarian?",
+        "translation": "Alin sa mga sumusunod na salitang Kapampangan ang hindi nagpapakita ng Panlalakeng Kasarian?",
         "grade_level" : 3,
         "topic" : "Kasarian ning Palagyu",
         "multiple_choice": [
@@ -26,7 +28,8 @@
       
         {
         "questionID" : 53,
-        "question": "Alin sa mga sumusunod na kasarian ang hindi Kapampangan?",
+        "question": "Sanu karing susunud a palagyu ing ali salitang Kapampangan?",
+        "translation": "Alin sa mga sumusunod na pangngalan ang hindi salitang Kapampangan?",
         "grade_level" : 3,
         "topic" : "Kasarian ning Palagyu",
         "multiple_choice": [
@@ -38,7 +41,8 @@
         
         {
         "questionID" : 54,
-        "question": "Alin sa mga sumusunod na kasarian ang hindi Kapampangan?",
+        "question": "Sanu karing susunud a palagyu ing ali salitang Kapampangan?",
+        "translation": "Alin sa mga sumusunod na pangngalan ang hindi salitang Kapampangan?",
         "grade_level" : 2,
         "topic" : "Kasarian ning Palagyu",
         "multiple_choice": [
@@ -50,7 +54,8 @@
 
         {
         "questionID" : 55,
-        "question": "Alin sa mga sumusunod na kasarian ang hindi Kapampangan?",
+        "question": "Sanu karing susunud a palagyu ing ali salitang Kapampangan?",
+        "translation": "Alin sa mga sumusunod na pangngalan ang hindi salitang Kapampangan?",
         "grade_level" : 3,
         "topic" : "Kasarian ning Palagyu",
         "multiple_choice": [
@@ -62,7 +67,8 @@
 
         {
         "questionID" : 56,
-        "question": "Alin sa mga sumusunod na kasarian ang hindi Kapampangan?",
+        "question": "Sanu karing susunud a palagyu ing ali salitang Kapampangan?",
+        "translation": "Alin sa mga sumusunod na pangngalan ang hindi salitang Kapampangan?",
         "grade_level" : 3,
         "topic" : "Kasarian ning Palagyu",
         "multiple_choice": [
@@ -74,7 +80,8 @@
         
         {
         "questionID" : 57,
-        "question": "Alin ang hindi kabilang sa mga kasarian ng Pangalan?",
+        "question": "Sanu ing ali kayabe karing kasarian ning Palagyu?",
+        "translation": "Alin ang hindi kabilang sa mga kasarian ng Pangngalan?",
         "grade_level" : 3,
         "topic" : "Kasarian ning Palagyu",
         "multiple_choice": [
@@ -86,7 +93,8 @@
 
         {
         "questionID" : 58,
-        "question": "Alin sa mga sumusunod na Parehong Kasarian na ito ang hindi Kapampangan?",
+        "question": "Sanu karing susunud a Parewung Kasarian ing ali salitang Kapampangan?",
+        "translation": "Alin sa mga sumusunod na Parehong Kasarian ang hindi salitang Kapampangan?",
         "grade_level" : 3,
         "topic" : "Kasarian ning Palagyu",
         "multiple_choice": [
@@ -98,7 +106,8 @@
 
         {
         "questionID" : 59,
-        "question": "Alin sa mga sumusunod na kasarian ang kabilang sa Pambabaing Kasarian ",
+        "question": "Sanu karing susunud a Palagyu ing kayabe king Pambabaing Kasarian?",
+        "translation": "Alin sa mga sumusunod na Pangngalan ang kabilang sa Pambabaeng Kasarian?",
         "grade_level" : 3,
         "topic" : "Kasarian ning Palagyu",
         "multiple_choice": [
@@ -111,7 +120,8 @@
         
         {
         "questionID" : 60,
-        "question": "Alin sa mga sumusunod na kasarian ang kabilang sa Panglalaking kasarian?",
+        "question": "Sanu karing susunud a Palagyu ing kayabe king Panlalaking Kasarian?",
+        "translation": "Alin sa mga sumusunod na Pangngalan ang kabilang sa Panglalakeng kasarian?",
         "grade_level" : 3,
         "topic" : "Kasarian ning Palagyu",
         "multiple_choice": [

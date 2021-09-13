@@ -2,121 +2,131 @@
         {
         "questionID" : 61,
         "grade_level" : 3,
-        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Munta ka keni, ___ ing kayabe kung mako.",
+        "question": "Sanu ing ustung Panghalip Panaong gamitan: Munta ka keni, ___ ing kayabe kung mako.",
+        "translation": "Alin ang tamang Panghalip Panaong gagamitin: Munta ka keni, ___ ing kayabe kung mako.",
         "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
         "multiple_choice": [
         "ika",
         "aku",
         "iya",
-        "none of the above"],
+        "Ala king minunang atlu"],
         "answer": 0},
 
         {
         "questionID" : 62,
-        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Makatuknang ya i Darang Josie kening siping ming bale, ___ ing sasaup kekami.",
+        "question": "Sanu ing ustung Panghalip Panaong gamitan: Makatuknang ya i Darang Josie kening siping ming bale, ___ ing sasaup kekami.",
+        "translation": "Alin ang tamang Panghalip Panaong gagamitin: Makatuknang ya i Darang Josie kening siping ming bale, ___ ing sasaup kekami.",
         "grade_level" : 3,
         "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
         "multiple_choice": [
         "ika",
         "aku",
         "iya",
-        "none of the above"],
+        "Ala king minunang atlu"],
         "answer": 2},
 
       
         {
         "questionID" : 63,
-        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: ___ ing utusan nang saling inuman kaya meko ku.",
+        "question": "Sanu ing ustung Panghalip Panaong gamitan: ___ ing utusan nang saling inuman kaya meko ku.",
+        "translation": "Alin ang tamang Panghalip Panaong gagamitin: ___ ing utusan nang saling inuman kaya meko ku.",
         "grade_level" : 3,
         "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
         "multiple_choice": [
         "ika",
         "aku",
         "iya",
-        "none of the above"],
+        "Ala king minunang atlu"],
         "answer": 1},
         
         {
         "questionID" : 64,
-        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Atin kaming dintang a bisita, ___ ing dara ku.",
+        "question": "Sanu ing ustung Panghalip Panaong gamitan: Atin kaming dintang a bisita, ___ ing dara ku.",
+        "translation": "Alin ang tamang Panghalip Panaong gagamitin: Atin kaming dintang a bisita, ___ ing dara ku.",
         "grade_level" : 3,
         "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
         "multiple_choice": [
         "ika",
         "aku",
         "iya",
-        "none of the above"],
+        "Ala king minunang atlu"],
         "answer": 2},
 
         {
         "questionID" : 65,
-        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: ____ ing inawus na ning mestra kaya tinikdo ku.",
+        "question": "Sanu ing ustung Panghalip Panaong gamitan: ____ ing inawus na ning mestra kaya tinikdo ku.",
+        "translation": "Alin ang tamang Panghalip Panaong gagamitin: ____ ing inawus na ning mestra kaya tinikdo ku.",
         "grade_level" : 3,
         "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
         "multiple_choice": [
         "ika",
         "aku",
         "iya",
-        "none of the above"],
+        "Ala king minunang atlu"],
         "answer": 1},
 
         {
         "questionID" : 66,
-        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Pantunan na ka ning mestra, ____ kanu ing sagut.",
+        "question": "Sanu ing ustung Panghalip Panaong gamitan: Pantunan na ka ning mestra, ____ kanu ing sagut.",
+        "translation": "Alin ang tamang Panghalip Panaong gagamitin: Pantunan na ka ning mestra, ____ kanu ing sagut.",
         "grade_level" : 3,
         "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
         "multiple_choice": [
         "ika",
         "aku",
         "iya",
-        "none of the above"],
+        "Ala king minunang atlu"],
         "answer": 0},
         
         {
         "questionID" : 67,
-        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Atin minaus kaku, ___ ing pisan ku.",
+        "question": "Sanu ing ustung Panghalip Panaong gamitan: Atin minaus kaku, ___ ing pisan ku.",
+        "translation": "Alin ang tamang Panghalip Panaong gagamitin: Atin minaus kaku, ___ ing pisan ku.",
         "grade_level" : 3,
         "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
         "multiple_choice": [
         "ika",
         "aku",
         "iya",
-        "none of the above"],
+        "Ala king minunang atlu"],
         "answer": 2},
 
         {
         "questionID" : 68,
-        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Alayu pa i Jessie, ____ ing talwing datang",
+        "question": "Sanu ing ustung Panghalip Panaong gamitan: Alayu pa i Jessie, ____ ing talwing datang",
+        "translation": "Alin ang tamang Panghalip Panaong gagamitin: Alayu pa i Jessie, ____ ing talwing datang",
         "grade_level" : 3,
         "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
         "multiple_choice": [
         "ika",
         "aku",
         "iya",
-        "none of the above"],
+        "Ala king minunang atlu"],
         "answer": 2},
 
         {
         "questionID" : 69,
-        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Atin kinatuk, ___ ing tatang ku.",
+        "question": "Sanu ing ustung Panghalip Panaong gamitan: Atin kinatuk, ___ ing tatang ku.",
+        "translation": "Alin ang tamang Panghalip Panaong gagamitin: Atin kinatuk, ___ ing tatang ku.",
         "grade_level" : 3,
         "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
         "multiple_choice": [
         "ika",
         "aku",
         "iya",
-        "none of the above"],
+        "Ala king minunang atlu"],
         "answer": 2},
         
         {
         "questionID" : 70,
-        "question": "Alin ang tamang Panghalip panaong na gagamitin base sa pangungusap na ito: Minawus ya kaku i Ima, ___ kanu ing sali.",
+        "question": "Sanu ing ustung Panghalip Panaong gamitan: Minawus ya kaku i Ima, ___ kanu ing sali.",
+        "translation": "Alin ang tamang Panghalip Panaong gagamitin: Minawus ya kaku i Ima, ___ kanu ing sali.",
         "grade_level" : 3,
         "topic" : "Panghalip Panaong (Aku, Ika at Iya)",
         "multiple_choice": [
         "ika",
         "aku",
         "iya",
-        "none of the above"],
+        "Ala king minunang atlu"],
         "answer": 1}
     ]

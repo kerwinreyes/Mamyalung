@@ -30,12 +30,7 @@ class _StudentHomePageState extends State<StudentHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Responsive(
-        desktop: Container(),
-        tablet: Container(),
-        //For mobile 
-        mobile: StudentsMobile(uid: widget.uid),
-    );
+    return StudentsMobile(uid: widget.uid);
   }
 }
 
@@ -80,9 +75,7 @@ class _StudentsMobileState extends State<StudentsMobile> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      //backgroundColor:  powderblue.withOpacity(0.5),
      appBar: AppBar(
-       
        leading: Container(
          margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
          decoration: BoxDecoration(

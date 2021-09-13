@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mamyalung/widgets/buttons.dart';
 import '../../materials.dart';
@@ -85,32 +84,23 @@ class _QuizStateState extends State<QuizState> {
   bool _Start = false;
   List flashcards=[];
   List _todayResults=[];
-  List _todayFlashcards= [{'question':'Click the card to see the answer','answer':'Click the next or prev button'},
+  List _todayFlashcards= [
   {'question':'Click the card to see the answer','answer':'Click the next or prev button'}];
+  //Pabs Paedit Design
+  //patranslate tagalo gand kapampangan
   List _tryflashcards=[
     {'questionID':0,
                   'question': 'Answer the following questions',
+                  'translation': 'Sagutin',
                   'level': 1,
                   'choice':['Okay','Cancel'],
                   'answer':0
                   },
-                   {'questionID':0,
-                  'question': 'Answer the following questions',
-                  'level': 1,
-                  'choice':['Okay','Cancel'],
-                  'answer':0}
                   ];
   bool _doneforday= false;
   var score=0;
   List others=[];
-  List<Flashcard> _flashcards=[
-    Flashcard(
-                questionID: 0,
-                multiple_choice:['Hello','Hi'], 
-                level:0, 
-                question:'Flashcards', 
-                answer: 0),
-  ];
+  
   Map<int, List> days = {
     1: [1,2], 2: [1,3], 3: [1,2],4: [1,4], 
     5: [1,2], 6: [1,3], 7: [1,2],8: [1], 
@@ -118,9 +108,10 @@ class _QuizStateState extends State<QuizState> {
     13: [1,2,4], 14: [1,3], 15: [1,2],16: [1],  
     };
 List finaflashcards=[];
-  read(){
+List allflashcards=[];
+Future<void>  read() async{
     print(widget.uid);
-    FirebaseFirestore.instance
+    await FirebaseFirestore.instance
     .collection('users')
     .where('uid',isEqualTo: widget.uid)
     .get()
@@ -138,12 +129,18 @@ List finaflashcards=[];
                 querySnapshot.docs.forEach((ques) {
                   qis.add(doc['flashcards'][i]['questionID']);
 
+                allflashcards.add({
+                  'level': doc['flashcards'][i]['level'],
+                  'questionID': doc['flashcards'][i]['questionID'],
+                  
+                });
                   if(days[doc['day']]!.contains(doc['flashcards'][i]['level'])){
-                                    _tryflashcards.add({
+                  _tryflashcards.add({
                   'questionID':ques['questionID'],
                   'question': ques['question'],
                   'level': doc['flashcards'][i]['level'],
                   'choice':ques['multiple_choice'],
+                  'translation':ques['translation'],
                   'answer':ques['answer']
                 });
                 _todayFlashcards.add({
@@ -162,7 +159,7 @@ List finaflashcards=[];
     start_flashcard = !start_flashcard;
                     
   });
-  FirebaseFirestore.instance
+  await FirebaseFirestore.instance
     .collection('questions')
     .where('grade_level',isEqualTo: grade_level)
     .get()
@@ -175,8 +172,11 @@ List finaflashcards=[];
   //Update Flashcards
     CollectionReference users = FirebaseFirestore.instance.collection('users');
   List<int> _others=[];
-
 Future<void> updateUser() {
+  setState(() {
+  lastgame = format.format(now);
+    
+  });
   if(day==16){
     setState((){
     day = 1;
@@ -186,12 +186,43 @@ Future<void> updateUser() {
     day+=1;
   }
   int cc=0;
-  
+
+
+  List finalresults = [];
+  bool inCards = false;
     print(_others);
     print(qis);
+    print(allflashcards);
+    for(var cards in allflashcards){
+      
+          setState(() {
+            inCards= false;
+          });
+      for(var today in _todayResults){
+        if(cards['questionID']==today['questionID']){
+          if(cards['level']!=today['level']){
+          finalresults.add({
+            'questionID': cards['questionID'],
+            'level':today['level'],
+          });
+          setState(() {
+            inCards= true;
+          });
+          break;
+          }
+        }
+        
+      }
+      if(inCards==false){
+      finalresults.add({
+            'questionID': cards['questionID'],
+            'level':cards['level'],
+          });
+      }
+    }
     for(int i=0; i<_others.length; i++){
       if(!qis.contains(_others[i])){
-          _todayResults.add({
+          finalresults.add({
             'questionID': _others[i],
             'level':1,
           });
@@ -204,15 +235,18 @@ Future<void> updateUser() {
   cc=0;
   return users
     .doc(widget.uid)
-    .update({'flashcards': _todayResults,'day':day,'lastplayed_flashcard': format.format(now)})
+    .update({'flashcards': finalresults,'day':day,'lastplayed_flashcard': format.format(now)})
     .then((value) => print("User Updated"))
     .catchError((error) => print("Failed to update user: $error"));
 }
- var counter=1;
+ var counter=0;
   //Check if the student got the correct answer
   checkWin(String userChoice , BuildContext context )
   { 
+  if(counter==0){
 
+  }
+  else{
   if(userChoice==_tryflashcards[counter]['choice'][_tryflashcards[counter]['answer']])
   { 
     print("correct");
@@ -223,7 +257,7 @@ Future<void> updateUser() {
        'level': _tryflashcards[counter]['level']+=1,
      }); 
     final snackbar = SnackBar(
-      duration: Duration(milliseconds : 500),
+      duration: Duration(milliseconds : 500), 
       backgroundColor: Colors.green,
       content: Text("Correct!"),);
     
@@ -244,7 +278,7 @@ Future<void> updateUser() {
       );
     ScaffoldMessenger.of(context).showSnackBar(snackbar);
      
- }
+ }}
     setState(() {
  
    if(counter<_tryflashcards.length-1)
@@ -253,7 +287,7 @@ Future<void> updateUser() {
      
    }
    else{
-         counter=1;
+         counter=0;
      
       updateUser();
        setState(() {
@@ -265,24 +299,48 @@ Future<void> updateUser() {
    }
   });
 } 
-  int _currentIndex = 1;
+Future<void> _readUser() async{
+  var data = await FirebaseFirestore.instance
+    .collection('users')
+    .where('uid',isEqualTo: widget.uid)
+    .get();
+}
+  int _currentIndex = 0;
   bool start_flashcard=true;
   @override
   void initState() {
-    read();
     super.initState();
+    read();
+    _readUser();
   }
   @override
   Widget build(BuildContext context) {
-    return format.format(now) == lastgame? 
-        Scaffold(
-          backgroundColor:  powderblue.withOpacity(0.5),
-          body: Column(children: [
+        var screenSize = MediaQuery.of(context).size;
+    var screenSizeW = screenSize.width;
+    var screenSizeH = screenSize.height;
+    return  Center(child: Stack(children: [
           Container(
-            child:Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
+            //constraints: BoxConstraints.expand(),
+            width: screenSizeW,
+            height: screenSizeH,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: screenSizeW <= 649
+                      ? NetworkImage("https://i.ibb.co/YBzRfyT/background.png")
+                      : NetworkImage(
+                          "https://i.ibb.co/rMgVF9T/background.png"),
+                  fit: BoxFit.fill),
+            ),
+          ),
+          format.format(now) == lastgame? 
+        Column(children: [
+          Container(
+            child:Container(margin: EdgeInsets.only(left: 50, right:50, top: 120, bottom: 20),
             width: 250,
             height: 250,
-            child: Neumorphic(child: FlipCard(
+            //Pabs Paedit Design
+            //Eto yung sa FLipcard pag same date yung lastflashcard_played sa database natin sa day ngayon eto lilitaw
+            child: Container(child: FlipCard(
               front: FlashcardView(
               text: _todayFlashcards[_currentIndex]['question'],
             ),
@@ -294,23 +352,32 @@ Future<void> updateUser() {
                 children: [
                   OutlinedButton.icon(
                       onPressed: showPreviousCard,
+                      style:  ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.white.withOpacity(0.8)),),
                       icon: Icon(Icons.chevron_left),
-                      label: Text('Prev')),
+                      label: Text('Prev', style: TextStyle(fontFamily: 'Evil', fontSize: 25),)),
                   OutlinedButton.icon(
                       onPressed: showNextCard,
+                      style:  ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.white.withOpacity(0.8)),),
                       icon: Icon(Icons.chevron_right),
-                      label: Text('Next')),
+                      label: Text('Next', style: TextStyle(fontFamily: 'Evil', fontSize: 25),)),
                 ],
               )
-        ],),)
-        : Column( 
+        ],)
+        :
+        //Pabs Paedit Design
+            //Eto yung sa pagnagsasagot
+            //pag hindi same date yung lastflashcard_played sa database natin sa day ngayon eto lilitaw
+          
+         Center(child: Column( 
       children:[
         Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
         width: 250,
         height: 250,
-        child: Neumorphic(child: Container(
+        child: Container(child: Container(
           child: FlashcardView(
-          text: _tryflashcards[counter]['question'],
+          text: _tryflashcards[counter]['question'] + '\n' + _tryflashcards[counter]['translation'],
         ),
         ),
         ),),
@@ -370,7 +437,7 @@ Future<void> updateUser() {
                    
        ])
       
-      ]);
+      ]))]));
   }
     void showNextCard() {
     setState(() {

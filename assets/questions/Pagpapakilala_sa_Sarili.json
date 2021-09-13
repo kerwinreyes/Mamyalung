@@ -2,7 +2,8 @@
         {
         "questionID" : 1,
         "grade_level" : 2,
-        "question": "Ano sa Kapampangan ang July?",
+        "question": "Nanu ya king Kapampangan ing 'July'?",
+        "translation": "Ano sa Kapampangan ang 'July'?",
         "topic" : "Pagpapakilala sa Sarili",
         "multiple_choice": [
         "Hunyu",
@@ -13,7 +14,8 @@
 
         {
         "questionID" : 2,
-        "question": "Kung ang Kapampangan ng Tatang ay tatay, ano naman sa Kapampangan ang nanay?",
+        "question": "Nung 'Tatang' ya ing Kapampangan ning 'Tatay', Nanu ya king Kapampangan ing 'Nanay'?",
+        "translation": "Kung 'Tatang' ang Kapampangan ng 'Tatay', ano sa Kapampangan ang 'Nanay'?",
         "grade_level" : 2,
         "topic" : "Pagpapakilala sa Sarili",
         "multiple_choice": [
@@ -26,7 +28,8 @@
       
         {
         "questionID" : 3,
-        "question": "Ano sa Kapampangan ang paaralan?",
+        "question": "Nanu ya king Kapampangan ing 'Paaralan'",
+        "translation": "Ano sa Kapampangan ang 'Paaralan'?",
         "grade_level" : 2,
         "topic" : "Pagpapakilala sa Sarili",
         "multiple_choice": [
@@ -38,7 +41,8 @@
         
         {
         "questionID" : 4,
-        "question": "Ano ang ibig sabihin ng lagyu sa ingles?",
+        "question": "Nanu ya ing buri ng sabiyan ning 'Lagyu' king English?",
+        "translation": "Ano ang ibig sabihin ng 'Lagyu' sa English?",
         "grade_level" : 2,
         "topic" : "Pagpapakilala sa Sarili",
         "multiple_choice": [
@@ -50,7 +54,8 @@
 
         {
         "questionID" : 5,
-        "question": "Alin sa mga sumusunod ang hindi Kapampangan na salita?",
+        "question": "Sanu karing susunud ing ali Kapampangan a salita?",
+        "translation": "Alin sa mga sumusunod ang hindi Kapampangan na salita?",
         "grade_level" : 2,
         "topic" : "Pagpapakilala sa Sarili",
         "multiple_choice": [
@@ -62,7 +67,8 @@
 
         {
         "questionID" : 6,
-        "question": "Alin sa mga sumusunod ang hindi Kapampangan na salita?",
+        "question": "Sanu karing susunud ing ali Kapampangan a salita?",
+        "translation": "Alin sa mga sumusunod ang hindi Kapampangan na salita?",
         "grade_level" : 2,
         "topic" : "Pagpapakilala sa Sarili",
         "multiple_choice": [
@@ -74,7 +80,8 @@
         
         {
         "questionID" : 7,
-        "question": "Ano ang Kapampangan ng birthday?",
+        "question": "Nanu ya king Kapampangang ing 'Birthday'?",
+        "translation": "Ano ang Kapampangan ng 'Birthday'?",
         "grade_level" : 2,
         "topic" : "Pagpapakilala sa Sarili",
         "multiple_choice": [
@@ -86,7 +93,8 @@
 
         {
         "questionID" : 8,
-        "question": "Alin sa mga Buwan na ito ang hindi Kapampangan?",
+        "question": "Sanu karing bulan ing ali salitang Kapampangan?",
+        "translation": "Alin sa mga Buwan ang hindi salitang Kapampangan?",
         "grade_level" : 2,
         "topic" : "Pagpapakilala sa Sarili",
         "multiple_choice": [
@@ -98,7 +106,8 @@
 
         {
         "questionID" : 9,
-        "question": "Ano sa Kapampangan ang Tatay?",
+        "question": "Nanu ya king Kapampangan ing 'Tatay'?",
+        "translation": "Ano sa Kapampangan ang 'Tatay'?",
         "grade_level" : 2,
         "topic" : "Pagpapakilala sa Sarili",
         "multiple_choice": [
@@ -110,7 +119,8 @@
         
         {
         "questionID" : 10,
-        "question": "Ano sa tagalog ang 'Makatuknang ku king'?",
+        "question": "Nanu ya king tagalog ing 'Makatuknang ku king'?",
+        "translation": "Ano sa tagalog ang 'Makatuknang ku king'?",
         "grade_level" : 2,
         "topic" : "Pagpapakilala sa Sarili",
         "multiple_choice": [

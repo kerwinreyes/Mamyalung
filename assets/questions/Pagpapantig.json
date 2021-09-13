@@ -2,9 +2,10 @@
     [
         {
         "questionID" : 31,
-        "question": "Alin sa mga sumusunod na salita ang hindi dalawa ang pantig?",
+        "question": "Sanu karing susunud a salita ing ali adwang pantig?",
+        "translation": "Alin sa mga sumusunod na salita ang hindi dalawang pantig?",
         "grade_level" : 2,
-        "topic" : "Kakatni at Makikatni",
+        "topic" : "Pamagpantig karing salita",
         "multiple_choice": [
         "asbuk",
         "anam",
@@ -14,9 +15,10 @@
 
         {
         "questionID" : 32,
-        "question": "Alin sa mga sumusunod na salita ang hindi dalawa ang pantig?",
+        "question": "Sanu karing susunud a salita ing ali adwang pantig?",
+        "translation": "Alin sa mga sumusunod na salita ang hindi dalawang pantig?",
         "grade_level" : 2,
-        "topic" : "Kakatni at Makikatni",
+        "topic" : "Pamagpantig karing salita",
         "multiple_choice": [
         "embudu",
         "uran",
@@ -26,9 +28,10 @@
 
         {
         "questionID" : 33,
-        "question": "Alin sa mga sumusunod na salita ang hindi tatlo ang pantig?",
+        "question": "Sanu karing susunud a salita ing ali atlung pantig?",
+        "translation": "Alin sa mga sumusunod na salita ang hindi tatlong pantig?",
         "grade_level" : 2,
-        "topic" : "Kakatni at Makikatni",
+        "topic" : "Pamagpantig karing salita",
         "multiple_choice": [
         "inuman",
         "ebun",
@@ -38,9 +41,10 @@
 
         {
         "questionID" : 34,
-        "question": "Alin sa mga sumusunod na salita ang tatlo ang pantig?",
+        "question": "Sanu karing susunud a salita ing ating atlung pantig?",
+        "translation": "Alin sa mga sumusunod na salita ang may tatlong pantig?",
         "grade_level" : 2,
-        "topic" : "Kakatni at Makikatni",
+        "topic" : "Pamagpantig karing salita",
         "multiple_choice": [
         "okra",
         "gabun",
@@ -50,9 +54,10 @@
 
         {
         "questionID" : 35,
-        "question": "Alin sa mga sumusunod na salita ang hindi tatlo ang pantig?",
+        "question": "Sanu karing susunud a salita ing ali atlung pantig?",
+        "translation": "Alin sa mga sumusunod na salita ang hindi tatlong pantig?",
         "grade_level" : 2,
-        "topic" : "Kakatni at Makikatni",
+        "topic" : "Pamagpantig karing salita",
         "multiple_choice": [
         "malagu",
         "salol",
@@ -62,9 +67,10 @@
 
         {
         "questionID" : 36,
-        "question": "Alin sa mga sumusunod na salita ang hindi apat ang pantig?",
+        "question": "Sanu karing susunud a salita ing ali apat a pantig?",
+        "translation": "Alin sa mga sumusunod na salita ang hindi apat na pantig?",
         "grade_level" : 2,
-        "topic" : "Kakatni at Makikatni",
+        "topic" : "Pamagpantig karing salita",
         "multiple_choice": [
         "gamat",
         "maganaka",
@@ -74,9 +80,10 @@
 
         {
         "questionID" : 37,
-        "question": "Alin sa mga sumusunod na salita ang may apat na pantig?",
+        "question": "Sanu karing susunud a salita ing ating apat a pantig?",
+        "translation": "Alin sa mga sumusunod na salita ang may apat na pantig?",
         "grade_level" : 2,
-        "topic" : "Kakatni at Makikatni",
+        "topic" : "Pamagpantig karing salita",
         "multiple_choice": [
         "tuturu",
         "mananaman",
@@ -86,9 +93,10 @@
 
         {
         "questionID" : 38,
-        "question": "Alin sa mga sumusunod na salita ang may dalawang pantig?",
+        "question": "Sanu karing susunud a salita ing ating adwang pantig?",
+        "translation": "Alin sa mga sumusunod na salita ang may dalawang pantig?",
         "grade_level" : 2,
-        "topic" : "Kakatni at Makikatni",
+        "topic" : "Pamagpantig karing salita",
         "multiple_choice": [
         "abak",
         "apulu",
@@ -98,9 +106,10 @@
 
         {
         "questionID" : 39,
-        "question": "Alin sa mga sumusunod na salita ang may tatlong pantig?",
+        "question": "Sanu karing susunud a salita ing ating atlung pantig?",
+        "translation": "Alin sa mga sumusunod na salita ang may tatlong pantig?",
         "grade_level" : 2,
-        "topic" : "Kakatni at Makikatni",
+        "topic" : "Pamagpantig karing salita",
         "multiple_choice": [
         "salol",
         "manimu",
@@ -110,9 +119,10 @@
 
         {
         "questionID" : 40,
-        "question": "Alin sa mga sumusunod na salita ang may apat na pantig?",
+        "question": "Sanu karing susunud a salita ing ating apat a pantig?",
+        "translation": "Alin sa mga sumusunod na salita ang may apat na pantig?",
         "grade_level" : 2,
-        "topic" : "Kakatni at Makikatni",
+        "topic" : "Pamagpantig karing salita",
         "multiple_choice": [
         "mamalantsa",
         "dagis",

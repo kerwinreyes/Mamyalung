@@ -52,7 +52,6 @@ final _formKey = GlobalKey<FormState>();
 
 TextEditingController _questionController = new TextEditingController();
 TextEditingController _topicControlller = new TextEditingController();
-TextEditingController _searchController = new TextEditingController();
 TextEditingController _ans1Controller = new TextEditingController();
 TextEditingController _ans2Controller = new TextEditingController();
 TextEditingController _ans3Controller = new TextEditingController();
@@ -207,6 +206,73 @@ Future<void> _createquestion() async{
 }
 TextEditingController _searchkey = new TextEditingController();
 String searchTxt='';
+    TextEditingController _searchQuesController = TextEditingController();
+
+  late Future resultsLoaded;
+  List _allQuestions = [];
+  List _resultsListQues = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _searchQuesController.addListener(_onSearchChanged);
+  }
+
+  @override
+  void dispose() {
+    _searchQuesController.removeListener(_onSearchChanged);
+    _searchQuesController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    resultsLoaded = getQuestion();
+  }
+
+  _onSearchChanged() {
+    searchResultsList();
+  }
+   getQuestion() async{
+    /* await  FirebaseFirestore.instance
+      .collection('users')
+      .get()
+      .then((QuerySnapshot querySnapshot){
+         querySnapshot.docs.forEach((DocumentSnapshot doc) {
+            _allResult.add(doc.data());
+          
+        }); 
+      });*/
+       var data = await FirebaseFirestore.instance
+        .collection('questions')
+        .get();
+    setState(() {
+      _allQuestions = data.docs;
+    });
+    searchResultsList();
+  }
+  searchResultsList() {
+    var showResults = [];
+
+    if(_searchQuesController.text != "") {
+      for(var quesSnapshot in _allQuestions){
+        var question = QuestionsModel.fromSnapshot(quesSnapshot).question.toLowerCase();
+        var topic = QuestionsModel.fromSnapshot(quesSnapshot).topic.toLowerCase();
+        var level = QuestionsModel.fromSnapshot(quesSnapshot).grade_level;
+
+        if(question.contains(_searchQuesController.text.toLowerCase()) || topic.contains(_searchQuesController.text.toLowerCase())) {
+          showResults.add(quesSnapshot);
+        }
+      }
+
+    } else {
+      showResults = List.from(_allQuestions);
+    }
+    setState(() {
+      _resultsListQues = showResults;
+    });
+  }      
   @override
   Widget build(BuildContext context) {
      var screenSize = MediaQuery.of(context).size;
@@ -225,158 +291,35 @@ String searchTxt='';
           image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/YBzRfyT/background.png') : NetworkImage("https://i.ibb.co/Zfs8zLR/mobilebg.png"), fit: BoxFit.fill),
           ),),
            
-              SizedBox(height:100),
-          StreamBuilder<QuerySnapshot>(
-          stream: (_searchString == null || _searchString.trim()== '')
-          ? FirebaseFirestore.instance.collection('questions').snapshots()
-          :FirebaseFirestore.instance.collection('questions')
-          .where('question', isGreaterThanOrEqualTo: _searchString)
-          .where('question', isLessThan: _searchString + 'z')
-          .snapshots(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return Text('Something went wrong');
-            }
-
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
-            }
-            if (snapshot.connectionState == ConnectionState.none) {
-              return CircularProgressIndicator();
-            }
-            return 
-          Container(
-            //color: green,
-            child: ListView(
-              children: <Widget>[
-            Column(
-            children: [
-              Padding(padding: EdgeInsets.fromLTRB(80, 10, 60, 0),
-                child: Row(
-                  children: [
-                    Text(""),
-                    Spacer(),
-                    Text("")
-                  ],
-                )
+              
+          Column(children: [
+            SizedBox(height:50),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 5.0),
+            child:TextField(
+            
+            controller: _searchQuesController,
+            decoration: InputDecoration(
+              
+              focusColor: lightBlue,
+              prefixIcon: Icon(Icons.search),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
+              
               ),
-              Container(
-                //color: green,
-                child: ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: snapshot.data!.docs.length,
-                  itemBuilder: (context, index){
-                    DocumentSnapshot doc = snapshot.data!.docs[index];
-                    return Padding(
-                      padding: EdgeInsets.fromLTRB(10,7,10,0),
-                      child: Card(
-                        color: Colors.white.withOpacity(0.7),
-                        child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          ListTile(
-                            contentPadding: EdgeInsets.all(10),
-                            leading: Icon(Icons.topic_outlined),
-                            title: Text("Topic: ${snapshot.data!.docs[index]['topic']}",style: TextStyle(fontFamily: 'Sans'),),
-                            subtitle: Text("Question: ${snapshot.data!.docs[index]['question']}", style: TextStyle(fontFamily: 'Evil', fontSize:20, color: black),),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: <Widget>[
-                              TextButton(
-                                child: Text("Edit"),
-                                onPressed: (){
-
-                                  setState((){
-                                    _updateID = snapshot.data!.docs[index]['questionID'].toString();
-                                    _questionTopic = snapshot.data!.docs[index]['topic'];
-                                    _questionController.text = snapshot.data!.docs[index]['question'];
-                                    _ans = snapshot.data!.docs[index]['answer'];
-                                    _ans1Controller.text = snapshot.data!.docs[index]['multiple_choice'][0];
-                                    _ans2Controller.text = snapshot.data!.docs[index]['multiple_choice'][1];
-                                    _ans3Controller.text = snapshot.data!.docs[index]['multiple_choice'][2];
-                                    _ans4Controller.text = snapshot.data!.docs[index]['multiple_choice'][3];
-                                    _correctAnswer = snapshot.data!.docs[index]['multiple_choice'][_ans];
-                                  });
-                                  showDialog(context: context,
-                                    builder: (BuildContext context) => editContent(context));
-                                },
-                              ),
-                              SizedBox(width: 10),
-                              TextButton(
-                                child: Text("Delete"),
-                                onPressed: (){
-                                 showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: Text("Alert Message"),
-                                      content: Text('Are you sure you want to delete this data?'),
-                                      actions: [
-                                        ElevatedButton(
-                                          child: Text("Delete"),
-                                          onPressed: () {
-                                            deleteQuestion(snapshot.data!.docs[index]['questionID'].toString());
-                                            Navigator.pop(context);
-                                          },
-                                        ),
-                                        ElevatedButton(
-                                          child: Text("Cancel"),
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                        )
-                                      ],
-                                    );
-                                  });
-                                },
-                              )
-                            ],
-                          )
-                        ],
-                      )
-                    ));
-                  }
-                )
-              )
-            ],
-          )
-          
-          ]
-          
-          ),
-          );
-      }
-    ),
-         Column(
-            children:[
-              SizedBox(height:20),
-          
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Container(
-                  child: TextField(
-                    onChanged: (val){
-                      setState(() {
-                        _searchString = val;
-                      });
-                    },
-                    controller: _controller,
-                    decoration: InputDecoration(
-                      suffixIcon: IconButton(
-                        icon: Icon(Icons.clear),
-                        onPressed: ()=>_controller.clear(),
-                      ),
-                      hintText: 'Search Question here',
-                      hintStyle: TextStyle(
-                        color: Colors.blueGrey
-                      )
-                    )
-                  )
-                ),
-              )]
-          ),
+              hintText: 'Enter a search term'
+            ),
+          )),
+      SingleChildScrollView(child:Container(
+      height: MediaQuery.of(context).size.height*.70,
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: ListView.builder(
+        itemCount: _resultsListQues.length,
+        itemBuilder: (BuildContext context, int index)=>
+         questionView(context, _resultsListQues[index])
+        )
+    
+    ))])
           
         ],
         ),
@@ -895,6 +838,77 @@ editContent(BuildContext context) {
         },
       ),
     );  
+}
+questionView(BuildContext context, resultsList){
+  return Padding(
+                      padding: EdgeInsets.fromLTRB(10,7,10,0),
+                      child: Card(
+                        color: Colors.white.withOpacity(0.7),
+                        child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          ListTile(
+                            contentPadding: EdgeInsets.all(10),
+                            leading: Icon(Icons.topic_outlined),
+                            title: Text("Topic: ${resultsList['topic']}",style: TextStyle(fontFamily: 'Sans'),),
+                            subtitle: Text("Question: ${resultsList['question']}", style: TextStyle(fontFamily: 'Evil', fontSize:20, color: black),),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              TextButton(
+                                child: Text("Edit"),
+                                onPressed: (){
+
+                                  setState((){
+                                    _updateID = resultsList['questionID'].toString();
+                                    _questionTopic = resultsList['topic'];
+                                    _questionController.text = resultsList['question'];
+                                    _ans =resultsList['answer'];
+                                    _ans1Controller.text = resultsList['multiple_choice'][0];
+                                    _ans2Controller.text =resultsList['multiple_choice'][1];
+                                    _ans3Controller.text = resultsList['multiple_choice'][2];
+                                    _ans4Controller.text = resultsList['multiple_choice'][3];
+                                    _correctAnswer = resultsList['multiple_choice'][_ans];
+                                  });
+                                  showDialog(context: context,
+                                    builder: (BuildContext context) => editContent(context));
+                                },
+                              ),
+                              SizedBox(width: 10),
+                              TextButton(
+                                child: Text("Delete"),
+                                onPressed: (){
+                                 showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text("Alert Message"),
+                                      content: Text('Are you sure you want to delete this data?'),
+                                      actions: [
+                                        ElevatedButton(
+                                          child: Text("Delete"),
+                                          onPressed: () {
+                                            deleteQuestion(resultsList['questionID'].toString());
+                                            Navigator.pop(context);
+                                          },
+                                        ),
+                                        ElevatedButton(
+                                          child: Text("Cancel"),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                        )
+                                      ],
+                                    );
+                                  });
+                                },
+                              )
+                            ],
+                          )
+                        ],
+                      )
+                    ));
 }
 }
 
