@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mamyalung/materials.dart';
+import 'package:mamyalung/screens/students/homepage.dart';
 
 class Consts {
   Consts._();
@@ -77,7 +78,7 @@ class CustomDialog extends StatelessWidget {
           style: TextStyle(color: Colors.black)),
         ),
       ),
-      
+      SizedBox(height: 20)
     ],
   ),
 ),
@@ -265,3 +266,110 @@ Positioned(
     );
   }
 }
+
+
+class ScoreDialog extends StatelessWidget {
+  final String title, description, buttonText;
+  final String? uid;
+  final String path;
+  
+
+  ScoreDialog({
+    required this.title,
+    required this.description,
+    required this.buttonText,
+    required this.path,
+    required this.uid
+  });
+
+  dialogContent(BuildContext context) {
+  return Stack(
+    children: <Widget>[
+      Container(
+  padding: EdgeInsets.only(
+    top: Consts.avatarRadius + Consts.padding,
+    bottom: MediaQuery.of(context).padding.bottom,
+    left: Consts.padding,
+    right: Consts.padding,
+  ),
+  margin: EdgeInsets.only(top: Consts.avatarRadius),
+  decoration: new BoxDecoration(
+    color: Colors.white,
+    shape: BoxShape.rectangle,
+    borderRadius: BorderRadius.circular(Consts.padding),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.black26,
+        blurRadius: 10.0,
+        offset: const Offset(0.0, 10.0),
+      ),
+    ],
+  ),
+
+    child: 
+      Column(
+    mainAxisSize: MainAxisSize.min, // To make the card compact
+    children: <Widget>[
+      Text(
+        title,
+        style: TextStyle(
+          fontSize: 24.0,
+          fontWeight: FontWeight.w700,
+          color: Colors.black
+        ),
+      ),
+      SizedBox(height: 16.0),
+      Text(
+        description,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 20.0,
+          color: Colors.black
+        ),
+      ),
+      Align(
+        alignment: Alignment.bottomRight,
+        child: TextButton(
+          onPressed: () { 
+            Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => StudentHomePage(uid: uid)),
+                        );
+          },
+          child: Text(buttonText,
+          style: TextStyle(color: Colors.black)),
+        ),
+      ),
+      SizedBox(height: 20)
+    ],
+  ),
+),
+
+Positioned(
+  left: Consts.padding,
+  right: Consts.padding,
+  child: CircleAvatar(
+    backgroundColor: Colors.white,
+    radius: Consts.avatarRadius,
+    child: Image(image: NetworkImage(path),
+      fit: BoxFit.cover,)
+
+  ),
+),
+    ],
+  );
+}
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Consts.padding),
+      ),      
+      elevation: 0.0,
+      backgroundColor: Colors.transparent,
+      child: dialogContent(context),
+    );
+  }
+}
+

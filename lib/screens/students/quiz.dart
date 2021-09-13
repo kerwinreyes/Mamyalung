@@ -1,13 +1,9 @@
 
 import 'dart:html';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mamyalung/screens/students/multiplechoice.dart';
-
 import '../../materials.dart';
-
-  
 
 class QuizCard extends StatefulWidget {
   final String? uid;
@@ -19,12 +15,7 @@ class QuizCard extends StatefulWidget {
 class _QuizCardState extends State<QuizCard> {
 
   int gradeLevel = 0;
-  int isUnlocked1 = 0;
-  int isUnlocked2 = 0;
-  int isUnlocked3 = 0;
-  int isUnlocked4 = 0;
 
-  CollectionReference users = FirebaseFirestore.instance.collection('users');
   void read(){
     FirebaseFirestore.instance
     .collection('users')
@@ -34,10 +25,7 @@ class _QuizCardState extends State<QuizCard> {
         querySnapshot.docs.forEach((doc) {
       setState(() {
         gradeLevel = doc['grade_level'];
-        isUnlocked1 = doc['isUnlocked1'];
-        isUnlocked2 = doc['isUnlocked2'];
-        isUnlocked3 = doc['isUnlocked3'];
-        isUnlocked4 = doc['isUnlocked4'];
+
       });
     });
   });
@@ -50,162 +38,91 @@ class _QuizCardState extends State<QuizCard> {
   }
   @override
   Widget build(BuildContext context) {
-        var screenSize = MediaQuery.of(context).size;
+    List<DocumentSnapshot> topics =[];
+    int topicCount = 0;
+    final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance.collection('topics')
+    .where('grade_level', isEqualTo: gradeLevel)
+    .snapshots();
+    var screenSize = MediaQuery.of(context).size;
     var screenSizeW = screenSize.width;
     var screenSizeH = screenSize.height;
     return Stack(
       children: [
         Container(
           width: screenSizeW,
-          height: screenSizeH,
+          height: screenSizeH, 
           decoration: BoxDecoration(
-        image: DecorationImage(
-          image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/YBzRfyT/background.png') : NetworkImage("https://i.ibb.co/Zfs8zLR/mobilebg.png"), fit: BoxFit.fill),
-          ),),
-      GridView.count(
-      
-      crossAxisCount: 2,
-      padding: EdgeInsets.only(top:MediaQuery.of(context).size.height * .15),
-      children: [
-        //Pagpapakilala
+            image: DecorationImage(
+            image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/YBzRfyT/background.png') : NetworkImage("https://i.ibb.co/Zfs8zLR/mobilebg.png"), fit: BoxFit.fill),
+          ),
+        ),
+        StreamBuilder<QuerySnapshot>(
+          stream: _usersStream,
+          builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.hasError) {
+              return Text('Something went wrong');
+            }
 
-        GestureDetector(
-        
-        onTap: (){
-        Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => TopicOne(uid:widget.uid, gradeLevel: gradeLevel)),);
-        },
-        child: Container(
-          margin: EdgeInsets.only(left:30,right: 30,top:10,bottom:20),
-          width: double.infinity,
-          height: 100.0,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(gradeLevel == 2 && isUnlocked1 == 1 ? "https://i.ibb.co/yysdY1s/Pagpapakilala-g2.png" :
-               gradeLevel == 2 && isUnlocked1 == 0 ? "https://i.ibb.co/ftxGCFG/Pagtukoy-locked.png" : gradeLevel == 3 && isUnlocked1== 1 ? "https://i.ibb.co/yysdY1s/Pagpapakilala-g2.png"
-                : gradeLevel == 3 && isUnlocked1 == 0 ? "https://i.ibb.co/2n6qW8X/kasarian-locked.png": "https://i.ibb.co/gghzqTq/mamyalung-logo.png"),
-            fit: BoxFit.cover
-            ),
-            color: white,
-            borderRadius: BorderRadius.circular(20.0),
-            boxShadow: [
-              BoxShadow(
-                color: black.withOpacity(0.5),spreadRadius: 5,
-                blurRadius: 7,offset:Offset(2, 5)
-              )
-            ]
-          ),
-          child: Text('')
-        ),),
-        //Magagalang na Salita
-        GestureDetector(
-        onTap: (){
-          if(isUnlocked2 == 1){
-             Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => TopicTwo(uid: widget.uid,gradeLevel :gradeLevel),
-        ),
-      );
-          }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Text("Loading");
+            }
+            if(snapshot.hasData){
+              topics = snapshot.data!.docs;
+              topicCount = topics.length; 
+            }
+            return GridView.builder(
+              itemCount: topicCount,
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              primary: false,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: MediaQuery.of(context).size.width < 500 ? 2 :6,
+              ),
+              itemBuilder: (BuildContext context, int index){
+                return 
+                 GestureDetector(
+                      onTap: (){
+                      topics[index]['publish'] == 1? 
+                      Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => MultipleBody(uid:widget.uid,topic: topics[index]['topic_name'], level: gradeLevel)),)
+                      : print('lock');
+                      },
+                      
+                      child: Container(
+                        margin: EdgeInsets.only(left:30,right: 30,top:10,bottom:20),
+                        width: double.infinity,
+                        height: 100.0,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(gradeLevel == 2 && topics[index]['publish'] == 1? "${topics[index]['image']}" :
+                            gradeLevel == 2 && topics[index]['publish'] == 0 ? "https://i.ibb.co/ftxGCFG/Pagtukoy-locked.png" : gradeLevel == 3 && topics[index]['publish'] == 1 ? "${topics[index]['image']}"
+                              : gradeLevel == 3 && topics[index]['publish'] == 0 ? "https://i.ibb.co/2n6qW8X/kasarian-locked.png": "https://i.ibb.co/gghzqTq/mamyalung-logo.png"),
+                          fit: BoxFit.cover
+                          ),
+                          color: white,
+                          borderRadius: BorderRadius.circular(20.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: black.withOpacity(0.5),spreadRadius: 5,
+                              blurRadius: 7,offset:Offset(2, 5)
+                            )
+                          ]
+                        ),
+                        child: Padding(padding: EdgeInsets.only(top: 10),
+                        child: topics[index]['publish'] == 1?  Text(
+                          '${topics[index]['topic_name']}',style:TextStyle(fontFamily: 'Bubble',fontSize: 30), textAlign: TextAlign.center,)
+                           : Text('')
+                          )
+                         
+                      ),);
 
-          
-        },
-        child: Container(
-          margin: EdgeInsets.only(left:30,right: 30,top:10,bottom:20),
-          width: double.infinity,
-          height: 100.0,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(gradeLevel == 2 && isUnlocked2 == 1 ? "https://i.ibb.co/GVDRRfZ/Pagtukoy1.png" :
-               gradeLevel == 2 && isUnlocked2 == 0 ? "https://i.ibb.co/ftxGCFG/Pagtukoy-locked.png" : gradeLevel == 3 && isUnlocked2 == 1 ? "https://i.ibb.co/SvpBVSk/kasarian.png"
-                : gradeLevel == 3 && isUnlocked2 == 0 ? "https://i.ibb.co/2n6qW8X/kasarian-locked.png": "https://i.ibb.co/gghzqTq/mamyalung-logo.png"),
-              fit: BoxFit.cover
-            ),
-            color: white,
-            borderRadius: BorderRadius.circular(10.0),
-            boxShadow: [
-              BoxShadow(
-                color: black.withOpacity(0.5),spreadRadius: 5,
-                blurRadius: 7,offset:Offset(2, 5)
-              )
-            ]
-          ),
-          child: Text('')
-        )),
-        //Kakatni
-        GestureDetector(
-        onTap: (){
-          if(isUnlocked3 == 1){
-            Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => TopicThree(uid: widget.uid,gradeLevel :gradeLevel),
-        ),
-      );
+              }
+            );
           }
-          else{
-             
-          }
-         
-        },
-        child: Container(
-          margin: EdgeInsets.only(left:30,right: 30,top:20,bottom:20),
-          width: double.infinity,
-          height: 100.0,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(gradeLevel == 2 && isUnlocked3 == 1 ? "https://i.ibb.co/cQSCdbQ/kakatni.png" :
-               gradeLevel == 2 && isUnlocked3 == 0 ? "https://i.ibb.co/nwf99Dw/kakatni-locked.png" : gradeLevel == 3 && isUnlocked3 == 1 ? "https://i.ibb.co/PzKZHd1/panghalip.png"
-               : gradeLevel == 3 && isUnlocked3 == 0 ? "https://i.ibb.co/rxmg8jh/panghalip-locked.png": "https://i.ibb.co/gghzqTq/mamyalung-logo.png"),
-              fit: BoxFit.cover
-            ),
-            color: white,
-            borderRadius: BorderRadius.circular(10.0),
-            boxShadow: [
-              BoxShadow(
-                color: black.withOpacity(0.5),spreadRadius: 5,
-                blurRadius: 7,offset:Offset(2, 5)
-              )
-            ]
-          ),
-          child: Text('')
-        )),
-        GestureDetector(
-        onTap: (){
-          if(isUnlocked4 == 1){
-            Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => TopicFour(uid: widget.uid,gradeLevel :gradeLevel),
         ),
-      );
-          }
-          
-        },
-        child:Container(
-          margin: EdgeInsets.only(left:30,right: 30,top:20,bottom:20),
-          width: double.infinity,
-          height: 100.0,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(gradeLevel == 2 && isUnlocked4 == 1 ? "https://i.ibb.co/2ddqmbw/pagpapantig.png" :
-               gradeLevel == 2 && isUnlocked4 == 0 ? "https://i.ibb.co/DRpDzhV/pagpapantig-locked.png" :gradeLevel == 3 && isUnlocked4 == 1 ? "https://i.ibb.co/D9qd1Vt/papakitgalo.png"
-                : gradeLevel == 3 && isUnlocked4 == 0 ? "https://i.ibb.co/02GVH7r/papakitgalo-locked.png": "https://i.ibb.co/gghzqTq/mamyalung-logo.png"),
-              fit: BoxFit.cover
-            ),
-            color: white,
-            borderRadius: BorderRadius.circular(10.0),
-            boxShadow: [
-              BoxShadow(
-                color: black.withOpacity(0.5),spreadRadius: 5,
-                blurRadius: 7,offset:Offset(2, 5)
-              )
-            ]
-          ),
-          child: Text(''))
-        ),
-      ],
-      ),
       ],
     );
   }
 }
+
