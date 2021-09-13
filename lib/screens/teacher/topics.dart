@@ -338,7 +338,21 @@ List _listImage=[
   }           
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body:SingleChildScrollView(
+     var screenSize = MediaQuery.of(context).size;
+    var screenSizeW = screenSize.width;
+    var screenSizeH = screenSize.height;
+    
+    return Stack(
+      children: [
+        Container(
+          width: screenSizeW,
+          height: screenSizeH, 
+          decoration: BoxDecoration(
+            image: DecorationImage(
+            image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/SsNTLjj/mobilebg.png') : NetworkImage("https://i.ibb.co/h18BM5q/background.png"), fit: BoxFit.fill),
+          ),
+        ),
+        Scaffold(body:SingleChildScrollView(
       child: Column(children: [
         Container(
           child: Text('Topics',
@@ -369,7 +383,7 @@ List _listImage=[
       child: Icon(Icons.add),
       backgroundColor: Colors.blue,
      
-    ));
+    ))]);
   }
 }
 Widget viewTopic(BuildContext context, DocumentSnapshot document) {
@@ -590,6 +604,7 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
   return new Container(
     //Pabs Paedit Design
     child: Container(
+      
                         margin: EdgeInsets.only(left:20,right: 20,top:10,bottom:20),
                         width: double.infinity,
                         height: 100.0,
@@ -605,15 +620,16 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
                             )
                           ]
                         ),
-                        child: Padding(padding: EdgeInsets.only(top: 10),
+                        child: Center(child: Padding(padding: EdgeInsets.only(top: 50),
                         child: Container(child:Column(
                           children:[
-                            AutoSizeText(nameTopic,style:TextStyle(fontSize: 20), textAlign: TextAlign.center,),
-                            SizedBox(height:150),
+                            AutoSizeText(nameTopic,style:TextStyle(fontSize: 20,fontFamily: 'Bubble'), textAlign: TextAlign.center,presetFontSizes: [20,15],maxLines: 1),
+                            SizedBox(height:250),
                             Center(child: Row(children:[
-                              
+                            
                             ElevatedButton(
-                              child:Text('Edit',style:TextStyle(fontSize: 12), textAlign: TextAlign.center,),
+                              style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.white.withOpacity(0.8))),
+                              child:Text('Edit',style:TextStyle(fontSize: 20, color: lightBlue, fontFamily: 'Evil'), textAlign: TextAlign.center,),
                               onPressed:() async{
                                 //Edit Content
                                 showDialog(context: context,
@@ -624,7 +640,8 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
                             ),
                             SizedBox(width: 20,),
                             ElevatedButton(
-                              child: publish == 0 ? Text('Publish',style:TextStyle(fontSize: 12), textAlign: TextAlign.center,): Text('Unpublish',style:TextStyle(fontSize: 12), textAlign: TextAlign.center,),
+                              style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.white.withOpacity(0.8))),
+                              child: publish == 0 ? Text('Publish',style:TextStyle( fontSize: 20, color: lightBlue, fontFamily: 'Evil'), textAlign: TextAlign.center,): Text('Unpublish',style:TextStyle(fontSize: 20, color: lightBlue, fontFamily: 'Evil'), textAlign: TextAlign.center,),
                               onPressed:() async{
                                 
                                 await FirebaseFirestore.instance.collection('topics').doc(topic.code)
@@ -658,7 +675,7 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
                         )
                         )
    
-  ));
+  )));
 
 }
 

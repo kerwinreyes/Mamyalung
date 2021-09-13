@@ -22,9 +22,9 @@ required double size, required double height, required double width, required St
               alignment: Alignment.center,
               child: Text(
                 text,
-                style: GoogleFonts.lato(
-                      textStyle: TextStyle(color: Colors.white, fontSize: size, fontWeight: FontWeight.bold),
-                    ),
+                style: 
+                      TextStyle(color: Colors.white, fontSize: size, fontFamily: 'Evil'),
+                    
               ),
             ),
           )).addNeumorphism();

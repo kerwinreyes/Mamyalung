@@ -138,11 +138,18 @@ void get(){
   }
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    var screenSizeW = screenSize.width;
+    var screenSizeH = screenSize.height;
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text("${widget.topic}", textAlign: TextAlign.center,),
+        elevation: 0,
+       shadowColor: primaryBlue,
+       backgroundColor: Colors.white.withOpacity(0.2),
+        title: Text("${widget.topic}", textAlign: TextAlign.center,style: TextStyle(fontFamily: 'Sans', color: black, fontSize: 25),),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back, color: black),
           onPressed: (){
             Navigator.pushReplacement(
               context,
@@ -150,14 +157,22 @@ void get(){
             },
         ),
       ),
-      body: SingleChildScrollView(
-        child:
-      Container(
-      child: data.isEmpty ? CircularProgressIndicator() : Center(
+      body: 
+
+      Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+          image: DecorationImage(
+            image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/SsNTLjj/mobilebg.png') : NetworkImage("https://i.ibb.co/h18BM5q/background.png"),
+            fit: BoxFit.fill),
+        ),),
+        SingleChildScrollView(
+          child: data.isEmpty ? CircularProgressIndicator() : Center(
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Padding(padding: EdgeInsets.only(top: 30)),
+              Padding(padding: EdgeInsets.only(top: 70)),
               Container(
                 child: Column(
                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -166,7 +181,7 @@ void get(){
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("Pilinan ing ustung Sagut",style: TextStyle(color : Colors.brown , 
-                        fontSize: 20,fontWeight: FontWeight.bold),),
+                        fontSize: 20,fontWeight: FontWeight.bold, fontFamily: 'Sans'),),
                       ],
                     ),
                     SizedBox(height: 20),
@@ -174,9 +189,9 @@ void get(){
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text("Question ${index + 1} / ${data.length}",style: TextStyle(color : Colors.brown , 
-                        fontSize: 20,fontWeight: FontWeight.bold),),
+                        fontSize: 20,fontWeight: FontWeight.bold, fontFamily: 'Sans'),),
                         Text("Score : $finalScore",style: TextStyle(color : Colors.brown , 
-                        fontSize: 20,fontWeight: FontWeight.bold),), 
+                        fontSize: 20,fontWeight: FontWeight.bold, fontFamily: 'Sans'),), 
                       ],
                     )
                  ],
@@ -199,7 +214,7 @@ void get(){
                          Padding(
                            padding: EdgeInsets.only(left: 20, right: 20),
                            child: 
-                            AutoSizeText("${data[index]['question']}\n (${data[index]['translation']})",textAlign: TextAlign.center,style: TextStyle(fontSize: 30.0,height: 1.5),maxLines: 5,maxFontSize: 18,
+                            AutoSizeText("${data[index]['question']}\n (${data[index]['translation']})",textAlign: TextAlign.center,style: TextStyle(fontSize: 35.0,height: 1.5, fontFamily: 'Sans'),maxLines: 5,maxFontSize: 18,
                          
                          )),
                        ],
@@ -213,9 +228,9 @@ void get(){
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                    
-                button(first: isButtonPressed0 ? green : lightBlue, 
-                     second: isButtonPressed0 ? green : primaryBlue, 
-                     size: 15, 
+                button(first: isButtonPressed3 ? green : orange, 
+                     second: isButtonPressed3 ? green : orange, 
+                     size: 20, 
                      height: 50, 
                      width: MediaQuery.of(context).size.width/1.5, 
                      text:"${data[index]['multiple_choice'][0]}",
@@ -234,9 +249,9 @@ void get(){
                      }
                     ),
                  SizedBox(height: 10),
-                button(first: isButtonPressed1 ? green : lightBlue, 
-                     second: isButtonPressed1 ? green : primaryBlue, 
-                     size: 15, 
+                button(first: isButtonPressed3 ? green : orange, 
+                     second: isButtonPressed3 ? green : orange, 
+                     size: 20, 
                      width: MediaQuery.of(context).size.width/1.5,
                      height: 50, 
                      text:"${data[index]['multiple_choice'][1]}",
@@ -263,9 +278,9 @@ void get(){
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                 SizedBox(height: 10),
-                 button(first: isButtonPressed2 ? green : lightBlue, 
-                     second: isButtonPressed2 ? green : primaryBlue, 
-                     size: 15, 
+                 button(first: isButtonPressed3 ? green : orange, 
+                     second: isButtonPressed3 ? green : orange, 
+                     size: 20, 
                      width: MediaQuery.of(context).size.width/1.5,
                      height: 50,
                      text:"${data[index]['multiple_choice'][2]}",
@@ -284,9 +299,10 @@ void get(){
                     ),
 
                 SizedBox(height: 10),
-               button(first: isButtonPressed3 ? green : lightBlue, 
-                     second: isButtonPressed3 ? green : primaryBlue, 
-                     size: 15, 
+               button(first: isButtonPressed3 ? green : orange, 
+                     second: isButtonPressed3 ? green : orange, 
+
+                     size: 20, 
                      width: MediaQuery.of(context).size.width/1.5,
                      height: 50, 
                      text:"${data[index]['multiple_choice'][3]}",
@@ -305,14 +321,14 @@ void get(){
                 ],
               ),
 
-              Padding(padding: EdgeInsets.only(top: 20,)),
+              Padding(padding: EdgeInsets.only(top: 40,)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                 SizedBox(height: 10),
-                button(first: lightBlue, 
-                     second: primaryBlue, 
-                     size: 15, 
+                button(first:  orange, 
+                  second: orange,
+                     size: 25, 
                      width: MediaQuery.of(context).size.width/1.5,
                      height: 50, 
                      text:"$next",
@@ -363,7 +379,7 @@ void get(){
               ),
              ],
           ),
-      ))
-    ));
+      ))])
+    );
   }
 }

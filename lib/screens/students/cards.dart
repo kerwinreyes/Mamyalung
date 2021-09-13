@@ -394,7 +394,7 @@ Future<void> _readUser() async{
                   borderRadius: BorderRadius.circular(20))),
           child: Ink(
             decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [lightBlue, primaryBlue]),
+                gradient: LinearGradient(colors: [orange, orange]),
                 borderRadius: BorderRadius.circular(20)),
             child: Container(
               width: MediaQuery.of(context).size.width/1.5,
@@ -419,7 +419,7 @@ Future<void> _readUser() async{
                   borderRadius: BorderRadius.circular(20))),
           child: Ink(
             decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [lightBlue, primaryBlue]),
+                gradient: LinearGradient(colors: [orange, orange]),
                 borderRadius: BorderRadius.circular(20)),
             child: Container(
               width: MediaQuery.of(context).size.width/1.5,

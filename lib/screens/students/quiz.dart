@@ -1,5 +1,6 @@
 
 import 'dart:html';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mamyalung/screens/students/multiplechoice.dart';
@@ -53,7 +54,7 @@ class _QuizCardState extends State<QuizCard> {
           height: screenSizeH, 
           decoration: BoxDecoration(
             image: DecorationImage(
-            image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/YBzRfyT/background.png') : NetworkImage("https://i.ibb.co/Zfs8zLR/mobilebg.png"), fit: BoxFit.fill),
+            image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/SsNTLjj/mobilebg.png') : NetworkImage("https://i.ibb.co/h18BM5q/background.png"), fit: BoxFit.fill),
           ),
         ),
         StreamBuilder<QuerySnapshot>(
@@ -76,7 +77,7 @@ class _QuizCardState extends State<QuizCard> {
               shrinkWrap: true,
               primary: false,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: MediaQuery.of(context).size.width < 500 ? 2 :6,
+                crossAxisCount: MediaQuery.of(context).size.width < 500 ? 2 : 3,
               ),
               itemBuilder: (BuildContext context, int index){
                 return 
@@ -110,8 +111,8 @@ class _QuizCardState extends State<QuizCard> {
                           ]
                         ),
                         child: Padding(padding: EdgeInsets.only(top: 10),
-                        child: topics[index]['publish'] == 1?  Text(
-                          '${topics[index]['topic_name']}',style:TextStyle(fontFamily: 'Bubble',fontSize: 30), textAlign: TextAlign.center,)
+                        child: topics[index]['publish'] == 1?  AutoSizeText(
+                          '${topics[index]['topic_name']}',style:TextStyle(fontFamily: 'Bubble',fontSize: 25), textAlign: TextAlign.center,presetFontSizes: [35,20,15],maxLines: 2,)
                            : Text('')
                           )
                          
