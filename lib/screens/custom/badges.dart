@@ -79,46 +79,46 @@ class _BadgesState extends State<Badges> {
                         children: <Widget>[
                           Expanded(
                             child: BadgeTap(
-                              lock: points >= 50 ? true : false,
+                              lock: points >= 100 ? true : false,
                               buttonText: "Okay",
                               description: "",
                               path: 'https://i.ibb.co/njf8Ndj/steady.png',
                               title: "Slow and Steady",
                               points: points,
-                              min: 50,
-                              trueMsg: "Remember, slow progress counts!",
-                              falseMsg:
-                                  "Earn a minimum of 50 points to unlock!",
-                            ),
-                          ),
-                          Expanded(
-                            child: BadgeTap(
-                              lock: points >= 100 ? true : false,
-                              buttonText: "Okay",
-                              description: "",
-                              path:
-                                  'https://i.ibb.co/jZXzvBk/little-Explorer.png',
-                              title: "Little Explorer",
-                              points: points,
                               min: 100,
-                              trueMsg:
-                                  "You are a little Explorer! Explore more! Keep it up!",
+                              trueMsg: "Remember, slow progress counts!",
                               falseMsg:
                                   "Earn a minimum of 100 points to unlock!",
                             ),
                           ),
                           Expanded(
                             child: BadgeTap(
-                              lock: points >= 200 ? true : false,
+                              lock: points >= 300 ? true : false,
+                              buttonText: "Okay",
+                              description: "",
+                              path:
+                                  'https://i.ibb.co/jZXzvBk/little-Explorer.png',
+                              title: "Little Explorer",
+                              points: points,
+                              min: 300,
+                              trueMsg:
+                                  "You are a little Explorer! Explore more! Keep it up!",
+                              falseMsg:
+                                  "Earn a minimum of 300 points to unlock!",
+                            ),
+                          ),
+                          Expanded(
+                            child: BadgeTap(
+                              lock: points >= 500 ? true : false,
                               buttonText: "Okay",
                               description: "",
                               path: 'https://i.ibb.co/TK6PsmV/fastlearner.png',
                               title: "Fast Learner",
                               points: points,
-                              min: 200,
+                              min: 500,
                               trueMsg: "Zooooom! Fast like a Ninja!",
                               falseMsg:
-                                  "Earn a minimum of 200 points to unlock!",
+                                  "Earn a minimum of 500 points to unlock!",
                             ),
                           )
                         ],
@@ -139,45 +139,45 @@ class _BadgesState extends State<Badges> {
                         children: <Widget>[
                           Expanded(
                             child: BadgeTap(
-                              lock: points >= 250 ? true : false,
+                              lock: points >= 750 ? true : false,
                               buttonText: "Okay",
                               description: "",
                               path: 'https://i.ibb.co/kSTB0CN/on-fire.png',
                               title: "On Fire",
                               points: points,
-                              min: 250,
+                              min: 750,
                               trueMsg: "Raaaawr! Bring up the heat!",
                               falseMsg:
-                                  "Earn a minimum of 250 points to unlock!",
+                                  "Earn a minimum of 750 points to unlock!",
                             ),
                           ),
                           Expanded(
                             child: BadgeTap(
-                              lock: points >= 500 ? true : false,
+                              lock: points >= 900 ? true : false,
                               buttonText: "Okay",
                               description: "",
                               path:
                                   'https://i.ibb.co/8dt2T8m/shiningbright.png',
                               title: "Shinning Bright",
                               points: points,
-                              min: 500,
+                              min: 900,
                               trueMsg: "Shine Light, Shine Bright!",
                               falseMsg:
-                                  "Earn a minimum of 500 points to unlock!",
+                                  "Earn a minimum of 900 points to unlock!",
                             ),
                           ),
                           Expanded(
                             child: BadgeTap(
-                              lock: points >= 1000 ? true : false,
+                              lock: points >= 1200 ? true : false,
                               buttonText: "Okay",
                               description: "",
                               path: 'https://i.ibb.co/4mt3K9c/royalty.png',
                               title: "Royalty",
                               points: points,
-                              min: 1000,
+                              min: 1200,
                               trueMsg: "Chin up and don't let your crown fall!",
                               falseMsg:
-                                  "Earn a minimum of 1000 points to unlock!",
+                                  "Earn a minimum of 1200 points to unlock!",
                             ),
                           )
                         ],

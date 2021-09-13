@@ -3,202 +3,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mamyalung/responsive.dart';
 import 'package:mamyalung/screens/custom/badge_message.dart';
+import 'package:mamyalung/screens/custom/custom.dart';
 import '../../materials.dart';
 import 'package:mamyalung/widgets/buttons.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'homepage.dart';
 
-class TopicOne extends StatefulWidget {
-  final String? uid;
-  final int gradeLevel;
-  const TopicOne({ Key? key, required this.uid, required this.gradeLevel }) : super(key: key);
 
-  @override
-  _TopicOneState createState() => _TopicOneState();
-}
-
-
-class _TopicOneState extends State<TopicOne> {
-
-  String topic = '';
-  int gradeLevel = 0;
-  String isUnlocked = "isUnlocked2";
-  
-  @override
-  void initState() { 
-    super.initState();
-    gradeLevel = widget.gradeLevel;
-  }
-  
-  @override
-  Widget build(BuildContext context) {
-    if(gradeLevel == 2){
-    topic = 'assets/questions/Pagpapakilala_sa_Sarili.json';
-    }
-    else{
-    topic = 'assets/questions/Pagpapakilala_sa_Sarili_G3.json';
-    }
-    return Scaffold(
-      appBar: AppBar(title: Text("Topic"),
-      backgroundColor: lightBlue,
-      leading: IconButton(
-        icon: Icon(Icons.arrow_back),
-        onPressed: (){
-          Navigator.pushReplacement(
-                            context,
-                            //MaterialPageRoute(builder: (context) => BadgeMsg(uid: widget.uid)),\
-                            MaterialPageRoute(builder: (context) => StudentHomePage(uid: widget.uid)),
-                        );
-        },
-      ),
-      ),
-      backgroundColor: powderblue.withOpacity(0.5),
-      body: Container(
-        child: Responsive(
-          desktop: Container(),
-          tablet: Container(),
-          mobile: MultipleBody(uid: widget.uid, topic: topic, unlock : isUnlocked)
-        )
-      )
-    );
-  }
-}
-
-class TopicTwo extends StatefulWidget {
-  final String? uid;
-  final int gradeLevel;
-  const TopicTwo({ Key? key, required this.uid, required this.gradeLevel }) : super(key: key);
-
-  @override
-  _TopicTwoState createState() => _TopicTwoState();
-}
-
-class _TopicTwoState extends State<TopicTwo> {
-
-  String topic = '';
-  int gradeLevel = 0;
-  String isUnlocked = "isUnlocked3";
-
-  @override
-  void initState() { 
-    super.initState();
-    gradeLevel = widget.gradeLevel;
-  }
-  @override
-  Widget build(BuildContext context) {
-    if(gradeLevel == 2){
-    topic = 'assets/questions/Magagalang_na_Salita.json';
-    }
-    else{
-    topic = 'assets/questions/Kasarian_ning_palagyu.json';
-    }
-    return Scaffold(
-      appBar: AppBar(title: Text("Topic"), 
-      backgroundColor: lightBlue,),
-      backgroundColor: powderblue.withOpacity(0.5),
-      body: Container(
-        child: Responsive(
-          desktop: Container(),
-          tablet: Container(),
-          mobile: MultipleBody(uid: widget.uid, topic: topic, unlock : isUnlocked)
-        )
-      )
-    );
-  }
-}
-
-class TopicThree extends StatefulWidget {
-  final String? uid;
-  final int gradeLevel;
-  const TopicThree({ Key? key, required this.uid, required this.gradeLevel }) : super(key: key);
-
-  @override
-  _TopicThreeState createState() => _TopicThreeState();
-}
-
-class _TopicThreeState extends State<TopicThree> {
-  String topic = '';
-  
-  int gradeLevel = 0;
-  String isUnlocked = "isUnlocked4";
-  
-
-  @override
-  void initState() { 
-    super.initState();
-    gradeLevel = widget.gradeLevel;
-  }
-  @override
-  Widget build(BuildContext context) {
-    if(gradeLevel == 2){
-    topic = 'assets/questions/Kakatni_Makikatni.json';
-    }
-    else{
-    topic = 'assets/questions/Panghalip_AkuIyaIka.json';
-    }
-    return Scaffold(
-      appBar: AppBar(title: Text("Topic"),
-      backgroundColor: lightBlue,),
-      backgroundColor: powderblue.withOpacity(0.5),
-      body: Container(
-        child: Responsive(
-          desktop: Container(),
-          tablet: Container(),
-          mobile: MultipleBody(uid: widget.uid, topic: topic, unlock : isUnlocked)
-        )
-      )
-    );
-  }
-}
-
-class TopicFour extends StatefulWidget {
-  final String? uid;
-  final int gradeLevel;
-  const TopicFour({ Key? key, required this.uid, required this.gradeLevel }) : super(key: key);
-
-  @override
-  _TopicFourState createState() => _TopicFourState();
-}
-
-class _TopicFourState extends State<TopicFour> {
-
-String topic = '';
-int gradeLevel = 0;
-String isUnlocked = "isUnlocked4";
-  @override
-  void initState() { 
-    super.initState();
-    gradeLevel = widget.gradeLevel;
-  }
-  @override
-  Widget build(BuildContext context) {
-    if(gradeLevel == 2){
-    topic = 'assets/questions/Pagpapantig.json';
-    }
-    else{
-    topic = 'assets/questions/Salitang_Papakit_Galo.json';
-    }
-    return Scaffold(
-      appBar: AppBar(title: Text("Topic"),
-      backgroundColor: lightBlue,),
-      backgroundColor: powderblue.withOpacity(0.5),
-      body: Container(
-        child: Responsive(
-          desktop: Container(),
-          tablet: Container(),
-          mobile: MultipleBody(uid: widget.uid, topic: topic, unlock: isUnlocked)
-        )
-      )
-    );
-  }
-}
-  
 class MultipleBody extends StatefulWidget {
   final String topic;
+  final int level;
   final String? uid;
-  final String unlock;
-  
-  const MultipleBody({ Key? key, required this.uid, required this.topic, required this.unlock }) : super(key: key);
+
+
+  const MultipleBody({ Key? key, required this.uid, required this.topic, required this.level}) : super(key: key);
   
   @override
   _MultipleBodyState createState() => _MultipleBodyState();
@@ -212,8 +30,10 @@ class _MultipleBodyState extends State<MultipleBody> {
   String next = "Next";
   bool answer = false;
   bool isButtonPressed0 = false , isButtonPressed1 = false,isButtonPressed2 = false,isButtonPressed3 = false;
-
+  List data =[];
   CollectionReference users = FirebaseFirestore.instance.collection('users');
+
+   
 
   void read(){
     FirebaseFirestore.instance
@@ -234,7 +54,7 @@ class _MultipleBodyState extends State<MultipleBody> {
   Future<void> updateUser() {
   return users
     .doc('${widget.uid}')
-    .update({'points': '$score', widget.unlock : 1})
+    .update({'points': '$score'})
     .then((value) => print("User Updated"))
     .catchError((error) => print("Failed to update user: $error"));
 }
@@ -293,54 +113,71 @@ setState(() {
     });
    
  }
+void get(){
+    FirebaseFirestore.instance
+    .collection('questions')
+    .where('topic', isEqualTo: '${widget.topic}'.trimRight())
+    .where('grade_level', isEqualTo: widget.level)
+    .get()
+    .then((QuerySnapshot querySnapshot) {
+        querySnapshot.docs.forEach((doc) {
+          setState(() {
+            data.add(doc.data());
+            
+          });
+        });
+    }); 
+  }
 
+  
   @override
   void initState() { 
     super.initState();
+    get();
     read();
+ 
   }
   @override
   Widget build(BuildContext context) {
-    return Container(
-          child: Center(
-            // Use future builder and DefaultAssetBundle to load the local JSON file
-            child: FutureBuilder(
-                future: DefaultAssetBundle
-                    .of(context)
-                    .loadString('${widget.topic}'),
-                builder: (context, snapshot) {
-
-                  if(snapshot.hasError){
-                    print('error');
-                  }
-                  if(snapshot.hasData){
-                   
-                  // Decode the JSON
-                  var data = json.decode(snapshot.data.toString());
-                  return Container(
-                    child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("${widget.topic}", textAlign: TextAlign.center,),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: (){
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => StudentHomePage(uid: widget.uid)));
+            },
+        ),
+      ),
+      body: Container(
+      child: data.isEmpty ? CircularProgressIndicator() : Center(
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-
-              // Container(height: 400,
-              // width: 500,
-              // decoration: BoxDecoration(
-              //   image: DecorationImage(image: AssetImage("images/png.png"),
-              //   fit: BoxFit.fill ),
-              //   ),
-              // ),
-
               Padding(padding: EdgeInsets.only(top: 30)),
               Container(
-                child: Row(
+                child: Column(
                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Text("Question ${index + 1} / ${data.length}",style: TextStyle(color : Colors.brown , 
-                    fontSize: 20,fontWeight: FontWeight.bold),),
-                    Text("Score : $finalScore",style: TextStyle(color : Colors.brown , 
-                    fontSize: 20,fontWeight: FontWeight.bold),),
-                    
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Pilinan ing ustung Sagut",style: TextStyle(color : Colors.brown , 
+                        fontSize: 20,fontWeight: FontWeight.bold),),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text("Question ${index + 1} / ${data.length}",style: TextStyle(color : Colors.brown , 
+                        fontSize: 20,fontWeight: FontWeight.bold),),
+                        Text("Score : $finalScore",style: TextStyle(color : Colors.brown , 
+                        fontSize: 20,fontWeight: FontWeight.bold),), 
+                      ],
+                    )
                  ],
                ),
               
@@ -489,19 +326,28 @@ setState(() {
                           correct(answer);
                           score += finalScore;
                           updateUser();
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => StudentHomePage(uid: widget.uid)),
-                        );
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) => ScoreDialog(
+                              title: "${widget.topic}",
+                               description:
+                                "You have earned a Score of $finalScore",
+                                 buttonText:
+                                  "Okay",
+                                   path: "https://i.ibb.co/MM7kwtm/newbadge.png",
+                                   uid: widget.uid
+                                   )
+                          );
+                          
                         if(badgeCount < 9){
                           Navigator.push(context,
                           MaterialPageRoute(builder: (context) => 
-                          score >= 1000 && badgeCount < 6 ? BadgeMsg(uid: widget.uid, path: 'https://i.ibb.co/4mt3K9c/royalty.png', badgename: "Royalty"):
-                          score >= 500 && badgeCount < 5 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/8dt2T8m/shiningbright.png', badgename: "Shining Bright"):
-                          score >= 250 && badgeCount < 4 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/kSTB0CN/on-fire.png', badgename: "On Fire"):
-                          score >= 200 && badgeCount < 3 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/TK6PsmV/fastlearner.png', badgename: "Fast Learner"):
-                          score >= 100 && badgeCount < 2 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/jZXzvBk/little-Explorer.png', badgename: "Little Explorer"):
-                          score >= 50 && badgeCount < 1 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/njf8Ndj/steady.png', badgename: "Slow and Steady"):
+                          score >= 1200 && badgeCount < 6 ? BadgeMsg(uid: widget.uid, path: 'https://i.ibb.co/4mt3K9c/royalty.png', badgename: "Royalty"):
+                          score >= 900 && badgeCount < 5 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/8dt2T8m/shiningbright.png', badgename: "Shining Bright"):
+                          score >= 750 && badgeCount < 4 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/kSTB0CN/on-fire.png', badgename: "On Fire"):
+                          score >= 500 && badgeCount < 3 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/TK6PsmV/fastlearner.png', badgename: "Fast Learner"):
+                          score >= 300 && badgeCount < 2 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/jZXzvBk/little-Explorer.png', badgename: "Little Explorer"):
+                          score >= 100 && badgeCount < 1 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/njf8Ndj/steady.png', badgename: "Slow and Steady"):
                           StudentHomePage(uid: widget.uid)));
                           return;
                         }
@@ -516,10 +362,7 @@ setState(() {
               ),
              ],
           ),
-      );
-                } return CircularProgressIndicator();
-                }),
-        ));
-     
+      ))
+    );
   }
 }
