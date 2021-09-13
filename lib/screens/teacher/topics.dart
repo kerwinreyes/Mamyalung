@@ -349,14 +349,19 @@ List _listImage=[
           height: screenSizeH, 
           decoration: BoxDecoration(
             image: DecorationImage(
-            image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/SsNTLjj/mobilebg.png') : NetworkImage("https://i.ibb.co/h18BM5q/background.png"), fit: BoxFit.fill),
+            image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/SsNTLjj/mobilebg.png') : NetworkImage("https://i.ibb.co/h18BM5q/background.png"), fit: BoxFit.cover),
           ),
         ),
-        Scaffold(body:SingleChildScrollView(
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          body:
+        SingleChildScrollView(
       child: Column(children: [
+        
         Container(
+          padding: EdgeInsets.only(top: screenSizeH*0.1),
           child: Text('Topics',
-          style: TextStyle(color: Colors.white, fontSize: 18.0,fontFamily: 'Evil'),
+          style: TextStyle(color: Colors.black, fontSize: 30.0,fontFamily: 'Evil'),
           )
           ),
       Container(
@@ -368,7 +373,7 @@ List _listImage=[
               shrinkWrap: true,
               primary: false,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: MediaQuery.of(context).size.width < 480 ? 2 :4,
+                crossAxisCount: MediaQuery.of(context).size.width < 480 ? 2 :3,
               ),
             itemBuilder: (BuildContext context, int index)=>
                   viewTopic(context, _resultsList[index]),
@@ -620,16 +625,16 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
                             )
                           ]
                         ),
-                        child: Center(child: Padding(padding: EdgeInsets.only(top: 50),
+                        child: Center(child: Padding(padding: EdgeInsets.only(top: 10),
                         child: Container(child:Column(
                           children:[
-                            AutoSizeText(nameTopic,style:TextStyle(fontSize: 20,fontFamily: 'Bubble'), textAlign: TextAlign.center,presetFontSizes: [20,15],maxLines: 1),
-                            SizedBox(height:250),
-                            Center(child: Row(children:[
+                            AutoSizeText(nameTopic,style:TextStyle(fontSize: 20,fontFamily: 'Bubble'), textAlign: TextAlign.center,presetFontSizes: [20,15],maxLines: 2),
+                           
+                            Center(child: MediaQuery.of(context).size.width <= 649 ? Column(children:[
                             
                             ElevatedButton(
                               style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.white.withOpacity(0.8))),
-                              child:Text('Edit',style:TextStyle(fontSize: 20, color: lightBlue, fontFamily: 'Evil'), textAlign: TextAlign.center,),
+                              child:AutoSizeText('Edit',style:TextStyle(fontSize: 20, color: lightBlue, fontFamily: 'Evil'),presetFontSizes: [20,10], textAlign: TextAlign.center,),
                               onPressed:() async{
                                 //Edit Content
                                 showDialog(context: context,
@@ -641,7 +646,7 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
                             SizedBox(width: 20,),
                             ElevatedButton(
                               style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.white.withOpacity(0.8))),
-                              child: publish == 0 ? Text('Publish',style:TextStyle( fontSize: 20, color: lightBlue, fontFamily: 'Evil'), textAlign: TextAlign.center,): Text('Unpublish',style:TextStyle(fontSize: 20, color: lightBlue, fontFamily: 'Evil'), textAlign: TextAlign.center,),
+                              child: publish == 0 ? AutoSizeText('Publish',style:TextStyle( fontSize: 20, color: lightBlue, fontFamily: 'Evil'),presetFontSizes: [20,10], textAlign: TextAlign.center,): Text('Unpublish',style:TextStyle(fontSize: 20, color: lightBlue, fontFamily: 'Evil'), textAlign: TextAlign.center,),
                               onPressed:() async{
                                 
                                 await FirebaseFirestore.instance.collection('topics').doc(topic.code)
@@ -670,7 +675,54 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
                           .catchError((error) => print('failed'));
                               }
                             ),
-                            ]))
+                            ]): 
+                            Row(children:[
+                            SizedBox(height: 250,),
+                            ElevatedButton(
+                              style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.white.withOpacity(0.8))),
+                              child:AutoSizeText('Edit',style:TextStyle(fontSize: 20, color: lightBlue, fontFamily: 'Evil'),presetFontSizes: [20,10], textAlign: TextAlign.center,),
+                              onPressed:() async{
+                                //Edit Content
+                                showDialog(context: context,
+                                    builder: (BuildContext context) => updateTopic(context));
+                              
+                              }
+
+                            ),
+                            SizedBox(width: 20,),
+                            ElevatedButton(
+                              style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.white.withOpacity(0.8))),
+                              child: publish == 0 ? AutoSizeText('Publish',style:TextStyle( fontSize: 20, color: lightBlue, fontFamily: 'Evil'),presetFontSizes: [20,10], textAlign: TextAlign.center,): Text('Unpublish',style:TextStyle(fontSize: 20, color: lightBlue, fontFamily: 'Evil'), textAlign: TextAlign.center,),
+                              onPressed:() async{
+                                
+                                await FirebaseFirestore.instance.collection('topics').doc(topic.code)
+                                .update({
+                                  'publish': topic.publish == 0 ? 1 : 0,
+                                }).then((value){
+                            showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Message"),
+                              content: Text('Publish Change'),
+                              actions: [
+                                ElevatedButton(
+                                  child: Text("Ok"),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                )
+                              ],
+                            );
+                          });
+                            print('success');
+                          })
+                          // ignore: invalid_return_type_for_catch_error
+                          .catchError((error) => print('failed'));
+                              }
+                            ),
+                            ])
+                            )
                           ])
                         )
                         )
