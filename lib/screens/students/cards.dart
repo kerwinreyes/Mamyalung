@@ -86,6 +86,8 @@ class _QuizStateState extends State<QuizState> {
   List _todayResults=[];
   List _todayFlashcards= [
   {'question':'Click the card to see the answer','answer':'Click the next or prev button'}];
+  //Pabs Paedit Design
+  //patranslate tagalo gand kapampangan
   List _tryflashcards=[
     {'questionID':0,
                   'question': 'Answer the following questions',
@@ -336,6 +338,8 @@ Future<void> _readUser() async{
             child:Container(margin: EdgeInsets.only(left: 50, right:50, top: 120, bottom: 20),
             width: 250,
             height: 250,
+            //Pabs Paedit Design
+            //Eto yung sa FLipcard pag same date yung lastflashcard_played sa database natin sa day ngayon eto lilitaw
             child: Container(child: FlipCard(
               front: FlashcardView(
               text: _todayFlashcards[_currentIndex]['question'],
@@ -361,7 +365,12 @@ Future<void> _readUser() async{
                 ],
               )
         ],)
-        : Center(child: Column( 
+        :
+        //Pabs Paedit Design
+            //Eto yung sa pagnagsasagot
+            //pag hindi same date yung lastflashcard_played sa database natin sa day ngayon eto lilitaw
+          
+         Center(child: Column( 
       children:[
         Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
         width: 250,

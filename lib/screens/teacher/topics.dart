@@ -18,7 +18,8 @@ final _formKey = GlobalKey<FormState>();
 bool _isProcessing = false;
       TextEditingController topicName = TextEditingController();
       String topicImage = '';
-      TextEditingController topicLevel = TextEditingController();
+      TextEditingController topiclevel= TextEditingController();
+      int grLevel = 0;
       int topicpublish =0;
 List _listImage=[
 'https://i.ibb.co/XY3pv1p/tile-image4.png'
@@ -40,7 +41,7 @@ List _listImage=[
    .set({
      'code':topicCode.text,
      'topic_name':topicName.text,
-     'grade_level': topicLevel,
+     'grade_level': grLevel == 0? 2 : 3,
      'image': _listImage[random.nextInt(_listImage.length)],
      'publish':topicpublish
    }).then((value){
@@ -83,7 +84,7 @@ List _listImage=[
           print('failed');
           } );
   }
-  addContent(){
+  addContent(BuildContext context){
     return AlertDialog(
       contentPadding: EdgeInsets.only(bottom: 16, top: 16),
       shape: RoundedRectangleBorder(
@@ -120,7 +121,7 @@ List _listImage=[
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Text(
-                    "Add Quiz Question" + "\n",
+                    "Create Topic" + "\n",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16.0,
@@ -143,12 +144,12 @@ List _listImage=[
                           ),
                           SizedBox(height: 20),
                           TextFormField(
-                            controller: topicLevel,
+                            controller: topicCode,
                             validator: (value) => Validator.validateQuestion(ques: value),
                             decoration: InputDecoration(
                               enabledBorder: UnderlineInputBorder(),
                               focusedBorder: UnderlineInputBorder(),
-                              hintText: "Enter Grade Level"
+                              hintText: "Enter Topic Code"
                             ),
                             onTap:(){},
                           ),
@@ -156,7 +157,35 @@ List _listImage=[
                           Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                  Text('Select the right answer'),
+                                    Container(
+                                  decoration: BoxDecoration(
+                                    color: whitey.withOpacity(0.25),
+                                    borderRadius: new BorderRadius.circular(10.0),
+                                  ),
+                                  child:Container(
+                                    padding: EdgeInsets.only(left: 15),
+                                      width: MediaQuery.of(context).size.width,
+                                      child:DropdownButton(
+                                      value: grLevel,
+                                        icon: Icon(Icons.keyboard_arrow_down),
+                                        items:['Grade 2','Grade 3'].map((String items) {
+                                            return DropdownMenuItem(
+                                                value:['Grade 2','Grade 3'].indexOf(items),
+                                                child: Text(items)
+                                            );
+                                        }
+                                        ).toList(),
+                                      onChanged: (int? newValue) {
+                                          setState(() {
+                                            grLevel = newValue!;
+                                          });
+                                        },
+                                    ),))
+                                  ],
+                                ),
+                          Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
                                     Container(
                                   decoration: BoxDecoration(
                                     color: whitey.withOpacity(0.25),
@@ -168,7 +197,7 @@ List _listImage=[
                                       child:DropdownButton(
                                       value: topicpublish,
                                         icon: Icon(Icons.keyboard_arrow_down),
-                                        items:['Publish','Unpublish'].map((String items) {
+                                        items:['Unublish','Publish'].map((String items) {
                                             return DropdownMenuItem(
                                                 value:['Unublish','Publish'].indexOf(items),
                                                 child: Text(items)
@@ -334,7 +363,8 @@ List _listImage=[
       ],)),
     floatingActionButton: 
       FloatingActionButton( onPressed: (){
-        addContent();
+        showDialog(context: context,
+          builder: (BuildContext context) => addContent(context));
       },
       child: Icon(Icons.add),
       backgroundColor: Colors.blue,
@@ -348,14 +378,15 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
  final _formKey1 = GlobalKey<FormState>();
   TextEditingController code = TextEditingController();
   TextEditingController name = TextEditingController();
-  int level =2;
-  int publish = 1;
+  int level =0;
+  int publish = topic.publish;
   
     code.text= topic.code;
     name.text = topic.topic_name;
         
   
   return new Container(
+    //Pabs Paedit Design
     child: Container(
                         margin: EdgeInsets.only(left:20,right: 20,top:10,bottom:20),
                         width: double.infinity,
@@ -375,15 +406,18 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
                         child: Padding(padding: EdgeInsets.only(top: 10),
                         child: Container(child:Column(
                           children:[
-                            AutoSizeText(topic.topic_name,style:TextStyle(fontSize: 20), textAlign: TextAlign.center,),
+                            AutoSizeText(name.text,style:TextStyle(fontSize: 20), textAlign: TextAlign.center,),
                             SizedBox(height:150),
                             Center(child: Row(children:[
                               
                             ElevatedButton(
                               child:Text('Edit',style:TextStyle(fontSize: 12), textAlign: TextAlign.center,),
                               onPressed:() async{
-                                
-                                AlertDialog(
+                                //Edit Content
+                                showDialog(
+                                context: context,
+                                  builder: (BuildContext context) {
+                                 return AlertDialog(
                                 contentPadding: EdgeInsets.only(bottom: 16, top: 16),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(Consts.padding),
@@ -420,7 +454,7 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
                                             mainAxisSize: MainAxisSize.min,
                                             children: <Widget>[
                                               Text(
-                                              "Edit Topic",
+                                              "Edit Topic:" + code.text,
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 fontSize: 16.0,
@@ -431,16 +465,6 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
                                                 child: Column(
                                                   children: [
                                                     
-                                                    TextFormField(
-                                                      controller: code,
-                                                      decoration: InputDecoration(
-                                                        enabledBorder: UnderlineInputBorder(),
-                                                        focusedBorder: UnderlineInputBorder(),
-                                                        hintText: "Enter Topic Code",
-                                                        
-                                                      ),
-                                                      onTap:(){},
-                                                    ),
                                                     SizedBox(height: 20),
                                                     TextFormField(
                                                       controller: name,
@@ -467,9 +491,9 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
                                                                 child:DropdownButton(
                                                                 value: level,
                                                                   icon: Icon(Icons.keyboard_arrow_down),
-                                                                  items:['Grade Level 2', 'Grade_Level 3'].map((String items) {
+                                                                  items:['Grade Level 2', 'Grade Level 3'].map((String items) {
                                                                       return DropdownMenuItem(
-                                                                          value: ['Grade Level 2', 'Grade_Level 3'].indexOf(items),
+                                                                          value: ['Grade Level 2', 'Grade Level 3'].indexOf(items),
                                                                           child: Text(items)
                                                                       );
                                                                   }
@@ -497,9 +521,9 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
                                                                 child:DropdownButton(
                                                                 value: publish,
                                                                   icon: Icon(Icons.keyboard_arrow_down),
-                                                                  items:['Unpublish, Publish'].map((String items) {
+                                                                  items:['Unpublish', 'Publish'].map((String items) {
                                                                       return DropdownMenuItem(
-                                                                          value: ['Unpublish, Publish'].indexOf(items),
+                                                                          value: ['Unpublish', 'Publish'].indexOf(items),
                                                                           child: Text(items)
                                                                       );
                                                                   }
@@ -534,10 +558,8 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
                                                             });});
                                                     await FirebaseFirestore.instance.collection('topics').doc(code.text)
                                                   .update({
-                                                    'code':code.text,
                                                     'topic_name':name.text,
-                                                    'image': _listImage[random.nextInt(_listImage.length)],
-                                                    'grade_level':level,
+                                                    'grade_level':level==0 ? 2 : 1,
                                                     'publish': publish,
                                                   }).then((value){
                                               showDialog(
@@ -593,12 +615,12 @@ Widget viewTopic(BuildContext context, DocumentSnapshot document) {
                                     ));
                                   },
                                 ),
-                              );  
+                              );  });
                               }
                             ),
                             SizedBox(width: 20,),
                             ElevatedButton(
-                              child: topic.publish == 0 ? Text('Publish',style:TextStyle(fontSize: 12), textAlign: TextAlign.center,): Text('Unpublish',style:TextStyle(fontSize: 12), textAlign: TextAlign.center,),
+                              child: publish == 0 ? Text('Publish',style:TextStyle(fontSize: 12), textAlign: TextAlign.center,): Text('Unpublish',style:TextStyle(fontSize: 12), textAlign: TextAlign.center,),
                               onPressed:() async{
                                 
                                 await FirebaseFirestore.instance.collection('topics').doc(topic.code)
