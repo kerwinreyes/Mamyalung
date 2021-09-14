@@ -52,6 +52,7 @@ class FlashcardView extends StatelessWidget {
         child: Text(
           text,
           textAlign: TextAlign.center,
+          style: TextStyle(fontFamily: 'Evil',fontSize: 20),
         ),
       ),
     );
@@ -90,8 +91,8 @@ class _QuizStateState extends State<QuizState> {
   //patranslate tagalo gand kapampangan
   List _tryflashcards=[
     {'questionID':0,
-                  'question': 'Answer the following questions',
-                  'translation': 'Sagutin',
+                  'question': 'Sagutan la ding susunud a kutang',
+                  'translation': '(Answer the following questions)',
                   'level': 1,
                   'choice':['Okay','Cancel'],
                   'answer':0
@@ -377,7 +378,8 @@ Future<void> _readUser() async{
         height: 250,
         child: Container(child: Container(
           child: FlashcardView(
-          text: _tryflashcards[counter]['question'] + '\n' + _tryflashcards[counter]['translation'],
+          text: _tryflashcards[counter]['question'] + '\n'+ '\n' + _tryflashcards[counter]['translation'],
+          
         ),
         ),
         ),),
