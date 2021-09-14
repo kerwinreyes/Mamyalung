@@ -24,6 +24,9 @@ class _StudentCardState extends State<StudentCard> {
   
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    var screenSizeW = screenSize.width;
+    var screenSizeH = screenSize.height;
     return(
       Container(
         height: MediaQuery.of(context).size.height/1.5,
@@ -52,7 +55,7 @@ class FlashcardView extends StatelessWidget {
         child: Text(
           text,
           textAlign: TextAlign.center,
-          style: TextStyle(fontFamily: 'Evil',fontSize: 20),
+          style: TextStyle(fontFamily: 'Evil',fontSize: 25),
         ),
       ),
     );
@@ -86,7 +89,7 @@ class _QuizStateState extends State<QuizState> {
   List flashcards=[];
   List _todayResults=[];
   List _todayFlashcards= [
-  {'question':'Click the card to see the answer','answer':'Click the next or prev button'}];
+  {'question':'Pindutan me ing kard bakanta akit me ing sagut' + '\n\n' + '(Click the card to see the answer)','answer':'Pindutan me ing next o ing prev a button' + '\n\n' +'(Click the next or prev button)'}];
   //Pabs Paedit Design
   //patranslate tagalo gand kapampangan
   List _tryflashcards=[
@@ -337,8 +340,8 @@ Future<void> _readUser() async{
         Column(children: [
           Container(
             child:Container(margin: EdgeInsets.only(left: 50, right:50, top: 120, bottom: 20),
-            width: 250,
-            height: 250,
+        width: screenSizeW <= 649 ? 300 : 400,
+        height: screenSizeW <= 649 ? 300 : 400,
             //Pabs Paedit Design
             //Eto yung sa FLipcard pag same date yung lastflashcard_played sa database natin sa day ngayon eto lilitaw
             child: Container(child: FlipCard(
@@ -372,13 +375,14 @@ Future<void> _readUser() async{
             //pag hindi same date yung lastflashcard_played sa database natin sa day ngayon eto lilitaw
           
          Center(child: Column( 
+           
       children:[
         Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
-        width: 250,
-        height: 250,
+        width: screenSizeW <= 649 ? 300 : 400,
+        height: screenSizeW <= 649 ? 300 : 400,
         child: Container(child: Container(
           child: FlashcardView(
-          text: _tryflashcards[counter]['question'] + '\n'+ '\n' + _tryflashcards[counter]['translation'],
+          text: _tryflashcards[counter]['question'] + '\n\n' + _tryflashcards[counter]['translation'],
           
         ),
         ),
@@ -404,11 +408,11 @@ Future<void> _readUser() async{
               alignment: Alignment.center,
               child: Text(
                _tryflashcards[counter]['choice'][_tryflashcards[counter]['answer']],
-                style: GoogleFonts.lato(
-                      textStyle: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
+                style: 
+                      TextStyle(color: Colors.white, fontSize: 30, fontFamily: 'Evil'),
+                    
               ),
-            ),
+            ),  
           )
                 ),
                 SizedBox(height: 15,),
@@ -429,9 +433,8 @@ Future<void> _readUser() async{
               alignment: Alignment.center,
               child: Text(
                _tryflashcards[counter]['choice'][1],
-                style: GoogleFonts.lato(
-                      textStyle: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
+                style:  TextStyle(color: Colors.white, fontSize: 30, fontFamily: 'Evil'),
+                    
               ),
             ),
           ))
