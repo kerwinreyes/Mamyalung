@@ -94,6 +94,7 @@ class _QuizStateState extends State<QuizState> {
                   'question': 'Sagutan la ding susunud a kutang',
                   'translation': '(Answer the following questions)',
                   'level': 1,
+                  'multiple_choice': ['Okay'],
                   'choice':['Okay','Cancel'],
                   'answer':0
                   },
@@ -140,7 +141,8 @@ Future<void>  read() async{
                   'questionID':ques['questionID'],
                   'question': ques['question'],
                   'level': doc['flashcards'][i]['level'],
-                  'choice':ques['multiple_choice'],
+                  'multiple_choice':ques['multiple_choice'],
+                  'choice':listShuffle(ques['multiple_choice'],ques['answer'],ques['multiple_choice'][ques['answer']]),
                   'translation':ques['translation'],
                   'answer':ques['answer']
                 });
@@ -248,7 +250,7 @@ Future<void> updateUser() {
 
   }
   else{
-  if(userChoice==_tryflashcards[counter]['choice'][_tryflashcards[counter]['answer']])
+  if(userChoice==_tryflashcards[counter]['multiple_choice'][_tryflashcards[counter]['answer']])
   { 
     print("correct");
      
@@ -305,6 +307,17 @@ Future<void> _readUser() async{
     .collection('users')
     .where('uid',isEqualTo: widget.uid)
     .get();
+}
+
+List listShuffle (List choices, int ans, String answer){
+  List a =[];
+  setState(() {
+    choices.removeAt(ans);
+    choices.shuffle();
+    a = [answer,choices[0]];
+    a.shuffle();
+  });
+ return a;
 }
   int _currentIndex = 0;
   bool start_flashcard=true;
@@ -388,7 +401,7 @@ Future<void> _readUser() async{
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                 
-                ElevatedButton(onPressed:()=> checkWin(_tryflashcards[counter]['choice'][_tryflashcards[counter]['answer']], context),
+                ElevatedButton(onPressed:()=> checkWin(_tryflashcards[counter]['choice'][0], context),
                style: ElevatedButton.styleFrom(
               elevation: 5,
               padding: EdgeInsets.zero,
@@ -403,7 +416,7 @@ Future<void> _readUser() async{
               height: 50,
               alignment: Alignment.center,
               child: Text(
-               _tryflashcards[counter]['choice'][_tryflashcards[counter]['answer']],
+               _tryflashcards[counter]['choice'][0],
                 style: GoogleFonts.lato(
                       textStyle: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
                     ),
@@ -412,7 +425,7 @@ Future<void> _readUser() async{
           )
                 ),
                 SizedBox(height: 15,),
-                ElevatedButton(onPressed:()=> checkWin(_tryflashcards[counter]['choice'][1], context),
+                _tryflashcards[counter]['choice'][1]!= 'Cancel'?ElevatedButton(onPressed:()=> checkWin(_tryflashcards[counter]['choice'][1], context),
 
                style: ElevatedButton.styleFrom(
               elevation: 5,
@@ -434,7 +447,7 @@ Future<void> _readUser() async{
                     ),
               ),
             ),
-          ))
+          )) : Container(),
 
                    
        ])

@@ -83,7 +83,7 @@ class _RegisterPageState extends State<RegisterPage> {
         'uid': user.uid,
         'points': 0,
         'grade_level': _gradeLevel,
-        'flashcards': _flashcards.sublist(0, 6),
+        'flashcards': _flashcards.sublist(0, 10),
         
         'badge_count': 0,
         'day': 1,
