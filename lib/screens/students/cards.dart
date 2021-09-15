@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
@@ -419,8 +420,8 @@ List listShuffle (List choices, int ans, String answer){
               width: MediaQuery.of(context).size.width/1.5,
               height: 50,
               alignment: Alignment.center,
-              child: Text(
-              _tryflashcards[counter]['choice'][0],
+              child: AutoSizeText( 
+              _tryflashcards[counter]['choice'][0], presetFontSizes: [30, 20],
                 style: 
                       TextStyle(color: Colors.white, fontSize: 30, fontFamily: 'Evil'),
                     
@@ -428,6 +429,7 @@ List listShuffle (List choices, int ans, String answer){
             ),  
           )
                 ),
+                
                 SizedBox(height: 15,),
                 _tryflashcards[counter]['choice'][1]!= 'Cancel'?ElevatedButton(onPressed:()=> checkWin(_tryflashcards[counter]['choice'][1], context),
 
@@ -444,8 +446,8 @@ List listShuffle (List choices, int ans, String answer){
               width: MediaQuery.of(context).size.width/1.5,
               height: 50,
               alignment: Alignment.center,
-              child: Text(
-               _tryflashcards[counter]['choice'][1],
+              child: AutoSizeText(
+               _tryflashcards[counter]['choice'][1], presetFontSizes: [30,20],
                 style:  TextStyle(color: Colors.white, fontSize: 30, fontFamily: 'Evil'),
                     
               ),
