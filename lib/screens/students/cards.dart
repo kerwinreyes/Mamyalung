@@ -90,13 +90,13 @@ class _QuizStateState extends State<QuizState> {
   List flashcards=[];
   List _todayResults=[];
   List _todayFlashcards= [
-  {'question':'Pindutan me ing kard bakanta akit me ing sagut' + '\n\n' + '(Click the card to see the answer)','answer':'Pindutan me ing next o ing prev a button' + '\n\n' +'(Click the next or prev button)'}];
-  //Pabs Paedit Design
+  {'question':'Pindutan me ing kard bakanta akit me ing sagut' + '\n\n' + '(Pindutin ang kard para makita ang sagot)','answer':'Pindutan me ing next o ing prev a button' + '\n\n' +'(Pindutin ang next o prev na button)'}];
+
   //patranslate tagalo gand kapampangan
   List _tryflashcards=[
     {'questionID':0,
                   'question': 'Sagutan la ding susunud a kutang',
-                  'translation': '(Answer the following questions)',
+                  'translation': '(Sagutin ang mga susunod na tanong)',
                   'level': 1,
                   'multiple_choice': ['Okay'],
                   'choice':['Okay','Cancel'],
