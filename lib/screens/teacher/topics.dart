@@ -197,9 +197,9 @@ List _listImage=[
                                       child:DropdownButton(
                                       value: topicpublish,
                                         icon: Icon(Icons.keyboard_arrow_down),
-                                        items:['Unublish','Publish'].map((String items) {
+                                        items:['Unpublish','Publish'].map((String items) {
                                             return DropdownMenuItem(
-                                                value:['Unublish','Publish'].indexOf(items),
+                                                value:['Unpublish','Publish'].indexOf(items),
                                                 child: Text(items)
                                             );
                                         }
