@@ -229,7 +229,7 @@ void get(){
                 children: <Widget>[
                    
                 button(first: isButtonPressed0 ? green : orange, 
-                     second: isButtonPressed0 ? green : orange, 
+                     second: isButtonPressed0? green : orange, 
                      size: 20, 
                      height: 50, 
                      width: MediaQuery.of(context).size.width/1.5, 
@@ -354,20 +354,27 @@ void get(){
                                    path: "https://i.ibb.co/MM7kwtm/newbadge.png",
                                    uid: widget.uid
                                    )
+                          
                           );
                           
-                        if(badgeCount < 9){
-                          Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => 
-                          score >= 1200 && badgeCount < 6 ? BadgeMsg(uid: widget.uid, path: 'https://i.ibb.co/4mt3K9c/royalty.png', badgename: "Royalty"):
-                          score >= 900 && badgeCount < 5 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/8dt2T8m/shiningbright.png', badgename: "Shining Bright"):
-                          score >= 750 && badgeCount < 4 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/kSTB0CN/on-fire.png', badgename: "On Fire"):
-                          score >= 500 && badgeCount < 3 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/TK6PsmV/fastlearner.png', badgename: "Fast Learner"):
-                          score >= 300 && badgeCount < 2 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/jZXzvBk/little-Explorer.png', badgename: "Little Explorer"):
-                          score >= 100 && badgeCount < 1 ? BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/njf8Ndj/steady.png', badgename: "Slow and Steady"):
-                          StudentHomePage(uid: widget.uid)));
-                          return;
+                        if(badgeCount < 6){
+                          
+                          score >= 1200 && badgeCount < 6 ? Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => BadgeMsg(uid: widget.uid, path: 'https://i.ibb.co/4mt3K9c/royalty.png', badgename: "Royalty"))):
+                          score >= 900 && badgeCount < 5 ? Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/8dt2T8m/shiningbright.png', badgename: "Shining Bright"))):
+                          score >= 750 && badgeCount < 4 ? Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/kSTB0CN/on-fire.png', badgename: "On Fire"))):
+                          score >= 500 && badgeCount < 3 ? Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/TK6PsmV/fastlearner.png', badgename: "Fast Learner"))):
+                          score >= 300 && badgeCount < 2 ? Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/jZXzvBk/little-Explorer.png', badgename: "Little Explorer"))):
+                          score >= 100 && badgeCount < 1 ? Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => BadgeMsg(uid: widget.uid, path:  'https://i.ibb.co/njf8Ndj/steady.png', badgename: "Slow and Steady"))):
+                          print("End of Condition");
+
                         }
+                        return;
                       }
                       correct(answer);
                       check(index, data.length);
