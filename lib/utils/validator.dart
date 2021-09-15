@@ -60,9 +60,9 @@ class Validator {
     if (password.isEmpty) {
       return 'Password can\'t be empty';
     } else if (password.length < 6) {
-      return 'Enter a password with length at least 6';
+      return 'Enter a password with \n length at least 6';
     } else if(regExp.hasMatch(password)){
-      return 'Password must contain 1 Upper case, 1 lowercase, 1 numeric number, 1 special character';
+      return 'Password must contain \n 1 Upper case, 1 lowercase, \n 1 numeric number, 1 special character';
     }
 
         

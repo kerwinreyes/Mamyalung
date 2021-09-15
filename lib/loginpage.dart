@@ -1,4 +1,3 @@
-import 'dart:html';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,13 +25,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _formKey = GlobalKey<FormState>();
+  static final _formKey = GlobalKey<FormState>();
 
   final _emailTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
 
-  final _focusEmail = FocusNode();
-  final _focusPassword = FocusNode();
+  static final _focusEmail = FocusNode();
+  static final _focusPassword = FocusNode();
 
   bool _isProcessing = false;
 
