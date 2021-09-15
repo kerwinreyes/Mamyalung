@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
@@ -353,8 +354,8 @@ List listShuffle (List choices, int ans, String answer){
         Column(children: [
           Container(
             child:Container(margin: EdgeInsets.only(left: 50, right:50, top: 120, bottom: 20),
-        width: screenSizeW <= 649 ? 300 : 400,
-        height: screenSizeW <= 649 ? 300 : 400,
+        width: screenSizeW <= 649 ? 250 : 350,
+        height: screenSizeW <= 649 ? 250 : 350,
             //Pabs Paedit Design
             //Eto yung sa FLipcard pag same date yung lastflashcard_played sa database natin sa day ngayon eto lilitaw
             child: Container(child: FlipCard(
@@ -391,8 +392,8 @@ List listShuffle (List choices, int ans, String answer){
            
       children:[
         Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
-        width: screenSizeW <= 649 ? 300 : 400,
-        height: screenSizeW <= 649 ? 300 : 400,
+        width: screenSizeW <= 649 ? 250 : 350,
+        height: screenSizeW <= 649 ? 250 : 350,
         child: Container(child: Container(
           child: FlashcardView(
           text: _tryflashcards[counter]['question'] + '\n\n' + _tryflashcards[counter]['translation'],
@@ -419,8 +420,8 @@ List listShuffle (List choices, int ans, String answer){
               width: MediaQuery.of(context).size.width/1.5,
               height: 50,
               alignment: Alignment.center,
-              child: Text(
-              _tryflashcards[counter]['choice'][0],
+              child: AutoSizeText( 
+              _tryflashcards[counter]['choice'][0], presetFontSizes: [30, 20],
                 style: 
                       TextStyle(color: Colors.white, fontSize: 30, fontFamily: 'Evil'),
                     
@@ -428,6 +429,7 @@ List listShuffle (List choices, int ans, String answer){
             ),  
           )
                 ),
+                
                 SizedBox(height: 15,),
                 _tryflashcards[counter]['choice'][1]!= 'Cancel'?ElevatedButton(onPressed:()=> checkWin(_tryflashcards[counter]['choice'][1], context),
 
@@ -444,8 +446,8 @@ List listShuffle (List choices, int ans, String answer){
               width: MediaQuery.of(context).size.width/1.5,
               height: 50,
               alignment: Alignment.center,
-              child: Text(
-               _tryflashcards[counter]['choice'][1],
+              child: AutoSizeText(
+               _tryflashcards[counter]['choice'][1], presetFontSizes: [30,20],
                 style:  TextStyle(color: Colors.white, fontSize: 30, fontFamily: 'Evil'),
                     
               ),
