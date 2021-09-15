@@ -125,7 +125,7 @@ Widget _buildRow(String name, var score, String image) {
         SizedBox(height: 12),
         Row(
           children: <Widget>[
-            CircleAvatar(backgroundImage: NetworkImage(image)),
+            CircleAvatar(backgroundImage: NetworkImage(image), backgroundColor: Colors.transparent,),
             SizedBox(width: 12),
             Text(name, style: TextStyle(fontFamily: 'SundayMorning', fontSize: 20)),
             Spacer(),
