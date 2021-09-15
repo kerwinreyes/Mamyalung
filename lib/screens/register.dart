@@ -439,7 +439,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                                   'Sign up',
                                                   style: TextStyle(
                                                       color: Colors.white,
-                                                      fontSize: 18.0),
+                                                      fontSize: 20.0, 
+                                                      fontFamily: 'Evil'),
                                                 ),
                                               ),
                                             ),
@@ -464,7 +465,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                                   'Login',
                                                   style: TextStyle(
                                                       color: Colors.white,
-                                                      fontSize: 18.0),
+                                                      fontSize: 20.0, 
+                                                      fontFamily: 'Evil'),
                                                 ),
                                               ),
                                             ),

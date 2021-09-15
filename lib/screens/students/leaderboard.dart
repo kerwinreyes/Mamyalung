@@ -91,23 +91,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
             )
           ],
         )),
-        Column(children:[
-          SizedBox(height: MediaQuery.of(context).size.height*.75 ),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.grey
-            ),
-          width: MediaQuery.of(context).size.width,
-          height: 70,
-          child:Row(children: [
-            CircleAvatar(backgroundImage: NetworkImage(stud_image)),
-            SizedBox(width: 12),
-            Container(
-            child:Text(stud_name),),
-            Container(
-            child:Text('$stud_points'))
-          ],))
-        ]),
+    
         
       ],
       );
