@@ -5,9 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mamyalung/components/routes.dart';
 import 'package:mamyalung/materials.dart';
-import 'package:mamyalung/responsive.dart';
-import 'package:mamyalung/screens/profile.dart';
-import 'package:mamyalung/utils/fire_auth.dart';
 import 'package:mamyalung/utils/validator.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -137,7 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
         _focusgradelvl.unfocus();
       },
       child: Scaffold(
-        resizeToAvoidBottomInset: false, //fix for bottom overflow
+        resizeToAvoidBottomInset: true, //fix for bottom overflow
         body: Stack(
           children: [
             Container(
