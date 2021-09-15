@@ -228,8 +228,8 @@ void get(){
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                    
-                button(first: isButtonPressed3 ? green : orange, 
-                     second: isButtonPressed3 ? green : orange, 
+                button(first: isButtonPressed0 ? green : orange, 
+                     second: isButtonPressed0 ? green : orange, 
                      size: 20, 
                      height: 50, 
                      width: MediaQuery.of(context).size.width/1.5, 
@@ -249,8 +249,8 @@ void get(){
                      }
                     ),
                  SizedBox(height: 10),
-                button(first: isButtonPressed3 ? green : orange, 
-                     second: isButtonPressed3 ? green : orange, 
+                button(first: isButtonPressed1 ? green : orange, 
+                     second: isButtonPressed1 ? green : orange, 
                      size: 20, 
                      width: MediaQuery.of(context).size.width/1.5,
                      height: 50, 
@@ -278,8 +278,8 @@ void get(){
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                 SizedBox(height: 10),
-                 button(first: isButtonPressed3 ? green : orange, 
-                     second: isButtonPressed3 ? green : orange, 
+                 button(first: isButtonPressed2 ? green : orange, 
+                     second: isButtonPressed2 ? green : orange, 
                      size: 20, 
                      width: MediaQuery.of(context).size.width/1.5,
                      height: 50,

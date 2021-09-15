@@ -315,7 +315,8 @@ class _LoginPageState extends State<LoginPage> {
                                                           style: TextStyle(
                                                               color:
                                                                   Colors.white,
-                                                              fontSize: 18.0),
+                                                              fontSize: 18.0,
+                                                              fontFamily: 'Evil'),
                                                         ),
                                                       ),
                                                     ),
@@ -341,7 +342,8 @@ class _LoginPageState extends State<LoginPage> {
                                                           style: TextStyle(
                                                               color:
                                                                   Colors.white,
-                                                              fontSize: 18.0),
+                                                              fontSize: 18.0,
+                                                              fontFamily: 'Evil'),
                                                         ),
                                                       ),
                                                     ),
