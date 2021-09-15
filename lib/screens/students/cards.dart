@@ -356,7 +356,7 @@ List listShuffle (List choices, int ans, String answer){
             child:Container(margin: EdgeInsets.only(left: 50, right:50, top: 120, bottom: 20),
         width: screenSizeW <= 649 ? 250 : 350,
         height: screenSizeW <= 649 ? 250 : 350,
-            //Pabs Paedit Design
+            
             //Eto yung sa FLipcard pag same date yung lastflashcard_played sa database natin sa day ngayon eto lilitaw
             child: Container(child: FlipCard(
               front: FlashcardView(
@@ -384,7 +384,7 @@ List listShuffle (List choices, int ans, String answer){
               )
         ],)
         :
-        //Pabs Paedit Design
+        
             //Eto yung sa pagnagsasagot
             //pag hindi same date yung lastflashcard_played sa database natin sa day ngayon eto lilitaw
           
