@@ -368,7 +368,7 @@ class _LoginPageState extends State<LoginPage> {
                     //MOBILE
                     mobile: Container(
                       //height: 250,
-                      width: 400,
+                      width: screenSizeW*0.7,
                       padding: EdgeInsets.only(top: screenSizeH * .28),
                       //decoration: BoxDecoration(
                       //    color: Colors.white,
@@ -570,7 +570,7 @@ class _LoginPageState extends State<LoginPage> {
                           if (snapshot.connectionState ==
                               ConnectionState.done) {
                             return Container(
-                              //padding: const EdgeInsets.only(left: 24.0, right: 24.0),
+                              //padding: const EdgeInsets.only(left:50.0, right: 50.0, top: 25.0),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -578,35 +578,35 @@ class _LoginPageState extends State<LoginPage> {
                                     key: _formKey,
                                     child: Column(
                                       children: <Widget>[
-                                        SizedBox(height: 8.0),
                                         TextFormField(
-                                          controller: _passwordTextController,
-                                          focusNode: _focusPassword,
-                                          obscureText: true,
+                                          style: TextStyle(fontSize: 20),
+                                          controller: _emailTextController,
+                                          focusNode: _focusEmail,
                                           validator: (value) =>
-                                              Validator.validatePassword(
-                                            password: value,
+                                              Validator.validateEmail(
+                                            email: value,
                                           ),
                                           decoration: InputDecoration(
                                               labelText: "Email",
-                                              labelStyle:
-                                                  TextStyle(color: black),
+                                              labelStyle: TextStyle(
+                                                  color: black,
+                                                  fontFamily: 'Evil',
+                                                  fontSize: 22),
                                               hintText: "Email Address",
                                               filled: true,
                                               fillColor:
-                                                  whitey.withOpacity(0.25),
+                                                  Colors.white.withOpacity(0.8),
                                               border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(30),
+                                                  borderSide: BorderSide.none),
                                               focusedBorder: OutlineInputBorder(
                                                   borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide: BorderSide(
-                                                      color: whitey)),
+                                                      BorderRadius.circular(30),
+                                                  borderSide: BorderSide.none),
                                               errorBorder: UnderlineInputBorder(
                                                 borderRadius:
-                                                    BorderRadius.circular(6.0),
+                                                    BorderRadius.circular(30.0),
                                                 borderSide: BorderSide(
                                                   color: Colors.red,
                                                 ),
@@ -615,6 +615,7 @@ class _LoginPageState extends State<LoginPage> {
                                         ),
                                         SizedBox(height: 10.0),
                                         TextFormField(
+                                          //style: TextStyle(fontFamily: 'Evil'),
                                           controller: _passwordTextController,
                                           focusNode: _focusPassword,
                                           obscureText: true,
@@ -625,23 +626,24 @@ class _LoginPageState extends State<LoginPage> {
                                           decoration: InputDecoration(
                                               hintText: "Password",
                                               labelText: "Password",
-                                              labelStyle:
-                                                  TextStyle(color: black),
+                                              labelStyle: TextStyle(
+                                                  color: black,
+                                                  fontFamily: 'Evil',
+                                                  fontSize: 22),
                                               filled: true,
                                               fillColor:
-                                                  whitey.withOpacity(0.25),
+                                                  Colors.white.withOpacity(0.8),
                                               border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(30),
+                                                  borderSide: BorderSide.none),
                                               focusedBorder: OutlineInputBorder(
                                                   borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  borderSide:
-                                                      BorderSide(color: white)),
+                                                      BorderRadius.circular(30),
+                                                  borderSide: BorderSide.none),
                                               errorBorder: UnderlineInputBorder(
                                                 borderRadius:
-                                                    BorderRadius.circular(6.0),
+                                                    BorderRadius.circular(30.0),
                                                 borderSide: BorderSide(
                                                   color: Colors.red,
                                                 ),
@@ -657,44 +659,46 @@ class _LoginPageState extends State<LoginPage> {
                                                         .spaceBetween,
                                                 children: [
                                                   Expanded(
-                                                      child: SizedBox(
-                                                          height: 35.0,
-                                                          child: ElevatedButton(
-                                                            onPressed:
-                                                                () async {
-                                                              _focusEmail
-                                                                  .unfocus();
-                                                              _focusPassword
-                                                                  .unfocus();
+                                                    child: SizedBox(
+                                                      height: 35.0,
+                                                      child: ElevatedButton(
+                                                        onPressed: () async {
+                                                          _focusEmail.unfocus();
+                                                          _focusPassword
+                                                              .unfocus();
 
-                                                              if (_formKey
-                                                                  .currentState!
-                                                                  .validate()) {
-                                                                setState(() {
-                                                                  _isProcessing =
-                                                                      true;
-                                                                });
-                                                                logIn();
-                                                                setState(() {
-                                                                  _isProcessing =
-                                                                      false;
-                                                                });
-                                                              }
-                                                            },
-                                                            style: ElevatedButton.styleFrom(
-                                                                shape: new RoundedRectangleBorder(
-                                                                    borderRadius:
-                                                                        new BorderRadius.circular(
-                                                                            15.0))),
-                                                            child: Text(
-                                                              'Sign In',
-                                                              style: TextStyle(
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontSize:
-                                                                      18.0),
-                                                            ),
-                                                          ))),
+                                                          if (_formKey
+                                                              .currentState!
+                                                              .validate()) {
+                                                            setState(() {
+                                                              _isProcessing =
+                                                                  true;
+                                                            });
+                                                            logIn();
+                                                            setState(() {
+                                                              _isProcessing =
+                                                                  false;
+                                                            });
+                                                          }
+                                                        },
+                                                        style: ElevatedButton.styleFrom(
+                                                            shape: new RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    new BorderRadius
+                                                                            .circular(
+                                                                        15.0))),
+                                                        child: Text(
+                                                          'SIGN IN',
+                                                          style: TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 18.0,
+                                                              fontFamily:
+                                                                  'Evil'),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
                                                   SizedBox(width: 10),
                                                   Expanded(
                                                     child: SizedBox(
@@ -710,13 +714,16 @@ class _LoginPageState extends State<LoginPage> {
                                                                 borderRadius:
                                                                     new BorderRadius
                                                                             .circular(
-                                                                        15.0))),
+                                                                        15.0)),
+                                                            shadowColor: gray),
                                                         child: Text(
-                                                          'Register',
+                                                          'REGISTER',
                                                           style: TextStyle(
                                                               color:
                                                                   Colors.white,
-                                                              fontSize: 18.0),
+                                                              fontSize: 18.0,
+                                                              fontFamily:
+                                                                  'Evil'),
                                                         ),
                                                       ),
                                                     ),
