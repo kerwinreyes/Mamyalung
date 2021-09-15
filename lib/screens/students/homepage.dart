@@ -121,7 +121,7 @@ class _StudentsMobileState extends State<StudentsMobile> {
           QuizState(uid: widget.uid,),
           QuizCard(uid: widget.uid),
           Achievement(uid: widget.uid),
-          LeaderBoard(),
+          LeaderBoard(uid: '${widget.uid}',),
         ],
       ),),
     bottomNavigationBar: BottomNavyBar(

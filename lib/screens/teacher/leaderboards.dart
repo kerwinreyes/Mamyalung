@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mamyalung/materials.dart';
 
 class LeaderBoard extends StatefulWidget {
-  final String? uid;
-  const LeaderBoard({ Key? key, this.uid }) : super(key: key);
+  const LeaderBoard({ Key? key }) : super(key: key);
 
   @override
   _LeaderBoardState createState() => _LeaderBoardState();
@@ -14,29 +13,9 @@ class _LeaderBoardState extends State<LeaderBoard> {
 
   final Stream<QuerySnapshot> _usersStream = FirebaseFirestore.instance.collection('users')
   .where('role', isEqualTo: 'Student')
-  .orderBy('lname', descending: false)
   .orderBy('points', descending: true)
   .snapshots();
-  int stud_points = 0;
-  String stud_name ='';
-  String stud_image='';
-  @override
-  void initState() {
-    super.initState();
-  FirebaseFirestore.instance
-    .collection('users')
-    .where('uid',isEqualTo: widget.uid)
-    .get()
-    .then((QuerySnapshot querySnapshot) {
-        querySnapshot.docs.forEach((doc) {
-      setState(() {
-        stud_name = doc['fname'] +' ' + doc['lname'];
-        stud_image = doc['image'];
-        stud_points = doc['points'];
-      });
-    });
-    });
-  }
+  
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -90,23 +69,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
               )
             )
           ],
-        )),
-        SizedBox(height:MediaQuery.of(context).size.height*.2 ,),
-        Container(
-          width: MediaQuery.of(context).size.width*.5,
-          height: 100,
-          child:Row(children: [
-            Container(
-              decoration: BoxDecoration(
-        image: DecorationImage(
-          image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/WWmXCWV/leaderboards.png') : NetworkImage("https://i.ibb.co/RPPY7mM/leaderboardsweb.png"), fit: BoxFit.fill),
-          ),
-            ),
-            Container(
-            child:Text(stud_name),),
-            Container(
-            child:Text('$stud_points'),),
-          ],))
+        ))
       ],
       );
       },

@@ -285,10 +285,7 @@ class _LoginPageState extends State<LoginPage> {
                                                       height: 35.0,
                                                       child: ElevatedButton(
                                                         onPressed: () async {
-                                                          _focusEmail.unfocus();
-                                                          _focusPassword
-                                                              .unfocus();
-
+                                                         
                                                           if (_formKey
                                                               .currentState!
                                                               .validate()) {
@@ -479,9 +476,7 @@ class _LoginPageState extends State<LoginPage> {
                                                       height: 35.0,
                                                       child: ElevatedButton(
                                                         onPressed: () async {
-                                                          _focusEmail.unfocus();
-                                                          _focusPassword
-                                                              .unfocus();
+                                                        
 
                                                           if (_formKey
                                                               .currentState!
@@ -662,10 +657,7 @@ class _LoginPageState extends State<LoginPage> {
                                                           child: ElevatedButton(
                                                             onPressed:
                                                                 () async {
-                                                              _focusEmail
-                                                                  .unfocus();
-                                                              _focusPassword
-                                                                  .unfocus();
+                                                             
 
                                                               if (_formKey
                                                                   .currentState!

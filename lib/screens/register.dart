@@ -285,9 +285,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 ),
                                 Row(children: [
                                   Expanded(
-                                      child: SizedBox(
-                                          height: 45.0,
-                                          child: TextFormField(
+                                      child:  TextFormField(
                                             controller: _passwordTextController,
                                             focusNode: _focusPassword,
                                             obscureText: true,
@@ -323,14 +321,12 @@ class _RegisterPageState extends State<RegisterPage> {
                                                 ),
                                               ),
                                             ),
-                                          ))),
+                                          )),
                                   SizedBox(
                                     width: 15.0,
                                   ),
                                   Expanded(
-                                      child: SizedBox(
-                                          height: 45.0,
-                                          child: TextFormField(
+                                      child:TextFormField(
                                             controller:
                                                 _confirmpasswordController,
                                             focusNode: _focusConfirmPassword,
@@ -366,7 +362,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                                 ),
                                               ),
                                             ),
-                                          ))),
+                                          )),
                                 ]),
                                 SizedBox(
                                   height: 16.0,
