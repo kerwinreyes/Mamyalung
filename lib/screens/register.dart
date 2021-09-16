@@ -35,7 +35,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String dropdownvalue = 'Student';
   int _gradeLevel = 2;
   var items = ['Student', 'Teacher'];
-  var grade_levels = ['Grade 1', 'Grade 2', 'Grade 3'];
+  var grade_levels = ['Grade 2', 'Grade 3'];
   Random random = new Random();
   //Flashcards list
   List _flashcards = [{'questionID':0,'level':1}];

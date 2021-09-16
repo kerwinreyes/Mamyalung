@@ -108,6 +108,14 @@ flutter:
        fonts:
          - asset: fonts/evil.ttf
 
+     - family: Boys
+       fonts:
+         - asset: fonts/Comic Boys.ttf
+
+     - family: Spans
+       fonts:
+         - asset: fonts/Comic Spans.otf
+
   
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

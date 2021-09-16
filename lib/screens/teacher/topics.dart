@@ -349,7 +349,7 @@ List _listImage=[
           height: screenSizeH, 
           decoration: BoxDecoration(
             image: DecorationImage(
-            image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/SsNTLjj/mobilebg.png') : NetworkImage("https://i.ibb.co/h18BM5q/background.png"), fit: BoxFit.cover),
+            image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/k4SWgzy/newmobilebg.png') : NetworkImage("https://i.ibb.co/h18BM5q/background.png"), fit: BoxFit.cover),
           ),
         ),
         Scaffold(

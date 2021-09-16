@@ -53,7 +53,7 @@ class _QuizCardState extends State<QuizCard> {
           height: screenSizeH, 
           decoration: BoxDecoration(
             image: DecorationImage(
-            image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/SsNTLjj/mobilebg.png') : NetworkImage("https://i.ibb.co/h18BM5q/background.png"), fit: BoxFit.fill),
+            image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/k4SWgzy/newmobilebg.png') : NetworkImage("https://i.ibb.co/h18BM5q/background.png"), fit: BoxFit.fill),
           ),
         ),
         StreamBuilder<QuerySnapshot>(

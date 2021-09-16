@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mamyalung/materials.dart';
@@ -20,10 +21,12 @@ required double size, required double height, required double width, required St
               width: width,
               height: height,
               alignment: Alignment.center,
-              child: Text(
+              child: AutoSizeText(
                 text,
+                presetFontSizes: [size, 25,20,15],
                 style: 
-                      TextStyle(color: Colors.white, fontSize: size, fontFamily: 'Evil'),
+                      TextStyle(color: Colors.white, fontSize: size, fontFamily: 'Spans'),
+                      
                     
               ),
             ),
