@@ -3,15 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mamyalung/dashboard.dart';
 import 'package:mamyalung/materials.dart';
 import 'package:mamyalung/screens/admin/homepage.dart';
-import 'package:mamyalung/screens/login.dart';
-import 'package:mamyalung/screens/register.dart';
 import 'package:mamyalung/screens/students/homepage.dart';
-import 'package:mamyalung/utils/fire_auth.dart';
 import 'package:mamyalung/utils/validator.dart';
-import 'package:mamyalung/responsive.dart';
 
 import 'screens/teacher/homepage.dart';
 import 'components/routes.dart';
@@ -25,7 +20,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  static final _formKey = GlobalKey<FormState>();
+  static final _formKey = new GlobalKey<FormState>();
 
   final _emailTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
@@ -35,44 +30,7 @@ class _LoginPageState extends State<LoginPage> {
 
   bool _isProcessing = false;
 
-  Future<FirebaseApp> _initializeFirebase() async {
-    FirebaseApp firebaseApp = await Firebase.initializeApp();
-
-    User? user = FirebaseAuth.instance.currentUser;
-
-    if (user != null) {
-      FirebaseFirestore.instance
-          .collection('/users')
-          .where('uid', isEqualTo: user.uid)
-          .get()
-          .then((QuerySnapshot querySnapshot) {
-        querySnapshot.docs.forEach((doc) {
-          if (identical(doc['role'], 'Admin')) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => AdminHomePage(user: user.uid)),
-            );
-          } else if (identical(doc['role'], 'teacher')) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => TeacherDashboard(uid: user.uid)),
-            );
-          } else {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => StudentHomePage(uid: user.uid)),
-            );
-          }
-        });
-      });
-    }
-
-    return firebaseApp;
-  }
-
+ 
   void logIn() {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(
@@ -144,29 +102,17 @@ class _LoginPageState extends State<LoginPage> {
         _focusEmail.unfocus();
         _focusPassword.unfocus();
       },
-      child: Stack(
+      child: Scaffold(
+            resizeToAvoidBottomInset: true,
+            body: Stack(
         children: [
-          //FittedBox(
-          // child: Image.asset('assets/scenefinal.png',
-          //   height: screenSizeH,
-          //    width: screenSizeW,
-          //   fit: BoxFit.cover,),
-          //   ),
-          // Container(
-          //   //constraints: BoxConstraints.expand(),
-          //    decoration: BoxDecoration(
-          //     image: DecorationImage(
-          //        //image: AssetImage("assets/image/mamyalungnamepets.png"),
-          //        fit: BoxFit.cover),
-          //       ),
-          // ),
+         
           Container(
-            //constraints: BoxConstraints.expand(),
             width: screenSizeW,
             height: screenSizeH,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: screenSizeW <= 649
+                  image: screenSizeW <= 459
                       ? NetworkImage("https://i.ibb.co/W22cm6d/mobilelogin.png")
                       : NetworkImage(
                           "https://i.ibb.co/4Mn4Mh5/mamyalungnamepets.png"),
@@ -174,24 +120,15 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
 
-          Scaffold(
-            resizeToAvoidBottomInset: true,
-            backgroundColor: Colors.transparent,
-            body: Center(
+          Center(
+            child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Responsive(
-                    desktop: Container(
-                      width: 550.0,
-                      padding: EdgeInsets.only(top: screenSizeH * .38),
-                      //padding: EdgeInsets.fromLTRB(screenSizeW*.25, screenSizeH*.25, screenSizeW*.25, screenSizeH*.25),
-
-                      child: FutureBuilder(
-                        future: _initializeFirebase(),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.done) {
-                            return Container(
+                  
+                     Container(
+                        width: 550.0,
+                      padding: EdgeInsets.only(top: screenSizeH * .10),
+                      
                               //padding: const EdgeInsets.only(left:50.0, right: 50.0, top: 25.0),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -201,40 +138,39 @@ class _LoginPageState extends State<LoginPage> {
                                     child: Column(
                                       children: <Widget>[
                                         TextFormField(
-                                          controller: _emailTextController,
-                                          focusNode: _focusEmail,
-                                          validator: (value) =>
-                                              Validator.validateEmail(
-                                            email: value,
-                                          ),
-                                          decoration: InputDecoration(
+
+                                            controller: _emailTextController,
+                                            focusNode: _focusEmail,
+                                            validator: (value) => Validator.validateEmail(
+                                              email: value,
+                                            ),
+                                            decoration: InputDecoration(
+                                              hintText: "Type your Email Address",
                                               labelText: "Email",
                                               labelStyle: TextStyle(
-                                                  color: black,
+                                                  color: Colors.black,
                                                   fontFamily: 'Evil',
                                                   fontSize: 22),
-                                              hintText:
-                                                  "Type your Email Address",
-                                              filled: true,
-                                              fillColor:
-                                                  Colors.white.withOpacity(0.8),
                                               border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30),
+                                                  borderRadius: BorderRadius.circular(30),
                                                   borderSide: BorderSide.none),
+                                              filled: true,
+                                              fillColor: Colors.white.withOpacity(0.8),
                                               focusedBorder: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30),
-                                                  borderSide: BorderSide.none),
+                                                borderRadius: BorderRadius.circular(30),
+                                                borderSide: BorderSide(color: white),
+                                              ),
                                               errorBorder: UnderlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(30.0),
+                                                borderRadius: BorderRadius.circular(30.0),
                                                 borderSide: BorderSide(
                                                   color: Colors.red,
                                                 ),
                                               ),
-                                              prefixIcon: Icon(Icons.email)),
-                                        ),
+                                              prefixIcon: Icon(Icons.email),
+
+                                            ),
+                                            
+                                          ),
                                         SizedBox(height: 10.0),
                                         TextFormField(
                                           controller: _passwordTextController,
@@ -284,14 +220,14 @@ class _LoginPageState extends State<LoginPage> {
                                                       height: 35.0,
                                                       child: ElevatedButton(
                                                         onPressed: () async {
-                                                         
-                                                          if (_formKey
-                                                              .currentState!
-                                                              .validate()) {
-                                                            setState(() {
+                                                         setState(() {
                                                               _isProcessing =
                                                                   true;
                                                             });
+                                                          if (_formKey
+                                                              .currentState!
+                                                              .validate()) {
+                                                            
 
                                                             logIn();
                                                             setState(() {
@@ -304,8 +240,7 @@ class _LoginPageState extends State<LoginPage> {
                                                             shape: new RoundedRectangleBorder(
                                                                 borderRadius:
                                                                     new BorderRadius
-                                                                            .circular(
-                                                                        15.0))),
+                                                                            .circular(15.0))),
                                                         child: Text(
                                                           'Sign In',
                                                           style: TextStyle(
@@ -351,400 +286,14 @@ class _LoginPageState extends State<LoginPage> {
                                   )
                                 ],
                               ),
-                            );
-                          }
-
-                          return Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        },
-                      ),
+                        
                     ),
-
-                    //MOBILE
-                    mobile: Container(
-                      //height: 250,
-                      width: screenSizeW*0.7,
-                      padding: EdgeInsets.only(top: screenSizeH * .28),
-                      //decoration: BoxDecoration(
-                      //    color: Colors.white,
-                      //    borderRadius: BorderRadius.circular(15),
-                      //   boxShadow: [
-                      //    BoxShadow(
-                      //       color: black.withOpacity(0.3),
-                      //     blurRadius: 15,
-                      //       spreadRadius: 5
-                      //  )
-                      //   ]),
-                      child: FutureBuilder(
-                        future: _initializeFirebase(),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.done) {
-                            return Container(
-                              //padding: const EdgeInsets.only(left:50.0, right: 50.0, top: 25.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Form(
-                                    key: _formKey,
-                                    child: Column(
-                                      children: <Widget>[
-                                        TextFormField(
-                                          style: TextStyle(fontSize: 20),
-                                          controller: _emailTextController,
-                                          focusNode: _focusEmail,
-                                          validator: (value) =>
-                                              Validator.validateEmail(
-                                            email: value,
-                                          ),
-                                          decoration: InputDecoration(
-                                              labelText: "Email",
-                                              labelStyle: TextStyle(
-                                                  color: black,
-                                                  fontFamily: 'Evil',
-                                                  fontSize: 22),
-                                              hintText: "Email Address",
-                                              filled: true,
-                                              fillColor:
-                                                  Colors.white.withOpacity(0.8),
-                                              border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30),
-                                                  borderSide: BorderSide.none),
-                                              focusedBorder: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30),
-                                                  borderSide: BorderSide.none),
-                                              errorBorder: UnderlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(30.0),
-                                                borderSide: BorderSide(
-                                                  color: Colors.red,
-                                                ),
-                                              ),
-                                              prefixIcon: Icon(Icons.email)),
-                                        ),
-                                        SizedBox(height: 10.0),
-                                        TextFormField(
-                                          //style: TextStyle(fontFamily: 'Evil'),
-                                          controller: _passwordTextController,
-                                          focusNode: _focusPassword,
-                                          obscureText: true,
-                                          validator: (value) =>
-                                              Validator.validatePassword(
-                                            password: value,
-                                          ),
-                                          decoration: InputDecoration(
-                                              hintText: "Password",
-                                              labelText: "Password",
-                                              labelStyle: TextStyle(
-                                                  color: black,
-                                                  fontFamily: 'Evil',
-                                                  fontSize: 22),
-                                              filled: true,
-                                              fillColor:
-                                                  Colors.white.withOpacity(0.8),
-                                              border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30),
-                                                  borderSide: BorderSide.none),
-                                              focusedBorder: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30),
-                                                  borderSide: BorderSide.none),
-                                              errorBorder: UnderlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(30.0),
-                                                borderSide: BorderSide(
-                                                  color: Colors.red,
-                                                ),
-                                              ),
-                                              prefixIcon: Icon(Icons.lock)),
-                                        ),
-                                        SizedBox(height: 15.0),
-                                        _isProcessing
-                                            ? CircularProgressIndicator()
-                                            : Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Expanded(
-                                                    child: SizedBox(
-                                                      height: 35.0,
-                                                      child: ElevatedButton(
-                                                        onPressed: () async {
-                                                        
-
-                                                          if (_formKey
-                                                              .currentState!
-                                                              .validate()) {
-                                                            setState(() {
-                                                              _isProcessing =
-                                                                  true;
-                                                            });
-                                                            logIn();
-                                                            setState(() {
-                                                              _isProcessing =
-                                                                  false;
-                                                            });
-                                                          }
-                                                        },
-                                                        style: ElevatedButton.styleFrom(
-                                                            shape: new RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    new BorderRadius
-                                                                            .circular(
-                                                                        15.0))),
-                                                        child: Text(
-                                                          'SIGN IN',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.white,
-                                                              fontSize: 18.0,
-                                                              fontFamily:
-                                                                  'Evil'),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(width: 10),
-                                                  Expanded(
-                                                    child: SizedBox(
-                                                      height: 35.0,
-                                                      child: ElevatedButton(
-                                                        onPressed: () => Navigator
-                                                            .pushReplacementNamed(
-                                                                context,
-                                                                Routes
-                                                                    .registerPage),
-                                                        style: ElevatedButton.styleFrom(
-                                                            shape: new RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    new BorderRadius
-                                                                            .circular(
-                                                                        15.0)),
-                                                            shadowColor: gray),
-                                                        child: Text(
-                                                          'REGISTER',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.white,
-                                                              fontSize: 18.0,
-                                                              fontFamily:
-                                                                  'Evil'),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              )
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          }
-                          return Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        },
-                      ),
-                    ),
-
-                    //TABLET
-                    tablet: Container(
-                      width: 550,
-                      padding: EdgeInsets.only(top: screenSizeH * .38),
-                      child: FutureBuilder(
-                        future: _initializeFirebase(),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.done) {
-                            return Container(
-                              //padding: const EdgeInsets.only(left:50.0, right: 50.0, top: 25.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Form(
-                                    key: _formKey,
-                                    child: Column(
-                                      children: <Widget>[
-                                        TextFormField(
-                                          style: TextStyle(fontSize: 20),
-                                          controller: _emailTextController,
-                                          focusNode: _focusEmail,
-                                          validator: (value) =>
-                                              Validator.validateEmail(
-                                            email: value,
-                                          ),
-                                          decoration: InputDecoration(
-                                              labelText: "Email",
-                                              labelStyle: TextStyle(
-                                                  color: black,
-                                                  fontFamily: 'Evil',
-                                                  fontSize: 22),
-                                              hintText: "Email Address",
-                                              filled: true,
-                                              fillColor:
-                                                  Colors.white.withOpacity(0.8),
-                                              border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30),
-                                                  borderSide: BorderSide.none),
-                                              focusedBorder: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30),
-                                                  borderSide: BorderSide.none),
-                                              errorBorder: UnderlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(30.0),
-                                                borderSide: BorderSide(
-                                                  color: Colors.red,
-                                                ),
-                                              ),
-                                              prefixIcon: Icon(Icons.email)),
-                                        ),
-                                        SizedBox(height: 10.0),
-                                        TextFormField(
-                                          //style: TextStyle(fontFamily: 'Evil'),
-                                          controller: _passwordTextController,
-                                          focusNode: _focusPassword,
-                                          obscureText: true,
-                                          validator: (value) =>
-                                              Validator.validatePassword(
-                                            password: value,
-                                          ),
-                                          decoration: InputDecoration(
-                                              hintText: "Password",
-                                              labelText: "Password",
-                                              labelStyle: TextStyle(
-                                                  color: black,
-                                                  fontFamily: 'Evil',
-                                                  fontSize: 22),
-                                              filled: true,
-                                              fillColor:
-                                                  Colors.white.withOpacity(0.8),
-                                              border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30),
-                                                  borderSide: BorderSide.none),
-                                              focusedBorder: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30),
-                                                  borderSide: BorderSide.none),
-                                              errorBorder: UnderlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(30.0),
-                                                borderSide: BorderSide(
-                                                  color: Colors.red,
-                                                ),
-                                              ),
-                                              prefixIcon: Icon(Icons.lock)),
-                                        ),
-                                        SizedBox(height: 15.0),
-                                        _isProcessing
-                                            ? CircularProgressIndicator()
-                                            : Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Expanded(
-                                                    child: SizedBox(
-                                                      height: 35.0,
-                                                      child: ElevatedButton(
-                                                        onPressed: () async {
-                                                          _focusEmail.unfocus();
-                                                          _focusPassword
-                                                              .unfocus();
-
-                                                          if (_formKey
-                                                              .currentState!
-                                                              .validate()) {
-                                                            setState(() {
-                                                              _isProcessing =
-                                                                  true;
-                                                            });
-                                                            logIn();
-                                                            setState(() {
-                                                              _isProcessing =
-                                                                  false;
-                                                            });
-                                                          }
-                                                        },
-                                                        style: ElevatedButton.styleFrom(
-                                                            shape: new RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    new BorderRadius
-                                                                            .circular(
-                                                                        15.0))),
-                                                        child: Text(
-                                                          'SIGN IN',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.white,
-                                                              fontSize: 18.0,
-                                                              fontFamily:
-                                                                  'Evil'),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  SizedBox(width: 10),
-                                                  Expanded(
-                                                    child: SizedBox(
-                                                      height: 35.0,
-                                                      child: ElevatedButton(
-                                                        onPressed: () => Navigator
-                                                            .pushReplacementNamed(
-                                                                context,
-                                                                Routes
-                                                                    .registerPage),
-                                                        style: ElevatedButton.styleFrom(
-                                                            shape: new RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    new BorderRadius
-                                                                            .circular(
-                                                                        15.0)),
-                                                            shadowColor: gray),
-                                                        child: Text(
-                                                          'REGISTER',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  Colors.white,
-                                                              fontSize: 18.0,
-                                                              fontFamily:
-                                                                  'Evil'),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              )
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            );
-                          }
-
-                          return Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
-          ),
+          )
         ],
-      ),
+      )),
     );
   }
 }
