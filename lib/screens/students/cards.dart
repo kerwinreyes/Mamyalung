@@ -50,13 +50,17 @@ class FlashcardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    var screenSizeW = screenSize.width;
+    var screenSizeH = screenSize.height;
     return Card(
       elevation: 4,
       child: Center(
-        child: Text(
+        child: AutoSizeText(
           text,
           textAlign: TextAlign.center,
-          style: TextStyle(fontFamily: 'Evil',fontSize: 25),
+          style: TextStyle(fontFamily: 'Spans',fontSize: 23),
+          presetFontSizes: [23, 17, 15],
         ),
       ),
     );
@@ -344,7 +348,7 @@ List listShuffle (List choices, int ans, String answer){
             decoration: BoxDecoration(
               image: DecorationImage(
                   image: screenSizeW <= 649
-                      ? NetworkImage("https://i.ibb.co/YBzRfyT/background.png")
+                      ? NetworkImage("https://i.ibb.co/k4SWgzy/newmobilebg.png")
                       : NetworkImage(
                           "https://i.ibb.co/rMgVF9T/background.png"),
                   fit: BoxFit.fill),
@@ -421,7 +425,7 @@ List listShuffle (List choices, int ans, String answer){
               height: 50,
               alignment: Alignment.center,
               child: AutoSizeText( 
-              _tryflashcards[counter]['choice'][0], presetFontSizes: [30, 20],
+              _tryflashcards[counter]['choice'][0], presetFontSizes: [30, 20, 15],
                 style: 
                       TextStyle(color: Colors.white, fontSize: 30, fontFamily: 'Evil'),
                     
@@ -447,8 +451,8 @@ List listShuffle (List choices, int ans, String answer){
               height: 50,
               alignment: Alignment.center,
               child: AutoSizeText(
-               _tryflashcards[counter]['choice'][1], presetFontSizes: [30,20],
-                style:  TextStyle(color: Colors.white, fontSize: 30, fontFamily: 'Evil'),
+               _tryflashcards[counter]['choice'][1], presetFontSizes: [30,20,15],
+                style:  TextStyle(color: Colors.white, fontSize: 30, fontFamily: 'Boys'),
                     
               ),
             ),

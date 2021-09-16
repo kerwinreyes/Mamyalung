@@ -164,7 +164,7 @@ void get(){
         Container(
           decoration: BoxDecoration(
           image: DecorationImage(
-            image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/SsNTLjj/mobilebg.png') : NetworkImage("https://i.ibb.co/h18BM5q/background.png"),
+            image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/k4SWgzy/newmobilebg.png') : NetworkImage("https://i.ibb.co/h18BM5q/background.png"),
             fit: BoxFit.fill),
         ),),
         SingleChildScrollView(
@@ -189,9 +189,9 @@ void get(){
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text("Question ${index + 1} / ${data.length}",style: TextStyle(color : Colors.brown , 
-                        fontSize: 20,fontWeight: FontWeight.bold, fontFamily: 'Sans'),),
+                        fontSize: 25,fontWeight: FontWeight.bold, fontFamily: 'Sans'),),
                         Text("Score : $finalScore",style: TextStyle(color : Colors.brown , 
-                        fontSize: 20,fontWeight: FontWeight.bold, fontFamily: 'Sans'),), 
+                        fontSize: 25,fontWeight: FontWeight.bold, fontFamily: 'Sans'),), 
                       ],
                     )
                  ],
@@ -214,7 +214,7 @@ void get(){
                          Padding(
                            padding: EdgeInsets.only(left: 20, right: 20),
                            child: 
-                            AutoSizeText("${data[index]['question']}\n (${data[index]['translation']})",textAlign: TextAlign.center,style: TextStyle(fontSize: 35.0,height: 1.5, fontFamily: 'Sans'),maxLines: 5,maxFontSize: 18,
+                            AutoSizeText("${data[index]['question']}\n\n (${data[index]['translation']})",textAlign: TextAlign.center,style: TextStyle(fontSize: 28.0, fontFamily: 'Sans'),maxLines: 5,maxFontSize: 25,
                          
                          )),
                        ],
@@ -230,7 +230,7 @@ void get(){
                    
                 button(first: isButtonPressed0 ? green : orange, 
                      second: isButtonPressed0? green : orange, 
-                     size: 20, 
+                     size: 30, 
                      height: 50, 
                      width: MediaQuery.of(context).size.width/1.5, 
                      text:"${data[index]['multiple_choice'][0]}",
@@ -251,7 +251,7 @@ void get(){
                  SizedBox(height: 10),
                 button(first: isButtonPressed1 ? green : orange, 
                      second: isButtonPressed1 ? green : orange, 
-                     size: 20, 
+                     size: 30, 
                      width: MediaQuery.of(context).size.width/1.5,
                      height: 50, 
                      text:"${data[index]['multiple_choice'][1]}",
@@ -280,7 +280,7 @@ void get(){
                 SizedBox(height: 10),
                  button(first: isButtonPressed2 ? green : orange, 
                      second: isButtonPressed2 ? green : orange, 
-                     size: 20, 
+                     size: 30, 
                      width: MediaQuery.of(context).size.width/1.5,
                      height: 50,
                      text:"${data[index]['multiple_choice'][2]}",
@@ -302,7 +302,7 @@ void get(){
                button(first: isButtonPressed3 ? green : orange, 
                      second: isButtonPressed3 ? green : orange, 
 
-                     size: 20, 
+                     size: 30, 
                      width: MediaQuery.of(context).size.width/1.5,
                      height: 50, 
                      text:"${data[index]['multiple_choice'][3]}",
