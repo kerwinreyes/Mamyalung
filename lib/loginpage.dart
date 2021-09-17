@@ -112,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
             height: screenSizeH,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: screenSizeW <= 459
+                  image: screenSizeW <= 649
                       ? NetworkImage("https://i.ibb.co/W22cm6d/mobilelogin.png")
                       : NetworkImage(
                           "https://i.ibb.co/4Mn4Mh5/mamyalungnamepets.png"),
@@ -126,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   
                      Container(
-                        width: 550.0,
+                        width: screenSizeW <= 649 ? 400 : 500,
                       padding: EdgeInsets.only(top: screenSizeH * .10),
                       
                               //padding: const EdgeInsets.only(left:50.0, right: 50.0, top: 25.0),

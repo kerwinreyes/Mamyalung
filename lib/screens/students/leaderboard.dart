@@ -52,6 +52,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
     return Stack(
       children: <Widget>[
         Scaffold(
+          backgroundColor: Colors.transparent,
             body: Container(
           margin: EdgeInsets.only(top: 65.0),
           decoration: BoxDecoration(
@@ -61,32 +62,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(left: 15.0, top: 10.0),
-                child: RichText(
-                    text: TextSpan(
-                        text: "Leader",
-                        style: TextStyle(
-                            color: Colors.deepPurple,
-                            fontSize: 30.0,
-                            fontWeight: FontWeight.bold),
-                        children: [
-                      TextSpan(
-                          text: " Board",
-                          style: TextStyle(
-                              color: Colors.pink,
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.bold))
-                    ])),
-              ),
-
-              Padding(
-                padding: EdgeInsets.only(left: 15.0),
-                child: Text(
-                  'Global Rank Board: ',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
+            Padding(padding: EdgeInsets.only(top: 70)),
               Flexible(
                   child: StreamBuilder<QuerySnapshot>(
                       stream: FirebaseFirestore.instance
@@ -113,7 +89,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
 
                                 return Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 5.0, vertical: 5.0),
+                                      horizontal: 10.0, vertical: 20.0),
                                   child: InkWell(
                                     child: Container(
                                       decoration: BoxDecoration(
@@ -124,11 +100,11 @@ class _LeaderBoardState extends State<LeaderBoard> {
                                                       ? Colors.grey
                                                       : i == 2
                                                           ? Colors.brown
-                                                          : Colors.white,
+                                                          : Colors.transparent,
                                               width: 3.0,
                                               style: BorderStyle.solid),
                                           borderRadius:
-                                              BorderRadius.circular(5.0)),
+                                              BorderRadius.circular(8.0)),
                                       width: MediaQuery.of(context).size.width,
                                       child: Column(
                                         children: <Widget>[
@@ -140,6 +116,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
                                                 child: Row(
                                                   children: <Widget>[
                                                     CircleAvatar(
+                                                      backgroundColor: Colors.transparent,
                                                         child: Container(
                                                             decoration: BoxDecoration(
                                                                 shape: BoxShape
@@ -167,13 +144,16 @@ class _LeaderBoardState extends State<LeaderBoard> {
                                                     Container(
                                                         alignment: Alignment
                                                             .centerLeft,
-                                                        child: Text(
+                                                        child: AutoSizeText(
                                                           snapshot
                                                               .data
                                                               !.docs[index]['fname'] + ' '+
                                                               snapshot.data
                                                               !.docs[index]['lname'],
+                                                              presetFontSizes: [35,30,20],
                                                           style: TextStyle(
+                                                            fontFamily: 'Sans',
+                                                            fontSize: 35,
                                                               color: Colors
                                                                   .deepPurple,
                                                               fontWeight:
@@ -181,11 +161,14 @@ class _LeaderBoardState extends State<LeaderBoard> {
                                                                       .w500),
                                                           maxLines: 6,
                                                         )),
-                                                    Text("Points: " +
+                                                    AutoSizeText("Points: " +
                                                         snapshot
                                                             .data
                                                             !.docs[index]['points']
-                                                            .toString()),
+                                                            .toString(), 
+                                                            presetFontSizes: [30,25,20],
+                                                            style: 
+                                                            TextStyle(fontFamily: 'Spans', backgroundColor: white.withOpacity(0.35)),),
                                                   ],
                                                 ),
                                               ),
@@ -226,15 +209,15 @@ class _LeaderBoardState extends State<LeaderBoard> {
             SizedBox(height: MediaQuery.of(context).size.height*.75),
         
         Container(
-          color: primaryBlue,
+          color: powderblue,
           height:100,
           child: Row(
             children: [
               CircleAvatar(backgroundImage: NetworkImage('${widget.image}'), backgroundColor: Colors.transparent,),
             SizedBox(width: 12),
-            AutoSizeText('${widget.name}'),
+            AutoSizeText('${widget.name}', style: TextStyle(fontFamily: 'Sans'),presetFontSizes: [30,25,22],),
             SizedBox(width: 12),
-            AutoSizeText('${widget.points}'),
+            AutoSizeText('${widget.points}', style: TextStyle(fontFamily: 'Sans'), presetFontSizes: [30,25,22],),
             SizedBox(width: 12),
             ],
           )
@@ -256,9 +239,9 @@ Widget _buildRow(String name, var score, String image, int grlvl) {
           children: <Widget>[
             CircleAvatar(backgroundImage: NetworkImage(image), backgroundColor: Colors.transparent,),
             SizedBox(width: 12),
-            AutoSizeText(name, style: TextStyle(fontFamily: 'Spans', fontSize: 20), presetFontSizes: [30,25,20],),
+            AutoSizeText(name, style: TextStyle(fontFamily: 'Spans', fontSize: 20), presetFontSizes: [27,25,20],),
             SizedBox(width: 12),
-            AutoSizeText('Grade Level: '+'$grlvl', style: TextStyle(fontFamily: 'Spans', fontSize: 20), presetFontSizes: [30,25,20],),
+            AutoSizeText('Grade Level: '+'$grlvl', style: TextStyle(fontFamily: 'Spans', fontSize: 20), presetFontSizes: [27,25,20],),
             
             Spacer(),
             Container(

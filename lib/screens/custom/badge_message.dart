@@ -67,7 +67,7 @@ class _BadgeMsgState extends State<BadgeMsg> {
                   )
                 ),
                 Expanded(
-                  child: Text("Congrats! \n You just unlocked a New Badge",textAlign: TextAlign.center,),
+                  child: Text("Congrats! \n You just unlocked a New Badge",textAlign: TextAlign.center, style: TextStyle(fontFamily: 'Spans'),),
                 ),
                 GestureDetector(
                   child: Container(
@@ -83,7 +83,7 @@ class _BadgeMsgState extends State<BadgeMsg> {
                         children: <Widget>[
                           Expanded(
                             child: Center(
-                              child:(Text("Collect")
+                              child:(Text("Collect", style: TextStyle(fontFamily: 'Spans'),)
                               )
                             )
                           ),                  
