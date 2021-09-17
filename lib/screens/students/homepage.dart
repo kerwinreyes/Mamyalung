@@ -45,6 +45,8 @@ class StudentsMobile extends StatefulWidget {
 class _StudentsMobileState extends State<StudentsMobile> {
 
   String imagePath= '';
+  String stud_name = '';
+  int stud_points = 0;
     int _currentIndex = 0;
   late PageController _pageController;
 
@@ -60,6 +62,8 @@ class _StudentsMobileState extends State<StudentsMobile> {
         querySnapshot.docs.forEach((doc) {
             setState((){
              imagePath = doc["image"];
+             stud_name = doc['fname'] +' ' + doc['lname'];
+        stud_points = doc['points'];
             });
         });
     });
@@ -121,7 +125,7 @@ class _StudentsMobileState extends State<StudentsMobile> {
           QuizState(uid: widget.uid,),
           QuizCard(uid: widget.uid),
           Achievement(uid: widget.uid),
-          LeaderBoard(uid: '${widget.uid}',),
+          LeaderBoard(uid: '${widget.uid}',image: '$imagePath', name: '$stud_name', points: stud_points),
         ],
       ),),
     bottomNavigationBar: BottomNavyBar(

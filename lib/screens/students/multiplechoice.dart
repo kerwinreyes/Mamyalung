@@ -42,7 +42,7 @@ class _MultipleBodyState extends State<MultipleBody> {
     .then((QuerySnapshot querySnapshot) {
         querySnapshot.docs.forEach((doc) {
       setState(() {
-        score = int.parse(doc['points']);
+        score = doc['points'];
         badgeCount = doc['badge_count'];
       });
     });
@@ -53,7 +53,7 @@ class _MultipleBodyState extends State<MultipleBody> {
   Future<void> updateUser() {
   return users
     .doc('${widget.uid}')
-    .update({'points': '$score'})
+    .update({'points': score})
     .then((value) => print("User Updated"))
     .catchError((error) => print("Failed to update user: $error"));
 }
