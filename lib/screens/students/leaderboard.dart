@@ -51,9 +51,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
         var r = TextStyle(color: Colors.purpleAccent, fontSize: 34);
     return Stack(
       children: <Widget>[
-        Scaffold(
-          backgroundColor: Colors.transparent,
-            body: Container(
+         Container(
           margin: EdgeInsets.only(top: 65.0),
           decoration: BoxDecoration(
         image: DecorationImage(
@@ -203,7 +201,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
                       }))
             ],
           ),
-        )),
+        ),
         Column(
           children: [
             SizedBox(height: MediaQuery.of(context).size.height*.75),
@@ -226,42 +224,4 @@ class _LeaderBoardState extends State<LeaderBoard> {
     );
     
   }
-}
-Widget _buildRow(String name, var score, String image, int grlvl) {
-  return Padding(
-    padding: EdgeInsets.symmetric(horizontal: 60.0),
-    child: Column(
-      children: <Widget>[
-        SizedBox(height: 12),
-        //rContainer(height: 2, color: Colors.redAccent),
-        SizedBox(height: 12),
-        Row(
-          children: <Widget>[
-            CircleAvatar(backgroundImage: NetworkImage(image), backgroundColor: Colors.transparent,),
-            SizedBox(width: 12),
-            AutoSizeText(name, style: TextStyle(fontFamily: 'Spans', fontSize: 20), presetFontSizes: [27,25,20],),
-            SizedBox(width: 12),
-            AutoSizeText('Grade Level: '+'$grlvl', style: TextStyle(fontFamily: 'Spans', fontSize: 20), presetFontSizes: [27,25,20],),
-            
-            Spacer(),
-            Container(
-              decoration: BoxDecoration(
-               // boxShadow: [
-               //   BoxShadow(
-               //   color: gray,
-                //  blurRadius: 30,
-               //   spreadRadius: 10,
-                //  offset: Offset(2,5)
-                //  ),
-               // ],
-                color: Color(0xFF8793B2), 
-                borderRadius: BorderRadius.circular(10)),
-              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-              child: Text('$score', style: TextStyle(fontFamily: 'Moon', fontSize: 15)),
-            ),
-          ],
-        ),
-      ],
-    ),
-  );
 }
