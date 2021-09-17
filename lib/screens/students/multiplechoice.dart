@@ -53,7 +53,8 @@ class _MultipleBodyState extends State<MultipleBody> {
   Future<void> updateUser() {
   return users
     .doc('${widget.uid}')
-    .update({'points': score})
+    .update({
+      'points':score.toInt()})
     .then((value) => print("User Updated"))
     .catchError((error) => print("Failed to update user: $error"));
 }
