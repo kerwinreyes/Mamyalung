@@ -85,13 +85,14 @@ Future<void> deleteUser(id) {
     .catchError((error) => print("Failed to delete user: $error"));
     
 }
-Future<void> updateQuestion(String id,String question,String topic, int ans, List choices, int level ) async{
+Future<void> updateQuestion(String id,String question,String topic, int ans, List choices, int level, String translate ) async{
   CollectionReference quess = FirebaseFirestore.instance.collection('questions');    
   
  return quess.doc(id)
                 .update({
                   'question':question,
                   'topic': topic,
+                  'translation': translate,
                   'answer': ans ,
                   'multiple_choice':choices,
                   'grade_level': level,
@@ -118,6 +119,7 @@ Future<void> updateQuestion(String id,String question,String topic, int ans, Lis
                 print("Question Updated");
                 setState(() {
                 _questionController.text = "";
+                _translateController.text = "";
                 _ans1Controller.text = "";
                 _ans2Controller.text = "";
                 _ans3Controller.text = "";
@@ -649,7 +651,18 @@ editContent(BuildContext context) {
                             decoration: InputDecoration(
                               enabledBorder: UnderlineInputBorder(),
                               focusedBorder: UnderlineInputBorder(),
-                              hintText: "Enter Question",
+                              hintText: "EnterKapampangan Question",
+                              
+                            ),
+                            onTap:(){},
+                          ),
+                          SizedBox(height: 20),
+                          TextFormField(
+                            controller: _translateController,
+                            decoration: InputDecoration(
+                              enabledBorder: UnderlineInputBorder(),
+                              focusedBorder: UnderlineInputBorder(),
+                              hintText: "Enter Question Translation",
                               
                             ),
                             onTap:(){},
@@ -736,7 +749,7 @@ editContent(BuildContext context) {
                       TextButton(
                         child: Text("Update Question"),
                         onPressed: (){
-                          updateQuestion(_updateID, _questionController.text, _questionTopic, _ans, [_ans1Controller.text,_ans2Controller.text,_ans3Controller.text,_ans4Controller.text], _grlevel);
+                          updateQuestion(_updateID, _questionController.text, _questionTopic, _ans, [_ans1Controller.text,_ans2Controller.text,_ans3Controller.text,_ans4Controller.text], _grlevel,_translateController.text);
                           Navigator.pop(context);
                           
                         },
@@ -796,6 +809,7 @@ questionView(BuildContext context, resultsList){
                                     _updateID = resultsList['questionID'].toString();
                                     _questionTopic = resultsList['topic'];
                                     _questionController.text = resultsList['question'];
+                                    _translateController.text = resultsList['translation'];
                                     _ans =resultsList['answer'];
                                     _ans1Controller.text = resultsList['multiple_choice'][0];
                                     _ans2Controller.text =resultsList['multiple_choice'][1];
