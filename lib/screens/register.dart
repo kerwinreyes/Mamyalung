@@ -438,7 +438,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                                     final snackbar = SnackBar(
                                                       duration: Duration(milliseconds : 500),
                                                       backgroundColor: Colors.orange,
-                                                      content: Text("Select a Grade Level"),);
+                                                      content: Text("Please choose an answer!"),);
                                                     ScaffoldMessenger.of(context).showSnackBar(snackbar);
 
                                                   }  
