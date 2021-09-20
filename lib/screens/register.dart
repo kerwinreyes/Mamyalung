@@ -385,8 +385,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                                 .map((String items) {
                                               return DropdownMenuItem(
                                                   value: grade_levels
-                                                          .indexOf(items) +
-                                                      1,
+                                                          .indexOf(items),
                                                   child: Text(items));
                                             }).toList(),
                                             onChanged: (int? newValue) {
