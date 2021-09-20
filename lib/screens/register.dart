@@ -33,9 +33,10 @@ class _RegisterPageState extends State<RegisterPage> {
   final _passwordTextController = TextEditingController();
   final _confirmpasswordController = TextEditingController();
   String dropdownvalue = 'Student';
-  int _gradeLevel = 2;
+  int _gradeLevel = 0;
+  int _studLevel = 2;
   var items = ['Student', 'Teacher'];
-  var grade_levels = ['Grade 2', 'Grade 3'];
+  var grade_levels = ['Grade 1','Grade 2', 'Grade 3'];
   Random random = new Random();
   //Flashcards list
   List _flashcards = [{'questionID':0,'level':1}];
@@ -79,7 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
         'role': dropdownvalue,
         'uid': user.uid,
         'points': 0,
-        'grade_level': _gradeLevel,
+        'grade_level': _studLevel,
         'flashcards': _flashcards.sublist(0, 10),
         
         'badge_count': 0,
@@ -391,6 +392,12 @@ class _RegisterPageState extends State<RegisterPage> {
                                             onChanged: (int? newValue) {
                                               setState(() {
                                                 _gradeLevel = newValue!;
+                                                if(_gradeLevel== 0){
+                                                  _studLevel =2;
+                                                }
+                                                else{
+                                                  _studLevel =3;
+                                                }
                                               });
                                             },
                                           ),
