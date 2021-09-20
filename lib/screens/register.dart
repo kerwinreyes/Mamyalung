@@ -33,10 +33,10 @@ class _RegisterPageState extends State<RegisterPage> {
   final _passwordTextController = TextEditingController();
   final _confirmpasswordController = TextEditingController();
   String dropdownvalue = 'Student';
-  int _gradeLevel = 0;
-  int _studLevel = 2;
+  int? _gradeLevel = 0;
+  String? gradeLevel = "Select a Grade Level";
   var items = ['Student', 'Teacher'];
-  var grade_levels = ['Grade 2', 'Grade 3'];
+  var grade_levels = ["Select a Grade Level",'Grade 2', 'Grade 3'];
   Random random = new Random();
   //Flashcards list
   List _flashcards = [{'questionID':0,'level':1}];
@@ -80,7 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
         'role': dropdownvalue,
         'uid': user.uid,
         'points': 0,
-        'grade_level': _studLevel,
+        'grade_level': _gradeLevel,
         'flashcards': _flashcards.sublist(0, 10),
         
         'badge_count': 0,
@@ -378,25 +378,29 @@ class _RegisterPageState extends State<RegisterPage> {
                                           padding: EdgeInsets.only(left: 15),
                                           width:
                                               MediaQuery.of(context).size.width,
-                                          child: DropdownButton(
-                                            value: _gradeLevel,
+                                          child: DropdownButton<String>(
+                                            value: gradeLevel,
                                             icon:
                                                 Icon(Icons.keyboard_arrow_down),
                                             items: grade_levels
                                                 .map((String items) {
-                                              return DropdownMenuItem(
-                                                  value: grade_levels
-                                                          .indexOf(items),
+                                              return DropdownMenuItem<String>(
+                                                  value: items,
                                                   child: Text(items));
                                             }).toList(),
-                                            onChanged: (int? newValue) {
+                                            onChanged: (String? newValue) {
                                               setState(() {
-                                                _gradeLevel = newValue!;
-                                                if(_gradeLevel== 0){
-                                                  _studLevel =2;
+                                                if(newValue == "Grade 2"){
+                                                  _gradeLevel = 2;
+                                                  gradeLevel = newValue;
+                                                }
+                                                else if(newValue =="Grade 3"){
+                                                  _gradeLevel = 3;
+                                                  gradeLevel = newValue;
                                                 }
                                                 else{
-                                                  _studLevel =3;
+                                                  _gradeLevel = 0;
+                                                  gradeLevel = "Select a Grade Level";
                                                 }
                                               });
                                             },
@@ -417,8 +421,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                                   setState(() {
                                                     _isProcessing = true;
                                                   });
-
-                                                  if (_registerFormKey
+                                                  if(_gradeLevel == 2 || _gradeLevel == 3){
+                                                    if (_registerFormKey
                                                       .currentState!
                                                       .validate()) {
                                                     addUser();
@@ -427,9 +431,20 @@ class _RegisterPageState extends State<RegisterPage> {
                                                       _isProcessing = false;
                                                     });
                                                   }
+                                                  
+
+                                                  }
+                                                  else{
+                                                    final snackbar = SnackBar(
+                                                      duration: Duration(milliseconds : 500),
+                                                      backgroundColor: Colors.orange,
+                                                      content: Text("Select a Grade Level!"),);
+                                                    ScaffoldMessenger.of(context).showSnackBar(snackbar);
+
+                                                  }  
                                                   setState(() {
                                                     _isProcessing = false;
-                                                  });
+                                                  }); 
                                                 },
                                                 style: ElevatedButton.styleFrom(
                                                     shape:
