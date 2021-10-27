@@ -54,9 +54,13 @@ class _LeaderBoardState extends State<LeaderBoard> {
          Container(
           margin: EdgeInsets.only(top: 65.0),
           decoration: BoxDecoration(
-        image: DecorationImage(
-          image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/4ZJJDVq/leadeboardsmobile.png') : NetworkImage("https://i.ibb.co/RPPY7mM/leaderboardsweb.png"), fit: BoxFit.fill)),
-          
+     
+          color: const Color(0xff7c94b6),
+              image: new DecorationImage(
+                fit: BoxFit.cover,
+                colorFilter: new ColorFilter.mode(Colors.white.withOpacity(0.8), BlendMode.dstATop),
+                image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/4ZJJDVq/leadeboardsmobile.png') : NetworkImage("https://i.ibb.co/RPPY7mM/leaderboardsweb.png"))
+              ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -152,11 +156,10 @@ class _LeaderBoardState extends State<LeaderBoard> {
                                                           style: TextStyle(
                                                             fontFamily: 'Sans',
                                                             fontSize: 35,
-                                                              color: Colors
-                                                                  .deepPurple,
+                                                              color: primaryBlue,
                                                               fontWeight:
                                                                   FontWeight
-                                                                      .w500),
+                                                                      .w700),
                                                           maxLines: 6,
                                                         )),
                                                     AutoSizeText("Points: " +
@@ -166,7 +169,7 @@ class _LeaderBoardState extends State<LeaderBoard> {
                                                             .toString(), 
                                                             presetFontSizes: [30,25,20],
                                                             style: 
-                                                            TextStyle(fontFamily: 'Spans', backgroundColor: white.withOpacity(0.35)),),
+                                                            TextStyle(fontFamily: 'Evil', color: black),),
                                                   ],
                                                 ),
                                               ),

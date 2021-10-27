@@ -111,11 +111,59 @@ class _RegisterPageState extends State<RegisterPage> {
           .catchError((error) => print('failed'));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Message"),
+                content: Text('The password provided is too weak.'),
+                actions: [
+                  ElevatedButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              );
+            });
         print('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Message"),
+                content: Text('The account already exists for that email.'),
+                actions: [
+                  ElevatedButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
+              );
+            });
         print('The account already exists for that email.');
       }
     } catch (e) {
+      showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Message"),
+                content: Text('$e'),
+                actions: [
+                  ElevatedButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, Routes.loginPage);
+                    },
+                  )
+                ],
+              );
+            });
       print(e);
     }
   }
@@ -154,10 +202,10 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Column(
                 children: [
                   Container(
-                    width: 400.0,
-                    padding: EdgeInsets.only(top: screenSizeH * .2),
+                    width: screenSizeW <= 649 ? 400 : 500,
+                    padding: EdgeInsets.only(top: screenSizeH * .25),
                     child: Center(
-                      child: Column(
+                      child: Container(child:Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Form(
@@ -199,9 +247,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 ),
                                 Row(children: [
                                   Expanded(
-                                      child: SizedBox(
-                                          height: 45.0,
-                                          child: TextFormField(
+                                      child: TextFormField(
                                             controller: _nameTextController,
                                             focusNode: _focusName,
                                             validator: (value) =>
@@ -236,12 +282,10 @@ class _RegisterPageState extends State<RegisterPage> {
                                                 ),
                                               ),
                                             ),
-                                          ))),
+                                          )),
                                   SizedBox(width: 10.0),
                                   Expanded(
-                                      child: SizedBox(
-                                          height: 45.0,
-                                          child: TextFormField(
+                                      child: TextFormField(
                                             controller: _lnameTextController,
                                             focusNode: _focusLname,
                                             validator: (value) =>
@@ -276,7 +320,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                                 ),
                                               ),
                                             ),
-                                          )))
+                                          ))
                                 ]),
                                 SizedBox(
                                   height: 16.0,
@@ -408,16 +452,18 @@ class _RegisterPageState extends State<RegisterPage> {
                                         ))
                                   ],
                                 ),
-                                SizedBox(height: 32.0),
+                                SizedBox(height: 15.0),
                                 _isProcessing
-                                    ? CircularProgressIndicator()
-                                    : Row(
-                                        children: [
-                                          Expanded(
-                                            child: SizedBox(
-                                              height: 35.0,
-                                              child: ElevatedButton(
-                                                onPressed: () async {
+                                            ? CircularProgressIndicator()
+                                            : Container(
+                                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                                width: double.infinity,
+                                                height: 60,
+                                                decoration: BoxDecoration(
+                                                  borderRadius: BorderRadius.circular(100),
+                                                ),
+                                                child: MaterialButton(
+                                                  onPressed: () async {
                                                   setState(() {
                                                     _isProcessing = true;
                                                   });
@@ -446,56 +492,58 @@ class _RegisterPageState extends State<RegisterPage> {
                                                     _isProcessing = false;
                                                   }); 
                                                 },
-                                                style: ElevatedButton.styleFrom(
-                                                    shape:
-                                                        new RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                new BorderRadius
-                                                                        .circular(
-                                                                    15.0))),
-                                                child: Text(
-                                                  'Sign up',
-                                                  style: TextStyle(
+                                                  color: lightBlue,
+                                                  child: Text(
+                                                    'Sign Up',
+                                                    style: TextStyle(
+                                                      fontSize: 20,
                                                       color: Colors.white,
-                                                      fontSize: 20.0, 
-                                                      fontFamily: 'Evil'),
+                                                        fontFamily: 'Evil'
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ),
-                                          SizedBox(width: 10),
-                                          Expanded(
-                                            child: SizedBox(
-                                              height: 35.0,
-                                              child: ElevatedButton(
-                                                onPressed: () => Navigator
-                                                    .pushReplacementNamed(
-                                                        context,
-                                                        Routes.loginPage),
-                                                style: ElevatedButton.styleFrom(
-                                                    shape:
-                                                        new RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                new BorderRadius
-                                                                        .circular(
-                                                                    15.0))),
-                                                child: Text(
-                                                  'Login',
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 20.0, 
-                                                      fontFamily: 'Evil'),
-                                                ),
+                                              SizedBox(
+                                                height: 20,
                                               ),
+                                              Divider(
+                                                color: Colors.black,
+                                                height: 30,
+                                              ),
+                                              Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  '''Already Have an account? ''',
+                                                  style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontFamily: 'Evil',
+                                                    fontSize:18.0,
+                                                  ),
+                                                ),
+                                                TextButton(
+                                                 onPressed: () => Navigator
+                                                            .pushReplacementNamed(
+                                                                context,
+                                                                Routes
+                                                                    .loginPage),
+                                                  child: Text('Login', style: TextStyle(color: primaryBlue,
+                                                    fontSize:18.0,),),
+                                                  
+                                                )
+                                              ],
                                             ),
-                                          ),
-                                        ],
-                                      )
                               ],
                             ),
                           )
                         ],
                       ),
+                    padding: EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(.8),
+                                borderRadius: BorderRadius.circular(20),
+                                
+                              ),),
                     ),
                   ),
                 ],

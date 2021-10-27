@@ -52,9 +52,15 @@ class _QuizCardState extends State<QuizCard> {
           width: screenSizeW,
           height: screenSizeH, 
           decoration: BoxDecoration(
-            image: DecorationImage(
-            image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/k4SWgzy/newmobilebg.png') : NetworkImage("https://i.ibb.co/h18BM5q/background.png"), fit: BoxFit.fill),
+            color: const Color(0xff7c94b6),
+              image: new DecorationImage(
+                fit: BoxFit.cover,
+                colorFilter: new ColorFilter.mode(Colors.white.withOpacity(0.5), BlendMode.dstATop),
+            image: screenSizeW <= 649 ? NetworkImage('https://i.ibb.co/k4SWgzy/newmobilebg.png') : NetworkImage("https://i.ibb.co/h18BM5q/background.png"),),
+                
+              
           ),
+          
         ),
         StreamBuilder<QuerySnapshot>(
           stream: _usersStream,
@@ -76,7 +82,7 @@ class _QuizCardState extends State<QuizCard> {
               shrinkWrap: true,
               primary: false,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: MediaQuery.of(context).size.width < 500 ? 2 : 3,
+                crossAxisCount: MediaQuery.of(context).size.width < 600 ? 2 : 3,
               ),
               itemBuilder: (BuildContext context, int index){
                 return 

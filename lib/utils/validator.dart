@@ -33,15 +33,14 @@ class Validator {
     return null;
   }
 
+
   static String? validateEmail({required String? email}) {
-    if (email == null) {
-      return null;
-    }
+    
 
     RegExp emailRegExp = RegExp(
         r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
 
-    if (email.isEmpty) {
+    if (email!.isEmpty) {
       return 'Email can\'t be empty';
     } else if (!emailRegExp.hasMatch(email)) {
       return 'Enter a correct email';
@@ -53,17 +52,23 @@ class Validator {
   static String? validatePassword({required String? password}) {
     String  pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
     RegExp regExp = new RegExp(pattern);
-    if (password == null) {
-      return null;
-    }
-
-    if (password.isEmpty) {
+   
+    if (password!.isEmpty) {
       return 'Password can\'t be empty';
     } else if (password.length < 6) {
       return 'Enter a password with \n length at least 6';
     } else if(regExp.hasMatch(password)){
       return 'Password must contain \n 1 Upper case, 1 lowercase, \n 1 numeric number, 1 special character';
     }
+
+        
+    return null;
+  }
+  static String? validateLoginPassword({required String? password}) {
+  
+    if (password!.isEmpty) {
+      return 'Password can\'t be empty';
+    } 
 
         
     return null;

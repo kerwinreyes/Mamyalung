@@ -117,6 +117,8 @@ class _QuizStateState extends State<QuizState> {
     9: [1,2], 10: [1,3], 11: [1,2],12: [1,5],
     13: [1,2,4], 14: [1,3], 15: [1,2],16: [1],  
     };
+  bool isProcessing = false;
+
 List finaflashcards=[];
 List allflashcards=[];
 Future<void>  read() async{
@@ -254,9 +256,13 @@ Future<void> updateUser() {
   //Check if the student got the correct answer
   checkWin(String userChoice , BuildContext context )
   { 
-  if(counter==0){
+    setState(() {
+      isProcessing =
+          true;
+    });
+    if(counter==0){
 
-  }
+    }
   else{
   if(userChoice==_tryflashcards[counter]['multiple_choice'][_tryflashcards[counter]['answer']])
   { 
@@ -309,6 +315,10 @@ Future<void> updateUser() {
          read();
    }
   });
+   setState(() {
+      isProcessing =
+          false;
+    });
 } 
 Future<void> _readUser() async{
   var data = await FirebaseFirestore.instance
@@ -354,10 +364,14 @@ List listShuffle (List choices, int ans, String answer){
                   fit: BoxFit.fill),
             ),
           ),
+        
           format.format(now) == lastgame? 
         Column(children: [
           Container(
-            child:Container(margin: EdgeInsets.only(left: 50, right:50, top: 120, bottom: 20),
+            margin: EdgeInsets.only(left: 50, right:50, top: 120, bottom: 20),
+            child:Text('Pindutin ang Card para makita ang tanong o sagot',style:TextStyle(fontFamily: 'Evil', fontSize: 50,))),
+          Container(
+            child:Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
         width: screenSizeW <= 649 ? 250 : 350,
         height: screenSizeW <= 649 ? 250 : 350,
             
@@ -405,7 +419,9 @@ List listShuffle (List choices, int ans, String answer){
         ),
         ),
         ),),
-        
+        isProcessing
+        ? CircularProgressIndicator()
+        : 
         Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[

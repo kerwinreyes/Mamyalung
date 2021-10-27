@@ -1,110 +1,33 @@
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mamyalung/materials.dart';
-import 'package:mamyalung/screens/admin/homepage.dart';
-import 'package:mamyalung/screens/students/homepage.dart';
+import 'package:flutter/material.dart';
 import 'package:mamyalung/utils/validator.dart';
-
-import 'screens/teacher/homepage.dart';
 import 'components/routes.dart';
+import 'materials.dart';
 
-class LoginPage extends StatefulWidget {
-  static const String routeName = '/login';
-  LoginPage({Key? key}) : super(key: key);
+class ForgotPassword extends StatefulWidget {
+  static const String routeName = '/forgotpassword';
+  const ForgotPassword({ Key? key }) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _ForgotPasswordState createState() => _ForgotPasswordState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _ForgotPasswordState extends State<ForgotPassword> {
+  static final _email = FocusNode();
+  bool isProcessing = false;
   static final _formKey = new GlobalKey<FormState>();
-
-  final _emailTextController = TextEditingController();
-  final _passwordTextController = TextEditingController();
-
-  static final _focusEmail = FocusNode();
-  static final _focusPassword = FocusNode();
-
-  bool _isProcessing = false;
-
- 
-  void logIn() async{
-    FirebaseAuth.instance
-        .signInWithEmailAndPassword(
-            email: _emailTextController.text,
-            password: _passwordTextController.text)
-        .then((result) {
-      _isProcessing = false;
-      if (result != null) {
-        FirebaseFirestore.instance
-            .collection('/users')
-            .where('uid', isEqualTo: result.user!.uid)
-            .get()
-            .then((QuerySnapshot querySnapshot) {
-          querySnapshot.docs.forEach((doc) {
-            if (identical(doc['role'], 'Admin')) {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        AdminHomePage(user: result.user!.uid)),
-              );
-            } else if (identical(doc['role'], 'teacher')) {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        TeacherHomePage(uid: result.user!.uid)),
-              );
-            } else {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        StudentHomePage(uid: result.user!.uid)),
-              );
-            }
-          });
-        });
-      }
-    }).catchError((err) {
-      print(err.message);
-      showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text("Error"),
-              content: Text(err.message),
-              actions: [
-                ElevatedButton(
-                  child: Text("Ok"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                )
-              ],
-            );
-          });
-    });
-  }
-  bool  _passwordVisible= true;
-@override
-  void initState() {
-    _passwordVisible = true;
-  }
+  TextEditingController emailController = TextEditingController();
+  FirebaseAuth auth = FirebaseAuth.instance;
   @override
+  
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     var screenSizeW = screenSize.width;
     var screenSizeH = screenSize.height;
-
     return GestureDetector(
       onTap: () {
-        _focusEmail.unfocus();
-        _focusPassword.unfocus();
+        _email.unfocus();
       },
       child: Scaffold(
             resizeToAvoidBottomInset: true,
@@ -123,8 +46,8 @@ class _LoginPageState extends State<LoginPage> {
                   fit: BoxFit.fill),
             ),
           ),
-
-          Center(
+         
+      Center(
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -143,8 +66,8 @@ class _LoginPageState extends State<LoginPage> {
                                       children: <Widget>[
                                         TextFormField(
 
-                                            controller: _emailTextController,
-                                            focusNode: _focusEmail,
+                                            controller: emailController,
+                                            focusNode: _email,
                                             validator: (value) => Validator.validateEmail(
                                               email: value,
                                             ),
@@ -175,77 +98,10 @@ class _LoginPageState extends State<LoginPage> {
                                             ),
                                             
                                           ),
-                                        SizedBox(height: 10.0),
-                                        TextFormField(
-                                          controller: _passwordTextController,
-                                          focusNode: _focusPassword,
-                                          obscureText: _passwordVisible,
-                                          
-                                          validator: (value) =>
-                                              Validator.validateLoginPassword(
-                                            password: value,
-                                          ),
-                                          decoration: InputDecoration(
-                                              hintText: "Type your Password",
-                                              labelText: "Password",
-                                              labelStyle: TextStyle(
-                                                  color: black,
-                                                  fontFamily: 'Evil',
-                                                  fontSize: 22),
-                                              filled: true,
-                                              fillColor:
-                                                  Colors.white.withOpacity(0.8),
-                                              border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30),
-                                                  borderSide: BorderSide.none),
-                                              focusedBorder: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30),
-                                                  borderSide: BorderSide.none),
-                                              errorBorder: UnderlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(30.0),
-                                                borderSide: BorderSide(
-                                                  color: Colors.red,
-                                                ),
-                                              ),
-                                              prefixIcon: Icon(Icons.lock),
-                                              suffixIcon: IconButton(
-                                                onPressed: (){
-                                                  setState(() {
-                                                    _passwordVisible=!_passwordVisible;
-                                                  });
-                                                }, 
-                                                icon: Icon(Icons.remove_red_eye),
-                                              )),
-                                              
-                                        ),
+                                       
                                         SizedBox(height: 15.0),
-                                        Row(
-                                                mainAxisAlignment: MainAxisAlignment.end,
-                                                children: [
-                                                  TextButton(
-                                                    onPressed: () => Navigator
-                                                            .pushReplacementNamed(
-                                                                context,
-                                                                Routes
-                                                                    .forgotpassword),
-                                                    child: Text(
-                                                      'Forgot Password?',
-                                                      style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontSize: 18.0,
-                                                        fontFamily: 'Evil'
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              SizedBox(
-                                                height: 15,
-                                              ),
-                                              _isProcessing
+                                        
+                                            isProcessing
                                             ? CircularProgressIndicator()
                                             : Container(
                                                 clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -257,26 +113,64 @@ class _LoginPageState extends State<LoginPage> {
                                                 child: MaterialButton(
                                                    onPressed: () async {
                                                          setState(() {
-                                                              _isProcessing =
+                                                              isProcessing =
                                                                   true;
                                                             });
                                                           if (_formKey
                                                               .currentState!
                                                               .validate()) {
-                                                            logIn();
+                                                          try {
+                                                          await auth.sendPasswordResetEmail(email: emailController.text);
+                                                          showDialog(
+                                                          context: context,
+                                                          builder: (BuildContext context) {
+                                                            return AlertDialog(
+                                                              title: Text("Message"),
+                                                              content: Text('We have send a reset password email to your email address'),
+                                                              actions: [
+                                                                ElevatedButton(
+                                                                  child: Text("Ok"),
+                                                                  onPressed: () {
+                                                                    Navigator.of(context).pop();
+                                                                  },
+                                                                )
+                                                              ],
+                                                            );
+                                                          });
+                                                          } on FirebaseAuthException catch (e) {
+                                                            showDialog(
+                                                          context: context,
+                                                          builder: (BuildContext context) {
+                                                            return AlertDialog(
+                                                              title: Text("Message"),
+                                                              content: Text('$e.message'),
+                                                              actions: [
+                                                                ElevatedButton(
+                                                                  child: Text("Ok"),
+                                                                  onPressed: () {
+                                                                    Navigator.of(context).pop();
+                                                                  },
+                                                                )
+                                                              ],
+                                                            );
+                                                          });
+                                                          print(e.code);
+                                                          print(e.message);
+                                                          // show the snackbar here
+                                                          }
                                                             setState(() {
-                                                              _isProcessing =
+                                                              isProcessing =
                                                                   false;
                                                             });
                                                           }
                                                           setState(() {
-                                                              _isProcessing =
+                                                              isProcessing =
                                                                   false;
                                                             });
                                                         },
                                                   color: lightBlue,
                                                   child: Text(
-                                                    'Login',
+                                                    'Send Email',
                                                     style: TextStyle(
                                                       fontSize: 20,
                                                       color: Colors.white,
@@ -296,7 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  '''Don't have an account? ''',
+                                                  '''Already Have an account? ''',
                                                   style: TextStyle(
                                                     color: Colors.black,
                                                     fontFamily: 'Evil',
@@ -308,8 +202,8 @@ class _LoginPageState extends State<LoginPage> {
                                                             .pushReplacementNamed(
                                                                 context,
                                                                 Routes
-                                                                    .registerPage),
-                                                  child: Text('Register Now', style: TextStyle(color: primaryBlue,
+                                                                    .loginPage),
+                                                  child: Text('Login', style: TextStyle(color: primaryBlue,
                                                     fontSize:18.0,),),
                                                   
                                                 )
@@ -333,8 +227,9 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           )
-        ],
-      )),
+        ]
+            )
+            )
     );
   }
 }

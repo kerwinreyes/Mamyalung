@@ -17,6 +17,7 @@ import 'package:mamyalung/utils/finalAuth.dart';
 import 'package:provider/provider.dart';
 import 'authService.dart';
 import 'components/routes.dart';
+import 'forgotpassword.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
         Routes.studentHomePage: (context) => StudentHomePage(),
         Routes.registerPage: (context) => RegisterPage(),
         Routes.loginPage:(context) => LoginPage(),
+        Routes.forgotpassword:(context) => ForgotPassword(),
   
       },
       
