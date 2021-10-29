@@ -8,7 +8,7 @@ import '../../materials.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:intl/intl.dart';
-
+import 'dart:async';
 
 
 
@@ -118,6 +118,7 @@ class _QuizStateState extends State<QuizState> {
     13: [1,2,4], 14: [1,3], 15: [1,2],16: [1],  
     };
   bool isProcessing = false;
+
 
 List finaflashcards=[];
 List allflashcards=[];
@@ -315,9 +316,11 @@ Future<void> updateUser() {
          read();
    }
   });
-   setState(() {
-      isProcessing =
-          false;
+  Timer.periodic(const Duration(seconds: 3), (t) {
+      setState(() {
+        isProcessing = false; //set loading to false
+      });
+      t.cancel(); //stops the timer
     });
 } 
 Future<void> _readUser() async{
@@ -368,8 +371,8 @@ List listShuffle (List choices, int ans, String answer){
           format.format(now) == lastgame? 
         Column(children: [
           Container(
-            margin: EdgeInsets.only(left: 50, right:50, top: 120, bottom: 20),
-            child:Text('Pindutin ang Card para makita ang tanong o sagot',style:TextStyle(fontFamily: 'Evil', fontSize: 50,))),
+            margin: EdgeInsets.only(left: 50, right:50, top:70, bottom: 0),
+            child:Text('Pindutin ang Card para makita ang tanong o sagot',style:TextStyle(fontFamily: 'Evil', fontSize: 40,))),
           Container(
             child:Container(margin: EdgeInsets.only(left: 50, right:50, top: 50, bottom: 20),
         width: screenSizeW <= 649 ? 250 : 350,
@@ -420,7 +423,13 @@ List listShuffle (List choices, int ans, String answer){
         ),
         ),),
         isProcessing
-        ? CircularProgressIndicator()
+        ?  Container(
+          alignment: Alignment.topCenter,
+          margin: EdgeInsets.only(top: 20),
+          child: CircularProgressIndicator(
+            backgroundColor: lightBlue,
+          )
+        )
         : 
         Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
